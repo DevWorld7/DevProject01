@@ -49,6 +49,7 @@ namespace LineFocus.Nikcron.Controllers
                 Company.Address.Address2 = formCollection["Address2"];
                 Company.Address.City = formCollection["City"];
                 Company.Address.Zip = formCollection["Zip"];
+                db.Offices.AddObject(Company);
             }
             else {
                 int CompanyId = int.Parse(formCollection["CompanyId"]);
