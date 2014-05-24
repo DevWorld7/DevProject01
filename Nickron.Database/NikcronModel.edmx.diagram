@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c3846c01fb164b4a8946ec2085f9a002" Name="Diagram1" DisplayType="true" >
+        <EntityTypeShape EntityType="NikcronModel.Person" Width="2.25" PointX="8.875" PointY="0.5" FillColor="192, 64, 0" />
+        <EntityTypeShape EntityType="NikcronModel.Office" Width="1.625" PointX="2.5" PointY="0.5" />
+        <EntityTypeShape EntityType="NikcronModel.Warehouse" Width="1.5" PointX="5.125" PointY="2.125" FillColor="0, 122, 204" />
+        <InheritanceConnector EntityType="NikcronModel.Warehouse" />
+        <EntityTypeShape EntityType="NikcronModel.Company" Width="1.5" PointX="5.125" PointY="0.5" />
+        <InheritanceConnector EntityType="NikcronModel.Company" />
+        <EntityTypeShape EntityType="NikcronModel.Distributor" Width="1.5" PointX="6" PointY="6.75" />
+        <EntityTypeShape EntityType="NikcronModel.Zone" Width="1.5" PointX="7" PointY="0.5" FillColor="DarkGoldenrod" />
+        <EntityTypeShape EntityType="NikcronModel.BusinessOffice" Width="2.375" PointX="3" PointY="7" />
+        <InheritanceConnector EntityType="NikcronModel.BusinessOffice" />
+        <EntityTypeShape EntityType="NikcronModel.Stockhouse" Width="1.5" PointX="6" PointY="4.25" FillColor="0, 122, 204" />
+        <InheritanceConnector EntityType="NikcronModel.Stockhouse" />
+        <InheritanceConnector EntityType="NikcronModel.Distributor" />
+        <InheritanceConnector EntityType="NikcronModel.Distributor" />
+        <EntityTypeShape EntityType="NikcronModel.Dealers" Width="1.5" PointX="6" PointY="9.25" />
+        <InheritanceConnector EntityType="NikcronModel.Dealers" />
+        <EntityTypeShape EntityType="NikcronModel.Retailer" Width="1.5" PointX="6" PointY="11.625" />
+        <InheritanceConnector EntityType="NikcronModel.Retailer" />
+        <EntityTypeShape EntityType="NikcronModel.ProductType" Width="1.625" PointX="0.5" PointY="0.5" FillColor="Green" />
+        <EntityTypeShape EntityType="NikcronModel.Manufacture" Width="1.5" PointX="0.5" PointY="2.75" FillColor="Green" />
+        <EntityTypeShape EntityType="NikcronModel.ProductModel" Width="2.125" PointX="0.5" PointY="5.625" FillColor="Green" />
+        <AssociationConnector Association="NikcronModel.ProductModelManufacture" />
+        <AssociationConnector Association="NikcronModel.ProductModelProductType" />
+        <EntityTypeShape EntityType="NikcronModel.ProductWarranty" Width="1.875" PointX="0.5" PointY="13.75" FillColor="Green" />
+        <EntityTypeShape EntityType="NikcronModel.ProductItem" Width="1.875" PointX="0.5" PointY="16.5" FillColor="Green" />
+        <AssociationConnector Association="NikcronModel.ProductItemProductModel" />
+        <AssociationConnector Association="NikcronModel.StockhouseZone" />
+        <AssociationConnector Association="NikcronModel.ProductItemWarehouse" />
+        <AssociationConnector Association="NikcronModel.ProductItemStockhouse" />
+        <AssociationConnector Association="NikcronModel.ProductItemDistributor" />
+        <AssociationConnector Association="NikcronModel.DealersProductItem" />
+        <AssociationConnector Association="NikcronModel.ProductItemRetailer" />
+        <AssociationConnector Association="NikcronModel.ProductModelProductWarranty" />
+        <AssociationConnector Association="NikcronModel.CompanyWarehouse" />
+        <AssociationConnector Association="NikcronModel.WarehouseStockhouse" />
+        <AssociationConnector Association="NikcronModel.DealersRetailer" />
+        <AssociationConnector Association="NikcronModel.StockhouseDistributor" />
+        <AssociationConnector Association="NikcronModel.DistributorDealers" />
+        <EntityTypeShape EntityType="NikcronModel.Role" Width="2.25" PointX="11.375" PointY="0.5" FillColor="192, 64, 0" />
+        <EntityTypeShape EntityType="NikcronModel.User" Width="2.25" PointX="8.875" PointY="4" FillColor="192, 64, 0" />
+        <InheritanceConnector EntityType="NikcronModel.User" />
+        <AssociationConnector Association="NikcronModel.UserRole" />
+        <EntityTypeShape EntityType="NikcronModel.ServiceCentre" Width="1.5" PointX="7" PointY="2.5" />
+        <InheritanceConnector EntityType="NikcronModel.ServiceCentre" />
+        <EntityTypeShape EntityType="NikcronModel.Customer" Width="2.25" PointX="8.875" PointY="6.125" FillColor="192, 64, 0" />
+        <InheritanceConnector EntityType="NikcronModel.Customer" />
+        <EntityTypeShape EntityType="NikcronModel.Mobile" Width="2.25" PointX="0.625" PointY="22.25" FillColor="Green" />
+        <AssociationConnector Association="NikcronModel.UserOffice" />
+        <EntityTypeShape EntityType="NikcronModel.Tablet" Width="2.125" PointX="3.5" PointY="22.25" FillColor="Green" />
+        <EntityTypeShape EntityType="NikcronModel.Laptop" Width="2.25" PointX="6.25" PointY="22.25" FillColor="Green" />
+        <InheritanceConnector EntityType="NikcronModel.Mobile" />
+        <InheritanceConnector EntityType="NikcronModel.Tablet" />
+        <InheritanceConnector EntityType="NikcronModel.Laptop" />
+        <InheritanceConnector EntityType="NikcronModel.Tablet" />
+        <InheritanceConnector EntityType="NikcronModel.Laptop" />
+        <EntityTypeShape EntityType="NikcronModel.ProductColors" Width="1.5" PointX="2.375" PointY="3.125" FillColor="Green" />
+        <EntityTypeShape EntityType="NikcronModel.ProductHistory" Width="1.875" PointX="3.75" PointY="17.375" FillColor="DarkOrange" />
+        <AssociationConnector Association="NikcronModel.ProductHistoryProductItem" />
+        <EntityTypeShape EntityType="NikcronModel.Sale" Width="2.125" PointX="8.25" PointY="16.375" FillColor="DarkOrange" />
+        <AssociationConnector Association="NikcronModel.SalesProductItem" />
+        <AssociationConnector Association="NikcronModel.SalesUser" />
+        <AssociationConnector Association="NikcronModel.SaleProductWarranty" />
+        <AssociationConnector Association="NikcronModel.SaleCustomer" />
+        <AssociationConnector Association="NikcronModel.ProductItemProductColors" />
+        <AssociationConnector Association="NikcronModel.ProductModelProductColors" />
+        <EntityTypeShape EntityType="NikcronModel.ProductImage" Width="1.5" PointX="3.125" PointY="5" FillColor="Green" />
+        <AssociationConnector Association="NikcronModel.ProductModelProductImage" />
+        <EntityTypeShape EntityType="NikcronModel.SalesReturn" Width="2" PointX="11" PointY="16.375" FillColor="DarkOrange" />
+        <EntityTypeShape EntityType="NikcronModel.Service" Width="2" PointX="13.375" PointY="16.375" FillColor="DarkOrange" />
+        <AssociationConnector Association="NikcronModel.ServiceSale" />
+        <AssociationConnector Association="NikcronModel.SalesReturnSale" />
+        <AssociationConnector Association="NikcronModel.SalesReturnUser" />
+        <AssociationConnector Association="NikcronModel.ServiceUser" />
+        <EntityTypeShape EntityType="NikcronModel.ReturnType" Width="2" PointX="11" PointY="19.875" FillColor="DarkOrange" />
+        <EntityTypeShape EntityType="NikcronModel.ServiceType" Width="2" PointX="13.375" PointY="19.875" FillColor="DarkOrange" />
+        <AssociationConnector Association="NikcronModel.SalesReturnReturnType" />
+        <AssociationConnector Association="NikcronModel.ServiceServiceType" />
+        <AssociationConnector Association="NikcronModel.ServiceServiceCentre" />
+        <EntityTypeShape EntityType="NikcronModel.Country" Width="1.75" PointX="9" PointY="8" FillColor="DarkGoldenrod" />
+        <EntityTypeShape EntityType="NikcronModel.State" Width="1.75" PointX="11.25" PointY="8" FillColor="DarkGoldenrod" />
+        <AssociationConnector Association="NikcronModel.StateCountry" />
+        <EntityTypeShape EntityType="NikcronModel.City" Width="1.625" PointX="13.5" PointY="8" FillColor="DarkGoldenrod" />
+        <AssociationConnector Association="NikcronModel.StateCity" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

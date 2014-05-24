@@ -1,0 +1,2976 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NikcronModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="NikcronModelStoreContainer">
+    <EntitySet Name="People" EntityType="NikcronModel.Store.People" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Offices" EntityType="NikcronModel.Store.Offices" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Zones" EntityType="NikcronModel.Store.Zones" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductTypes" EntityType="NikcronModel.Store.ProductTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Manufactures" EntityType="NikcronModel.Store.Manufactures" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductModels" EntityType="NikcronModel.Store.ProductModels" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductWarranties" EntityType="NikcronModel.Store.ProductWarranties" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductItems" EntityType="NikcronModel.Store.ProductItems" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Roles" EntityType="NikcronModel.Store.Roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductColor" EntityType="NikcronModel.Store.ProductColor" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductHistories" EntityType="NikcronModel.Store.ProductHistories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sales" EntityType="NikcronModel.Store.Sales" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductImages" EntityType="NikcronModel.Store.ProductImages" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SalesReturns" EntityType="NikcronModel.Store.SalesReturns" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Services" EntityType="NikcronModel.Store.Services" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ReturnTypes" EntityType="NikcronModel.Store.ReturnTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ServiceTypes" EntityType="NikcronModel.Store.ServiceTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Countries" EntityType="NikcronModel.Store.Countries" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="States" EntityType="NikcronModel.Store.States" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cities" EntityType="NikcronModel.Store.Cities" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Offices_BusinessOffice" EntityType="NikcronModel.Store.Offices_BusinessOffice" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Offices_Stockhouse" EntityType="NikcronModel.Store.Offices_Stockhouse" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Offices_Warehouse" EntityType="NikcronModel.Store.Offices_Warehouse" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Offices_Distributor" EntityType="NikcronModel.Store.Offices_Distributor" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Offices_Dealers" EntityType="NikcronModel.Store.Offices_Dealers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Offices_Retailer" EntityType="NikcronModel.Store.Offices_Retailer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Offices_Company" EntityType="NikcronModel.Store.Offices_Company" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="People_User" EntityType="NikcronModel.Store.People_User" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="People_Customer" EntityType="NikcronModel.Store.People_Customer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Offices_ServiceCentre" EntityType="NikcronModel.Store.Offices_ServiceCentre" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductModels_Mobile" EntityType="NikcronModel.Store.ProductModels_Mobile" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductModels_Tablet" EntityType="NikcronModel.Store.ProductModels_Tablet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductModels_Laptop" EntityType="NikcronModel.Store.ProductModels_Laptop" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductModelProductWarranty" EntityType="NikcronModel.Store.ProductModelProductWarranty" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductModelProductColors" EntityType="NikcronModel.Store.ProductModelProductColors" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ProductModelManufacture" Association="NikcronModel.Store.ProductModelManufacture">
+      <End Role="ProductModel" EntitySet="ProductModels" />
+      <End Role="Manufacture" EntitySet="Manufactures" />
+    </AssociationSet>
+    <AssociationSet Name="ProductModelProductType" Association="NikcronModel.Store.ProductModelProductType">
+      <End Role="ProductModel" EntitySet="ProductModels" />
+      <End Role="ProductType" EntitySet="ProductTypes" />
+    </AssociationSet>
+    <AssociationSet Name="ProductItemProductModel" Association="NikcronModel.Store.ProductItemProductModel">
+      <End Role="ProductItem" EntitySet="ProductItems" />
+      <End Role="ProductModel" EntitySet="ProductModels" />
+    </AssociationSet>
+    <AssociationSet Name="StockhouseZone" Association="NikcronModel.Store.StockhouseZone">
+      <End Role="Stockhouse" EntitySet="Offices_Stockhouse" />
+      <End Role="Zone" EntitySet="Zones" />
+    </AssociationSet>
+    <AssociationSet Name="ProductItemWarehouse" Association="NikcronModel.Store.ProductItemWarehouse">
+      <End Role="ProductItem" EntitySet="ProductItems" />
+      <End Role="Warehouse" EntitySet="Offices_Warehouse" />
+    </AssociationSet>
+    <AssociationSet Name="ProductItemStockhouse" Association="NikcronModel.Store.ProductItemStockhouse">
+      <End Role="ProductItem" EntitySet="ProductItems" />
+      <End Role="Stockhouse" EntitySet="Offices_Stockhouse" />
+    </AssociationSet>
+    <AssociationSet Name="ProductItemDistributor" Association="NikcronModel.Store.ProductItemDistributor">
+      <End Role="ProductItem" EntitySet="ProductItems" />
+      <End Role="Distributor" EntitySet="Offices_Distributor" />
+    </AssociationSet>
+    <AssociationSet Name="DealersProductItem" Association="NikcronModel.Store.DealersProductItem">
+      <End Role="ProductItem" EntitySet="ProductItems" />
+      <End Role="Dealers" EntitySet="Offices_Dealers" />
+    </AssociationSet>
+    <AssociationSet Name="ProductItemRetailer" Association="NikcronModel.Store.ProductItemRetailer">
+      <End Role="ProductItem" EntitySet="ProductItems" />
+      <End Role="Retailer" EntitySet="Offices_Retailer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductModelProductWarranty_ProductModel" Association="NikcronModel.Store.FK_ProductModelProductWarranty_ProductModel">
+      <End Role="ProductModel" EntitySet="ProductModels" />
+      <End Role="ProductModelProductWarranty" EntitySet="ProductModelProductWarranty" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductModelProductWarranty_ProductWarranty" Association="NikcronModel.Store.FK_ProductModelProductWarranty_ProductWarranty">
+      <End Role="ProductWarranty" EntitySet="ProductWarranties" />
+      <End Role="ProductModelProductWarranty" EntitySet="ProductModelProductWarranty" />
+    </AssociationSet>
+    <AssociationSet Name="CompanyWarehouse" Association="NikcronModel.Store.CompanyWarehouse">
+      <End Role="Company" EntitySet="Offices_Company" />
+      <End Role="Warehouse" EntitySet="Offices_Warehouse" />
+    </AssociationSet>
+    <AssociationSet Name="WarehouseStockhouse" Association="NikcronModel.Store.WarehouseStockhouse">
+      <End Role="Warehouse" EntitySet="Offices_Warehouse" />
+      <End Role="Stockhouse" EntitySet="Offices_Stockhouse" />
+    </AssociationSet>
+    <AssociationSet Name="DealersRetailer" Association="NikcronModel.Store.DealersRetailer">
+      <End Role="Dealers" EntitySet="Offices_Dealers" />
+      <End Role="Retailer" EntitySet="Offices_Retailer" />
+    </AssociationSet>
+    <AssociationSet Name="StockhouseDistributor" Association="NikcronModel.Store.StockhouseDistributor">
+      <End Role="Stockhouse" EntitySet="Offices_Stockhouse" />
+      <End Role="Distributor" EntitySet="Offices_Distributor" />
+    </AssociationSet>
+    <AssociationSet Name="DistributorDealers" Association="NikcronModel.Store.DistributorDealers">
+      <End Role="Distributor" EntitySet="Offices_Distributor" />
+      <End Role="Dealers" EntitySet="Offices_Dealers" />
+    </AssociationSet>
+    <AssociationSet Name="UserRole" Association="NikcronModel.Store.UserRole">
+      <End Role="User" EntitySet="People_User" />
+      <End Role="Role" EntitySet="Roles" />
+    </AssociationSet>
+    <AssociationSet Name="UserOffice" Association="NikcronModel.Store.UserOffice">
+      <End Role="User" EntitySet="People_User" />
+      <End Role="Office" EntitySet="Offices" />
+    </AssociationSet>
+    <AssociationSet Name="ProductHistoryProductItem" Association="NikcronModel.Store.ProductHistoryProductItem">
+      <End Role="ProductHistory" EntitySet="ProductHistories" />
+      <End Role="ProductItem" EntitySet="ProductItems" />
+    </AssociationSet>
+    <AssociationSet Name="SalesProductItem" Association="NikcronModel.Store.SalesProductItem">
+      <End Role="Sales" EntitySet="Sales" />
+      <End Role="ProductItem" EntitySet="ProductItems" />
+    </AssociationSet>
+    <AssociationSet Name="SalesUser" Association="NikcronModel.Store.SalesUser">
+      <End Role="Sales" EntitySet="Sales" />
+      <End Role="User" EntitySet="People_User" />
+    </AssociationSet>
+    <AssociationSet Name="SaleProductWarranty" Association="NikcronModel.Store.SaleProductWarranty">
+      <End Role="Sale" EntitySet="Sales" />
+      <End Role="ProductWarranty" EntitySet="ProductWarranties" />
+    </AssociationSet>
+    <AssociationSet Name="SaleCustomer" Association="NikcronModel.Store.SaleCustomer">
+      <End Role="Sale" EntitySet="Sales" />
+      <End Role="Customer" EntitySet="People_Customer" />
+    </AssociationSet>
+    <AssociationSet Name="ProductItemProductColors" Association="NikcronModel.Store.ProductItemProductColors">
+      <End Role="ProductItem" EntitySet="ProductItems" />
+      <End Role="ProductColors" EntitySet="ProductColor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductModelProductColors_ProductModel" Association="NikcronModel.Store.FK_ProductModelProductColors_ProductModel">
+      <End Role="ProductModel" EntitySet="ProductModels" />
+      <End Role="ProductModelProductColors" EntitySet="ProductModelProductColors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductModelProductColors_ProductColors" Association="NikcronModel.Store.FK_ProductModelProductColors_ProductColors">
+      <End Role="ProductColors" EntitySet="ProductColor" />
+      <End Role="ProductModelProductColors" EntitySet="ProductModelProductColors" />
+    </AssociationSet>
+    <AssociationSet Name="ProductModelProductImage" Association="NikcronModel.Store.ProductModelProductImage">
+      <End Role="ProductModel" EntitySet="ProductModels" />
+      <End Role="ProductImage" EntitySet="ProductImages" />
+    </AssociationSet>
+    <AssociationSet Name="ServiceSale" Association="NikcronModel.Store.ServiceSale">
+      <End Role="Service" EntitySet="Services" />
+      <End Role="Sale" EntitySet="Sales" />
+    </AssociationSet>
+    <AssociationSet Name="SalesReturnSale" Association="NikcronModel.Store.SalesReturnSale">
+      <End Role="Sale" EntitySet="Sales" />
+      <End Role="SalesReturn" EntitySet="SalesReturns" />
+    </AssociationSet>
+    <AssociationSet Name="SalesReturnUser" Association="NikcronModel.Store.SalesReturnUser">
+      <End Role="SalesReturn" EntitySet="SalesReturns" />
+      <End Role="User" EntitySet="People_User" />
+    </AssociationSet>
+    <AssociationSet Name="ServiceUser" Association="NikcronModel.Store.ServiceUser">
+      <End Role="Service" EntitySet="Services" />
+      <End Role="User" EntitySet="People_User" />
+    </AssociationSet>
+    <AssociationSet Name="SalesReturnReturnType" Association="NikcronModel.Store.SalesReturnReturnType">
+      <End Role="SalesReturn" EntitySet="SalesReturns" />
+      <End Role="ReturnType" EntitySet="ReturnTypes" />
+    </AssociationSet>
+    <AssociationSet Name="ServiceServiceType" Association="NikcronModel.Store.ServiceServiceType">
+      <End Role="Service" EntitySet="Services" />
+      <End Role="ServiceType" EntitySet="ServiceTypes" />
+    </AssociationSet>
+    <AssociationSet Name="ServiceServiceCentre" Association="NikcronModel.Store.ServiceServiceCentre">
+      <End Role="Service" EntitySet="Services" />
+      <End Role="ServiceCentre" EntitySet="Offices_ServiceCentre" />
+    </AssociationSet>
+    <AssociationSet Name="StateCountry" Association="NikcronModel.Store.StateCountry">
+      <End Role="State" EntitySet="States" />
+      <End Role="Country" EntitySet="Countries" />
+    </AssociationSet>
+    <AssociationSet Name="StateCity" Association="NikcronModel.Store.StateCity">
+      <End Role="State" EntitySet="States" />
+      <End Role="City" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BusinessOffice_inherits_Office" Association="NikcronModel.Store.FK_BusinessOffice_inherits_Office">
+      <End Role="Office" EntitySet="Offices" />
+      <End Role="BusinessOffice" EntitySet="Offices_BusinessOffice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stockhouse_inherits_BusinessOffice" Association="NikcronModel.Store.FK_Stockhouse_inherits_BusinessOffice">
+      <End Role="BusinessOffice" EntitySet="Offices_BusinessOffice" />
+      <End Role="Stockhouse" EntitySet="Offices_Stockhouse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Warehouse_inherits_Office" Association="NikcronModel.Store.FK_Warehouse_inherits_Office">
+      <End Role="Office" EntitySet="Offices" />
+      <End Role="Warehouse" EntitySet="Offices_Warehouse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Distributor_inherits_BusinessOffice" Association="NikcronModel.Store.FK_Distributor_inherits_BusinessOffice">
+      <End Role="BusinessOffice" EntitySet="Offices_BusinessOffice" />
+      <End Role="Distributor" EntitySet="Offices_Distributor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dealers_inherits_BusinessOffice" Association="NikcronModel.Store.FK_Dealers_inherits_BusinessOffice">
+      <End Role="BusinessOffice" EntitySet="Offices_BusinessOffice" />
+      <End Role="Dealers" EntitySet="Offices_Dealers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Retailer_inherits_BusinessOffice" Association="NikcronModel.Store.FK_Retailer_inherits_BusinessOffice">
+      <End Role="BusinessOffice" EntitySet="Offices_BusinessOffice" />
+      <End Role="Retailer" EntitySet="Offices_Retailer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Company_inherits_Office" Association="NikcronModel.Store.FK_Company_inherits_Office">
+      <End Role="Office" EntitySet="Offices" />
+      <End Role="Company" EntitySet="Offices_Company" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_inherits_Person" Association="NikcronModel.Store.FK_User_inherits_Person">
+      <End Role="Person" EntitySet="People" />
+      <End Role="User" EntitySet="People_User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_inherits_Person" Association="NikcronModel.Store.FK_Customer_inherits_Person">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Customer" EntitySet="People_Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceCentre_inherits_Office" Association="NikcronModel.Store.FK_ServiceCentre_inherits_Office">
+      <End Role="Office" EntitySet="Offices" />
+      <End Role="ServiceCentre" EntitySet="Offices_ServiceCentre" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mobile_inherits_ProductModel" Association="NikcronModel.Store.FK_Mobile_inherits_ProductModel">
+      <End Role="ProductModel" EntitySet="ProductModels" />
+      <End Role="Mobile" EntitySet="ProductModels_Mobile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tablet_inherits_ProductModel" Association="NikcronModel.Store.FK_Tablet_inherits_ProductModel">
+      <End Role="ProductModel" EntitySet="ProductModels" />
+      <End Role="Tablet" EntitySet="ProductModels_Tablet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Laptop_inherits_ProductModel" Association="NikcronModel.Store.FK_Laptop_inherits_ProductModel">
+      <End Role="ProductModel" EntitySet="ProductModels" />
+      <End Role="Laptop" EntitySet="ProductModels_Laptop" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="People">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="LastName" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="Gender" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="DataOfBirth" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="BloodGroup" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="PresentAddress_Address1" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="PresentAddress_Address2" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="PresentAddress_City" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="PresentAddress_State" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="PresentAddress_Country" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="PresentAddress_Zip" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="PermanentAddress_Address1" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="PermanentAddress_Address2" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="PermanentAddress_City" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="PermanentAddress_State" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="PermanentAddress_Country" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="PermanentAddress_Zip" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="Contact_Mobile" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="Contact_Phone" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="Contact_Email" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="Contact_Website" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="Contact_Fax" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="Status_IsActive" Type="bit" Nullable="true" />
+    <Property Name="Status_IsDeleted" Type="bit" Nullable="true" />
+    <Property Name="Status_IsHidden" Type="bit" Nullable="true" />
+    <Property Name="Status_IsReadOnly" Type="bit" Nullable="true" />
+    <Property Name="AuditLog_CreatedBy" Type="int" Nullable="false" />
+    <Property Name="AuditLog_CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="AuditLog_ModifiedBy" Type="int" Nullable="true" />
+    <Property Name="AuditLog_ModifiedOn" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Offices">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ContactPerson" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="Address_Address1" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="Address_Address2" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="Address_City" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="Address_State" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Address_Country" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Address_Zip" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="Contact1_Mobile" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="Contact1_Phone" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="Contact1_Email" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="Contact1_Website" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="Contact1_Fax" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="Contact2_Mobile" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="Contact2_Phone" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="Contact2_Email" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="Contact2_Website" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="Contact2_Fax" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="Status_IsActive" Type="bit" Nullable="true" />
+    <Property Name="Status_IsDeleted" Type="bit" Nullable="true" />
+    <Property Name="Status_IsHidden" Type="bit" Nullable="true" />
+    <Property Name="Status_IsReadOnly" Type="bit" Nullable="true" />
+    <Property Name="AuditLog_CreatedBy" Type="int" Nullable="false" />
+    <Property Name="AuditLog_CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="AuditLog_ModifiedBy" Type="int" Nullable="true" />
+    <Property Name="AuditLog_ModifiedOn" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Zones">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="Status_IsActive" Type="bit" Nullable="true" />
+    <Property Name="Status_IsDeleted" Type="bit" Nullable="true" />
+    <Property Name="Status_IsHidden" Type="bit" Nullable="true" />
+    <Property Name="Status_IsReadOnly" Type="bit" Nullable="true" />
+    <Property Name="AuditLog_CreatedBy" Type="int" Nullable="false" />
+    <Property Name="AuditLog_CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="AuditLog_ModifiedBy" Type="int" Nullable="true" />
+    <Property Name="AuditLog_ModifiedOn" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ProductTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="Status_IsActive" Type="bit" Nullable="true" />
+    <Property Name="Status_IsDeleted" Type="bit" Nullable="true" />
+    <Property Name="Status_IsHidden" Type="bit" Nullable="true" />
+    <Property Name="Status_IsReadOnly" Type="bit" Nullable="true" />
+    <Property Name="AuditLog_CreatedBy" Type="int" Nullable="false" />
+    <Property Name="AuditLog_CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="AuditLog_ModifiedBy" Type="int" Nullable="true" />
+    <Property Name="AuditLog_ModifiedOn" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Manufactures">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="Status_IsActive" Type="bit" Nullable="true" />
+    <Property Name="Status_IsDeleted" Type="bit" Nullable="true" />
+    <Property Name="Status_IsHidden" Type="bit" Nullable="true" />
+    <Property Name="Status_IsReadOnly" Type="bit" Nullable="true" />
+    <Property Name="AuditLog_CreatedBy" Type="int" Nullable="false" />
+    <Property Name="AuditLog_CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="AuditLog_ModifiedBy" Type="int" Nullable="true" />
+    <Property Name="AuditLog_ModifiedOn" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ProductModels">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ModelNumber" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="ModelName" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="ManufactureId" Type="int" Nullable="false" />
+    <Property Name="ProductTypeId" Type="int" Nullable="false" />
+    <Property Name="Processor" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Memory" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="OperatingSystem" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="OSVersion" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="InternalStorage" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="ExternalStorage" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="DisplayType" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="DisplaySize" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="DisplayResolution" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Dimension" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Weight" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="BatteryType" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="BatteryStandBy" Type="float" Nullable="true" />
+    <Property Name="PrimaryCamera" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="SecondryCamera" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="VideoRecording" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="WiFi" Type="nvarchar" Nullable="true" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="ProductWarranties">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WarrantyNumber" Type="nvarchar" Nullable="false" MaxLength="30" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="Period" Type="int" Nullable="false" />
+    <Property Name="Status_IsActive" Type="bit" Nullable="true" />
+    <Property Name="Status_IsDeleted" Type="bit" Nullable="true" />
+    <Property Name="Status_IsHidden" Type="bit" Nullable="true" />
+    <Property Name="Status_IsReadOnly" Type="bit" Nullable="true" />
+    <Property Name="AuditLog_CreatedBy" Type="int" Nullable="false" />
+    <Property Name="AuditLog_CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="AuditLog_ModifiedBy" Type="int" Nullable="true" />
+    <Property Name="AuditLog_ModifiedOn" Type="datetime" Nullable="true" />
+    <Property Name="SaleProductWarranty_ProductWarranty_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductItems">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductModelId" Type="int" Nullable="false" />
+    <Property Name="WarehouseId" Type="int" Nullable="true" />
+    <Property Name="StockhouseId" Type="int" Nullable="true" />
+    <Property Name="DistributorId" Type="int" Nullable="true" />
+    <Property Name="DealersId" Type="int" Nullable="true" />
+    <Property Name="RetailerId" Type="int" Nullable="true" />
+    <Property Name="SerialNumber" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="IMEI1" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="IMEI2" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="PartNumber" Type="nvarchar" Nullable="true" MaxLength="40" />
+    <Property Name="ProductColorsId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="ModuleAccess" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="ReadAccess" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="WriteAccess" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="DeleteAccess" Type="nvarchar" Nullable="false" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="ProductColor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="HexCode" Type="nvarchar" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="ProductHistories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductItemId" Type="int" Nullable="false" />
+    <Property Name="Comments" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="LogTime" Type="datetime" Nullable="false" />
+    <Property Name="LogUsername" Type="nvarchar" Nullable="false" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Sales">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InvoiceNumber" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="InvoicedDate" Type="datetime" Nullable="false" />
+    <Property Name="Amount" Type="float" Nullable="true" />
+    <Property Name="Discount" Type="float" Nullable="true" />
+    <Property Name="Payment" Type="float" Nullable="true" />
+    <Property Name="UserId" Type="int" Nullable="true" />
+    <Property Name="CustomerId" Type="int" Nullable="true" />
+    <Property Name="WarrantyStart" Type="datetime" Nullable="true" />
+    <Property Name="WarrantyEnd" Type="datetime" Nullable="true" />
+    <Property Name="ProductItem_Id" Type="int" Nullable="false" />
+    <Property Name="SalesReturnSale_Sale_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductImages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="FileName" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="ProductModelId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SalesReturns">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Commands" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Status_IsActive" Type="bit" Nullable="true" />
+    <Property Name="Status_IsDeleted" Type="bit" Nullable="true" />
+    <Property Name="Status_IsHidden" Type="bit" Nullable="true" />
+    <Property Name="Status_IsReadOnly" Type="bit" Nullable="true" />
+    <Property Name="AuditLog_CreatedBy" Type="int" Nullable="false" />
+    <Property Name="AuditLog_CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="AuditLog_ModifiedBy" Type="int" Nullable="true" />
+    <Property Name="AuditLog_ModifiedOn" Type="datetime" Nullable="true" />
+    <Property Name="ReturnTypeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Services">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Commands" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="SaleId" Type="int" Nullable="true" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Status_IsActive" Type="bit" Nullable="true" />
+    <Property Name="Status_IsDeleted" Type="bit" Nullable="true" />
+    <Property Name="Status_IsHidden" Type="bit" Nullable="true" />
+    <Property Name="Status_IsReadOnly" Type="bit" Nullable="true" />
+    <Property Name="AuditLog_CreatedBy" Type="int" Nullable="false" />
+    <Property Name="AuditLog_CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="AuditLog_ModifiedBy" Type="int" Nullable="true" />
+    <Property Name="AuditLog_ModifiedOn" Type="datetime" Nullable="true" />
+    <Property Name="ServiceTypeId" Type="int" Nullable="false" />
+    <Property Name="ServiceCentreId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ReturnTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Status_IsActive" Type="bit" Nullable="true" />
+    <Property Name="Status_IsDeleted" Type="bit" Nullable="true" />
+    <Property Name="Status_IsHidden" Type="bit" Nullable="true" />
+    <Property Name="Status_IsReadOnly" Type="bit" Nullable="true" />
+    <Property Name="AuditLog_CreatedBy" Type="int" Nullable="false" />
+    <Property Name="AuditLog_CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="AuditLog_ModifiedBy" Type="int" Nullable="true" />
+    <Property Name="AuditLog_ModifiedOn" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ServiceTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Status_IsActive" Type="bit" Nullable="true" />
+    <Property Name="Status_IsDeleted" Type="bit" Nullable="true" />
+    <Property Name="Status_IsHidden" Type="bit" Nullable="true" />
+    <Property Name="Status_IsReadOnly" Type="bit" Nullable="true" />
+    <Property Name="AuditLog_CreatedBy" Type="int" Nullable="false" />
+    <Property Name="AuditLog_CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="AuditLog_ModifiedBy" Type="int" Nullable="true" />
+    <Property Name="AuditLog_ModifiedOn" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Countries">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="Status_IsActive" Type="bit" Nullable="true" />
+    <Property Name="Status_IsDeleted" Type="bit" Nullable="true" />
+    <Property Name="Status_IsHidden" Type="bit" Nullable="true" />
+    <Property Name="Status_IsReadOnly" Type="bit" Nullable="true" />
+    <Property Name="AuditLog_CreatedBy" Type="int" Nullable="false" />
+    <Property Name="AuditLog_CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="AuditLog_ModifiedBy" Type="int" Nullable="true" />
+    <Property Name="AuditLog_ModifiedOn" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="States">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="Status_IsActive" Type="bit" Nullable="true" />
+    <Property Name="Status_IsDeleted" Type="bit" Nullable="true" />
+    <Property Name="Status_IsHidden" Type="bit" Nullable="true" />
+    <Property Name="Status_IsReadOnly" Type="bit" Nullable="true" />
+    <Property Name="AuditLog_CreatedBy" Type="int" Nullable="false" />
+    <Property Name="AuditLog_CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="AuditLog_ModifiedBy" Type="int" Nullable="true" />
+    <Property Name="AuditLog_ModifiedOn" Type="datetime" Nullable="true" />
+    <Property Name="CountryId" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cities">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="Status_IsActive" Type="bit" Nullable="true" />
+    <Property Name="Status_IsDeleted" Type="bit" Nullable="true" />
+    <Property Name="Status_IsHidden" Type="bit" Nullable="true" />
+    <Property Name="Status_IsReadOnly" Type="bit" Nullable="true" />
+    <Property Name="AuditLog_CreatedBy" Type="int" Nullable="false" />
+    <Property Name="AuditLog_CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="AuditLog_ModifiedBy" Type="int" Nullable="true" />
+    <Property Name="AuditLog_ModifiedOn" Type="datetime" Nullable="true" />
+    <Property Name="StateId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Offices_BusinessOffice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="EvaluationType" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="JoiningDate" Type="datetime" Nullable="true" />
+    <Property Name="RecommendationFrom" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="CorporateStatus" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="RegistrationNumber" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="FunctioningFrom" Type="datetime" Nullable="true" />
+    <Property Name="IndividualHouseAddress" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="FirmRegistration" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="TIN" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="PAN" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="CST" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="BusinessPresentAddress" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="BankName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="BankAccountNumber" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="BankIFSC" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="Location" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Coverages" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Languages" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="StrengthOfFieldForce" Type="int" Nullable="true" />
+    <Property Name="TradeCreditFacilites" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="PeakSalesPeriod" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="ExpectedMonthlyLifting" Type="int" Nullable="true" />
+    <Property Name="PopularFestivalFairs" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="Approver" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="ApprovalComments" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Offices_Stockhouse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="ZoneId" Type="int" Nullable="false" />
+    <Property Name="WarehouseId" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Offices_Warehouse">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Offices_Distributor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="StockhouseId" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Offices_Dealers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="DistributorId" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Offices_Retailer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="DealersId" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Offices_Company">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="People_User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="RoleId" Type="smallint" Nullable="false" />
+    <Property Name="OfficeId" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="People_Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Offices_ServiceCentre">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductModels_Mobile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="FormFactor" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="CallFeatures" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="SimSize" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="SimType" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="CallMemory" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="PhoneMemory" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="SMSMemory" Type="nvarchar" Nullable="true" MaxLength="10" />
+    <Property Name="PreinstalledBrowser" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="MusicPlayer" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="VideoPlayer" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="FM" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="SoundEnhancement" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="RingTone" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="SARValue" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="InternetFeatures" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Connectivity_HSPA_3G" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="Connectivity_GPRS_2G" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="Connectivity_USB" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="Connectivity_Bluetooth" Type="nvarchar" Nullable="true" MaxLength="15" />
+    <Property Name="Connectivity_Hotspot" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="Connectivity_SupportedNetworks" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Connectivity_OperatingFrequencies" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductModels_Tablet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="CallFeatures" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="SupportedNetworks" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="PreinstalledBrowser" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="InternetFeatures" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="AudioJack" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="AudioFormat" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="VideoFormat" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="Connectivity_HSPA_3G" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="Connectivity_GPRS_2G" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="Connectivity_USB" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="Connectivity_Bluetooth" Type="nvarchar" Nullable="true" MaxLength="15" />
+    <Property Name="Connectivity_Hotspot" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="Connectivity_SupportedNetworks" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Connectivity_OperatingFrequencies" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductModels_Laptop">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Chipset" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="ClockSpeed" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="Cache" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="HardwareInterface" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="RPM" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="HDDCapacity" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="OpticalDrive" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="SystemArch" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="GraphicProcessor" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="Keyboard" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="Speakers" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="Sound" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="BatteryCell" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="USBPort" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="VGAPort" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="HDMIPort" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="RJ45LAN" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="MultiCardSlot" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductModelProductWarranty">
+    <Key>
+      <PropertyRef Name="ProductModelProductWarranty_ProductWarranty_Id" />
+      <PropertyRef Name="ProductWarranties_Id" />
+    </Key>
+    <Property Name="ProductModelProductWarranty_ProductWarranty_Id" Type="int" Nullable="false" />
+    <Property Name="ProductWarranties_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductModelProductColors">
+    <Key>
+      <PropertyRef Name="ProductModelProductColors_ProductColors_Id" />
+      <PropertyRef Name="ProductColors_Id" />
+    </Key>
+    <Property Name="ProductModelProductColors_ProductColors_Id" Type="int" Nullable="false" />
+    <Property Name="ProductColors_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ProductModelManufacture">
+    <End Role="ProductModel" Type="NikcronModel.Store.ProductModels" Multiplicity="*" />
+    <End Role="Manufacture" Type="NikcronModel.Store.Manufactures" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacture">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductModel">
+        <PropertyRef Name="ManufactureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductModelProductType">
+    <End Role="ProductModel" Type="NikcronModel.Store.ProductModels" Multiplicity="*" />
+    <End Role="ProductType" Type="NikcronModel.Store.ProductTypes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ProductType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductModel">
+        <PropertyRef Name="ProductTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductItemProductModel">
+    <End Role="ProductItem" Type="NikcronModel.Store.ProductItems" Multiplicity="*" />
+    <End Role="ProductModel" Type="NikcronModel.Store.ProductModels" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ProductModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductItem">
+        <PropertyRef Name="ProductModelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StockhouseZone">
+    <End Role="Stockhouse" Type="NikcronModel.Store.Offices_Stockhouse" Multiplicity="*" />
+    <End Role="Zone" Type="NikcronModel.Store.Zones" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Zone">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Stockhouse">
+        <PropertyRef Name="ZoneId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductItemWarehouse">
+    <End Role="ProductItem" Type="NikcronModel.Store.ProductItems" Multiplicity="*" />
+    <End Role="Warehouse" Type="NikcronModel.Store.Offices_Warehouse" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductItem">
+        <PropertyRef Name="WarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductItemStockhouse">
+    <End Role="ProductItem" Type="NikcronModel.Store.ProductItems" Multiplicity="*" />
+    <End Role="Stockhouse" Type="NikcronModel.Store.Offices_Stockhouse" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Stockhouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductItem">
+        <PropertyRef Name="StockhouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductItemDistributor">
+    <End Role="ProductItem" Type="NikcronModel.Store.ProductItems" Multiplicity="*" />
+    <End Role="Distributor" Type="NikcronModel.Store.Offices_Distributor" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Distributor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductItem">
+        <PropertyRef Name="DistributorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DealersProductItem">
+    <End Role="ProductItem" Type="NikcronModel.Store.ProductItems" Multiplicity="*" />
+    <End Role="Dealers" Type="NikcronModel.Store.Offices_Dealers" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Dealers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductItem">
+        <PropertyRef Name="DealersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductItemRetailer">
+    <End Role="ProductItem" Type="NikcronModel.Store.ProductItems" Multiplicity="*" />
+    <End Role="Retailer" Type="NikcronModel.Store.Offices_Retailer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Retailer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductItem">
+        <PropertyRef Name="RetailerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CompanyWarehouse">
+    <End Role="Company" Type="NikcronModel.Store.Offices_Company" Multiplicity="1" />
+    <End Role="Warehouse" Type="NikcronModel.Store.Offices_Warehouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Warehouse">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WarehouseStockhouse">
+    <End Role="Warehouse" Type="NikcronModel.Store.Offices_Warehouse" Multiplicity="1" />
+    <End Role="Stockhouse" Type="NikcronModel.Store.Offices_Stockhouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Warehouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Stockhouse">
+        <PropertyRef Name="WarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DealersRetailer">
+    <End Role="Dealers" Type="NikcronModel.Store.Offices_Dealers" Multiplicity="1" />
+    <End Role="Retailer" Type="NikcronModel.Store.Offices_Retailer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Dealers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Retailer">
+        <PropertyRef Name="DealersId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StockhouseDistributor">
+    <End Role="Stockhouse" Type="NikcronModel.Store.Offices_Stockhouse" Multiplicity="1" />
+    <End Role="Distributor" Type="NikcronModel.Store.Offices_Distributor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stockhouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Distributor">
+        <PropertyRef Name="StockhouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DistributorDealers">
+    <End Role="Distributor" Type="NikcronModel.Store.Offices_Distributor" Multiplicity="1" />
+    <End Role="Dealers" Type="NikcronModel.Store.Offices_Dealers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Distributor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dealers">
+        <PropertyRef Name="DistributorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserRole">
+    <End Role="User" Type="NikcronModel.Store.People_User" Multiplicity="*" />
+    <End Role="Role" Type="NikcronModel.Store.Roles" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserOffice">
+    <End Role="User" Type="NikcronModel.Store.People_User" Multiplicity="*" />
+    <End Role="Office" Type="NikcronModel.Store.Offices" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Office">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="OfficeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductHistoryProductItem">
+    <End Role="ProductHistory" Type="NikcronModel.Store.ProductHistories" Multiplicity="*" />
+    <End Role="ProductItem" Type="NikcronModel.Store.ProductItems" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ProductItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductHistory">
+        <PropertyRef Name="ProductItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SalesProductItem">
+    <End Role="Sales" Type="NikcronModel.Store.Sales" Multiplicity="*" />
+    <End Role="ProductItem" Type="NikcronModel.Store.ProductItems" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ProductItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sales">
+        <PropertyRef Name="ProductItem_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SalesUser">
+    <End Role="Sales" Type="NikcronModel.Store.Sales" Multiplicity="*" />
+    <End Role="User" Type="NikcronModel.Store.People_User" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sales">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SaleProductWarranty">
+    <End Role="Sale" Type="NikcronModel.Store.Sales" Multiplicity="1" />
+    <End Role="ProductWarranty" Type="NikcronModel.Store.ProductWarranties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sale">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductWarranty">
+        <PropertyRef Name="SaleProductWarranty_ProductWarranty_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SaleCustomer">
+    <End Role="Sale" Type="NikcronModel.Store.Sales" Multiplicity="*" />
+    <End Role="Customer" Type="NikcronModel.Store.People_Customer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sale">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductItemProductColors">
+    <End Role="ProductItem" Type="NikcronModel.Store.ProductItems" Multiplicity="*" />
+    <End Role="ProductColors" Type="NikcronModel.Store.ProductColor" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ProductColors">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductItem">
+        <PropertyRef Name="ProductColorsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductModelProductImage">
+    <End Role="ProductModel" Type="NikcronModel.Store.ProductModels" Multiplicity="1" />
+    <End Role="ProductImage" Type="NikcronModel.Store.ProductImages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductImage">
+        <PropertyRef Name="ProductModelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ServiceSale">
+    <End Role="Service" Type="NikcronModel.Store.Services" Multiplicity="*" />
+    <End Role="Sale" Type="NikcronModel.Store.Sales" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Sale">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="SaleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SalesReturnSale">
+    <End Role="Sale" Type="NikcronModel.Store.Sales" Multiplicity="*" />
+    <End Role="SalesReturn" Type="NikcronModel.Store.SalesReturns" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="SalesReturn">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sale">
+        <PropertyRef Name="SalesReturnSale_Sale_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SalesReturnUser">
+    <End Role="SalesReturn" Type="NikcronModel.Store.SalesReturns" Multiplicity="*" />
+    <End Role="User" Type="NikcronModel.Store.People_User" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SalesReturn">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ServiceUser">
+    <End Role="Service" Type="NikcronModel.Store.Services" Multiplicity="*" />
+    <End Role="User" Type="NikcronModel.Store.People_User" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SalesReturnReturnType">
+    <End Role="SalesReturn" Type="NikcronModel.Store.SalesReturns" Multiplicity="*" />
+    <End Role="ReturnType" Type="NikcronModel.Store.ReturnTypes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ReturnType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SalesReturn">
+        <PropertyRef Name="ReturnTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ServiceServiceType">
+    <End Role="Service" Type="NikcronModel.Store.Services" Multiplicity="*" />
+    <End Role="ServiceType" Type="NikcronModel.Store.ServiceTypes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="ServiceTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ServiceServiceCentre">
+    <End Role="Service" Type="NikcronModel.Store.Services" Multiplicity="*" />
+    <End Role="ServiceCentre" Type="NikcronModel.Store.Offices_ServiceCentre" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceCentre">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="ServiceCentreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StateCountry">
+    <End Role="State" Type="NikcronModel.Store.States" Multiplicity="*" />
+    <End Role="Country" Type="NikcronModel.Store.Countries" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="State">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StateCity">
+    <End Role="State" Type="NikcronModel.Store.States" Multiplicity="1" />
+    <End Role="City" Type="NikcronModel.Store.Cities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductModelProductWarranty_ProductModel">
+    <End Role="ProductModel" Type="NikcronModel.Store.ProductModels" Multiplicity="1" />
+    <End Role="ProductModelProductWarranty" Type="NikcronModel.Store.ProductModelProductWarranty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductModelProductWarranty">
+        <PropertyRef Name="ProductModelProductWarranty_ProductWarranty_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductModelProductWarranty_ProductWarranty">
+    <End Role="ProductModelProductWarranty" Type="NikcronModel.Store.ProductModelProductWarranty" Multiplicity="*" />
+    <End Role="ProductWarranty" Type="NikcronModel.Store.ProductWarranties" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ProductWarranty">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductModelProductWarranty">
+        <PropertyRef Name="ProductWarranties_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductModelProductColors_ProductModel">
+    <End Role="ProductModel" Type="NikcronModel.Store.ProductModels" Multiplicity="1" />
+    <End Role="ProductModelProductColors" Type="NikcronModel.Store.ProductModelProductColors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductModelProductColors">
+        <PropertyRef Name="ProductModelProductColors_ProductColors_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductModelProductColors_ProductColors">
+    <End Role="ProductModelProductColors" Type="NikcronModel.Store.ProductModelProductColors" Multiplicity="*" />
+    <End Role="ProductColors" Type="NikcronModel.Store.ProductColor" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ProductColors">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductModelProductColors">
+        <PropertyRef Name="ProductColors_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BusinessOffice_inherits_Office">
+    <End Role="Office" Type="NikcronModel.Store.Offices" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="BusinessOffice" Type="NikcronModel.Store.Offices_BusinessOffice" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Office">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BusinessOffice">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stockhouse_inherits_BusinessOffice">
+    <End Role="BusinessOffice" Type="NikcronModel.Store.Offices_BusinessOffice" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Stockhouse" Type="NikcronModel.Store.Offices_Stockhouse" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="BusinessOffice">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Stockhouse">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Warehouse_inherits_Office">
+    <End Role="Office" Type="NikcronModel.Store.Offices" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Warehouse" Type="NikcronModel.Store.Offices_Warehouse" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Office">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Warehouse">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Distributor_inherits_BusinessOffice">
+    <End Role="BusinessOffice" Type="NikcronModel.Store.Offices_BusinessOffice" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Distributor" Type="NikcronModel.Store.Offices_Distributor" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="BusinessOffice">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Distributor">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dealers_inherits_BusinessOffice">
+    <End Role="BusinessOffice" Type="NikcronModel.Store.Offices_BusinessOffice" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Dealers" Type="NikcronModel.Store.Offices_Dealers" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="BusinessOffice">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Dealers">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Retailer_inherits_BusinessOffice">
+    <End Role="BusinessOffice" Type="NikcronModel.Store.Offices_BusinessOffice" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Retailer" Type="NikcronModel.Store.Offices_Retailer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="BusinessOffice">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Retailer">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Company_inherits_Office">
+    <End Role="Office" Type="NikcronModel.Store.Offices" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Company" Type="NikcronModel.Store.Offices_Company" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Office">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_inherits_Person">
+    <End Role="Person" Type="NikcronModel.Store.People" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="User" Type="NikcronModel.Store.People_User" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_inherits_Person">
+    <End Role="Person" Type="NikcronModel.Store.People" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Customer" Type="NikcronModel.Store.People_Customer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceCentre_inherits_Office">
+    <End Role="Office" Type="NikcronModel.Store.Offices" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ServiceCentre" Type="NikcronModel.Store.Offices_ServiceCentre" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Office">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ServiceCentre">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mobile_inherits_ProductModel">
+    <End Role="ProductModel" Type="NikcronModel.Store.ProductModels" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Mobile" Type="NikcronModel.Store.ProductModels_Mobile" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ProductModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Mobile">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tablet_inherits_ProductModel">
+    <End Role="ProductModel" Type="NikcronModel.Store.ProductModels" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Tablet" Type="NikcronModel.Store.ProductModels_Tablet" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ProductModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tablet">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Laptop_inherits_ProductModel">
+    <End Role="ProductModel" Type="NikcronModel.Store.ProductModels" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Laptop" Type="NikcronModel.Store.ProductModels_Laptop" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ProductModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Laptop">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="NikcronModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" >
+        <EntityContainer Name="NikcronModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="People" EntityType="NikcronModel.Person" />
+          <EntitySet Name="Offices" EntityType="NikcronModel.Office" />
+          <EntitySet Name="Zones" EntityType="NikcronModel.Zone" />
+          <EntitySet Name="ProductTypes" EntityType="NikcronModel.ProductType" />
+          <EntitySet Name="Manufactures" EntityType="NikcronModel.Manufacture" />
+          <EntitySet Name="ProductModels" EntityType="NikcronModel.ProductModel" />
+          <AssociationSet Name="ProductModelManufacture" Association="NikcronModel.ProductModelManufacture">
+            <End Role="ProductModel" EntitySet="ProductModels" />
+            <End Role="Manufacture" EntitySet="Manufactures" />
+          </AssociationSet>
+          <AssociationSet Name="ProductModelProductType" Association="NikcronModel.ProductModelProductType">
+            <End Role="ProductModel" EntitySet="ProductModels" />
+            <End Role="ProductType" EntitySet="ProductTypes" />
+          </AssociationSet>
+          <EntitySet Name="ProductWarranties" EntityType="NikcronModel.ProductWarranty" />
+          <EntitySet Name="ProductItems" EntityType="NikcronModel.ProductItem" />
+          <AssociationSet Name="ProductItemProductModel" Association="NikcronModel.ProductItemProductModel">
+            <End Role="ProductItem" EntitySet="ProductItems" />
+            <End Role="ProductModel" EntitySet="ProductModels" />
+          </AssociationSet>
+          <AssociationSet Name="StockhouseZone" Association="NikcronModel.StockhouseZone">
+            <End Role="Stockhouse" EntitySet="Offices" />
+            <End Role="Zone" EntitySet="Zones" />
+          </AssociationSet>
+          <AssociationSet Name="ProductItemWarehouse" Association="NikcronModel.ProductItemWarehouse">
+            <End Role="ProductItem" EntitySet="ProductItems" />
+            <End Role="Warehouse" EntitySet="Offices" />
+          </AssociationSet>
+          <AssociationSet Name="ProductItemStockhouse" Association="NikcronModel.ProductItemStockhouse">
+            <End Role="ProductItem" EntitySet="ProductItems" />
+            <End Role="Stockhouse" EntitySet="Offices" />
+          </AssociationSet>
+          <AssociationSet Name="ProductItemDistributor" Association="NikcronModel.ProductItemDistributor">
+            <End Role="ProductItem" EntitySet="ProductItems" />
+            <End Role="Distributor" EntitySet="Offices" />
+          </AssociationSet>
+          <AssociationSet Name="DealersProductItem" Association="NikcronModel.DealersProductItem">
+            <End Role="ProductItem" EntitySet="ProductItems" />
+            <End Role="Dealers" EntitySet="Offices" />
+          </AssociationSet>
+          <AssociationSet Name="ProductItemRetailer" Association="NikcronModel.ProductItemRetailer">
+            <End Role="ProductItem" EntitySet="ProductItems" />
+            <End Role="Retailer" EntitySet="Offices" />
+          </AssociationSet>
+          <AssociationSet Name="ProductModelProductWarranty" Association="NikcronModel.ProductModelProductWarranty">
+            <End Role="ProductModel" EntitySet="ProductModels" />
+            <End Role="ProductWarranty" EntitySet="ProductWarranties" />
+          </AssociationSet>
+          <AssociationSet Name="CompanyWarehouse" Association="NikcronModel.CompanyWarehouse">
+            <End Role="Company" EntitySet="Offices" />
+            <End Role="Warehouse" EntitySet="Offices" />
+          </AssociationSet>
+          <AssociationSet Name="WarehouseStockhouse" Association="NikcronModel.WarehouseStockhouse">
+            <End Role="Warehouse" EntitySet="Offices" />
+            <End Role="Stockhouse" EntitySet="Offices" />
+          </AssociationSet>
+          <AssociationSet Name="DealersRetailer" Association="NikcronModel.DealersRetailer">
+            <End Role="Dealers" EntitySet="Offices" />
+            <End Role="Retailer" EntitySet="Offices" />
+          </AssociationSet>
+          <AssociationSet Name="StockhouseDistributor" Association="NikcronModel.StockhouseDistributor">
+            <End Role="Stockhouse" EntitySet="Offices" />
+            <End Role="Distributor" EntitySet="Offices" />
+          </AssociationSet>
+          <AssociationSet Name="DistributorDealers" Association="NikcronModel.DistributorDealers">
+            <End Role="Distributor" EntitySet="Offices" />
+            <End Role="Dealers" EntitySet="Offices" />
+          </AssociationSet>
+          <EntitySet Name="Roles" EntityType="NikcronModel.Role" />
+          <AssociationSet Name="UserRole" Association="NikcronModel.UserRole">
+            <End Role="User" EntitySet="People" />
+            <End Role="Role" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="UserOffice" Association="NikcronModel.UserOffice">
+            <End Role="User" EntitySet="People" />
+            <End Role="Office" EntitySet="Offices" />
+          </AssociationSet>
+          <EntitySet Name="ProductColor" EntityType="NikcronModel.ProductColors" />
+          <EntitySet Name="ProductHistories" EntityType="NikcronModel.ProductHistory" />
+          <AssociationSet Name="ProductHistoryProductItem" Association="NikcronModel.ProductHistoryProductItem">
+            <End Role="ProductHistory" EntitySet="ProductHistories" />
+            <End Role="ProductItem" EntitySet="ProductItems" />
+          </AssociationSet>
+          <EntitySet Name="Sales" EntityType="NikcronModel.Sale" />
+          <AssociationSet Name="SalesProductItem" Association="NikcronModel.SalesProductItem">
+            <End Role="Sales" EntitySet="Sales" />
+            <End Role="ProductItem" EntitySet="ProductItems" />
+          </AssociationSet>
+          <AssociationSet Name="SalesUser" Association="NikcronModel.SalesUser">
+            <End Role="Sales" EntitySet="Sales" />
+            <End Role="User" EntitySet="People" />
+          </AssociationSet>
+          <AssociationSet Name="SaleProductWarranty" Association="NikcronModel.SaleProductWarranty">
+            <End Role="Sale" EntitySet="Sales" />
+            <End Role="ProductWarranty" EntitySet="ProductWarranties" />
+          </AssociationSet>
+          <AssociationSet Name="SaleCustomer" Association="NikcronModel.SaleCustomer">
+            <End Role="Sale" EntitySet="Sales" />
+            <End Role="Customer" EntitySet="People" />
+          </AssociationSet>
+          <AssociationSet Name="ProductItemProductColors" Association="NikcronModel.ProductItemProductColors">
+            <End Role="ProductItem" EntitySet="ProductItems" />
+            <End Role="ProductColors" EntitySet="ProductColor" />
+          </AssociationSet>
+          <AssociationSet Name="ProductModelProductColors" Association="NikcronModel.ProductModelProductColors">
+            <End Role="ProductModel" EntitySet="ProductModels" />
+            <End Role="ProductColors" EntitySet="ProductColor" />
+          </AssociationSet>
+          <EntitySet Name="ProductImages" EntityType="NikcronModel.ProductImage" />
+          <AssociationSet Name="ProductModelProductImage" Association="NikcronModel.ProductModelProductImage">
+            <End Role="ProductModel" EntitySet="ProductModels" />
+            <End Role="ProductImage" EntitySet="ProductImages" />
+          </AssociationSet>
+          <EntitySet Name="SalesReturns" EntityType="NikcronModel.SalesReturn" />
+          <EntitySet Name="Services" EntityType="NikcronModel.Service" />
+          <AssociationSet Name="ServiceSale" Association="NikcronModel.ServiceSale">
+            <End Role="Service" EntitySet="Services" />
+            <End Role="Sale" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="SalesReturnSale" Association="NikcronModel.SalesReturnSale">
+            <End Role="Sale" EntitySet="Sales" />
+            <End Role="SalesReturn" EntitySet="SalesReturns" />
+          </AssociationSet>
+          <AssociationSet Name="SalesReturnUser" Association="NikcronModel.SalesReturnUser">
+            <End Role="SalesReturn" EntitySet="SalesReturns" />
+            <End Role="User" EntitySet="People" />
+          </AssociationSet>
+          <AssociationSet Name="ServiceUser" Association="NikcronModel.ServiceUser">
+            <End Role="Service" EntitySet="Services" />
+            <End Role="User" EntitySet="People" />
+          </AssociationSet>
+          <EntitySet Name="ReturnTypes" EntityType="NikcronModel.ReturnType" />
+          <EntitySet Name="ServiceTypes" EntityType="NikcronModel.ServiceType" />
+          <AssociationSet Name="SalesReturnReturnType" Association="NikcronModel.SalesReturnReturnType">
+            <End Role="SalesReturn" EntitySet="SalesReturns" />
+            <End Role="ReturnType" EntitySet="ReturnTypes" />
+          </AssociationSet>
+          <AssociationSet Name="ServiceServiceType" Association="NikcronModel.ServiceServiceType">
+            <End Role="Service" EntitySet="Services" />
+            <End Role="ServiceType" EntitySet="ServiceTypes" />
+          </AssociationSet>
+          <AssociationSet Name="ServiceServiceCentre" Association="NikcronModel.ServiceServiceCentre">
+            <End Role="Service" EntitySet="Services" />
+            <End Role="ServiceCentre" EntitySet="Offices" />
+          </AssociationSet>
+          <EntitySet Name="Countries" EntityType="NikcronModel.Country" />
+          <EntitySet Name="States" EntityType="NikcronModel.State" />
+          <AssociationSet Name="StateCountry" Association="NikcronModel.StateCountry">
+            <End Role="State" EntitySet="States" />
+            <End Role="Country" EntitySet="Countries" />
+          </AssociationSet>
+          <EntitySet Name="Cities" EntityType="NikcronModel.City" />
+          <AssociationSet Name="StateCity" Association="NikcronModel.StateCity">
+            <End Role="State" EntitySet="States" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          </EntityContainer>
+        <ComplexType Name="AuditLog" >
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedOn" Nullable="false" />
+          <Property Type="Int32" Name="ModifiedBy" Nullable="true" />
+          <Property Type="DateTime" Name="ModifiedOn" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Status" >
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="true" />
+          <Property Type="Boolean" Name="IsHidden" Nullable="true" />
+          <Property Type="Boolean" Name="IsReadOnly" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DataOfBirth" Nullable="true" />
+          <Property Type="String" Name="BloodGroup" Nullable="true" MaxLength="10" />
+          <Property Name="PresentAddress" Type="NikcronModel.Address" Nullable="false" />
+          <Property Name="PermanentAddress" Type="NikcronModel.Address" Nullable="false" />
+          <Property Name="Contact" Type="NikcronModel.Contact" Nullable="false" />
+          <Property Name="Status" Type="NikcronModel.Status" Nullable="false" />
+          <Property Name="AuditLog" Type="NikcronModel.AuditLog" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="Address" >
+          <Property Type="String" Name="Address1" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Address2" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="State" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Zip" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="Contact" >
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Website" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Fax" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <EntityType Name="Office">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ContactPerson" Nullable="false" MaxLength="250" />
+          <Property Name="Address" Type="NikcronModel.Address" Nullable="false" />
+          <Property Name="Contact1" Type="NikcronModel.Contact" Nullable="false" />
+          <Property Name="Contact2" Type="NikcronModel.Contact" Nullable="false" />
+          <Property Name="Status" Type="NikcronModel.Status" Nullable="false" />
+          <Property Name="AuditLog" Type="NikcronModel.AuditLog" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Warehouse" BaseType="NikcronModel.Office" >
+          <NavigationProperty Name="Company" Relationship="NikcronModel.CompanyWarehouse" FromRole="Warehouse" ToRole="Company" />
+          <Property Type="Int32" Name="CompanyId" Nullable="false" />
+          <NavigationProperty Name="Stockhouses" Relationship="NikcronModel.WarehouseStockhouse" FromRole="Warehouse" ToRole="Stockhouse" />
+        </EntityType>
+        <EntityType Name="Company" BaseType="NikcronModel.Office" >
+          <NavigationProperty Name="Warehouses" Relationship="NikcronModel.CompanyWarehouse" FromRole="Company" ToRole="Warehouse" />
+        </EntityType>
+        <EntityType Name="Distributor" BaseType="NikcronModel.BusinessOffice" >
+          <NavigationProperty Name="Stockhouse" Relationship="NikcronModel.StockhouseDistributor" FromRole="Distributor" ToRole="Stockhouse" />
+          <Property Type="Int32" Name="StockhouseId" Nullable="false" />
+          <NavigationProperty Name="Dealers" Relationship="NikcronModel.DistributorDealers" FromRole="Distributor" ToRole="Dealers" />
+        </EntityType>
+        <EntityType Name="Zone">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="250" />
+          <Property Name="Status" Type="NikcronModel.Status" Nullable="false" />
+          <Property Name="AuditLog" Type="NikcronModel.AuditLog" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BusinessOffice" BaseType="NikcronModel.Office" >
+          <Property Type="String" Name="EvaluationType" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="JoiningDate" Nullable="true" />
+          <Property Type="String" Name="RecommendationFrom" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CorporateStatus" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="RegistrationNumber" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="FunctioningFrom" Nullable="true" />
+          <Property Type="String" Name="IndividualHouseAddress" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="FirmRegistration" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="TIN" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="PAN" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="CST" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="BusinessPresentAddress" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="BankName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BankAccountNumber" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="BankIFSC" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Coverages" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Languages" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="StrengthOfFieldForce" Nullable="true" />
+          <Property Type="String" Name="TradeCreditFacilites" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PeakSalesPeriod" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ExpectedMonthlyLifting" Nullable="true" />
+          <Property Type="String" Name="PopularFestivalFairs" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Approver" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="ApprovalComments" Nullable="true" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Stockhouse" BaseType="NikcronModel.BusinessOffice" >
+          <NavigationProperty Name="Zone" Relationship="NikcronModel.StockhouseZone" FromRole="Stockhouse" ToRole="Zone" />
+          <Property Type="Int32" Name="ZoneId" Nullable="false" />
+          <NavigationProperty Name="Warehouse" Relationship="NikcronModel.WarehouseStockhouse" FromRole="Stockhouse" ToRole="Warehouse" />
+          <Property Type="Int32" Name="WarehouseId" Nullable="false" />
+          <NavigationProperty Name="Distributors" Relationship="NikcronModel.StockhouseDistributor" FromRole="Stockhouse" ToRole="Distributor" />
+        </EntityType>
+        <EntityType Name="Dealers" BaseType="NikcronModel.BusinessOffice" >
+          <NavigationProperty Name="Retailers" Relationship="NikcronModel.DealersRetailer" FromRole="Dealers" ToRole="Retailer" />
+          <NavigationProperty Name="Distributor" Relationship="NikcronModel.DistributorDealers" FromRole="Dealers" ToRole="Distributor" />
+          <Property Type="Int32" Name="DistributorId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Retailer" BaseType="NikcronModel.BusinessOffice" >
+          <NavigationProperty Name="Dealer" Relationship="NikcronModel.DealersRetailer" FromRole="Retailer" ToRole="Dealers" />
+          <Property Type="Int32" Name="DealersId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="250" />
+          <Property Name="Status" Type="NikcronModel.Status" Nullable="false" />
+          <Property Name="AuditLog" Type="NikcronModel.AuditLog" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Manufacture">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="250" />
+          <Property Name="Status" Type="NikcronModel.Status" Nullable="false" />
+          <Property Name="AuditLog" Type="NikcronModel.AuditLog" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductModel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ModelNumber" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ModelName" Nullable="true" MaxLength="250" />
+          <NavigationProperty Name="Manufacture" Relationship="NikcronModel.ProductModelManufacture" FromRole="ProductModel" ToRole="Manufacture" />
+          <Property Type="Int32" Name="ManufactureId" Nullable="false" />
+          <NavigationProperty Name="ProductType" Relationship="NikcronModel.ProductModelProductType" FromRole="ProductModel" ToRole="ProductType" />
+          <Property Type="Int32" Name="ProductTypeId" Nullable="false" />
+          <NavigationProperty Name="ProductWarranties" Relationship="NikcronModel.ProductModelProductWarranty" FromRole="ProductModel" ToRole="ProductWarranty" />
+          <Property Type="String" Name="Processor" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Memory" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OperatingSystem" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OSVersion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="InternalStorage" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ExternalStorage" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DisplayType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DisplaySize" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DisplayResolution" Nullable="true" MaxLength="50" />
+          <Property Name="Dimension" Type="String" Nullable="true" MaxLength="50" />
+          <Property Name="Weight" Type="String" Nullable="true" MaxLength="50" />
+          <Property Name="BatteryType" Type="String" Nullable="true" MaxLength="50" />
+          <Property Name="BatteryStandBy" Type="Double" Nullable="true" />
+          <Property Name="PrimaryCamera" Type="String" Nullable="true" MaxLength="20" />
+          <Property Name="SecondryCamera" Type="String" Nullable="true" MaxLength="20" />
+          <Property Name="VideoRecording" Type="String" Nullable="true" MaxLength="20" />
+          <Property Name="WiFi" Type="String" Nullable="true" MaxLength="20" />
+          <NavigationProperty Name="ProductColors" Relationship="NikcronModel.ProductModelProductColors" FromRole="ProductModel" ToRole="ProductColors" />
+          <NavigationProperty Name="ProductImages" Relationship="NikcronModel.ProductModelProductImage" FromRole="ProductModel" ToRole="ProductImage" />
+        </EntityType>
+        <Association Name="ProductModelManufacture">
+          <End Type="NikcronModel.ProductModel" Role="ProductModel" Multiplicity="*" />
+          <End Type="NikcronModel.Manufacture" Role="Manufacture" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacture">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductModel">
+              <PropertyRef Name="ManufactureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductModelProductType">
+          <End Type="NikcronModel.ProductModel" Role="ProductModel" Multiplicity="*" />
+          <End Type="NikcronModel.ProductType" Role="ProductType" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="ProductType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductModel">
+              <PropertyRef Name="ProductTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ProductWarranty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="WarrantyNumber" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="500" />
+          <Property Type="Int32" Name="Period" Nullable="false" />
+          <Property Name="Status" Type="NikcronModel.Status" Nullable="false" />
+          <Property Name="AuditLog" Type="NikcronModel.AuditLog" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ProductModel" Relationship="NikcronModel.ProductItemProductModel" FromRole="ProductItem" ToRole="ProductModel" />
+          <Property Type="Int32" Name="ProductModelId" Nullable="false" />
+          <NavigationProperty Name="Warehouse" Relationship="NikcronModel.ProductItemWarehouse" FromRole="ProductItem" ToRole="Warehouse" />
+          <Property Type="Int32" Name="WarehouseId" Nullable="true" />
+          <NavigationProperty Name="Stockhouse" Relationship="NikcronModel.ProductItemStockhouse" FromRole="ProductItem" ToRole="Stockhouse" />
+          <Property Type="Int32" Name="StockhouseId" Nullable="true" />
+          <NavigationProperty Name="Distributor" Relationship="NikcronModel.ProductItemDistributor" FromRole="ProductItem" ToRole="Distributor" />
+          <Property Type="Int32" Name="DistributorId" Nullable="true" />
+          <NavigationProperty Name="Dealer" Relationship="NikcronModel.DealersProductItem" FromRole="ProductItem" ToRole="Dealers" />
+          <Property Type="Int32" Name="DealersId" Nullable="true" />
+          <NavigationProperty Name="Retailer" Relationship="NikcronModel.ProductItemRetailer" FromRole="ProductItem" ToRole="Retailer" />
+          <Property Type="Int32" Name="RetailerId" Nullable="true" />
+          <Property Type="String" Name="SerialNumber" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="IMEI1" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="IMEI2" Nullable="true" MaxLength="40" />
+          <Property Type="String" Name="PartNumber" Nullable="true" MaxLength="40" />
+          <NavigationProperty Name="ProductHistories" Relationship="NikcronModel.ProductHistoryProductItem" FromRole="ProductItem" ToRole="ProductHistory" />
+          <NavigationProperty Name="Sale" Relationship="NikcronModel.SalesProductItem" FromRole="ProductItem" ToRole="Sales" />
+          <NavigationProperty Name="ProductColor" Relationship="NikcronModel.ProductItemProductColors" FromRole="ProductItem" ToRole="ProductColors" />
+          <Property Name="ProductColorsId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="ProductItemProductModel">
+          <End Type="NikcronModel.ProductItem" Role="ProductItem" Multiplicity="*" />
+          <End Type="NikcronModel.ProductModel" Role="ProductModel" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="ProductModel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductItem">
+              <PropertyRef Name="ProductModelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StockhouseZone">
+          <End Type="NikcronModel.Stockhouse" Role="Stockhouse" Multiplicity="*" />
+          <End Type="NikcronModel.Zone" Role="Zone" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Zone">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Stockhouse">
+              <PropertyRef Name="ZoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductItemWarehouse">
+          <End Type="NikcronModel.ProductItem" Role="ProductItem" Multiplicity="*" />
+          <End Type="NikcronModel.Warehouse" Role="Warehouse" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductItem">
+              <PropertyRef Name="WarehouseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductItemStockhouse">
+          <End Type="NikcronModel.ProductItem" Role="ProductItem" Multiplicity="*" />
+          <End Type="NikcronModel.Stockhouse" Role="Stockhouse" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Stockhouse">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductItem">
+              <PropertyRef Name="StockhouseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductItemDistributor">
+          <End Type="NikcronModel.ProductItem" Role="ProductItem" Multiplicity="*" />
+          <End Type="NikcronModel.Distributor" Role="Distributor" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductItem">
+              <PropertyRef Name="DistributorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DealersProductItem">
+          <End Type="NikcronModel.ProductItem" Role="ProductItem" Multiplicity="*" />
+          <End Type="NikcronModel.Dealers" Role="Dealers" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Dealers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductItem">
+              <PropertyRef Name="DealersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductItemRetailer">
+          <End Type="NikcronModel.ProductItem" Role="ProductItem" Multiplicity="*" />
+          <End Type="NikcronModel.Retailer" Role="Retailer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Retailer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductItem">
+              <PropertyRef Name="RetailerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="ItemStatus" >
+          <Property Type="Boolean" Name="IsReceived" Nullable="true" />
+          <Property Type="Boolean" Name="IsApproved" Nullable="true" />
+          <Property Type="Boolean" Name="IsMoved" Nullable="true" />
+          <Property Type="Boolean" Name="IsReturned" Nullable="true" />
+        </ComplexType>
+        <Association Name="ProductModelProductWarranty">
+          <End Type="NikcronModel.ProductModel" Role="ProductModel" Multiplicity="*" />
+          <End Type="NikcronModel.ProductWarranty" Role="ProductWarranty" Multiplicity="*" />
+        </Association>
+        <Association Name="CompanyWarehouse">
+          <End Type="NikcronModel.Company" Role="Company" Multiplicity="1" />
+          <End Type="NikcronModel.Warehouse" Role="Warehouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Warehouse">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WarehouseStockhouse">
+          <End Type="NikcronModel.Warehouse" Role="Warehouse" Multiplicity="1" />
+          <End Type="NikcronModel.Stockhouse" Role="Stockhouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Stockhouse">
+              <PropertyRef Name="WarehouseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DealersRetailer">
+          <End Type="NikcronModel.Dealers" Role="Dealers" Multiplicity="1" />
+          <End Type="NikcronModel.Retailer" Role="Retailer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dealers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Retailer">
+              <PropertyRef Name="DealersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StockhouseDistributor">
+          <End Type="NikcronModel.Stockhouse" Role="Stockhouse" Multiplicity="1" />
+          <End Type="NikcronModel.Distributor" Role="Distributor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stockhouse">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Distributor">
+              <PropertyRef Name="StockhouseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DistributorDealers">
+          <End Type="NikcronModel.Distributor" Role="Distributor" Multiplicity="1" />
+          <End Type="NikcronModel.Dealers" Role="Dealers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Dealers">
+              <PropertyRef Name="DistributorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int16" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="ModuleAccess" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="ReadAccess" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="WriteAccess" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="DeleteAccess" Nullable="false" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="User" BaseType="NikcronModel.Person" >
+          <NavigationProperty Name="jm" Relationship="NikcronModel.UserRole" FromRole="User" ToRole="Role" />
+          <Property Type="Int16" Name="RoleId" Nullable="false" />
+          <NavigationProperty Name="Office" Relationship="NikcronModel.UserOffice" FromRole="User" ToRole="Office" />
+          <Property Type="Int32" Name="OfficeId" Nullable="false" />
+        </EntityType>
+        <Association Name="UserRole">
+          <End Type="NikcronModel.User" Role="User" Multiplicity="*" />
+          <End Type="NikcronModel.Role" Role="Role" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ServiceCentre" BaseType="NikcronModel.Office" />
+        <EntityType Name="Customer" BaseType="NikcronModel.Person" >
+          <NavigationProperty Name="Sales" Relationship="NikcronModel.SaleCustomer" FromRole="Customer" ToRole="Sale" />
+        </EntityType>
+        <EntityType Name="Mobile" BaseType="NikcronModel.ProductModel" >
+          <Property Type="String" Name="FormFactor" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="CallFeatures" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SimSize" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="SimType" Nullable="true" MaxLength="10" />
+          <Property Name="CallMemory" Type="String" Nullable="true" MaxLength="10" />
+          <Property Name="PhoneMemory" Type="String" Nullable="true" MaxLength="10" />
+          <Property Name="SMSMemory" Type="String" Nullable="true" MaxLength="10" />
+          <Property Name="PreinstalledBrowser" Type="String" Nullable="true" MaxLength="20" />
+          <Property Name="MusicPlayer" Type="String" Nullable="true" MaxLength="20" />
+          <Property Name="VideoPlayer" Type="String" Nullable="true" MaxLength="20" />
+          <Property Name="FM" Type="String" Nullable="true" MaxLength="20" />
+          <Property Name="SoundEnhancement" Type="String" Nullable="true" MaxLength="20" />
+          <Property Name="RingTone" Type="String" Nullable="true" MaxLength="20" />
+          <Property Name="SARValue" Type="String" Nullable="true" MaxLength="20" />
+          <Property Name="InternetFeatures" Type="String" Nullable="true" MaxLength="50" />
+          <Property Name="Connectivity" Type="NikcronModel.Connectivity" Nullable="false" />
+        </EntityType>
+        <Association Name="UserOffice">
+          <End Type="NikcronModel.User" Role="User" Multiplicity="*" />
+          <End Type="NikcronModel.Office" Role="Office" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Office">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="OfficeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Tablet" BaseType="NikcronModel.ProductModel" >
+          <Property Name="CallFeatures" Type="String" Nullable="true" MaxLength="50" />
+          <Property Name="SupportedNetworks" Type="String" Nullable="true" MaxLength="30" />
+          <Property Name="PreinstalledBrowser" Type="String" Nullable="true" MaxLength="50" />
+          <Property Name="InternetFeatures" Type="String" Nullable="true" MaxLength="50" />
+          <Property Name="AudioJack" Type="String" Nullable="true" MaxLength="30" />
+          <Property Name="AudioFormat" Type="String" Nullable="true" MaxLength="30" />
+          <Property Name="VideoFormat" Type="String" Nullable="true" MaxLength="30" />
+          <Property Name="Connectivity" Type="NikcronModel.Connectivity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Laptop" BaseType="NikcronModel.ProductModel" >
+          <Property Name="Chipset" Type="String" Nullable="true" MaxLength="50" />
+          <Property Name="ClockSpeed" Type="String" Nullable="true" MaxLength="30" />
+          <Property Name="Cache" Type="String" Nullable="true" MaxLength="30" />
+          <Property Name="HardwareInterface" Type="String" Nullable="true" MaxLength="30" />
+          <Property Name="RPM" Type="String" Nullable="true" MaxLength="30" />
+          <Property Name="HDDCapacity" Type="String" Nullable="true" MaxLength="30" />
+          <Property Name="OpticalDrive" Type="String" Nullable="true" MaxLength="30" />
+          <Property Name="SystemArch" Type="String" Nullable="true" MaxLength="30" />
+          <Property Name="GraphicProcessor" Type="String" Nullable="true" MaxLength="30" />
+          <Property Name="Keyboard" Type="String" Nullable="true" MaxLength="30" />
+          <Property Name="Speakers" Type="String" Nullable="true" MaxLength="30" />
+          <Property Name="Sound" Type="String" Nullable="true" MaxLength="30" />
+          <Property Name="BatteryCell" Type="String" Nullable="true" MaxLength="50" />
+          <Property Name="USBPort" Type="String" Nullable="true" MaxLength="30" />
+          <Property Name="VGAPort" Type="String" Nullable="true" MaxLength="30" />
+          <Property Name="HDMIPort" Type="String" Nullable="true" MaxLength="30" />
+          <Property Name="RJ45LAN" Type="String" Nullable="true" MaxLength="30" />
+          <Property Name="MultiCardSlot" Type="String" Nullable="true" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="ProductColors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="HexCode" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="ProductHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductItemId" Type="Int32" Nullable="false" />
+          <Property Name="Comments" Type="String" Nullable="false" MaxLength="250" />
+          <Property Name="LogTime" Type="DateTime" Nullable="false" />
+          <Property Name="LogUsername" Type="String" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <ComplexType Name="Connectivity" >
+          <Property Type="String" Name="HSPA_3G" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="GPRS_2G" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="USB" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Bluetooth" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Hotspot" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SupportedNetworks" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OperatingFrequencies" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <Association Name="ProductHistoryProductItem">
+          <End Type="NikcronModel.ProductHistory" Role="ProductHistory" Multiplicity="*" />
+          <End Type="NikcronModel.ProductItem" Role="ProductItem" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="ProductItem">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductHistory">
+              <PropertyRef Name="ProductItemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceNumber" Type="String" Nullable="false" MaxLength="50" />
+          <Property Name="InvoicedDate" Type="DateTime" Nullable="false" />
+          <Property Name="Amount" Type="Double" Nullable="true" />
+          <NavigationProperty Name="ProductItem" Relationship="NikcronModel.SalesProductItem" FromRole="Sales" ToRole="ProductItem" />
+          <Property Name="Discount" Type="Double" Nullable="true" />
+          <Property Name="Payment" Type="Double" Nullable="true" />
+          <NavigationProperty Name="SellingStaff" Relationship="NikcronModel.SalesUser" FromRole="Sales" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="ProductWarranty" Relationship="NikcronModel.SaleProductWarranty" FromRole="Sale" ToRole="ProductWarranty" />
+          <NavigationProperty Name="Customer" Relationship="NikcronModel.SaleCustomer" FromRole="Sale" ToRole="Customer" />
+          <Property Name="CustomerId" Type="Int32" Nullable="true" />
+          <Property Name="WarrantyStart" Type="DateTime" Nullable="true" />
+          <Property Name="WarrantyEnd" Type="DateTime" Nullable="true" />
+          <NavigationProperty Name="Services" Relationship="NikcronModel.ServiceSale" FromRole="Sale" ToRole="Service" />
+        </EntityType>
+        <Association Name="SalesProductItem">
+          <End Type="NikcronModel.Sale" Role="Sales" Multiplicity="0..1" />
+          <End Type="NikcronModel.ProductItem" Role="ProductItem" Multiplicity="1" />
+        </Association>
+        <Association Name="SalesUser">
+          <End Type="NikcronModel.Sale" Role="Sales" Multiplicity="*" />
+          <End Type="NikcronModel.User" Role="User" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SaleProductWarranty">
+          <End Type="NikcronModel.Sale" Role="Sale" Multiplicity="1" />
+          <End Type="NikcronModel.ProductWarranty" Role="ProductWarranty" Multiplicity="0..1" />
+        </Association>
+        <Association Name="SaleCustomer">
+          <End Type="NikcronModel.Sale" Role="Sale" Multiplicity="*" />
+          <End Type="NikcronModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sale">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductItemProductColors">
+          <End Type="NikcronModel.ProductItem" Role="ProductItem" Multiplicity="*" />
+          <End Type="NikcronModel.ProductColors" Role="ProductColors" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="ProductColors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductItem">
+              <PropertyRef Name="ProductColorsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductModelProductColors">
+          <End Type="NikcronModel.ProductModel" Role="ProductModel" Multiplicity="*" />
+          <End Type="NikcronModel.ProductColors" Role="ProductColors" Multiplicity="*" />
+        </Association>
+        <EntityType Name="ProductImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="500" />
+          <Property Name="ProductModelId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="ProductModelProductImage">
+          <End Type="NikcronModel.ProductModel" Role="ProductModel" Multiplicity="1" />
+          <End Type="NikcronModel.ProductImage" Role="ProductImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductModel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductImage">
+              <PropertyRef Name="ProductModelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SalesReturn">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Commands" Type="String" Nullable="true" MaxLength="250" />
+          <NavigationProperty Name="Sale" Relationship="NikcronModel.SalesReturnSale" FromRole="SalesReturn" ToRole="Sale" />
+          <NavigationProperty Name="ReturningStaff" Relationship="NikcronModel.SalesReturnUser" FromRole="SalesReturn" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="NikcronModel.Status" Nullable="false" />
+          <Property Name="AuditLog" Type="NikcronModel.AuditLog" Nullable="false" />
+          <NavigationProperty Name="ReturnType" Relationship="NikcronModel.SalesReturnReturnType" FromRole="SalesReturn" ToRole="ReturnType" />
+          <Property Name="ReturnTypeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Commands" Type="String" Nullable="false" MaxLength="500" />
+          <NavigationProperty Name="Sale" Relationship="NikcronModel.ServiceSale" FromRole="Service" ToRole="Sale" />
+          <Property Name="SaleId" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="ServiceEmployee" Relationship="NikcronModel.ServiceUser" FromRole="Service" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="NikcronModel.Status" Nullable="false" />
+          <Property Name="AuditLog" Type="NikcronModel.AuditLog" Nullable="false" />
+          <NavigationProperty Name="ServiceType" Relationship="NikcronModel.ServiceServiceType" FromRole="Service" ToRole="ServiceType" />
+          <Property Name="ServiceTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ServiceCentre" Relationship="NikcronModel.ServiceServiceCentre" FromRole="Service" ToRole="ServiceCentre" />
+          <Property Name="ServiceCentreId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="ServiceSale">
+          <End Type="NikcronModel.Service" Role="Service" Multiplicity="*" />
+          <End Type="NikcronModel.Sale" Role="Sale" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Sale">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="SaleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SalesReturnSale">
+          <End Type="NikcronModel.Sale" Role="Sale" Multiplicity="0..1" />
+          <End Type="NikcronModel.SalesReturn" Role="SalesReturn" Multiplicity="1" />
+        </Association>
+        <Association Name="SalesReturnUser">
+          <End Type="NikcronModel.SalesReturn" Role="SalesReturn" Multiplicity="*" />
+          <End Type="NikcronModel.User" Role="User" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SalesReturn">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ServiceUser">
+          <End Type="NikcronModel.Service" Role="Service" Multiplicity="*" />
+          <End Type="NikcronModel.User" Role="User" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ReturnType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" />
+          <Property Name="Status" Type="NikcronModel.Status" Nullable="false" />
+          <Property Name="AuditLog" Type="NikcronModel.AuditLog" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServiceType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" />
+          <Property Name="Status" Type="NikcronModel.Status" Nullable="false" />
+          <Property Name="AuditLog" Type="NikcronModel.AuditLog" Nullable="false" />
+        </EntityType>
+        <Association Name="SalesReturnReturnType">
+          <End Type="NikcronModel.SalesReturn" Role="SalesReturn" Multiplicity="*" />
+          <End Type="NikcronModel.ReturnType" Role="ReturnType" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="ReturnType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SalesReturn">
+              <PropertyRef Name="ReturnTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ServiceServiceType">
+          <End Type="NikcronModel.Service" Role="Service" Multiplicity="*" />
+          <End Type="NikcronModel.ServiceType" Role="ServiceType" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="ServiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ServiceServiceCentre">
+          <End Type="NikcronModel.Service" Role="Service" Multiplicity="*" />
+          <End Type="NikcronModel.ServiceCentre" Role="ServiceCentre" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceCentre">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="ServiceCentreId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" />
+          <Property Name="Status" Type="NikcronModel.Status" Nullable="false" />
+          <Property Name="AuditLog" Type="NikcronModel.AuditLog" Nullable="false" />
+          <NavigationProperty Name="States" Relationship="NikcronModel.StateCountry" FromRole="Country" ToRole="State" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" />
+          <Property Name="Status" Type="NikcronModel.Status" Nullable="false" />
+          <Property Name="AuditLog" Type="NikcronModel.AuditLog" Nullable="false" />
+          <Property Name="CountryId" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Cities" Relationship="NikcronModel.StateCity" FromRole="State" ToRole="City" />
+        </EntityType>
+        <Association Name="StateCountry">
+          <End Type="NikcronModel.State" Role="State" Multiplicity="*" />
+          <End Type="NikcronModel.Country" Role="Country" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" />
+          <Property Name="Status" Type="NikcronModel.Status" Nullable="false" />
+          <Property Name="AuditLog" Type="NikcronModel.AuditLog" Nullable="false" />
+          <Property Name="StateId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="StateCity">
+          <End Type="NikcronModel.State" Role="State" Multiplicity="1" />
+          <End Type="NikcronModel.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NikcronModelStoreContainer" CdmEntityContainer="NikcronModelContainer">
+    <EntitySetMapping Name="People">
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Person)">
+        <MappingFragment StoreEntitySet="People">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DataOfBirth" ColumnName="DataOfBirth" />
+          <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+          <ComplexProperty Name="PresentAddress" TypeName="NikcronModel.Address">
+            <ScalarProperty Name="Address1" ColumnName="PresentAddress_Address1" />
+            <ScalarProperty Name="Address2" ColumnName="PresentAddress_Address2" />
+            <ScalarProperty Name="City" ColumnName="PresentAddress_City" />
+            <ScalarProperty Name="State" ColumnName="PresentAddress_State" />
+            <ScalarProperty Name="Country" ColumnName="PresentAddress_Country" />
+            <ScalarProperty Name="Zip" ColumnName="PresentAddress_Zip" />
+          </ComplexProperty>
+          <ComplexProperty Name="PermanentAddress" TypeName="NikcronModel.Address">
+            <ScalarProperty Name="Address1" ColumnName="PermanentAddress_Address1" />
+            <ScalarProperty Name="Address2" ColumnName="PermanentAddress_Address2" />
+            <ScalarProperty Name="City" ColumnName="PermanentAddress_City" />
+            <ScalarProperty Name="State" ColumnName="PermanentAddress_State" />
+            <ScalarProperty Name="Country" ColumnName="PermanentAddress_Country" />
+            <ScalarProperty Name="Zip" ColumnName="PermanentAddress_Zip" />
+          </ComplexProperty>
+          <ComplexProperty Name="Contact" TypeName="NikcronModel.Contact">
+            <ScalarProperty Name="Mobile" ColumnName="Contact_Mobile" />
+            <ScalarProperty Name="Phone" ColumnName="Contact_Phone" />
+            <ScalarProperty Name="Email" ColumnName="Contact_Email" />
+            <ScalarProperty Name="Website" ColumnName="Contact_Website" />
+            <ScalarProperty Name="Fax" ColumnName="Contact_Fax" />
+          </ComplexProperty>
+          <ComplexProperty Name="Status" TypeName="NikcronModel.Status">
+            <ScalarProperty Name="IsActive" ColumnName="Status_IsActive" />
+            <ScalarProperty Name="IsDeleted" ColumnName="Status_IsDeleted" />
+            <ScalarProperty Name="IsHidden" ColumnName="Status_IsHidden" />
+            <ScalarProperty Name="IsReadOnly" ColumnName="Status_IsReadOnly" />
+          </ComplexProperty>
+          <ComplexProperty Name="AuditLog" TypeName="NikcronModel.AuditLog">
+            <ScalarProperty Name="CreatedBy" ColumnName="AuditLog_CreatedBy" />
+            <ScalarProperty Name="CreatedOn" ColumnName="AuditLog_CreatedOn" />
+            <ScalarProperty Name="ModifiedBy" ColumnName="AuditLog_ModifiedBy" />
+            <ScalarProperty Name="ModifiedOn" ColumnName="AuditLog_ModifiedOn" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.User)">
+        <MappingFragment StoreEntitySet="People_User">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Customer)">
+        <MappingFragment StoreEntitySet="People_Customer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Offices">
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Office)">
+        <MappingFragment StoreEntitySet="Offices">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ComplexProperty Name="Address" TypeName="NikcronModel.Address">
+            <ScalarProperty Name="Address1" ColumnName="Address_Address1" />
+            <ScalarProperty Name="Address2" ColumnName="Address_Address2" />
+            <ScalarProperty Name="City" ColumnName="Address_City" />
+            <ScalarProperty Name="State" ColumnName="Address_State" />
+            <ScalarProperty Name="Country" ColumnName="Address_Country" />
+            <ScalarProperty Name="Zip" ColumnName="Address_Zip" />
+          </ComplexProperty>
+          <ComplexProperty Name="Contact1" TypeName="NikcronModel.Contact">
+            <ScalarProperty Name="Mobile" ColumnName="Contact1_Mobile" />
+            <ScalarProperty Name="Phone" ColumnName="Contact1_Phone" />
+            <ScalarProperty Name="Email" ColumnName="Contact1_Email" />
+            <ScalarProperty Name="Website" ColumnName="Contact1_Website" />
+            <ScalarProperty Name="Fax" ColumnName="Contact1_Fax" />
+          </ComplexProperty>
+          <ComplexProperty Name="Contact2" TypeName="NikcronModel.Contact">
+            <ScalarProperty Name="Mobile" ColumnName="Contact2_Mobile" />
+            <ScalarProperty Name="Phone" ColumnName="Contact2_Phone" />
+            <ScalarProperty Name="Email" ColumnName="Contact2_Email" />
+            <ScalarProperty Name="Website" ColumnName="Contact2_Website" />
+            <ScalarProperty Name="Fax" ColumnName="Contact2_Fax" />
+          </ComplexProperty>
+          <ComplexProperty Name="Status" TypeName="NikcronModel.Status">
+            <ScalarProperty Name="IsActive" ColumnName="Status_IsActive" />
+            <ScalarProperty Name="IsDeleted" ColumnName="Status_IsDeleted" />
+            <ScalarProperty Name="IsHidden" ColumnName="Status_IsHidden" />
+            <ScalarProperty Name="IsReadOnly" ColumnName="Status_IsReadOnly" />
+          </ComplexProperty>
+          <ComplexProperty Name="AuditLog" TypeName="NikcronModel.AuditLog">
+            <ScalarProperty Name="CreatedBy" ColumnName="AuditLog_CreatedBy" />
+            <ScalarProperty Name="CreatedOn" ColumnName="AuditLog_CreatedOn" />
+            <ScalarProperty Name="ModifiedBy" ColumnName="AuditLog_ModifiedBy" />
+            <ScalarProperty Name="ModifiedOn" ColumnName="AuditLog_ModifiedOn" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.BusinessOffice)">
+        <MappingFragment StoreEntitySet="Offices_BusinessOffice">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EvaluationType" ColumnName="EvaluationType" />
+          <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+          <ScalarProperty Name="RecommendationFrom" ColumnName="RecommendationFrom" />
+          <ScalarProperty Name="CorporateStatus" ColumnName="CorporateStatus" />
+          <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+          <ScalarProperty Name="FunctioningFrom" ColumnName="FunctioningFrom" />
+          <ScalarProperty Name="IndividualHouseAddress" ColumnName="IndividualHouseAddress" />
+          <ScalarProperty Name="FirmRegistration" ColumnName="FirmRegistration" />
+          <ScalarProperty Name="TIN" ColumnName="TIN" />
+          <ScalarProperty Name="PAN" ColumnName="PAN" />
+          <ScalarProperty Name="CST" ColumnName="CST" />
+          <ScalarProperty Name="BusinessPresentAddress" ColumnName="BusinessPresentAddress" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="BankAccountNumber" ColumnName="BankAccountNumber" />
+          <ScalarProperty Name="BankIFSC" ColumnName="BankIFSC" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Coverages" ColumnName="Coverages" />
+          <ScalarProperty Name="Languages" ColumnName="Languages" />
+          <ScalarProperty Name="StrengthOfFieldForce" ColumnName="StrengthOfFieldForce" />
+          <ScalarProperty Name="TradeCreditFacilites" ColumnName="TradeCreditFacilites" />
+          <ScalarProperty Name="PeakSalesPeriod" ColumnName="PeakSalesPeriod" />
+          <ScalarProperty Name="ExpectedMonthlyLifting" ColumnName="ExpectedMonthlyLifting" />
+          <ScalarProperty Name="PopularFestivalFairs" ColumnName="PopularFestivalFairs" />
+          <ScalarProperty Name="Approver" ColumnName="Approver" />
+          <ScalarProperty Name="ApprovalComments" ColumnName="ApprovalComments" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Stockhouse)">
+        <MappingFragment StoreEntitySet="Offices_Stockhouse">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+          <ScalarProperty Name="WarehouseId" ColumnName="WarehouseId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Warehouse)">
+        <MappingFragment StoreEntitySet="Offices_Warehouse">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Distributor)">
+        <MappingFragment StoreEntitySet="Offices_Distributor">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StockhouseId" ColumnName="StockhouseId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Dealers)">
+        <MappingFragment StoreEntitySet="Offices_Dealers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DistributorId" ColumnName="DistributorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Retailer)">
+        <MappingFragment StoreEntitySet="Offices_Retailer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DealersId" ColumnName="DealersId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Company)">
+        <MappingFragment StoreEntitySet="Offices_Company">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.ServiceCentre)">
+        <MappingFragment StoreEntitySet="Offices_ServiceCentre">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zones">
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Zone)">
+        <MappingFragment StoreEntitySet="Zones">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ComplexProperty Name="Status" TypeName="NikcronModel.Status">
+            <ScalarProperty Name="IsActive" ColumnName="Status_IsActive" />
+            <ScalarProperty Name="IsDeleted" ColumnName="Status_IsDeleted" />
+            <ScalarProperty Name="IsHidden" ColumnName="Status_IsHidden" />
+            <ScalarProperty Name="IsReadOnly" ColumnName="Status_IsReadOnly" />
+          </ComplexProperty>
+          <ComplexProperty Name="AuditLog" TypeName="NikcronModel.AuditLog">
+            <ScalarProperty Name="CreatedBy" ColumnName="AuditLog_CreatedBy" />
+            <ScalarProperty Name="CreatedOn" ColumnName="AuditLog_CreatedOn" />
+            <ScalarProperty Name="ModifiedBy" ColumnName="AuditLog_ModifiedBy" />
+            <ScalarProperty Name="ModifiedOn" ColumnName="AuditLog_ModifiedOn" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.ProductType)">
+        <MappingFragment StoreEntitySet="ProductTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ComplexProperty Name="Status" TypeName="NikcronModel.Status">
+            <ScalarProperty Name="IsActive" ColumnName="Status_IsActive" />
+            <ScalarProperty Name="IsDeleted" ColumnName="Status_IsDeleted" />
+            <ScalarProperty Name="IsHidden" ColumnName="Status_IsHidden" />
+            <ScalarProperty Name="IsReadOnly" ColumnName="Status_IsReadOnly" />
+          </ComplexProperty>
+          <ComplexProperty Name="AuditLog" TypeName="NikcronModel.AuditLog">
+            <ScalarProperty Name="CreatedBy" ColumnName="AuditLog_CreatedBy" />
+            <ScalarProperty Name="CreatedOn" ColumnName="AuditLog_CreatedOn" />
+            <ScalarProperty Name="ModifiedBy" ColumnName="AuditLog_ModifiedBy" />
+            <ScalarProperty Name="ModifiedOn" ColumnName="AuditLog_ModifiedOn" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Manufactures">
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Manufacture)">
+        <MappingFragment StoreEntitySet="Manufactures">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ComplexProperty Name="Status" TypeName="NikcronModel.Status">
+            <ScalarProperty Name="IsActive" ColumnName="Status_IsActive" />
+            <ScalarProperty Name="IsDeleted" ColumnName="Status_IsDeleted" />
+            <ScalarProperty Name="IsHidden" ColumnName="Status_IsHidden" />
+            <ScalarProperty Name="IsReadOnly" ColumnName="Status_IsReadOnly" />
+          </ComplexProperty>
+          <ComplexProperty Name="AuditLog" TypeName="NikcronModel.AuditLog">
+            <ScalarProperty Name="CreatedBy" ColumnName="AuditLog_CreatedBy" />
+            <ScalarProperty Name="CreatedOn" ColumnName="AuditLog_CreatedOn" />
+            <ScalarProperty Name="ModifiedBy" ColumnName="AuditLog_ModifiedBy" />
+            <ScalarProperty Name="ModifiedOn" ColumnName="AuditLog_ModifiedOn" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductModels">
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.ProductModel)">
+        <MappingFragment StoreEntitySet="ProductModels">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ModelNumber" ColumnName="ModelNumber" />
+          <ScalarProperty Name="ModelName" ColumnName="ModelName" />
+          <ScalarProperty Name="ManufactureId" ColumnName="ManufactureId" />
+          <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
+          <ScalarProperty Name="Processor" ColumnName="Processor" />
+          <ScalarProperty Name="Memory" ColumnName="Memory" />
+          <ScalarProperty Name="OperatingSystem" ColumnName="OperatingSystem" />
+          <ScalarProperty Name="OSVersion" ColumnName="OSVersion" />
+          <ScalarProperty Name="InternalStorage" ColumnName="InternalStorage" />
+          <ScalarProperty Name="ExternalStorage" ColumnName="ExternalStorage" />
+          <ScalarProperty Name="DisplayType" ColumnName="DisplayType" />
+          <ScalarProperty Name="DisplaySize" ColumnName="DisplaySize" />
+          <ScalarProperty Name="DisplayResolution" ColumnName="DisplayResolution" />
+          <ScalarProperty Name="Dimension" ColumnName="Dimension" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="BatteryType" ColumnName="BatteryType" />
+          <ScalarProperty Name="BatteryStandBy" ColumnName="BatteryStandBy" />
+          <ScalarProperty Name="PrimaryCamera" ColumnName="PrimaryCamera" />
+          <ScalarProperty Name="SecondryCamera" ColumnName="SecondryCamera" />
+          <ScalarProperty Name="VideoRecording" ColumnName="VideoRecording" />
+          <ScalarProperty Name="WiFi" ColumnName="WiFi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Mobile)">
+        <MappingFragment StoreEntitySet="ProductModels_Mobile">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FormFactor" ColumnName="FormFactor" />
+          <ScalarProperty Name="CallFeatures" ColumnName="CallFeatures" />
+          <ScalarProperty Name="SimSize" ColumnName="SimSize" />
+          <ScalarProperty Name="SimType" ColumnName="SimType" />
+          <ScalarProperty Name="CallMemory" ColumnName="CallMemory" />
+          <ScalarProperty Name="PhoneMemory" ColumnName="PhoneMemory" />
+          <ScalarProperty Name="SMSMemory" ColumnName="SMSMemory" />
+          <ScalarProperty Name="PreinstalledBrowser" ColumnName="PreinstalledBrowser" />
+          <ScalarProperty Name="MusicPlayer" ColumnName="MusicPlayer" />
+          <ScalarProperty Name="VideoPlayer" ColumnName="VideoPlayer" />
+          <ScalarProperty Name="FM" ColumnName="FM" />
+          <ScalarProperty Name="SoundEnhancement" ColumnName="SoundEnhancement" />
+          <ScalarProperty Name="RingTone" ColumnName="RingTone" />
+          <ScalarProperty Name="SARValue" ColumnName="SARValue" />
+          <ScalarProperty Name="InternetFeatures" ColumnName="InternetFeatures" />
+          <ComplexProperty Name="Connectivity" TypeName="NikcronModel.Connectivity">
+            <ScalarProperty Name="HSPA_3G" ColumnName="Connectivity_HSPA_3G" />
+            <ScalarProperty Name="GPRS_2G" ColumnName="Connectivity_GPRS_2G" />
+            <ScalarProperty Name="USB" ColumnName="Connectivity_USB" />
+            <ScalarProperty Name="Bluetooth" ColumnName="Connectivity_Bluetooth" />
+            <ScalarProperty Name="Hotspot" ColumnName="Connectivity_Hotspot" />
+            <ScalarProperty Name="SupportedNetworks" ColumnName="Connectivity_SupportedNetworks" />
+            <ScalarProperty Name="OperatingFrequencies" ColumnName="Connectivity_OperatingFrequencies" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Tablet)">
+        <MappingFragment StoreEntitySet="ProductModels_Tablet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CallFeatures" ColumnName="CallFeatures" />
+          <ScalarProperty Name="SupportedNetworks" ColumnName="SupportedNetworks" />
+          <ScalarProperty Name="PreinstalledBrowser" ColumnName="PreinstalledBrowser" />
+          <ScalarProperty Name="InternetFeatures" ColumnName="InternetFeatures" />
+          <ScalarProperty Name="AudioJack" ColumnName="AudioJack" />
+          <ScalarProperty Name="AudioFormat" ColumnName="AudioFormat" />
+          <ScalarProperty Name="VideoFormat" ColumnName="VideoFormat" />
+          <ComplexProperty Name="Connectivity" TypeName="NikcronModel.Connectivity">
+            <ScalarProperty Name="HSPA_3G" ColumnName="Connectivity_HSPA_3G" />
+            <ScalarProperty Name="GPRS_2G" ColumnName="Connectivity_GPRS_2G" />
+            <ScalarProperty Name="USB" ColumnName="Connectivity_USB" />
+            <ScalarProperty Name="Bluetooth" ColumnName="Connectivity_Bluetooth" />
+            <ScalarProperty Name="Hotspot" ColumnName="Connectivity_Hotspot" />
+            <ScalarProperty Name="SupportedNetworks" ColumnName="Connectivity_SupportedNetworks" />
+            <ScalarProperty Name="OperatingFrequencies" ColumnName="Connectivity_OperatingFrequencies" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Laptop)">
+        <MappingFragment StoreEntitySet="ProductModels_Laptop">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Chipset" ColumnName="Chipset" />
+          <ScalarProperty Name="ClockSpeed" ColumnName="ClockSpeed" />
+          <ScalarProperty Name="Cache" ColumnName="Cache" />
+          <ScalarProperty Name="HardwareInterface" ColumnName="HardwareInterface" />
+          <ScalarProperty Name="RPM" ColumnName="RPM" />
+          <ScalarProperty Name="HDDCapacity" ColumnName="HDDCapacity" />
+          <ScalarProperty Name="OpticalDrive" ColumnName="OpticalDrive" />
+          <ScalarProperty Name="SystemArch" ColumnName="SystemArch" />
+          <ScalarProperty Name="GraphicProcessor" ColumnName="GraphicProcessor" />
+          <ScalarProperty Name="Keyboard" ColumnName="Keyboard" />
+          <ScalarProperty Name="Speakers" ColumnName="Speakers" />
+          <ScalarProperty Name="Sound" ColumnName="Sound" />
+          <ScalarProperty Name="BatteryCell" ColumnName="BatteryCell" />
+          <ScalarProperty Name="USBPort" ColumnName="USBPort" />
+          <ScalarProperty Name="VGAPort" ColumnName="VGAPort" />
+          <ScalarProperty Name="HDMIPort" ColumnName="HDMIPort" />
+          <ScalarProperty Name="RJ45LAN" ColumnName="RJ45LAN" />
+          <ScalarProperty Name="MultiCardSlot" ColumnName="MultiCardSlot" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductWarranties">
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.ProductWarranty)">
+        <MappingFragment StoreEntitySet="ProductWarranties">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="WarrantyNumber" ColumnName="WarrantyNumber" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Period" ColumnName="Period" />
+          <ComplexProperty Name="Status" TypeName="NikcronModel.Status">
+            <ScalarProperty Name="IsActive" ColumnName="Status_IsActive" />
+            <ScalarProperty Name="IsDeleted" ColumnName="Status_IsDeleted" />
+            <ScalarProperty Name="IsHidden" ColumnName="Status_IsHidden" />
+            <ScalarProperty Name="IsReadOnly" ColumnName="Status_IsReadOnly" />
+          </ComplexProperty>
+          <ComplexProperty Name="AuditLog" TypeName="NikcronModel.AuditLog">
+            <ScalarProperty Name="CreatedBy" ColumnName="AuditLog_CreatedBy" />
+            <ScalarProperty Name="CreatedOn" ColumnName="AuditLog_CreatedOn" />
+            <ScalarProperty Name="ModifiedBy" ColumnName="AuditLog_ModifiedBy" />
+            <ScalarProperty Name="ModifiedOn" ColumnName="AuditLog_ModifiedOn" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductItems">
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.ProductItem)">
+        <MappingFragment StoreEntitySet="ProductItems">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductModelId" ColumnName="ProductModelId" />
+          <ScalarProperty Name="WarehouseId" ColumnName="WarehouseId" />
+          <ScalarProperty Name="StockhouseId" ColumnName="StockhouseId" />
+          <ScalarProperty Name="DistributorId" ColumnName="DistributorId" />
+          <ScalarProperty Name="DealersId" ColumnName="DealersId" />
+          <ScalarProperty Name="RetailerId" ColumnName="RetailerId" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="IMEI1" ColumnName="IMEI1" />
+          <ScalarProperty Name="IMEI2" ColumnName="IMEI2" />
+          <ScalarProperty Name="PartNumber" ColumnName="PartNumber" />
+          <ScalarProperty Name="ProductColorsId" ColumnName="ProductColorsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Role)">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ModuleAccess" ColumnName="ModuleAccess" />
+          <ScalarProperty Name="ReadAccess" ColumnName="ReadAccess" />
+          <ScalarProperty Name="WriteAccess" ColumnName="WriteAccess" />
+          <ScalarProperty Name="DeleteAccess" ColumnName="DeleteAccess" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductColor">
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.ProductColors)">
+        <MappingFragment StoreEntitySet="ProductColor">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="HexCode" ColumnName="HexCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductHistories">
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.ProductHistory)">
+        <MappingFragment StoreEntitySet="ProductHistories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProductItemId" ColumnName="ProductItemId" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+          <ScalarProperty Name="LogUsername" ColumnName="LogUsername" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sales">
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Sale)">
+        <MappingFragment StoreEntitySet="Sales">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+          <ScalarProperty Name="InvoicedDate" ColumnName="InvoicedDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Payment" ColumnName="Payment" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="WarrantyStart" ColumnName="WarrantyStart" />
+          <ScalarProperty Name="WarrantyEnd" ColumnName="WarrantyEnd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductImages">
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.ProductImage)">
+        <MappingFragment StoreEntitySet="ProductImages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="ProductModelId" ColumnName="ProductModelId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalesReturns">
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.SalesReturn)">
+        <MappingFragment StoreEntitySet="SalesReturns">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Commands" ColumnName="Commands" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ComplexProperty Name="Status" TypeName="NikcronModel.Status">
+            <ScalarProperty Name="IsActive" ColumnName="Status_IsActive" />
+            <ScalarProperty Name="IsDeleted" ColumnName="Status_IsDeleted" />
+            <ScalarProperty Name="IsHidden" ColumnName="Status_IsHidden" />
+            <ScalarProperty Name="IsReadOnly" ColumnName="Status_IsReadOnly" />
+          </ComplexProperty>
+          <ComplexProperty Name="AuditLog" TypeName="NikcronModel.AuditLog">
+            <ScalarProperty Name="CreatedBy" ColumnName="AuditLog_CreatedBy" />
+            <ScalarProperty Name="CreatedOn" ColumnName="AuditLog_CreatedOn" />
+            <ScalarProperty Name="ModifiedBy" ColumnName="AuditLog_ModifiedBy" />
+            <ScalarProperty Name="ModifiedOn" ColumnName="AuditLog_ModifiedOn" />
+          </ComplexProperty>
+          <ScalarProperty Name="ReturnTypeId" ColumnName="ReturnTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Services">
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Service)">
+        <MappingFragment StoreEntitySet="Services">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Commands" ColumnName="Commands" />
+          <ScalarProperty Name="SaleId" ColumnName="SaleId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ComplexProperty Name="Status" TypeName="NikcronModel.Status">
+            <ScalarProperty Name="IsActive" ColumnName="Status_IsActive" />
+            <ScalarProperty Name="IsDeleted" ColumnName="Status_IsDeleted" />
+            <ScalarProperty Name="IsHidden" ColumnName="Status_IsHidden" />
+            <ScalarProperty Name="IsReadOnly" ColumnName="Status_IsReadOnly" />
+          </ComplexProperty>
+          <ComplexProperty Name="AuditLog" TypeName="NikcronModel.AuditLog">
+            <ScalarProperty Name="CreatedBy" ColumnName="AuditLog_CreatedBy" />
+            <ScalarProperty Name="CreatedOn" ColumnName="AuditLog_CreatedOn" />
+            <ScalarProperty Name="ModifiedBy" ColumnName="AuditLog_ModifiedBy" />
+            <ScalarProperty Name="ModifiedOn" ColumnName="AuditLog_ModifiedOn" />
+          </ComplexProperty>
+          <ScalarProperty Name="ServiceTypeId" ColumnName="ServiceTypeId" />
+          <ScalarProperty Name="ServiceCentreId" ColumnName="ServiceCentreId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReturnTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.ReturnType)">
+        <MappingFragment StoreEntitySet="ReturnTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ComplexProperty Name="Status" TypeName="NikcronModel.Status">
+            <ScalarProperty Name="IsActive" ColumnName="Status_IsActive" />
+            <ScalarProperty Name="IsDeleted" ColumnName="Status_IsDeleted" />
+            <ScalarProperty Name="IsHidden" ColumnName="Status_IsHidden" />
+            <ScalarProperty Name="IsReadOnly" ColumnName="Status_IsReadOnly" />
+          </ComplexProperty>
+          <ComplexProperty Name="AuditLog" TypeName="NikcronModel.AuditLog">
+            <ScalarProperty Name="CreatedBy" ColumnName="AuditLog_CreatedBy" />
+            <ScalarProperty Name="CreatedOn" ColumnName="AuditLog_CreatedOn" />
+            <ScalarProperty Name="ModifiedBy" ColumnName="AuditLog_ModifiedBy" />
+            <ScalarProperty Name="ModifiedOn" ColumnName="AuditLog_ModifiedOn" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.ServiceType)">
+        <MappingFragment StoreEntitySet="ServiceTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ComplexProperty Name="Status" TypeName="NikcronModel.Status">
+            <ScalarProperty Name="IsActive" ColumnName="Status_IsActive" />
+            <ScalarProperty Name="IsDeleted" ColumnName="Status_IsDeleted" />
+            <ScalarProperty Name="IsHidden" ColumnName="Status_IsHidden" />
+            <ScalarProperty Name="IsReadOnly" ColumnName="Status_IsReadOnly" />
+          </ComplexProperty>
+          <ComplexProperty Name="AuditLog" TypeName="NikcronModel.AuditLog">
+            <ScalarProperty Name="CreatedBy" ColumnName="AuditLog_CreatedBy" />
+            <ScalarProperty Name="CreatedOn" ColumnName="AuditLog_CreatedOn" />
+            <ScalarProperty Name="ModifiedBy" ColumnName="AuditLog_ModifiedBy" />
+            <ScalarProperty Name="ModifiedOn" ColumnName="AuditLog_ModifiedOn" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Country)">
+        <MappingFragment StoreEntitySet="Countries">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ComplexProperty Name="Status" TypeName="NikcronModel.Status">
+            <ScalarProperty Name="IsActive" ColumnName="Status_IsActive" />
+            <ScalarProperty Name="IsDeleted" ColumnName="Status_IsDeleted" />
+            <ScalarProperty Name="IsHidden" ColumnName="Status_IsHidden" />
+            <ScalarProperty Name="IsReadOnly" ColumnName="Status_IsReadOnly" />
+          </ComplexProperty>
+          <ComplexProperty Name="AuditLog" TypeName="NikcronModel.AuditLog">
+            <ScalarProperty Name="CreatedBy" ColumnName="AuditLog_CreatedBy" />
+            <ScalarProperty Name="CreatedOn" ColumnName="AuditLog_CreatedOn" />
+            <ScalarProperty Name="ModifiedBy" ColumnName="AuditLog_ModifiedBy" />
+            <ScalarProperty Name="ModifiedOn" ColumnName="AuditLog_ModifiedOn" />
+          </ComplexProperty>
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="States">
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.State)">
+        <MappingFragment StoreEntitySet="States">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ComplexProperty Name="Status" TypeName="NikcronModel.Status">
+            <ScalarProperty Name="IsActive" ColumnName="Status_IsActive" />
+            <ScalarProperty Name="IsDeleted" ColumnName="Status_IsDeleted" />
+            <ScalarProperty Name="IsHidden" ColumnName="Status_IsHidden" />
+            <ScalarProperty Name="IsReadOnly" ColumnName="Status_IsReadOnly" />
+          </ComplexProperty>
+          <ComplexProperty Name="AuditLog" TypeName="NikcronModel.AuditLog">
+            <ScalarProperty Name="CreatedBy" ColumnName="AuditLog_CreatedBy" />
+            <ScalarProperty Name="CreatedOn" ColumnName="AuditLog_CreatedOn" />
+            <ScalarProperty Name="ModifiedBy" ColumnName="AuditLog_ModifiedBy" />
+            <ScalarProperty Name="ModifiedOn" ColumnName="AuditLog_ModifiedOn" />
+          </ComplexProperty>
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.City)">
+        <MappingFragment StoreEntitySet="Cities">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ComplexProperty Name="Status" TypeName="NikcronModel.Status">
+            <ScalarProperty Name="IsActive" ColumnName="Status_IsActive" />
+            <ScalarProperty Name="IsDeleted" ColumnName="Status_IsDeleted" />
+            <ScalarProperty Name="IsHidden" ColumnName="Status_IsHidden" />
+            <ScalarProperty Name="IsReadOnly" ColumnName="Status_IsReadOnly" />
+          </ComplexProperty>
+          <ComplexProperty Name="AuditLog" TypeName="NikcronModel.AuditLog">
+            <ScalarProperty Name="CreatedBy" ColumnName="AuditLog_CreatedBy" />
+            <ScalarProperty Name="CreatedOn" ColumnName="AuditLog_CreatedOn" />
+            <ScalarProperty Name="ModifiedBy" ColumnName="AuditLog_ModifiedBy" />
+            <ScalarProperty Name="ModifiedOn" ColumnName="AuditLog_ModifiedOn" />
+          </ComplexProperty>
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ProductModelProductWarranty" TypeName="NikcronModel.ProductModelProductWarranty" StoreEntitySet="ProductModelProductWarranty">
+      <EndProperty Name="ProductModel">
+        <ScalarProperty Name="Id" ColumnName="ProductModelProductWarranty_ProductWarranty_Id" />
+      </EndProperty>
+      <EndProperty Name="ProductWarranty">
+        <ScalarProperty Name="Id" ColumnName="ProductWarranties_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SalesProductItem" TypeName="NikcronModel.SalesProductItem" StoreEntitySet="Sales">
+      <EndProperty Name="ProductItem">
+        <ScalarProperty Name="Id" ColumnName="ProductItem_Id" />
+      </EndProperty>
+      <EndProperty Name="Sales">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SaleProductWarranty" TypeName="NikcronModel.SaleProductWarranty" StoreEntitySet="ProductWarranties">
+      <EndProperty Name="Sale">
+        <ScalarProperty Name="Id" ColumnName="SaleProductWarranty_ProductWarranty_Id" />
+      </EndProperty>
+      <EndProperty Name="ProductWarranty">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProductModelProductColors" TypeName="NikcronModel.ProductModelProductColors" StoreEntitySet="ProductModelProductColors">
+      <EndProperty Name="ProductModel">
+        <ScalarProperty Name="Id" ColumnName="ProductModelProductColors_ProductColors_Id" />
+      </EndProperty>
+      <EndProperty Name="ProductColors">
+        <ScalarProperty Name="Id" ColumnName="ProductColors_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SalesReturnSale" TypeName="NikcronModel.SalesReturnSale" StoreEntitySet="Sales">
+      <EndProperty Name="SalesReturn">
+        <ScalarProperty Name="Id" ColumnName="SalesReturnSale_Sale_Id" />
+      </EndProperty>
+      <EndProperty Name="Sale">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
