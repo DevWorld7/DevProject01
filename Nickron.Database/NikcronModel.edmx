@@ -279,7 +279,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ContactPerson" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="Name" Type="nvarchar" Nullable="true" MaxLength="250" />
     <Property Name="Address_Address1" Type="nvarchar" Nullable="true" MaxLength="250" />
     <Property Name="Address_Address2" Type="nvarchar" Nullable="true" MaxLength="250" />
     <Property Name="Address_City" Type="nvarchar" Nullable="true" MaxLength="250" />
@@ -304,6 +304,7 @@
     <Property Name="AuditLog_CreatedOn" Type="datetime" Nullable="false" />
     <Property Name="AuditLog_ModifiedBy" Type="int" Nullable="true" />
     <Property Name="AuditLog_ModifiedOn" Type="datetime" Nullable="true" />
+    <Property Name="ContactPerson" Type="nvarchar" Nullable="true" MaxLength="250" />
   </EntityType>
   <EntityType Name="Zones">
     <Key>
@@ -1586,12 +1587,13 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="ContactPerson" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="250" />
           <Property Name="Address" Type="NikcronModel.Address" Nullable="false" />
           <Property Name="Contact1" Type="NikcronModel.Contact" Nullable="false" />
           <Property Name="Contact2" Type="NikcronModel.Contact" Nullable="false" />
           <Property Name="Status" Type="NikcronModel.Status" Nullable="false" />
           <Property Name="AuditLog" Type="NikcronModel.AuditLog" Nullable="false" />
+          <Property Name="ContactPerson" Type="String" Nullable="true" MaxLength="250" />
         </EntityType>
         <EntityType Name="Warehouse" BaseType="NikcronModel.Office" >
           <NavigationProperty Name="Company" Relationship="NikcronModel.CompanyWarehouse" FromRole="Warehouse" ToRole="Company" />
@@ -2394,7 +2396,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Office)">
         <MappingFragment StoreEntitySet="Offices">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
           <ComplexProperty Name="Address" TypeName="NikcronModel.Address">
             <ScalarProperty Name="Address1" ColumnName="Address_Address1" />
             <ScalarProperty Name="Address2" ColumnName="Address_Address2" />
@@ -2429,6 +2431,7 @@
             <ScalarProperty Name="ModifiedBy" ColumnName="AuditLog_ModifiedBy" />
             <ScalarProperty Name="ModifiedOn" ColumnName="AuditLog_ModifiedOn" />
           </ComplexProperty>
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
         </MappingFragment>
       </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.BusinessOffice)">
@@ -2971,6 +2974,88 @@
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
+      <Diagram DiagramId="c466c1a8d4964858aaa3adcca9221b1f" Name="Diagram1">
+        <EntityTypeShape EntityType="NikcronModel.Person" Width="1.5" PointX="11" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.Office" Width="1.5" PointX="15.125" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.Warehouse" Width="1.5" PointX="6.375" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.Company" Width="1.5" PointX="14" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.Distributor" Width="1.5" PointX="12.5" PointY="43.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.Zone" Width="1.5" PointX="3.125" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.BusinessOffice" Width="1.5" PointX="18.5" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.Stockhouse" Width="1.5" PointX="12.5" PointY="41" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.Dealers" Width="1.5" PointX="12.5" PointY="46.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.Retailer" Width="1.5" PointX="12.5" PointY="48.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.ProductType" Width="1.5" PointX="17.625" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.Manufacture" Width="1.5" PointX="17.625" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.ProductModel" Width="1.5" PointX="8.625" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.ProductWarranty" Width="1.5" PointX="17.625" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.ProductItem" Width="1.5" PointX="6.375" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.Role" Width="1.5" PointX="8.625" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.User" Width="1.5" PointX="1" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.ServiceCentre" Width="1.5" PointX="11.5" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.Customer" Width="1.5" PointX="1.125" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.Mobile" Width="1.5" PointX="8.625" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.Tablet" Width="1.5" PointX="10.875" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.Laptop" Width="1.5" PointX="6.375" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.ProductColors" Width="1.5" PointX="20.625" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.ProductHistory" Width="1.5" PointX="4.125" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.Sale" Width="1.5" PointX="4.125" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.ProductImage" Width="1.5" PointX="17.625" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.SalesReturn" Width="1.5" PointX="4.125" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.Service" Width="1.5" PointX="1.875" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.ReturnType" Width="1.5" PointX="6.375" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.ServiceType" Width="1.5" PointX="4.125" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.Country" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.State" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NikcronModel.City" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <InheritanceConnector EntityType="NikcronModel.Warehouse" ManuallyRouted="false" />
+        <InheritanceConnector EntityType="NikcronModel.Company" ManuallyRouted="false" />
+        <InheritanceConnector EntityType="NikcronModel.Distributor" ManuallyRouted="false" />
+        <InheritanceConnector EntityType="NikcronModel.BusinessOffice" ManuallyRouted="false" />
+        <InheritanceConnector EntityType="NikcronModel.Stockhouse" ManuallyRouted="false" />
+        <InheritanceConnector EntityType="NikcronModel.Dealers" ManuallyRouted="false" />
+        <InheritanceConnector EntityType="NikcronModel.Retailer" ManuallyRouted="false" />
+        <InheritanceConnector EntityType="NikcronModel.User" ManuallyRouted="false" />
+        <InheritanceConnector EntityType="NikcronModel.ServiceCentre" ManuallyRouted="false" />
+        <InheritanceConnector EntityType="NikcronModel.Customer" ManuallyRouted="false" />
+        <InheritanceConnector EntityType="NikcronModel.Mobile" ManuallyRouted="false" />
+        <InheritanceConnector EntityType="NikcronModel.Tablet" ManuallyRouted="false" />
+        <InheritanceConnector EntityType="NikcronModel.Laptop" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.ProductModelManufacture" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.ProductModelProductType" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.ProductItemProductModel" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.StockhouseZone" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.ProductItemWarehouse" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.ProductItemStockhouse" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.ProductItemDistributor" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.DealersProductItem" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.ProductItemRetailer" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.ProductModelProductWarranty" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.CompanyWarehouse" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.WarehouseStockhouse" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.DealersRetailer" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.StockhouseDistributor" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.DistributorDealers" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.UserRole" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.UserOffice" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.ProductHistoryProductItem" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.SalesProductItem" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.SalesUser" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.SaleProductWarranty" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.SaleCustomer" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.ProductItemProductColors" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.ProductModelProductColors" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.ProductModelProductImage" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.ServiceSale" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.SalesReturnSale" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.SalesReturnUser" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.ServiceUser" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.SalesReturnReturnType" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.ServiceServiceType" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.ServiceServiceCentre" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.StateCountry" ManuallyRouted="false" />
+        <AssociationConnector Association="NikcronModel.StateCity" ManuallyRouted="false" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

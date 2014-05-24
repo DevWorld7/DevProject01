@@ -614,17 +614,15 @@ namespace Nickron.Database
         /// Create a new BusinessOffice object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="contactPerson">Initial value of the ContactPerson property.</param>
         /// <param name="address">Initial value of the Address property.</param>
         /// <param name="contact1">Initial value of the Contact1 property.</param>
         /// <param name="contact2">Initial value of the Contact2 property.</param>
         /// <param name="status">Initial value of the Status property.</param>
         /// <param name="auditLog">Initial value of the AuditLog property.</param>
-        public static BusinessOffice CreateBusinessOffice(global::System.Int32 id, global::System.String contactPerson, Address address, Contact contact1, Contact contact2, Status status, AuditLog auditLog)
+        public static BusinessOffice CreateBusinessOffice(global::System.Int32 id, Address address, Contact contact1, Contact contact2, Status status, AuditLog auditLog)
         {
             BusinessOffice businessOffice = new BusinessOffice();
             businessOffice.Id = id;
-            businessOffice.ContactPerson = contactPerson;
             businessOffice.Address = StructuralObject.VerifyComplexObjectIsNotNull(address, "Address");
             businessOffice.Contact1 = StructuralObject.VerifyComplexObjectIsNotNull(contact1, "Contact1");
             businessOffice.Contact2 = StructuralObject.VerifyComplexObjectIsNotNull(contact2, "Contact2");
@@ -1435,17 +1433,15 @@ namespace Nickron.Database
         /// Create a new Company object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="contactPerson">Initial value of the ContactPerson property.</param>
         /// <param name="address">Initial value of the Address property.</param>
         /// <param name="contact1">Initial value of the Contact1 property.</param>
         /// <param name="contact2">Initial value of the Contact2 property.</param>
         /// <param name="status">Initial value of the Status property.</param>
         /// <param name="auditLog">Initial value of the AuditLog property.</param>
-        public static Company CreateCompany(global::System.Int32 id, global::System.String contactPerson, Address address, Contact contact1, Contact contact2, Status status, AuditLog auditLog)
+        public static Company CreateCompany(global::System.Int32 id, Address address, Contact contact1, Contact contact2, Status status, AuditLog auditLog)
         {
             Company company = new Company();
             company.Id = id;
-            company.ContactPerson = contactPerson;
             company.Address = StructuralObject.VerifyComplexObjectIsNotNull(address, "Address");
             company.Contact1 = StructuralObject.VerifyComplexObjectIsNotNull(contact1, "Contact1");
             company.Contact2 = StructuralObject.VerifyComplexObjectIsNotNull(contact2, "Contact2");
@@ -1740,18 +1736,16 @@ namespace Nickron.Database
         /// Create a new Dealers object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="contactPerson">Initial value of the ContactPerson property.</param>
         /// <param name="address">Initial value of the Address property.</param>
         /// <param name="contact1">Initial value of the Contact1 property.</param>
         /// <param name="contact2">Initial value of the Contact2 property.</param>
         /// <param name="status">Initial value of the Status property.</param>
         /// <param name="auditLog">Initial value of the AuditLog property.</param>
         /// <param name="distributorId">Initial value of the DistributorId property.</param>
-        public static Dealers CreateDealers(global::System.Int32 id, global::System.String contactPerson, Address address, Contact contact1, Contact contact2, Status status, AuditLog auditLog, global::System.Int32 distributorId)
+        public static Dealers CreateDealers(global::System.Int32 id, Address address, Contact contact1, Contact contact2, Status status, AuditLog auditLog, global::System.Int32 distributorId)
         {
             Dealers dealers = new Dealers();
             dealers.Id = id;
-            dealers.ContactPerson = contactPerson;
             dealers.Address = StructuralObject.VerifyComplexObjectIsNotNull(address, "Address");
             dealers.Contact1 = StructuralObject.VerifyComplexObjectIsNotNull(contact1, "Contact1");
             dealers.Contact2 = StructuralObject.VerifyComplexObjectIsNotNull(contact2, "Contact2");
@@ -1872,18 +1866,16 @@ namespace Nickron.Database
         /// Create a new Distributor object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="contactPerson">Initial value of the ContactPerson property.</param>
         /// <param name="address">Initial value of the Address property.</param>
         /// <param name="contact1">Initial value of the Contact1 property.</param>
         /// <param name="contact2">Initial value of the Contact2 property.</param>
         /// <param name="status">Initial value of the Status property.</param>
         /// <param name="auditLog">Initial value of the AuditLog property.</param>
         /// <param name="stockhouseId">Initial value of the StockhouseId property.</param>
-        public static Distributor CreateDistributor(global::System.Int32 id, global::System.String contactPerson, Address address, Contact contact1, Contact contact2, Status status, AuditLog auditLog, global::System.Int32 stockhouseId)
+        public static Distributor CreateDistributor(global::System.Int32 id, Address address, Contact contact1, Contact contact2, Status status, AuditLog auditLog, global::System.Int32 stockhouseId)
         {
             Distributor distributor = new Distributor();
             distributor.Id = id;
-            distributor.ContactPerson = contactPerson;
             distributor.Address = StructuralObject.VerifyComplexObjectIsNotNull(address, "Address");
             distributor.Contact1 = StructuralObject.VerifyComplexObjectIsNotNull(contact1, "Contact1");
             distributor.Contact2 = StructuralObject.VerifyComplexObjectIsNotNull(contact2, "Contact2");
@@ -3058,17 +3050,15 @@ namespace Nickron.Database
         /// Create a new Office object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="contactPerson">Initial value of the ContactPerson property.</param>
         /// <param name="address">Initial value of the Address property.</param>
         /// <param name="contact1">Initial value of the Contact1 property.</param>
         /// <param name="contact2">Initial value of the Contact2 property.</param>
         /// <param name="status">Initial value of the Status property.</param>
         /// <param name="auditLog">Initial value of the AuditLog property.</param>
-        public static Office CreateOffice(global::System.Int32 id, global::System.String contactPerson, Address address, Contact contact1, Contact contact2, Status status, AuditLog auditLog)
+        public static Office CreateOffice(global::System.Int32 id, Address address, Contact contact1, Contact contact2, Status status, AuditLog auditLog)
         {
             Office office = new Office();
             office.Id = id;
-            office.ContactPerson = contactPerson;
             office.Address = StructuralObject.VerifyComplexObjectIsNotNull(address, "Address");
             office.Contact1 = StructuralObject.VerifyComplexObjectIsNotNull(contact1, "Contact1");
             office.Contact2 = StructuralObject.VerifyComplexObjectIsNotNull(contact2, "Contact2");
@@ -3111,7 +3101,31 @@ namespace Nickron.Database
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String ContactPerson
         {
@@ -3123,7 +3137,7 @@ namespace Nickron.Database
             {
                 OnContactPersonChanging(value);
                 ReportPropertyChanging("ContactPerson");
-                _ContactPerson = StructuralObject.SetValidValue(value, false);
+                _ContactPerson = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("ContactPerson");
                 OnContactPersonChanged();
             }
@@ -5816,18 +5830,16 @@ namespace Nickron.Database
         /// Create a new Retailer object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="contactPerson">Initial value of the ContactPerson property.</param>
         /// <param name="address">Initial value of the Address property.</param>
         /// <param name="contact1">Initial value of the Contact1 property.</param>
         /// <param name="contact2">Initial value of the Contact2 property.</param>
         /// <param name="status">Initial value of the Status property.</param>
         /// <param name="auditLog">Initial value of the AuditLog property.</param>
         /// <param name="dealersId">Initial value of the DealersId property.</param>
-        public static Retailer CreateRetailer(global::System.Int32 id, global::System.String contactPerson, Address address, Contact contact1, Contact contact2, Status status, AuditLog auditLog, global::System.Int32 dealersId)
+        public static Retailer CreateRetailer(global::System.Int32 id, Address address, Contact contact1, Contact contact2, Status status, AuditLog auditLog, global::System.Int32 dealersId)
         {
             Retailer retailer = new Retailer();
             retailer.Id = id;
-            retailer.ContactPerson = contactPerson;
             retailer.Address = StructuralObject.VerifyComplexObjectIsNotNull(address, "Address");
             retailer.Contact1 = StructuralObject.VerifyComplexObjectIsNotNull(contact1, "Contact1");
             retailer.Contact2 = StructuralObject.VerifyComplexObjectIsNotNull(contact2, "Contact2");
@@ -7453,17 +7465,15 @@ namespace Nickron.Database
         /// Create a new ServiceCentre object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="contactPerson">Initial value of the ContactPerson property.</param>
         /// <param name="address">Initial value of the Address property.</param>
         /// <param name="contact1">Initial value of the Contact1 property.</param>
         /// <param name="contact2">Initial value of the Contact2 property.</param>
         /// <param name="status">Initial value of the Status property.</param>
         /// <param name="auditLog">Initial value of the AuditLog property.</param>
-        public static ServiceCentre CreateServiceCentre(global::System.Int32 id, global::System.String contactPerson, Address address, Contact contact1, Contact contact2, Status status, AuditLog auditLog)
+        public static ServiceCentre CreateServiceCentre(global::System.Int32 id, Address address, Contact contact1, Contact contact2, Status status, AuditLog auditLog)
         {
             ServiceCentre serviceCentre = new ServiceCentre();
             serviceCentre.Id = id;
-            serviceCentre.ContactPerson = contactPerson;
             serviceCentre.Address = StructuralObject.VerifyComplexObjectIsNotNull(address, "Address");
             serviceCentre.Contact1 = StructuralObject.VerifyComplexObjectIsNotNull(contact1, "Contact1");
             serviceCentre.Contact2 = StructuralObject.VerifyComplexObjectIsNotNull(contact2, "Contact2");
@@ -7849,7 +7859,6 @@ namespace Nickron.Database
         /// Create a new Stockhouse object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="contactPerson">Initial value of the ContactPerson property.</param>
         /// <param name="address">Initial value of the Address property.</param>
         /// <param name="contact1">Initial value of the Contact1 property.</param>
         /// <param name="contact2">Initial value of the Contact2 property.</param>
@@ -7857,11 +7866,10 @@ namespace Nickron.Database
         /// <param name="auditLog">Initial value of the AuditLog property.</param>
         /// <param name="zoneId">Initial value of the ZoneId property.</param>
         /// <param name="warehouseId">Initial value of the WarehouseId property.</param>
-        public static Stockhouse CreateStockhouse(global::System.Int32 id, global::System.String contactPerson, Address address, Contact contact1, Contact contact2, Status status, AuditLog auditLog, global::System.Int32 zoneId, global::System.Int32 warehouseId)
+        public static Stockhouse CreateStockhouse(global::System.Int32 id, Address address, Contact contact1, Contact contact2, Status status, AuditLog auditLog, global::System.Int32 zoneId, global::System.Int32 warehouseId)
         {
             Stockhouse stockhouse = new Stockhouse();
             stockhouse.Id = id;
-            stockhouse.ContactPerson = contactPerson;
             stockhouse.Address = StructuralObject.VerifyComplexObjectIsNotNull(address, "Address");
             stockhouse.Contact1 = StructuralObject.VerifyComplexObjectIsNotNull(contact1, "Contact1");
             stockhouse.Contact2 = StructuralObject.VerifyComplexObjectIsNotNull(contact2, "Contact2");
@@ -8456,18 +8464,16 @@ namespace Nickron.Database
         /// Create a new Warehouse object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="contactPerson">Initial value of the ContactPerson property.</param>
         /// <param name="address">Initial value of the Address property.</param>
         /// <param name="contact1">Initial value of the Contact1 property.</param>
         /// <param name="contact2">Initial value of the Contact2 property.</param>
         /// <param name="status">Initial value of the Status property.</param>
         /// <param name="auditLog">Initial value of the AuditLog property.</param>
         /// <param name="companyId">Initial value of the CompanyId property.</param>
-        public static Warehouse CreateWarehouse(global::System.Int32 id, global::System.String contactPerson, Address address, Contact contact1, Contact contact2, Status status, AuditLog auditLog, global::System.Int32 companyId)
+        public static Warehouse CreateWarehouse(global::System.Int32 id, Address address, Contact contact1, Contact contact2, Status status, AuditLog auditLog, global::System.Int32 companyId)
         {
             Warehouse warehouse = new Warehouse();
             warehouse.Id = id;
-            warehouse.ContactPerson = contactPerson;
             warehouse.Address = StructuralObject.VerifyComplexObjectIsNotNull(address, "Address");
             warehouse.Contact1 = StructuralObject.VerifyComplexObjectIsNotNull(contact1, "Contact1");
             warehouse.Contact2 = StructuralObject.VerifyComplexObjectIsNotNull(contact2, "Contact2");

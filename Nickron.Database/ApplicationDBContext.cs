@@ -15,6 +15,8 @@ namespace Nickron.Database
         public ApplicationDBContext()
         {
             Session = new UserSession();
+            Session.UserId = 1;
+
         }
 
         public ApplicationDBContext(UserSession _Session)
@@ -40,8 +42,8 @@ namespace Nickron.Database
                         if (auditProperty != null)
                         {
                             AuditLog auditLog = (AuditLog)addEntity.Entity.GetType().GetProperty("AuditLog").GetValue(addEntity.Entity, null);
-                            auditLog.ModifiedOn = System.DateTime.Now;
-                            auditLog.ModifiedBy = Session.UserId;
+                            auditLog.CreatedOn = System.DateTime.Now;
+                            auditLog.CreatedBy = Session.UserId;
                             addEntity.Entity.GetType().GetProperty("AuditLog").SetValue(addEntity.Entity, auditLog, null);
                         }
                     }
@@ -81,6 +83,7 @@ namespace Nickron.Database
                 {
                     if (deleteEntity.Entity != null)
                     {
+                        deleteEntity.ChangeState(EntityState.Modified);
                         PropertyInfo auditProperty = deleteEntity.Entity.GetType().GetProperty("AuditLog");
                         if (auditProperty != null)
                         {
@@ -92,10 +95,9 @@ namespace Nickron.Database
                         PropertyInfo statusProperty = deleteEntity.Entity.GetType().GetProperty("Status");
                         if (statusProperty != null)
                         {
-                            Status status = (Status)deleteEntity.Entity.GetType().GetProperty("Status").GetValue(deleteEntity, null);
+                            Status status = (Status)deleteEntity.Entity.GetType().GetProperty("Status").GetValue(deleteEntity.Entity, null);
                             status.IsDeleted = true;
                         }
-                        deleteEntity.ChangeState(EntityState.Modified);
                     }
                 }
             }

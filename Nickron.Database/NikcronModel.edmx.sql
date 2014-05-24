@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/21/2014 21:15:48
--- Generated from EDMX file: D:\Accomplishments\Nikcron\Nickron.Database\NikcronModel.edmx
+-- Date Created: 05/24/2014 17:18:03
+-- Generated from EDMX file: D:\Accomplishments\DevProject01\Nickron.Database\NikcronModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -316,7 +316,7 @@ GO
 -- Creating table 'Offices'
 CREATE TABLE [dbo].[Offices] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [ContactPerson] nvarchar(250)  NOT NULL,
+    [Name] nvarchar(250)  NULL,
     [Address_Address1] nvarchar(250)  NULL,
     [Address_Address2] nvarchar(250)  NULL,
     [Address_City] nvarchar(250)  NULL,
@@ -340,7 +340,8 @@ CREATE TABLE [dbo].[Offices] (
     [AuditLog_CreatedBy] int  NOT NULL,
     [AuditLog_CreatedOn] datetime  NOT NULL,
     [AuditLog_ModifiedBy] int  NULL,
-    [AuditLog_ModifiedOn] datetime  NULL
+    [AuditLog_ModifiedOn] datetime  NULL,
+    [ContactPerson] nvarchar(250)  NULL
 );
 GO
 

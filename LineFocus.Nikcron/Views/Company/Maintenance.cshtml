@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "Maintenance";
+}
+
+@model Nickron.Database.Company
+
+@using (Html.BeginForm("Maintenance", "Company", FormMethod.Post, new { @class = "form-horizontal", onsubmit = "return ValidateForm();" }))
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Add New Company</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="CompanyName">Company Name</label>
+            <div class="col-md-6">
+                <input id="CompanyName" name="CompanyName" type="text" placeholder=""  maxlength="250" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="ContactPerson">Contact Person</label>
+            <div class="col-md-6">
+                <input id="ContactPerson" name="ContactPerson" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Address1">Address Line 1</label>
+            <div class="col-md-8">
+                <input id="Address1" name="Address1" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Address2">Address Line 2</label>
+            <div class="col-md-8">
+                <input id="Address2" name="Address2" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="City">City</label>
+            <div class="col-md-6">
+                <input id="City" name="City" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Zip">Zip</label>
+            <div class="col-md-4">
+                <input id="Zip" name="Zip" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="btnSubmit"></label>
+            <div class="col-md-4">
+                <button id="btnSubmit" name="btnSubmit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+
+        <input type="hidden" name="CompanyId" id="CompanyId" value="@ViewBag.CompanyId" />
+    </fieldset>
+}
+
+<script type="text/javascript">
+    function ValidateForm() {
+        RequiredTextbox("CompanyName","Enter Company Name");
+        return AlertError();
+    }
+
+    $(document).ready(function () {
+        if("@ViewBag.CompanyId" != "0")
+        {
+            $('#CompanyName').val("@Model.Name");
+            $('#ContactPerson').val("@Model.ContactPerson");
+            $('#Address1').val("@Model.Address.Address1");
+            $('#Address2').val("@Model.Address.Address2");
+            $('#City').val("@Model.Address.City");
+            $('#Zip').val("@Model.Address.Zip");
+
+        }
+    })
+</script>

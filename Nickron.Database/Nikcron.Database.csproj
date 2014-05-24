@@ -58,13 +58,11 @@
     <Compile Include="UserSession.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <EntityDeploy Include="NikcronModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>NikcronModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
     <None Include="NikcronModel.edmx.diagram">
       <DependentUpon>NikcronModel.edmx</DependentUpon>
     </None>

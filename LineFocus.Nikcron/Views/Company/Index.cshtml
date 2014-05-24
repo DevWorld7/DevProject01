@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Companies List";
+}
+
+@model IEnumerable<Nickron.Database.Company>
+@{
+    @Html.ActionLink("Home/Back", "Index", "Home", new { style="float: left;"})
+    @Html.ActionLink("Add Company", "Maintenance", "Company", null, new { style = "float: right;" })
+    <table class="footable">
+        <tr>
+            <th>Name</th>
+            <th>Contact Person</th>
+            <th>Address</th>
+            <th>Contact</th>
+        </tr>
+        @{
+            foreach (Nickron.Database.Company item in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(item.Name, "Maintenance", new { CompanyId = item.Id })</td>
+                    <td>@item.ContactPerson</td>
+                    <td>@string.Format("{0}, {1}",item.Address.Address1,item.Address.Address2) <br/> @string.Format("{0} - {1}",item.Address.City, item.Address.Zip)</td>
+                    <td>@item.Contact1.Mobile <br/> @item.Contact1.Phone <br /> @item.Contact1.Email</td>
+                </tr>
+            }
+        }
+    </table>
+}
+
+<script type="text/javascript">
+    $(function () {
+        $('.footable').footable();
+    });
+</script>
+
+   
