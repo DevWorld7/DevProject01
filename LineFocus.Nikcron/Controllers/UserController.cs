@@ -15,7 +15,7 @@ namespace LineFocus.Nikcron.Controllers
 {
     [Authorize]
     [InitializeSimpleMembership]
-    public class AccountController : Controller
+    public class UserController : Controller
     {
         //
         // GET: /Account/Login
