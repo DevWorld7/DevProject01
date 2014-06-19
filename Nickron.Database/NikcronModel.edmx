@@ -28,14 +28,13 @@
     <EntitySet Name="Cities" EntityType="NikcronModel.Store.Cities" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Offices_BusinessOffice" EntityType="NikcronModel.Store.Offices_BusinessOffice" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Offices_Stockhouse" EntityType="NikcronModel.Store.Offices_Stockhouse" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Offices_Warehouse" EntityType="NikcronModel.Store.Offices_Warehouse" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Offices_Distributor" EntityType="NikcronModel.Store.Offices_Distributor" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Offices_Dealers" EntityType="NikcronModel.Store.Offices_Dealers" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Offices_Retailer" EntityType="NikcronModel.Store.Offices_Retailer" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Offices_Company" EntityType="NikcronModel.Store.Offices_Company" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="People_User" EntityType="NikcronModel.Store.People_User" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="People_Customer" EntityType="NikcronModel.Store.People_Customer" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Offices_ServiceCentre" EntityType="NikcronModel.Store.Offices_ServiceCentre" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Offices_Company" EntityType="NikcronModel.Store.Offices_Company" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductModels_Mobile" EntityType="NikcronModel.Store.ProductModels_Mobile" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductModels_Tablet" EntityType="NikcronModel.Store.ProductModels_Tablet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductModels_Laptop" EntityType="NikcronModel.Store.ProductModels_Laptop" store:Type="Tables" Schema="dbo" />
@@ -56,10 +55,6 @@
     <AssociationSet Name="StockhouseZone" Association="NikcronModel.Store.StockhouseZone">
       <End Role="Stockhouse" EntitySet="Offices_Stockhouse" />
       <End Role="Zone" EntitySet="Zones" />
-    </AssociationSet>
-    <AssociationSet Name="ProductItemWarehouse" Association="NikcronModel.Store.ProductItemWarehouse">
-      <End Role="ProductItem" EntitySet="ProductItems" />
-      <End Role="Warehouse" EntitySet="Offices_Warehouse" />
     </AssociationSet>
     <AssociationSet Name="ProductItemStockhouse" Association="NikcronModel.Store.ProductItemStockhouse">
       <End Role="ProductItem" EntitySet="ProductItems" />
@@ -84,14 +79,6 @@
     <AssociationSet Name="FK_ProductModelProductWarranty_ProductWarranty" Association="NikcronModel.Store.FK_ProductModelProductWarranty_ProductWarranty">
       <End Role="ProductWarranty" EntitySet="ProductWarranties" />
       <End Role="ProductModelProductWarranty" EntitySet="ProductModelProductWarranty" />
-    </AssociationSet>
-    <AssociationSet Name="CompanyWarehouse" Association="NikcronModel.Store.CompanyWarehouse">
-      <End Role="Company" EntitySet="Offices_Company" />
-      <End Role="Warehouse" EntitySet="Offices_Warehouse" />
-    </AssociationSet>
-    <AssociationSet Name="WarehouseStockhouse" Association="NikcronModel.Store.WarehouseStockhouse">
-      <End Role="Warehouse" EntitySet="Offices_Warehouse" />
-      <End Role="Stockhouse" EntitySet="Offices_Stockhouse" />
     </AssociationSet>
     <AssociationSet Name="DealersRetailer" Association="NikcronModel.Store.DealersRetailer">
       <End Role="Dealers" EntitySet="Offices_Dealers" />
@@ -185,6 +172,10 @@
       <End Role="State" EntitySet="States" />
       <End Role="City" EntitySet="Cities" />
     </AssociationSet>
+    <AssociationSet Name="CompanyStockhouse" Association="NikcronModel.Store.CompanyStockhouse">
+      <End Role="Company" EntitySet="Offices_Company" />
+      <End Role="Stockhouse" EntitySet="Offices_Stockhouse" />
+    </AssociationSet>
     <AssociationSet Name="FK_BusinessOffice_inherits_Office" Association="NikcronModel.Store.FK_BusinessOffice_inherits_Office">
       <End Role="Office" EntitySet="Offices" />
       <End Role="BusinessOffice" EntitySet="Offices_BusinessOffice" />
@@ -192,10 +183,6 @@
     <AssociationSet Name="FK_Stockhouse_inherits_BusinessOffice" Association="NikcronModel.Store.FK_Stockhouse_inherits_BusinessOffice">
       <End Role="BusinessOffice" EntitySet="Offices_BusinessOffice" />
       <End Role="Stockhouse" EntitySet="Offices_Stockhouse" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Warehouse_inherits_Office" Association="NikcronModel.Store.FK_Warehouse_inherits_Office">
-      <End Role="Office" EntitySet="Offices" />
-      <End Role="Warehouse" EntitySet="Offices_Warehouse" />
     </AssociationSet>
     <AssociationSet Name="FK_Distributor_inherits_BusinessOffice" Association="NikcronModel.Store.FK_Distributor_inherits_BusinessOffice">
       <End Role="BusinessOffice" EntitySet="Offices_BusinessOffice" />
@@ -209,10 +196,6 @@
       <End Role="BusinessOffice" EntitySet="Offices_BusinessOffice" />
       <End Role="Retailer" EntitySet="Offices_Retailer" />
     </AssociationSet>
-    <AssociationSet Name="FK_Company_inherits_Office" Association="NikcronModel.Store.FK_Company_inherits_Office">
-      <End Role="Office" EntitySet="Offices" />
-      <End Role="Company" EntitySet="Offices_Company" />
-    </AssociationSet>
     <AssociationSet Name="FK_User_inherits_Person" Association="NikcronModel.Store.FK_User_inherits_Person">
       <End Role="Person" EntitySet="People" />
       <End Role="User" EntitySet="People_User" />
@@ -224,6 +207,10 @@
     <AssociationSet Name="FK_ServiceCentre_inherits_Office" Association="NikcronModel.Store.FK_ServiceCentre_inherits_Office">
       <End Role="Office" EntitySet="Offices" />
       <End Role="ServiceCentre" EntitySet="Offices_ServiceCentre" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Company_inherits_Office" Association="NikcronModel.Store.FK_Company_inherits_Office">
+      <End Role="Office" EntitySet="Offices" />
+      <End Role="Company" EntitySet="Offices_Company" />
     </AssociationSet>
     <AssociationSet Name="FK_Mobile_inherits_ProductModel" Association="NikcronModel.Store.FK_Mobile_inherits_ProductModel">
       <End Role="ProductModel" EntitySet="ProductModels" />
@@ -618,13 +605,6 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="ZoneId" Type="int" Nullable="false" />
-    <Property Name="WarehouseId" Type="int" Nullable="false" />
-    <Property Name="Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Offices_Warehouse">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
     <Property Name="CompanyId" Type="int" Nullable="false" />
     <Property Name="Id" Type="int" Nullable="false" />
   </EntityType>
@@ -649,12 +629,6 @@
     <Property Name="DealersId" Type="int" Nullable="false" />
     <Property Name="Id" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="Offices_Company">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="People_User">
     <Key>
       <PropertyRef Name="Id" />
@@ -670,6 +644,12 @@
     <Property Name="Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Offices_ServiceCentre">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Offices_Company">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -811,18 +791,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="ProductItemWarehouse">
-    <End Role="ProductItem" Type="NikcronModel.Store.ProductItems" Multiplicity="*" />
-    <End Role="Warehouse" Type="NikcronModel.Store.Offices_Warehouse" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Warehouse">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ProductItem">
-        <PropertyRef Name="WarehouseId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="ProductItemStockhouse">
     <End Role="ProductItem" Type="NikcronModel.Store.ProductItems" Multiplicity="*" />
     <End Role="Stockhouse" Type="NikcronModel.Store.Offices_Stockhouse" Multiplicity="0..1" />
@@ -868,30 +836,6 @@
       </Principal>
       <Dependent Role="ProductItem">
         <PropertyRef Name="RetailerId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="CompanyWarehouse">
-    <End Role="Company" Type="NikcronModel.Store.Offices_Company" Multiplicity="1" />
-    <End Role="Warehouse" Type="NikcronModel.Store.Offices_Warehouse" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Company">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Warehouse">
-        <PropertyRef Name="CompanyId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="WarehouseStockhouse">
-    <End Role="Warehouse" Type="NikcronModel.Store.Offices_Warehouse" Multiplicity="1" />
-    <End Role="Stockhouse" Type="NikcronModel.Store.Offices_Stockhouse" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Warehouse">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Stockhouse">
-        <PropertyRef Name="WarehouseId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1147,6 +1091,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="CompanyStockhouse">
+    <End Role="Company" Type="NikcronModel.Store.Offices_Company" Multiplicity="1" />
+    <End Role="Stockhouse" Type="NikcronModel.Store.Offices_Stockhouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Stockhouse">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ProductModelProductWarranty_ProductModel">
     <End Role="ProductModel" Type="NikcronModel.Store.ProductModels" Multiplicity="1" />
     <End Role="ProductModelProductWarranty" Type="NikcronModel.Store.ProductModelProductWarranty" Multiplicity="*" />
@@ -1223,20 +1179,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Warehouse_inherits_Office">
-    <End Role="Office" Type="NikcronModel.Store.Offices" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="Warehouse" Type="NikcronModel.Store.Offices_Warehouse" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Office">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Warehouse">
-        <PropertyRef Name="Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Distributor_inherits_BusinessOffice">
     <End Role="BusinessOffice" Type="NikcronModel.Store.Offices_BusinessOffice" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -1279,20 +1221,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Company_inherits_Office">
-    <End Role="Office" Type="NikcronModel.Store.Offices" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="Company" Type="NikcronModel.Store.Offices_Company" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Office">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Company">
-        <PropertyRef Name="Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_User_inherits_Person">
     <End Role="Person" Type="NikcronModel.Store.People" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -1331,6 +1259,20 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="ServiceCentre">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Company_inherits_Office">
+    <End Role="Office" Type="NikcronModel.Store.Offices" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Company" Type="NikcronModel.Store.Offices_Company" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Office">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Company">
         <PropertyRef Name="Id" />
       </Dependent>
     </ReferentialConstraint>
@@ -1406,10 +1348,6 @@
             <End Role="Stockhouse" EntitySet="Offices" />
             <End Role="Zone" EntitySet="Zones" />
           </AssociationSet>
-          <AssociationSet Name="ProductItemWarehouse" Association="NikcronModel.ProductItemWarehouse">
-            <End Role="ProductItem" EntitySet="ProductItems" />
-            <End Role="Warehouse" EntitySet="Offices" />
-          </AssociationSet>
           <AssociationSet Name="ProductItemStockhouse" Association="NikcronModel.ProductItemStockhouse">
             <End Role="ProductItem" EntitySet="ProductItems" />
             <End Role="Stockhouse" EntitySet="Offices" />
@@ -1429,14 +1367,6 @@
           <AssociationSet Name="ProductModelProductWarranty" Association="NikcronModel.ProductModelProductWarranty">
             <End Role="ProductModel" EntitySet="ProductModels" />
             <End Role="ProductWarranty" EntitySet="ProductWarranties" />
-          </AssociationSet>
-          <AssociationSet Name="CompanyWarehouse" Association="NikcronModel.CompanyWarehouse">
-            <End Role="Company" EntitySet="Offices" />
-            <End Role="Warehouse" EntitySet="Offices" />
-          </AssociationSet>
-          <AssociationSet Name="WarehouseStockhouse" Association="NikcronModel.WarehouseStockhouse">
-            <End Role="Warehouse" EntitySet="Offices" />
-            <End Role="Stockhouse" EntitySet="Offices" />
           </AssociationSet>
           <AssociationSet Name="DealersRetailer" Association="NikcronModel.DealersRetailer">
             <End Role="Dealers" EntitySet="Offices" />
@@ -1538,6 +1468,10 @@
             <End Role="State" EntitySet="States" />
             <End Role="City" EntitySet="Cities" />
           </AssociationSet>
+          <AssociationSet Name="CompanyStockhouse" Association="NikcronModel.CompanyStockhouse">
+            <End Role="Company" EntitySet="Offices" />
+            <End Role="Stockhouse" EntitySet="Offices" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="AuditLog" >
           <Property Type="Int32" Name="CreatedBy" Nullable="false" />
@@ -1595,13 +1529,8 @@
           <Property Name="AuditLog" Type="NikcronModel.AuditLog" Nullable="false" />
           <Property Name="ContactPerson" Type="String" Nullable="true" MaxLength="250" />
         </EntityType>
-        <EntityType Name="Warehouse" BaseType="NikcronModel.Office" >
-          <NavigationProperty Name="Company" Relationship="NikcronModel.CompanyWarehouse" FromRole="Warehouse" ToRole="Company" />
-          <Property Type="Int32" Name="CompanyId" Nullable="false" />
-          <NavigationProperty Name="Stockhouses" Relationship="NikcronModel.WarehouseStockhouse" FromRole="Warehouse" ToRole="Stockhouse" />
-        </EntityType>
         <EntityType Name="Company" BaseType="NikcronModel.Office" >
-          <NavigationProperty Name="Warehouses" Relationship="NikcronModel.CompanyWarehouse" FromRole="Company" ToRole="Warehouse" />
+          <NavigationProperty Name="Stockhouses" Relationship="NikcronModel.CompanyStockhouse" FromRole="Company" ToRole="Stockhouse" />
         </EntityType>
         <EntityType Name="Distributor" BaseType="NikcronModel.BusinessOffice" >
           <NavigationProperty Name="Stockhouse" Relationship="NikcronModel.StockhouseDistributor" FromRole="Distributor" ToRole="Stockhouse" />
@@ -1647,9 +1576,9 @@
         <EntityType Name="Stockhouse" BaseType="NikcronModel.BusinessOffice" >
           <NavigationProperty Name="Zone" Relationship="NikcronModel.StockhouseZone" FromRole="Stockhouse" ToRole="Zone" />
           <Property Type="Int32" Name="ZoneId" Nullable="false" />
-          <NavigationProperty Name="Warehouse" Relationship="NikcronModel.WarehouseStockhouse" FromRole="Stockhouse" ToRole="Warehouse" />
-          <Property Type="Int32" Name="WarehouseId" Nullable="false" />
           <NavigationProperty Name="Distributors" Relationship="NikcronModel.StockhouseDistributor" FromRole="Stockhouse" ToRole="Distributor" />
+          <NavigationProperty Name="Company" Relationship="NikcronModel.CompanyStockhouse" FromRole="Stockhouse" ToRole="Company" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Dealers" BaseType="NikcronModel.BusinessOffice" >
           <NavigationProperty Name="Retailers" Relationship="NikcronModel.DealersRetailer" FromRole="Dealers" ToRole="Retailer" />
@@ -1753,7 +1682,6 @@
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="ProductModel" Relationship="NikcronModel.ProductItemProductModel" FromRole="ProductItem" ToRole="ProductModel" />
           <Property Type="Int32" Name="ProductModelId" Nullable="false" />
-          <NavigationProperty Name="Warehouse" Relationship="NikcronModel.ProductItemWarehouse" FromRole="ProductItem" ToRole="Warehouse" />
           <Property Type="Int32" Name="WarehouseId" Nullable="true" />
           <NavigationProperty Name="Stockhouse" Relationship="NikcronModel.ProductItemStockhouse" FromRole="ProductItem" ToRole="Stockhouse" />
           <Property Type="Int32" Name="StockhouseId" Nullable="true" />
@@ -1793,18 +1721,6 @@
             </Principal>
             <Dependent Role="Stockhouse">
               <PropertyRef Name="ZoneId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="ProductItemWarehouse">
-          <End Type="NikcronModel.ProductItem" Role="ProductItem" Multiplicity="*" />
-          <End Type="NikcronModel.Warehouse" Role="Warehouse" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Warehouse">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ProductItem">
-              <PropertyRef Name="WarehouseId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1865,30 +1781,6 @@
         <Association Name="ProductModelProductWarranty">
           <End Type="NikcronModel.ProductModel" Role="ProductModel" Multiplicity="*" />
           <End Type="NikcronModel.ProductWarranty" Role="ProductWarranty" Multiplicity="*" />
-        </Association>
-        <Association Name="CompanyWarehouse">
-          <End Type="NikcronModel.Company" Role="Company" Multiplicity="1" />
-          <End Type="NikcronModel.Warehouse" Role="Warehouse" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Company">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Warehouse">
-              <PropertyRef Name="CompanyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="WarehouseStockhouse">
-          <End Type="NikcronModel.Warehouse" Role="Warehouse" Multiplicity="1" />
-          <End Type="NikcronModel.Stockhouse" Role="Stockhouse" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Warehouse">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Stockhouse">
-              <PropertyRef Name="WarehouseId" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         <Association Name="DealersRetailer">
           <End Type="NikcronModel.Dealers" Role="Dealers" Multiplicity="1" />
@@ -2327,6 +2219,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="CompanyStockhouse">
+          <End Type="NikcronModel.Company" Role="Company" Multiplicity="1" />
+          <End Type="NikcronModel.Stockhouse" Role="Stockhouse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Stockhouse">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2468,12 +2372,6 @@
         <MappingFragment StoreEntitySet="Offices_Stockhouse">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
-          <ScalarProperty Name="WarehouseId" ColumnName="WarehouseId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Warehouse)">
-        <MappingFragment StoreEntitySet="Offices_Warehouse">
-          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -2495,13 +2393,13 @@
           <ScalarProperty Name="DealersId" ColumnName="DealersId" />
         </MappingFragment>
       </EntityTypeMapping>
-      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Company)">
-        <MappingFragment StoreEntitySet="Offices_Company">
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.ServiceCentre)">
+        <MappingFragment StoreEntitySet="Offices_ServiceCentre">
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
-      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.ServiceCentre)">
-        <MappingFragment StoreEntitySet="Offices_ServiceCentre">
+      <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Company)">
+        <MappingFragment StoreEntitySet="Offices_Company">
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

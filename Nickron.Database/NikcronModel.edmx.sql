@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/24/2014 17:18:03
+-- Date Created: 06/19/2014 23:32:01
 -- Generated from EDMX file: D:\Accomplishments\DevProject01\Nickron.Database\NikcronModel.edmx
 -- --------------------------------------------------
 
@@ -27,9 +27,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_StockhouseZone]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Offices_Stockhouse] DROP CONSTRAINT [FK_StockhouseZone];
 GO
-IF OBJECT_ID(N'[dbo].[FK_ProductItemWarehouse]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ProductItems] DROP CONSTRAINT [FK_ProductItemWarehouse];
-GO
 IF OBJECT_ID(N'[dbo].[FK_ProductItemStockhouse]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ProductItems] DROP CONSTRAINT [FK_ProductItemStockhouse];
 GO
@@ -47,12 +44,6 @@ IF OBJECT_ID(N'[dbo].[FK_ProductModelProductWarranty_ProductModel]', 'F') IS NOT
 GO
 IF OBJECT_ID(N'[dbo].[FK_ProductModelProductWarranty_ProductWarranty]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ProductModelProductWarranty] DROP CONSTRAINT [FK_ProductModelProductWarranty_ProductWarranty];
-GO
-IF OBJECT_ID(N'[dbo].[FK_CompanyWarehouse]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Offices_Warehouse] DROP CONSTRAINT [FK_CompanyWarehouse];
-GO
-IF OBJECT_ID(N'[dbo].[FK_WarehouseStockhouse]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Offices_Stockhouse] DROP CONSTRAINT [FK_WarehouseStockhouse];
 GO
 IF OBJECT_ID(N'[dbo].[FK_DealersRetailer]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Offices_Retailer] DROP CONSTRAINT [FK_DealersRetailer];
@@ -128,9 +119,6 @@ IF OBJECT_ID(N'[dbo].[FK_BusinessOffice_inherits_Office]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_Stockhouse_inherits_BusinessOffice]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Offices_Stockhouse] DROP CONSTRAINT [FK_Stockhouse_inherits_BusinessOffice];
-GO
-IF OBJECT_ID(N'[dbo].[FK_Warehouse_inherits_Office]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Offices_Warehouse] DROP CONSTRAINT [FK_Warehouse_inherits_Office];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Distributor_inherits_BusinessOffice]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Offices_Distributor] DROP CONSTRAINT [FK_Distributor_inherits_BusinessOffice];
@@ -232,9 +220,6 @@ IF OBJECT_ID(N'[dbo].[Offices_BusinessOffice]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Offices_Stockhouse]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Offices_Stockhouse];
-GO
-IF OBJECT_ID(N'[dbo].[Offices_Warehouse]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Offices_Warehouse];
 GO
 IF OBJECT_ID(N'[dbo].[Offices_Distributor]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Offices_Distributor];
@@ -655,13 +640,6 @@ GO
 -- Creating table 'Offices_Stockhouse'
 CREATE TABLE [dbo].[Offices_Stockhouse] (
     [ZoneId] int  NOT NULL,
-    [WarehouseId] int  NOT NULL,
-    [Id] int  NOT NULL
-);
-GO
-
--- Creating table 'Offices_Warehouse'
-CREATE TABLE [dbo].[Offices_Warehouse] (
     [CompanyId] int  NOT NULL,
     [Id] int  NOT NULL
 );
@@ -688,12 +666,6 @@ CREATE TABLE [dbo].[Offices_Retailer] (
 );
 GO
 
--- Creating table 'Offices_Company'
-CREATE TABLE [dbo].[Offices_Company] (
-    [Id] int  NOT NULL
-);
-GO
-
 -- Creating table 'People_User'
 CREATE TABLE [dbo].[People_User] (
     [RoleId] smallint  NOT NULL,
@@ -710,6 +682,12 @@ GO
 
 -- Creating table 'Offices_ServiceCentre'
 CREATE TABLE [dbo].[Offices_ServiceCentre] (
+    [Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'Offices_Company'
+CREATE TABLE [dbo].[Offices_Company] (
     [Id] int  NOT NULL
 );
 GO
@@ -936,12 +914,6 @@ ADD CONSTRAINT [PK_Offices_Stockhouse]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Offices_Warehouse'
-ALTER TABLE [dbo].[Offices_Warehouse]
-ADD CONSTRAINT [PK_Offices_Warehouse]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
 -- Creating primary key on [Id] in table 'Offices_Distributor'
 ALTER TABLE [dbo].[Offices_Distributor]
 ADD CONSTRAINT [PK_Offices_Distributor]
@@ -960,12 +932,6 @@ ADD CONSTRAINT [PK_Offices_Retailer]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Offices_Company'
-ALTER TABLE [dbo].[Offices_Company]
-ADD CONSTRAINT [PK_Offices_Company]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
 -- Creating primary key on [Id] in table 'People_User'
 ALTER TABLE [dbo].[People_User]
 ADD CONSTRAINT [PK_People_User]
@@ -981,6 +947,12 @@ GO
 -- Creating primary key on [Id] in table 'Offices_ServiceCentre'
 ALTER TABLE [dbo].[Offices_ServiceCentre]
 ADD CONSTRAINT [PK_Offices_ServiceCentre]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Offices_Company'
+ALTER TABLE [dbo].[Offices_Company]
+ADD CONSTRAINT [PK_Offices_Company]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -1074,20 +1046,6 @@ ON [dbo].[Offices_Stockhouse]
     ([ZoneId]);
 GO
 
--- Creating foreign key on [WarehouseId] in table 'ProductItems'
-ALTER TABLE [dbo].[ProductItems]
-ADD CONSTRAINT [FK_ProductItemWarehouse]
-    FOREIGN KEY ([WarehouseId])
-    REFERENCES [dbo].[Offices_Warehouse]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ProductItemWarehouse'
-CREATE INDEX [IX_FK_ProductItemWarehouse]
-ON [dbo].[ProductItems]
-    ([WarehouseId]);
-GO
-
 -- Creating foreign key on [StockhouseId] in table 'ProductItems'
 ALTER TABLE [dbo].[ProductItems]
 ADD CONSTRAINT [FK_ProductItemStockhouse]
@@ -1165,34 +1123,6 @@ ADD CONSTRAINT [FK_ProductModelProductWarranty_ProductWarranty]
 CREATE INDEX [IX_FK_ProductModelProductWarranty_ProductWarranty]
 ON [dbo].[ProductModelProductWarranty]
     ([ProductWarranties_Id]);
-GO
-
--- Creating foreign key on [CompanyId] in table 'Offices_Warehouse'
-ALTER TABLE [dbo].[Offices_Warehouse]
-ADD CONSTRAINT [FK_CompanyWarehouse]
-    FOREIGN KEY ([CompanyId])
-    REFERENCES [dbo].[Offices_Company]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_CompanyWarehouse'
-CREATE INDEX [IX_FK_CompanyWarehouse]
-ON [dbo].[Offices_Warehouse]
-    ([CompanyId]);
-GO
-
--- Creating foreign key on [WarehouseId] in table 'Offices_Stockhouse'
-ALTER TABLE [dbo].[Offices_Stockhouse]
-ADD CONSTRAINT [FK_WarehouseStockhouse]
-    FOREIGN KEY ([WarehouseId])
-    REFERENCES [dbo].[Offices_Warehouse]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_WarehouseStockhouse'
-CREATE INDEX [IX_FK_WarehouseStockhouse]
-ON [dbo].[Offices_Stockhouse]
-    ([WarehouseId]);
 GO
 
 -- Creating foreign key on [DealersId] in table 'Offices_Retailer'
@@ -1512,6 +1442,20 @@ ON [dbo].[Cities]
     ([StateId]);
 GO
 
+-- Creating foreign key on [CompanyId] in table 'Offices_Stockhouse'
+ALTER TABLE [dbo].[Offices_Stockhouse]
+ADD CONSTRAINT [FK_CompanyStockhouse]
+    FOREIGN KEY ([CompanyId])
+    REFERENCES [dbo].[Offices_Company]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CompanyStockhouse'
+CREATE INDEX [IX_FK_CompanyStockhouse]
+ON [dbo].[Offices_Stockhouse]
+    ([CompanyId]);
+GO
+
 -- Creating foreign key on [Id] in table 'Offices_BusinessOffice'
 ALTER TABLE [dbo].[Offices_BusinessOffice]
 ADD CONSTRAINT [FK_BusinessOffice_inherits_Office]
@@ -1526,15 +1470,6 @@ ALTER TABLE [dbo].[Offices_Stockhouse]
 ADD CONSTRAINT [FK_Stockhouse_inherits_BusinessOffice]
     FOREIGN KEY ([Id])
     REFERENCES [dbo].[Offices_BusinessOffice]
-        ([Id])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
-GO
-
--- Creating foreign key on [Id] in table 'Offices_Warehouse'
-ALTER TABLE [dbo].[Offices_Warehouse]
-ADD CONSTRAINT [FK_Warehouse_inherits_Office]
-    FOREIGN KEY ([Id])
-    REFERENCES [dbo].[Offices]
         ([Id])
     ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
@@ -1566,15 +1501,6 @@ ADD CONSTRAINT [FK_Retailer_inherits_BusinessOffice]
     ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
--- Creating foreign key on [Id] in table 'Offices_Company'
-ALTER TABLE [dbo].[Offices_Company]
-ADD CONSTRAINT [FK_Company_inherits_Office]
-    FOREIGN KEY ([Id])
-    REFERENCES [dbo].[Offices]
-        ([Id])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
-GO
-
 -- Creating foreign key on [Id] in table 'People_User'
 ALTER TABLE [dbo].[People_User]
 ADD CONSTRAINT [FK_User_inherits_Person]
@@ -1596,6 +1522,15 @@ GO
 -- Creating foreign key on [Id] in table 'Offices_ServiceCentre'
 ALTER TABLE [dbo].[Offices_ServiceCentre]
 ADD CONSTRAINT [FK_ServiceCentre_inherits_Office]
+    FOREIGN KEY ([Id])
+    REFERENCES [dbo].[Offices]
+        ([Id])
+    ON DELETE CASCADE ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [Id] in table 'Offices_Company'
+ALTER TABLE [dbo].[Offices_Company]
+ADD CONSTRAINT [FK_Company_inherits_Office]
     FOREIGN KEY ([Id])
     REFERENCES [dbo].[Offices]
         ([Id])

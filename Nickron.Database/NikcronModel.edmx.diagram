@@ -7,8 +7,6 @@
       <Diagram DiagramId="c3846c01fb164b4a8946ec2085f9a002" Name="Diagram1" DisplayType="true" >
         <EntityTypeShape EntityType="NikcronModel.Person" Width="2.25" PointX="8.875" PointY="0.5" FillColor="192, 64, 0" />
         <EntityTypeShape EntityType="NikcronModel.Office" Width="1.625" PointX="2.5" PointY="0.5" />
-        <EntityTypeShape EntityType="NikcronModel.Warehouse" Width="1.5" PointX="5.125" PointY="2.125" FillColor="0, 122, 204" />
-        <InheritanceConnector EntityType="NikcronModel.Warehouse" />
         <EntityTypeShape EntityType="NikcronModel.Company" Width="1.5" PointX="5.125" PointY="0.5" />
         <InheritanceConnector EntityType="NikcronModel.Company" />
         <EntityTypeShape EntityType="NikcronModel.Distributor" Width="1.5" PointX="6" PointY="6.75" />
@@ -32,14 +30,11 @@
         <EntityTypeShape EntityType="NikcronModel.ProductItem" Width="1.875" PointX="0.5" PointY="16.5" FillColor="Green" />
         <AssociationConnector Association="NikcronModel.ProductItemProductModel" />
         <AssociationConnector Association="NikcronModel.StockhouseZone" />
-        <AssociationConnector Association="NikcronModel.ProductItemWarehouse" />
         <AssociationConnector Association="NikcronModel.ProductItemStockhouse" />
         <AssociationConnector Association="NikcronModel.ProductItemDistributor" />
         <AssociationConnector Association="NikcronModel.DealersProductItem" />
         <AssociationConnector Association="NikcronModel.ProductItemRetailer" />
         <AssociationConnector Association="NikcronModel.ProductModelProductWarranty" />
-        <AssociationConnector Association="NikcronModel.CompanyWarehouse" />
-        <AssociationConnector Association="NikcronModel.WarehouseStockhouse" />
         <AssociationConnector Association="NikcronModel.DealersRetailer" />
         <AssociationConnector Association="NikcronModel.StockhouseDistributor" />
         <AssociationConnector Association="NikcronModel.DistributorDealers" />
@@ -88,6 +83,7 @@
         <AssociationConnector Association="NikcronModel.StateCountry" />
         <EntityTypeShape EntityType="NikcronModel.City" Width="1.625" PointX="13.5" PointY="8" FillColor="DarkGoldenrod" />
         <AssociationConnector Association="NikcronModel.StateCity" />
+        <AssociationConnector Association="NikcronModel.CompanyStockhouse" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

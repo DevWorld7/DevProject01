@@ -23,14 +23,11 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("NikcronModel", "ProductModelProductType", "ProductModel", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.ProductModel), "ProductType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.ProductType), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "ProductItemProductModel", "ProductItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.ProductItem), "ProductModel", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.ProductModel), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "StockhouseZone", "Stockhouse", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.Stockhouse), "Zone", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.Zone), true)]
-[assembly: EdmRelationshipAttribute("NikcronModel", "ProductItemWarehouse", "ProductItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.ProductItem), "Warehouse", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nickron.Database.Warehouse), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "ProductItemStockhouse", "ProductItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.ProductItem), "Stockhouse", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nickron.Database.Stockhouse), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "ProductItemDistributor", "ProductItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.ProductItem), "Distributor", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nickron.Database.Distributor), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "DealersProductItem", "ProductItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.ProductItem), "Dealers", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nickron.Database.Dealers), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "ProductItemRetailer", "ProductItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.ProductItem), "Retailer", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nickron.Database.Retailer), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "ProductModelProductWarranty", "ProductModel", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.ProductModel), "ProductWarranty", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.ProductWarranty))]
-[assembly: EdmRelationshipAttribute("NikcronModel", "CompanyWarehouse", "Company", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.Company), "Warehouse", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.Warehouse), true)]
-[assembly: EdmRelationshipAttribute("NikcronModel", "WarehouseStockhouse", "Warehouse", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.Warehouse), "Stockhouse", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.Stockhouse), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "DealersRetailer", "Dealers", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.Dealers), "Retailer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.Retailer), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "StockhouseDistributor", "Stockhouse", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.Stockhouse), "Distributor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.Distributor), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "DistributorDealers", "Distributor", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.Distributor), "Dealers", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.Dealers), true)]
@@ -53,6 +50,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("NikcronModel", "ServiceServiceCentre", "Service", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.Service), "ServiceCentre", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.ServiceCentre), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "StateCountry", "State", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.State), "Country", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.Country), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "StateCity", "State", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.State), "City", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.City), true)]
+[assembly: EdmRelationshipAttribute("NikcronModel", "CompanyStockhouse", "Company", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.Company), "Stockhouse", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.Stockhouse), true)]
 
 #endregion
 
@@ -1461,18 +1459,18 @@ namespace Nickron.Database
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("NikcronModel", "CompanyWarehouse", "Warehouse")]
-        public EntityCollection<Warehouse> Warehouses
+        [EdmRelationshipNavigationPropertyAttribute("NikcronModel", "CompanyStockhouse", "Stockhouse")]
+        public EntityCollection<Stockhouse> Stockhouses
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Warehouse>("NikcronModel.CompanyWarehouse", "Warehouse");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Stockhouse>("NikcronModel.CompanyStockhouse", "Stockhouse");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Warehouse>("NikcronModel.CompanyWarehouse", "Warehouse", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Stockhouse>("NikcronModel.CompanyStockhouse", "Stockhouse", value);
                 }
             }
         }
@@ -3039,9 +3037,8 @@ namespace Nickron.Database
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     [KnownTypeAttribute(typeof(BusinessOffice))]
-    [KnownTypeAttribute(typeof(Warehouse))]
-    [KnownTypeAttribute(typeof(Company))]
     [KnownTypeAttribute(typeof(ServiceCentre))]
+    [KnownTypeAttribute(typeof(Company))]
     public partial class Office : EntityObject
     {
         #region Factory Method
@@ -4422,44 +4419,6 @@ namespace Nickron.Database
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ProductModel>("NikcronModel.ProductItemProductModel", "ProductModel", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("NikcronModel", "ProductItemWarehouse", "Warehouse")]
-        public Warehouse Warehouse
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Warehouse>("NikcronModel.ProductItemWarehouse", "Warehouse").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Warehouse>("NikcronModel.ProductItemWarehouse", "Warehouse").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Warehouse> WarehouseReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Warehouse>("NikcronModel.ProductItemWarehouse", "Warehouse");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Warehouse>("NikcronModel.ProductItemWarehouse", "Warehouse", value);
                 }
             }
         }
@@ -7865,8 +7824,8 @@ namespace Nickron.Database
         /// <param name="status">Initial value of the Status property.</param>
         /// <param name="auditLog">Initial value of the AuditLog property.</param>
         /// <param name="zoneId">Initial value of the ZoneId property.</param>
-        /// <param name="warehouseId">Initial value of the WarehouseId property.</param>
-        public static Stockhouse CreateStockhouse(global::System.Int32 id, Address address, Contact contact1, Contact contact2, Status status, AuditLog auditLog, global::System.Int32 zoneId, global::System.Int32 warehouseId)
+        /// <param name="companyId">Initial value of the CompanyId property.</param>
+        public static Stockhouse CreateStockhouse(global::System.Int32 id, Address address, Contact contact1, Contact contact2, Status status, AuditLog auditLog, global::System.Int32 zoneId, global::System.Int32 companyId)
         {
             Stockhouse stockhouse = new Stockhouse();
             stockhouse.Id = id;
@@ -7876,7 +7835,7 @@ namespace Nickron.Database
             stockhouse.Status = StructuralObject.VerifyComplexObjectIsNotNull(status, "Status");
             stockhouse.AuditLog = StructuralObject.VerifyComplexObjectIsNotNull(auditLog, "AuditLog");
             stockhouse.ZoneId = zoneId;
-            stockhouse.WarehouseId = warehouseId;
+            stockhouse.CompanyId = companyId;
             return stockhouse;
         }
 
@@ -7913,24 +7872,24 @@ namespace Nickron.Database
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 WarehouseId
+        public global::System.Int32 CompanyId
         {
             get
             {
-                return _WarehouseId;
+                return _CompanyId;
             }
             set
             {
-                OnWarehouseIdChanging(value);
-                ReportPropertyChanging("WarehouseId");
-                _WarehouseId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("WarehouseId");
-                OnWarehouseIdChanged();
+                OnCompanyIdChanging(value);
+                ReportPropertyChanging("CompanyId");
+                _CompanyId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CompanyId");
+                OnCompanyIdChanged();
             }
         }
-        private global::System.Int32 _WarehouseId;
-        partial void OnWarehouseIdChanging(global::System.Int32 value);
-        partial void OnWarehouseIdChanged();
+        private global::System.Int32 _CompanyId;
+        partial void OnCompanyIdChanging(global::System.Int32 value);
+        partial void OnCompanyIdChanged();
 
         #endregion
 
@@ -7981,44 +7940,6 @@ namespace Nickron.Database
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("NikcronModel", "WarehouseStockhouse", "Warehouse")]
-        public Warehouse Warehouse
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Warehouse>("NikcronModel.WarehouseStockhouse", "Warehouse").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Warehouse>("NikcronModel.WarehouseStockhouse", "Warehouse").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Warehouse> WarehouseReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Warehouse>("NikcronModel.WarehouseStockhouse", "Warehouse");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Warehouse>("NikcronModel.WarehouseStockhouse", "Warehouse", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("NikcronModel", "StockhouseDistributor", "Distributor")]
         public EntityCollection<Distributor> Distributors
         {
@@ -8031,6 +7952,44 @@ namespace Nickron.Database
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Distributor>("NikcronModel.StockhouseDistributor", "Distributor", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NikcronModel", "CompanyStockhouse", "Company")]
+        public Company Company
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Company>("NikcronModel.CompanyStockhouse", "Company").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Company>("NikcronModel.CompanyStockhouse", "Company").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Company> CompanyReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Company>("NikcronModel.CompanyStockhouse", "Company");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Company>("NikcronModel.CompanyStockhouse", "Company", value);
                 }
             }
         }
@@ -8442,136 +8401,6 @@ namespace Nickron.Database
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Office>("NikcronModel.UserOffice", "Office", value);
-                }
-            }
-        }
-
-        #endregion
-
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="NikcronModel", Name="Warehouse")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class Warehouse : Office
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new Warehouse object.
-        /// </summary>
-        /// <param name="id">Initial value of the Id property.</param>
-        /// <param name="address">Initial value of the Address property.</param>
-        /// <param name="contact1">Initial value of the Contact1 property.</param>
-        /// <param name="contact2">Initial value of the Contact2 property.</param>
-        /// <param name="status">Initial value of the Status property.</param>
-        /// <param name="auditLog">Initial value of the AuditLog property.</param>
-        /// <param name="companyId">Initial value of the CompanyId property.</param>
-        public static Warehouse CreateWarehouse(global::System.Int32 id, Address address, Contact contact1, Contact contact2, Status status, AuditLog auditLog, global::System.Int32 companyId)
-        {
-            Warehouse warehouse = new Warehouse();
-            warehouse.Id = id;
-            warehouse.Address = StructuralObject.VerifyComplexObjectIsNotNull(address, "Address");
-            warehouse.Contact1 = StructuralObject.VerifyComplexObjectIsNotNull(contact1, "Contact1");
-            warehouse.Contact2 = StructuralObject.VerifyComplexObjectIsNotNull(contact2, "Contact2");
-            warehouse.Status = StructuralObject.VerifyComplexObjectIsNotNull(status, "Status");
-            warehouse.AuditLog = StructuralObject.VerifyComplexObjectIsNotNull(auditLog, "AuditLog");
-            warehouse.CompanyId = companyId;
-            return warehouse;
-        }
-
-        #endregion
-
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 CompanyId
-        {
-            get
-            {
-                return _CompanyId;
-            }
-            set
-            {
-                OnCompanyIdChanging(value);
-                ReportPropertyChanging("CompanyId");
-                _CompanyId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("CompanyId");
-                OnCompanyIdChanged();
-            }
-        }
-        private global::System.Int32 _CompanyId;
-        partial void OnCompanyIdChanging(global::System.Int32 value);
-        partial void OnCompanyIdChanged();
-
-        #endregion
-
-    
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("NikcronModel", "CompanyWarehouse", "Company")]
-        public Company Company
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Company>("NikcronModel.CompanyWarehouse", "Company").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Company>("NikcronModel.CompanyWarehouse", "Company").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Company> CompanyReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Company>("NikcronModel.CompanyWarehouse", "Company");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Company>("NikcronModel.CompanyWarehouse", "Company", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("NikcronModel", "WarehouseStockhouse", "Stockhouse")]
-        public EntityCollection<Stockhouse> Stockhouses
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Stockhouse>("NikcronModel.WarehouseStockhouse", "Stockhouse");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Stockhouse>("NikcronModel.WarehouseStockhouse", "Stockhouse", value);
                 }
             }
         }

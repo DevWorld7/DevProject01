@@ -176,7 +176,6 @@
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Controllers\StockhouseController.cs" />
-    <Compile Include="Controllers\WarehouseController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -707,12 +706,12 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Warehouse\Index.cshtml" />
     <Content Include="Views\Company\Index.cshtml" />
     <Content Include="Views\Company\Maintenance.cshtml" />
     <Content Include="Views\Dealer\Index.cshtml" />
     <Content Include="Views\Distributor\Index.cshtml" />
     <Content Include="Views\Distributor\Maintenance.cshtml" />
+    <Content Include="Views\Stockhouse\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
