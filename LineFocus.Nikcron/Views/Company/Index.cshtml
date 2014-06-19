@@ -1,36 +1,171 @@
 ﻿@{
     ViewBag.Title = "Companies List";
 }
-
-@model IEnumerable<Nickron.Database.Company>
-@{
-    @Html.ActionLink("Home/Back", "Index", "Home", new { style="float: left;"})
-    @Html.ActionLink("Add Company", "Maintenance", "Company", null, new { style = "float: right;" })
-    <table class="footable">
-        <tr>
-            <th>Name</th>
-            <th>Contact Person</th>
-            <th>Address</th>
-            <th>Contact</th>
-        </tr>
-        @{
-            foreach (Nickron.Database.Company item in Model)
-            {
-                <tr>
-                    <td>@Html.ActionLink(item.Name, "Maintenance", new { CompanyId = item.Id })</td>
-                    <td>@item.ContactPerson</td>
-                    <td>@string.Format("{0}, {1}",item.Address.Address1,item.Address.Address2) <br/> @string.Format("{0} - {1}",item.Address.City, item.Address.Zip)</td>
-                    <td>@item.Contact1.Mobile <br/> @item.Contact1.Phone <br /> @item.Contact1.Email</td>
-                </tr>
-            }
-        }
-    </table>
-}
+<div id="treeGrid">
+</div>
 
 <script type="text/javascript">
-    $(function () {
-        $('.footable').footable();
+    $(document).ready(function () {
+        var newRowID = null;
+        var generaterow = function () {
+            var row = {};
+            row["Id"] = null;
+            row["Name"] = "";
+            row["ContactPerson"] = "";
+            row["AddressLine1"] = "";
+            row["AddressLine2"] = "";
+            row["AddressCity"] = "";
+            row["AddressState"] = "";
+            row["AddressZip"] = "";
+            row["Mobile"] = "";
+            row["Phone"] = "";
+            row["Email"] = "";
+            return row;
+        };
+
+        var source =
+        {
+            dataType: "json",
+            dataFields: [
+                { name: 'Id', type: 'number' },
+                { name: 'Name', type: 'string' },
+                { name: 'ContactPerson', type: 'string' },
+                { name: 'AddressLine1', type: 'string' },
+                { name: 'AddressLine2', type: 'string' },
+                { name: 'AddressCity', type: 'string' },
+                { name: 'AddressState', type: 'string' },
+                { name: 'AddressZip', type: 'string' },
+                { name: 'Mobile', type: 'string' },
+                { name: 'Phone', type: 'string' },
+                { name: 'Email', type: 'string' },
+            ],
+            addrow: function (rowid, rowdata, position, commit) {
+                // synchronize with the server - send insert command
+                // call commit with parameter true if the synchronization with the server is successful 
+                //and with parameter false if the synchronization failed.
+                // you can pass additional argument to the commit callback which represents the new ID if it is generated from a DB.
+                commit(true);
+                newRowID = rowid;
+            },
+            deleterow: function (rowid, commit) {
+                // synchronize with the server - send delete command
+                // call commit with parameter true if the synchronization with the server is successful 
+                //and with parameter false if the synchronization failed.
+                commit(true);
+            },
+            updaterow: function (rowid, newdata, commit) {
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("CompanyUpdate")",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(newdata),
+                    success: function (result) {
+
+                    },
+                    error: function (error) {
+
+                    }
+                });
+                commit(true);
+            },
+            id: 'Id',
+            url: '@Url.Action("GetCompanies")'
+        };
+        var dataAdapter = new $.jqx.dataAdapter(source);
+        // create Tree Grid
+        $("#treeGrid").jqxGrid(
+        {
+            theme: 'metro',
+            width: '1150px',
+            source: dataAdapter,
+            sortable: true,
+            pageable: true,
+            editable: true,
+            filterable: true,
+            filtermode: 'excel',
+            columnsresize: false,
+            autoshowfiltericon: false,
+            selectionmode: 'singlerow',
+            editmode: 'dblclick',
+            showToolbar: true,
+            ready: function () {
+            },
+            columns: [
+              { text: 'Id', dataField: 'Id', width: 30, editable : false, hidden : true },
+              { text: 'Name', dataField: 'Name', width: 100 },
+              { text: 'Contact', dataField: 'ContactPerson', width: 100 },
+              { text: 'Line 1', columnGroup: 'Address', dataField: 'AddressLine1', width: 130 },
+              { text: 'Line 2', columnGroup: 'Address', dataField: 'AddressLine2', width: 130 },
+              { text: 'City', columnGroup: 'Address', dataField: 'AddressCity', width: 100 },
+              { text: 'State', columnGroup: 'Address', dataField: 'AddressState', width: 100 },
+              { text: 'Pincode', columnGroup: 'Address', dataField: 'AddressZip', width: 60 },
+              
+              { text: 'Mobile', columnGroup: 'Contact1', dataField: 'Mobile', width: 80 },
+              { text: 'Phone', columnGroup: 'Contact1', dataField: 'Phone', width: 90 },
+              { text: 'Email', columnGroup: 'Contact1', dataField: 'Email', width: 130 },
+              { text: 'Website', columnGroup: 'Contact1', dataField: 'Web', width: 130 }
+            ],
+            columnGroups: [
+              { text: 'Address', name: 'Address' },
+              { text: 'Communication', name: 'Contact1' }
+            ],
+            renderToolbar: function(toolBar)
+            {
+                var toTheme = function (className) {
+                    var theme = "metro";
+                    return className + " " + className + "-" + theme;
+                }
+                // appends buttons to the status bar.
+                var container = $("<div style='margin: 2px;'></div>");
+                var buttonTemplate = "<div style='float: left; padding: 1px;'><div style='margin: 4px; width: 16px; height: 16px;'></div></div>";
+                var addButton = $(buttonTemplate);
+                var excelButton = $(buttonTemplate);
+                var printButton = $(buttonTemplate);
+
+                container.append(addButton);
+                container.append(excelButton);
+                container.append(printButton);
+                toolBar.append(container);
+
+                addButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });
+                addButton.find('div:first').addClass(toTheme('jqx-icon-plus'));
+                addButton.jqxTooltip({ position: 'bottom', content: "Add Company"});
+                addButton.click(function (event) {
+                    var datarow = generaterow();
+                    var commit = $("#treeGrid").jqxGrid('addrow', null, datarow);
+                });
+
+                excelButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });
+                excelButton.find('div:first').addClass(toTheme('jqx-excel-plus'));
+                excelButton.jqxTooltip({ position: 'bottom', content: "Export As Excel File" });
+                excelButton.click(function (event) {
+                    $("#treeGrid").jqxGrid('exportdata', 'xls', 'Companies');
+                });
+
+                printButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });
+                printButton.find('div:first').addClass(toTheme('jqx-print-plus'));
+                printButton.jqxTooltip({ position: 'bottom', content: "Print" });
+                printButton.click(function (event) {
+                    var gridContent = $("#treeGrid").jqxGrid('exportdata', 'html');
+                    var newWindow = window.open('', '', 'width=800, height=500'),
+                    document = newWindow.document.open(),
+                    pageContent =
+                        '<!DOCTYPE html>\n' +
+                        '<html>\n' +
+                        '<head>\n' +
+                        '<meta charset="utf-8" />\n' +
+                        '<title>jQWidgets Grid</title>\n' +
+                        '</head>\n' +
+                        '<body>\n' + gridContent + '\n</body>\n</html>';
+                    document.write(pageContent);
+                    document.close();
+                    newWindow.print();
+                });
+
+
+            }
+    });
     });
 </script>
-
    

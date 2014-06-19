@@ -2,71 +2,172 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <title>Nickron - @ViewBag.Title</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width" />
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         @Styles.Render("~/Content/css")
-        @Styles.Render("~/Content/footable/css")
+        @Styles.Render("~/Content/AdminLTE")
+        @Styles.Render("~/Content/jqWidget")
 
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/jqueryui")
         @Scripts.Render("~/bundles/bootstrap")
-        @Scripts.Render("~/bundles/footable")
         @Scripts.Render("~/bundles/page")
+        @Scripts.Render("~/bundles/jgWidget")
+        @Scripts.Render("~/bundles/AdminLTEApp")
     </head>
-<body>
-    <!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="@Url.Action("Index","Home")"><img class="LogoAlignment" src='@Url.Content("~/Images/logo.png")' alt="MobiSearcher" /></a>
-            </div>
-
-            <div class="collapse navbar-collapse">
+<body class="skin-blue">
+    <!-- header logo: style can be found in header.less -->
+    <header class="header">
+        <a href="@Url.Action("Index","Home",null)" class="logo"> <img src='@Url.Content("~/Images/header_logo.jpg")' width="171" height="51" alt="nikcron Logo" title="nikcron logo"> </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+            <div class="navbar-right">
                 <ul class="nav navbar-nav">
-                    @*<li class="dropdown">
-                            <a id="homeLink" href="#" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("About Us", "About", "Home")</li>
-                                <li><a href="#contact">Contact</a></li>
-                            </ul>
-                        </li>*@
-                    <li class="dropdown">
-                        <a id="cityLink" href="#" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-header">Home</li>
-                            <li class="divider"></li>
-                            <li><a target="_blank">Test1</a></li>
-                            <li><a target="_blank">Test2</a></li>
-                            <li><a target="_blank">Test3</a></li>
-                            
+                    <!-- Messages: style can be found in dropdown.less-->
+                    <li class="dropdown messages-menu"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa fa-dashboard"></i> <span>Dashboard</span> </a> </li>
+                    <!-- Notifications: style can be found in dropdown.less -->
+                    <li class="dropdown notifications-menu">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="ion ion-android-contacts"></i> <span>Master</span> </a>
+        <ul class="dropdown-menu">
+            <li>
+                <!-- inner menu: contains the actual data -->
+                <ul class="menu">
+                    <li> <a href="#"> <i class="ion ion-ios7-people info"></i>Master 1</a> </li>
+                    <li> <a href="#"> <i class="fa ion-ios7-people danger"></i>Master 2</a> </li>
+                    <li> <a href="#"> <i class="fa ion-ios7-people warning"></i>Master 3</a> </li>
+                    <li> <a href="#"> <i class="ion ion-ios7-people success"></i>Master 4</a> </li>
+                    <li> <a href="#"> <i class="ion ion-ios7-people danger"></i>Master 5</a> </li>
+                </ul>
+            </li>
+            <li class="footer"><a href="#">View all</a></li>
+        </ul>
+    </li>
+    <!-- Tasks: style can be found in dropdown.less -->
+    <li class="dropdown tasks-menu"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa ion-android-note"></i> <span>Report</span> </a> </li>
+    <!-- User Account: style can be found in dropdown.less -->
+    <li class="dropdown user user-menu">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i class="glyphicon glyphicon-user"></i> <span>Jane Doe <i class="caret"></i></span> </a>
+        <ul class="dropdown-menu">
+            <!-- Menu Body -->
+            <li class="user-body">
+                <div class="col-xs-4 text-center"> <a href="#">Followers</a> </div>
+                <div class="col-xs-4 text-center"> <a href="#">Sales</a> </div>
+                <div class="col-xs-4 text-center"> <a href="#">Friends</a> </div>
+            </li>
+            <!-- Menu Footer-->
+            <li class="user-footer">
+                <div class="pull-left"> <a href="#" class="btn btn-default btn-flat">Profile</a> </div>
+                <div class="pull-right"> <a href="#" class="btn btn-default btn-flat">Sign out</a> </div>
+            </li>
+        </ul>
+    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="wrapper row-offcanvas row-offcanvas-left">
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="left-side sidebar-offcanvas">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <!-- <div class="pull-left image">
+                                            <img src="img/avatar3.png" class="img-circle" alt="User Image" />
+                                        </div>-->
+                    <div class="pull-left info">
+                        <p>Welcome</p>
+                        <a href="#">Admin</a>
+                    </div>
+                </div>
+                <!-- search form -->
+                <!--<form action="#" method="get" class="sidebar-form">
+                                     <div class="input-group">
+                                         <input type="text" name="q" class="form-control" placeholder="Search..."/>
+                                         <span class="input-group-btn">
+                                             <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                                         </span>
+                                     </div>
+                                 </form>-->
+                <!-- /.search form -->
+                <!-- sidebar menu: : style can be found in sidebar.less -->
+                <ul class="sidebar-menu">
+                    <li class="active"> <a href="@Url.Action("Index","Home",null)"> <i class="fa fa-dashboard"></i> <span>Dashboard</span> </a> </li>
+                    <li> <a href="@Url.Action("Index","Sales")"> <i class="fa fa-calendar"></i> <span>Sales</span> <small class="badge pull-right bg-green">3</small> </a> </li>
+                    <li> <a href="@Url.Action("Index","Service")"> <i class="fa fa-envelope"></i> <span>Services</span> <small class="badge pull-right bg-red">12</small> </a> </li>
+                    <li> <a href="@Url.Action("Index","Quotation")"> <i class="fa fa-edit"></i> <span>Quotes</span> <small class="badge pull-right bg-yellow">20</small> </a> </li>
+                    <li class="treeview">
+                        <a href="#"> <i class="fa fa-table"></i> <span>Company</span> <i class="fa fa-angle-left pull-right"></i> </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Index","Company")"><i class="fa fa-angle-double-right"></i> Company</a></li>
+                            <li><a href="@Url.Action("Index","Warehouses")"><i class="fa fa-angle-double-right"></i> Warehouses</a></li>
+                            <li><a href="@Url.Action("Index","Stockhouses")"><i class="fa fa-angle-double-right"></i> Stockhouses</a></li>
+                            <li><a href="@Url.Action("Index","Distributors")"><i class="fa fa-angle-double-right"></i> Distrbutors</a></li>
+                            <li><a href="@Url.Action("Index","Dealers")"><i class="fa fa-angle-double-right"></i> Dealers</a></li>
+                            <li><a href="@Url.Action("Index","Retailers")"><i class="fa fa-angle-double-right"></i> Retailers</a></li>
                         </ul>
                     </li>
-                </ul>
-            </div><!--/.nav-collapse -->
-        </div>
+                    <li class="treeview">
+                        <a href="#"> <i class="fa fa-laptop"></i> <span>Products</span> <i class="fa fa-angle-left pull-right"></i> </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Mobilephone","Product")"><i class="fa fa-angle-double-right"></i> Mobilephones</a></li>
+                            <li><a href="@Url.Action("Tablet","Product")"><i class="fa fa-angle-double-right"></i> Tablets</a></li>
+                            <li><a href="@Url.Action("Laptop","Product")"><i class="fa fa-angle-double-right"></i> Laptops</a></li>
+                            <li><a href="@Url.Action("Warranties","Product")"><i class="fa fa-angle-double-right"></i> Product Warranties</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#"> <i class="fa fa-folder"></i> <span>Masters</span> <i class="fa fa-angle-left pull-right"></i> </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Territories","Master")"><i class="fa fa-angle-double-right"></i> Cities & States</a></li>
+                            <li><a href="@Url.Action("Manufactures","Master")"><i class="fa fa-angle-double-right"></i> Manufacturer Names</a></li>
+                            <li><a href="@Url.Action("ProductTypes","Master")"><i class="fa fa-angle-double-right"></i> Product Types</a></li>
+                            <li><a href="@Url.Action("ServiceTypes","Master")"><i class="fa fa-angle-double-right"></i> Service Types</a></li>
+                            <li><a href="@Url.Action("ReturnTypes","Master")"><i class="fa fa-angle-double-right"></i> Return Types</a></li>
+                            <li><a href="@Url.Action("Zones","Master")"><i class="fa fa-angle-double-right"></i> Zones</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#"> <i class="fa fa-user"></i> <span>Users</span> <i class="fa fa-angle-left pull-right"></i> </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Index","User")"><i class="fa fa-angle-double-right"></i> Users</a></li>
+                            <li><a href="@Url.Action("Roles","User")"><i class="fa fa-angle-double-right"></i> Roles</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#"> <i class="fa fa-bar-chart-o"></i> <span>Reports</span> <i class="fa fa-angle-left pull-right"></i> </a>
+                        <ul class="treeview-menu"></ul>
+                    </li>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- Right side column. Contains the navbar and content of the page -->
+        <aside class="right-side">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1> Dashboard <small>Control panel</small> </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                    <li class="active">Dashboard</li>
+                </ol>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <div class="row" style="padding-left: 10px;">
+                    @RenderBody()
+                </div>
+                <!-- /.row -->
+                <!-- top row -->
+
+
+            </section>
+            <!-- /.content -->
+        </aside>
+        <!-- /.right-side -->
     </div>
-    <!-- Begin page content -->
-    <div class="container">
-        <div class="page-header">
-            <h2>@ViewBag.Title</h2>
-        </div>
-        @RenderSection("featured", required: false)
-        <section class="content-wrapper main-content clear-fix">
-            @RenderBody()
-        </section>
-    </div>
-    <div id="footer">
-        <div class="container">
-            <p class="text-muted">Place sticky footer content here.</p>
-        </div>
-    </div>
+    
 </body>
-@RenderSection("scripts", required: false)
 </html>

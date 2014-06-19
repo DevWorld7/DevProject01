@@ -21,6 +21,11 @@ namespace LineFocus.Nikcron
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
+            bundles.Add(new ScriptBundle("~/bundles/jgWidget").Include("~/Scripts/jqwidgets/jqx-all.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/AdminLTEApp").Include(
+                        "~/Scripts/AdminLTE/app.js"
+                ));
 
             bundles.Add(new ScriptBundle("~/bundles/footable")
                                         .Include
@@ -56,6 +61,19 @@ namespace LineFocus.Nikcron
                         "~/Content/themes/base/jquery.ui.theme.css"));
 
             bundles.Add(new StyleBundle("~/Content/footable/css").Include("~/Content/footable*"));
+
+            bundles.Add(new StyleBundle("~/Content/jqWidget").Include("~/Scripts/jqwidgets/styles/jqx.base.css", "~/Scripts/jqwidgets/styles/jqx.metro.css"));
+
+            bundles.Add(new StyleBundle("~/Content/AdminLTE").Include(
+                        "~/Content/font-awesome.css",
+                        "~/Content/ionicons.css",
+                        "~/Content/ionslider/ion.rangeSlider.css",
+                        "~/Content/ionslider/ion.rangeSlider.skinFlat.css",
+                        "~/Content/ionslider/ion.rangeSlider.skinNice.css",
+                        "~/Content/slider.css",
+                        "~/Content/bootstrap3-wysihtml5.css",
+                        "~/Content/AdminLTE.css"
+                ));
 
         }
     }
