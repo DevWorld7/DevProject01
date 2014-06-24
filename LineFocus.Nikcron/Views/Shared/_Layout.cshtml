@@ -8,6 +8,7 @@
         @Styles.Render("~/Content/css")
         @Styles.Render("~/Content/AdminLTE")
         @Styles.Render("~/Content/jqWidget")
+        @Styles.Render("~/Content/themes/base/css")
 
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/jqueryui")
@@ -103,19 +104,18 @@
                         <a href="#"> <i class="fa fa-table"></i> <span>Company</span> <i class="fa fa-angle-left pull-right"></i> </a>
                         <ul class="treeview-menu">
                             <li><a href="@Url.Action("Index","Company")"><i class="fa fa-angle-double-right"></i> Company</a></li>
-                            <li><a href="@Url.Action("Index","Warehouses")"><i class="fa fa-angle-double-right"></i> Warehouses</a></li>
-                            <li><a href="@Url.Action("Index","Stockhouses")"><i class="fa fa-angle-double-right"></i> Stockhouses</a></li>
-                            <li><a href="@Url.Action("Index","Distributors")"><i class="fa fa-angle-double-right"></i> Distrbutors</a></li>
+                            <li><a href="@Url.Action("Index","Stockhouse")"><i class="fa fa-angle-double-right"></i> Stockhouses</a></li>
+                            <li><a href="@Url.Action("Index","Distributor")"><i class="fa fa-angle-double-right"></i> Distrbutors</a></li>
                             <li><a href="@Url.Action("Index","Dealers")"><i class="fa fa-angle-double-right"></i> Dealers</a></li>
-                            <li><a href="@Url.Action("Index","Retailers")"><i class="fa fa-angle-double-right"></i> Retailers</a></li>
+                            <li><a href="@Url.Action("Index","Retailer")"><i class="fa fa-angle-double-right"></i> Retailers</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
                         <a href="#"> <i class="fa fa-laptop"></i> <span>Products</span> <i class="fa fa-angle-left pull-right"></i> </a>
                         <ul class="treeview-menu">
+                            <li><a href="@Url.Action("Laptops","Product")"><i class="fa fa-angle-double-right"></i> Laptops</a></li>
                             <li><a href="@Url.Action("Mobilephone","Product")"><i class="fa fa-angle-double-right"></i> Mobilephones</a></li>
                             <li><a href="@Url.Action("Tablet","Product")"><i class="fa fa-angle-double-right"></i> Tablets</a></li>
-                            <li><a href="@Url.Action("Laptop","Product")"><i class="fa fa-angle-double-right"></i> Laptops</a></li>
                             <li><a href="@Url.Action("Warranties","Product")"><i class="fa fa-angle-double-right"></i> Product Warranties</a></li>
                         </ul>
                     </li>
@@ -148,7 +148,7 @@
         <aside class="right-side">
             <!-- Content Header (Page header) -->
             <section class="content-header">
-                <h1> Dashboard <small>Control panel</small> </h1>
+                <h1> @ViewBag.Header <small>@ViewBag.Caption</small> </h1>
                 <ol class="breadcrumb">
                     <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                     <li class="active">Dashboard</li>

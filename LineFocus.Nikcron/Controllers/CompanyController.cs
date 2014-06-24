@@ -15,6 +15,8 @@ namespace LineFocus.Nikcron.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.Header = "Company";
+            ViewBag.Caption = "Listing";
             ApplicationDBContext db = new ApplicationDBContext();
             Company company = new Company();
             return View();
@@ -23,8 +25,10 @@ namespace LineFocus.Nikcron.Controllers
         [HttpGet]
         public ActionResult Maintenance(Int32? CompanyId)
         {
+            ViewBag.Header = "Company";
             if (CompanyId.HasValue)
             {
+                ViewBag.Caption = "Edit";
                 ViewBag.CompanyId = CompanyId;
                 ApplicationDBContext db = new ApplicationDBContext();
                 Company Company = db.Offices.OfType<Company>().Where(c => c.Id == CompanyId).ToList().FirstOrDefault();
@@ -32,6 +36,7 @@ namespace LineFocus.Nikcron.Controllers
             }
             else
             {
+                ViewBag.Caption = "New";
                 ViewBag.CompanyId = "0";
                 return View(new Company());
             }

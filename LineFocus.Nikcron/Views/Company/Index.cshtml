@@ -4,6 +4,7 @@
 <div id="treeGrid">
 </div>
 
+
 <script type="text/javascript">
     $(document).ready(function () {
         var newRowID = null;
@@ -130,10 +131,10 @@
 
                 addButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });
                 addButton.find('div:first').addClass(toTheme('jqx-icon-plus'));
-                addButton.jqxTooltip({ position: 'bottom', content: "Add Company"});
+                addButton.jqxTooltip({ position: 'bottom', content: "Add Company" });
+                
                 addButton.click(function (event) {
-                    var datarow = generaterow();
-                    var commit = $("#treeGrid").jqxGrid('addrow', null, datarow);
+                    window.location.href = "@Url.Action("Maintenance", "Company")";
                 });
 
                 excelButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });

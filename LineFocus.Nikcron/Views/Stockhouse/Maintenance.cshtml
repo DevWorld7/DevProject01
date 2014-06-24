@@ -1,26 +1,67 @@
 ﻿@{
-    ViewBag.Title = "Company Maintenance";
+    ViewBag.Title = "Stockits Maintenance";
 }
 
-@model Nickron.Database.Company
+@model Nickron.Database.Stockhouse
 
-@using (Html.BeginForm("Maintenance", "Company", FormMethod.Post, new { @class = "form-horizontal", onsubmit = "return ValidateForm();" }))
+@using (Html.BeginForm("Maintenance", "Stockhouse", FormMethod.Post, new { @class = "form-horizontal", onsubmit = "return ValidateForm();" }))
 {
     <div class="col-md-6">
 
         <div class="box box-danger">
             <div class="box-body">
-
+                
                 <div class="form-group">
-                    <label> Company Name:</label>
+                    <label> Company:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Company" name="Company" maxlength="250" type="text" class="form-control" />
+                        <select id="Company" name="Company" class="form-control"></select>
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
+                <div class="form-group">
+                    <label> Stockhouse Name:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class=""></i>
+                        </div>
+                        <input id="Stockhouse" name="Stockhouse" maxlength="250" type="text" class="form-control" />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <!-- Date dd/mm/yyyy -->
+                <div class="form-group">
+                    <label> Join Date:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input type="text" id="JoinDate" name="JoinDate" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label> Recommended By:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class=""></i>
+                        </div>
+                        <input id="RecommendedBy" name="RecommendedBy" maxlength="250" type="text" class="form-control" />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label> Zone:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <select id="Zone" name="Zone" class="form-control">
+                        </select>
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
 
                 <div class="form-group">
                     <label> Contact Person Name:</label>
@@ -41,6 +82,7 @@
                         </div><!-- /.input group -->
                     </div><!-- /.form group -->*@
 
+                
 
                 <div class="form-group">
                     <label> Address Line 1:</label>
@@ -88,7 +130,8 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <select id="State" name="State" class="form-control"></select>
+                        <select id="State" name="State" class="form-control">
+                        </select>
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -98,7 +141,8 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <select id="Country" name="Country" class="form-control"></select>
+                        <select id="Country" name="Country" class="form-control">
+                        </select>
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -161,15 +205,54 @@
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> Web:</label>
+                    <label> Location:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Web" name="Web" maxlength="250" type="text" class="form-control pull-right" />
+                        <input id="Location" name="Location" maxlength="250" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
+                <div class="form-group">
+                    <label> Strength Of Field Force:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <input name="StrengthFF" id="StrengthFF" maxlength="250" type="text" class="form-control pull-right" />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label> Peak Sales Period:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <input name="Peeksaleperiod" id="Peeksaleperiod" maxlength="250" type="text" class="form-control pull-right" />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label> Popular Festivals Fairs:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <input id="Popularfestivals" name="Popularfestivals" maxlength="250" type="text" class="form-control pull-right" />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label> Comments:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <input id="Comments" name="Comments" maxlength="500" class="form-control pull-right"></input>
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
 
                 <div class="form-group">
                     <label> User Name:</label>
@@ -219,8 +302,30 @@
 
 <script type="text/javascript">
     function ValidateForm() {
-        RequiredTextbox("Company","Enter the Company Name")
+        RequiredTextbox("Stockhouse","Enter the Stockhouse Name")
         return AlertError();
+    }
+
+    function LoadCompanies()
+    {
+        $.getJSON("@Url.Action("GetLookups", "Master", new { LookupType = "Company" })", function (result) {
+            var options = '';
+            $.each(result, function (item) {
+                options += '<option value="' + result[item].Id + '">' + result[item].Name + '</option>';
+            });
+            $("select#Company").html(options);
+        });
+    }
+
+    function LoadZones()
+    {
+        $.getJSON("@Url.Action("GetLookups", "Master", new { LookupType = "Zone" })", function (result) {
+            var options = '';
+            $.each(result, function (item) {
+                options += '<option value="' + result[item].Id + '">' + result[item].Name + '</option>';
+            });
+            $("select#Zone").html(options);
+        });
     }
 
     function LoadCountries()
@@ -285,14 +390,23 @@
     }
 
     $(document).ready(function () {
+
+        LoadCompanies();
+        LoadZones();
         LoadStates();
         LoadCountries();
         AutoCompleteCity();
 
+        $('#JoinDate').datepicker();
+
         if("@ViewBag.Id" != "0")
         {
-            $('#Company').val("@Model.Name");
+            $('#Company').val("@Model.CompanyId");
+            $('#Stockhouse').val("@Model.Name");
+            $('#JoinDate').val('@Model.JoiningDate');
+            $('#RecommendedBy').val('@Model.RecommendationFrom');
             $('#ContactPerson').val("@Model.ContactPerson");
+            $('#Zone').val("@Model.ZoneId");
             $('#Address1').val("@Model.Address.Address1");
             $('#Address2').val("@Model.Address.Address2");
             $('#City').val("@Model.Address.City");
@@ -304,7 +418,12 @@
             $('#Phonenumber1').val("@Model.Contact1.Phone")
             $('#Phonenumber2').val("@Model.Contact2.Phone")
             $('#Email').val("@Model.Contact1.Email");
-            $('#Web').val("@Model.Contact1.Website");
+            $('#Location').val("@Model.Location");
+
+            $('#StrengthFF').val("@Model.StrengthOfFieldForce");
+            $('#Peeksaleperiod').val("@Model.PeakSalesPeriod");
+            $('#Popularfestivals').val("@Model.PopularFestivalFairs");
+            $('#Comments').val("@Model.ApprovalComments");
             @*$('#Username').val("@Model.")*@
         }
     })

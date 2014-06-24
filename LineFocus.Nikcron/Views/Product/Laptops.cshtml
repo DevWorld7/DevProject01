@@ -1,25 +1,15 @@
 ﻿@{
-    ViewBag.Title = "Stockhits List";
+    ViewBag.Title = "Laptops List";
 }
 <div id="treeGrid">
 </div>
+
 
 <script type="text/javascript">
     $(document).ready(function () {
         var newRowID = null;
         var generaterow = function () {
             var row = {};
-            row["Id"] = null;
-            row["Name"] = "";
-            row["ContactPerson"] = "";
-            row["AddressLine1"] = "";
-            row["AddressLine2"] = "";
-            row["AddressCity"] = "";
-            row["AddressState"] = "";
-            row["AddressZip"] = "";
-            row["Mobile"] = "";
-            row["Phone"] = "";
-            row["Email"] = "";
             return row;
         };
 
@@ -27,19 +17,14 @@
         {
             dataType: "json",
             dataFields: [
-                { name : 'CompanyId', type: 'number'},
-                { name : 'CompanyName', type: 'string'},
                 { name: 'Id', type: 'number' },
-                { name: 'Name', type: 'string' },
-                { name: 'ContactPerson', type: 'string' },
-                { name: 'AddressLine1', type: 'string' },
-                { name: 'AddressLine2', type: 'string' },
-                { name: 'AddressCity', type: 'string' },
-                { name: 'AddressState', type: 'string' },
-                { name: 'AddressZip', type: 'string' },
-                { name: 'Mobile', type: 'string' },
-                { name: 'Phone', type: 'string' },
-                { name: 'Email', type: 'string' },
+                { name: 'ModelNumber', type: 'string' },
+                { name: 'Brand', type: 'string' },
+                { name: 'OS', type: 'string' },
+                { name: 'HDD', type: 'string' },
+                { name: 'RAM', type: 'string' },
+                { name: 'Processor', type: 'string' },
+                { name: 'Screen', type: 'string' }
             ],
             addrow: function (rowid, rowdata, position, commit) {
                 // synchronize with the server - send insert command
@@ -56,64 +41,41 @@
                 commit(true);
             },
             updaterow: function (rowid, newdata, commit) {
-                $.ajax({
-                    type: "POST",
-                    url: "@Url.Action("CompanyUpdate")",
-                    dataType: "json",
-                    contentType: "application/json; charset=utf-8",
-                    data: JSON.stringify(newdata),
-                    success: function (result) {
-
-                    },
-                    error: function (error) {
-
-                    }
-                });
                 commit(true);
             },
             id: 'Id',
-            url: '@Url.Action("GetStockhouses")'
+            url: '@Url.Action("GetLaptops")'
         };
         var dataAdapter = new $.jqx.dataAdapter(source);
         // create Tree Grid
         $("#treeGrid").jqxGrid(
         {
             theme: 'metro',
-            width: '1150px',
+            width: '1000px',
             source: dataAdapter,
-            groupable: true,
             sortable: true,
             pageable: true,
-            editable: true,
+            editable: false,
             filterable: true,
+            groupable: true,
             filtermode: 'excel',
             columnsresize: false,
             autoshowfiltericon: false,
             selectionmode: 'singlerow',
             editmode: 'dblclick',
+            groups: ['Brand'],
             showToolbar: true,
             ready: function () {
             },
             columns: [
-              { text: 'Id', dataField: 'Id', width: 30, editable: false, hidden: true },
-              { text: 'Company', dataField: 'CompanyName', hidden: true },
-              { text: 'Name', dataField: 'Name', width: 150 },
-              { text: 'Contact', dataField: 'ContactPerson', width: 130 },
-              { text: 'Line 1', columnGroup: 'Address', dataField: 'AddressLine1', width: 130 },
-              { text: 'Line 2', columnGroup: 'Address', dataField: 'AddressLine2', width: 130 },
-              { text: 'City', columnGroup: 'Address', dataField: 'AddressCity', width: 100 },
-              { text: 'State', columnGroup: 'Address', dataField: 'AddressState', width: 100 },
-              { text: 'Pincode', columnGroup: 'Address', dataField: 'AddressZip', width: 60 },
-
-              { text: 'Mobile', columnGroup: 'Contact1', dataField: 'Mobile', width: 90 },
-              { text: 'Phone', columnGroup: 'Contact1', dataField: 'Phone', width: 90 },
-              { text: 'Email', columnGroup: 'Contact1', dataField: 'Email', width: 140 }
-              
-            ],
-            groups : ['CompanyName'],
-            columnGroups: [
-              { text: 'Address', name: 'Address' },
-              { text: 'Communication', name: 'Contact1' }
+              { text: 'Id', dataField: 'Id', width: 30, editable : false, hidden : true },
+              { text: 'Brand', dataField: 'Brand', width: 150 },
+              { text: 'Model #', dataField: 'ModelNumber', width: 130 },
+              { text: 'Processor', dataField: 'Processor', width: 130 },
+              { text: 'RAM', dataField: 'RAM', width: 150 },
+              { text: 'HDD', dataField: 'HDD', width: 150 },
+              { text: 'Screen', dataField: 'Screen', width: 100 },
+              { text: 'Operating System', dataField: 'OS', width: 150 },
             ],
             renderToolbar: function(toolBar)
             {
@@ -135,17 +97,17 @@
 
                 addButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });
                 addButton.find('div:first').addClass(toTheme('jqx-icon-plus'));
-                addButton.jqxTooltip({ position: 'bottom', content: "Add Stockhit" });
+                addButton.jqxTooltip({ position: 'bottom', content: "Add Laptop" });
 
                 addButton.click(function (event) {
-                    window.location.href = "@Url.Action("Maintenance", "Stockhouse")";
+                    window.location.href = "@Url.Action("LaptopMaintenance", "Product")";
                 });
 
                 excelButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });
                 excelButton.find('div:first').addClass(toTheme('jqx-excel-plus'));
                 excelButton.jqxTooltip({ position: 'bottom', content: "Export As Excel File" });
                 excelButton.click(function (event) {
-                    $("#treeGrid").jqxGrid('exportdata', 'xls', 'Companies');
+                    $("#treeGrid").jqxGrid('exportdata', 'xls', 'Laptops');
                 });
 
                 printButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });
@@ -167,8 +129,6 @@
                     document.close();
                     newWindow.print();
                 });
-
-
             }
     });
     });
