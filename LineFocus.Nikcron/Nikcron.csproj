@@ -165,7 +165,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\MasterController.cs" />
+    <Compile Include="Controllers\MasterController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controllers\QuotationController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
