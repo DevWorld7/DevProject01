@@ -3418,3 +3418,7 @@ fieldset[disabled] .btn-vk.active {
   color: #587ea3;
   background-color: #ffffff;
 }
+.astrisk{
+    color:#ff0000;
+   font-weight:bold;
+}

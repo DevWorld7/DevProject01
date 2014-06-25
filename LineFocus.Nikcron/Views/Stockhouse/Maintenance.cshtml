@@ -12,7 +12,7 @@
             <div class="box-body">
                 
                 <div class="form-group">
-                    <label> Company:</label>
+                    <label> Company:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
@@ -22,7 +22,7 @@
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> Stockhouse Name:</label>
+                    <label> Stockhouse Name:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class=""></i>
@@ -53,7 +53,7 @@
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> Zone:</label>
+                    <label> Zone:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
@@ -64,7 +64,7 @@
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> Contact Person Name:</label>
+                    <label> Contact Person Name:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class=""></i>
@@ -104,7 +104,7 @@
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
-                <div class="form-group">
+                <div class="form-group"><span class="astrisk">*</span>
                     <label> City:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
@@ -255,7 +255,7 @@
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> User Name:</label>
+                    <label> User Name:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
@@ -265,7 +265,7 @@
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> Password:</label>
+                    <label> Password:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
@@ -302,7 +302,12 @@
 
 <script type="text/javascript">
     function ValidateForm() {
-        RequiredTextbox("Stockhouse","Enter the Stockhouse Name")
+        
+        RequiredTextbox("ContactPerson", "Enter the Contact Person")
+        RequiredTextbox("Stockhouse", "Enter the Stockhouse Name")
+        RequiredTextbox("Zone", "Select the Zone")
+        RequiredTextbox("City", "Enter the City")
+       
         return AlertError();
     }
 

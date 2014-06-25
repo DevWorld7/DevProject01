@@ -12,7 +12,7 @@
             <div class="box-body">
 
                 <div class="form-group">
-                    <label> Company Name:</label>
+                    <label> Company Name:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
@@ -23,7 +23,7 @@
 
 
                 <div class="form-group">
-                    <label> Contact Person Name:</label>
+                    <label> Contact Person Name:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class=""></i>
@@ -43,12 +43,12 @@
 
 
                 <div class="form-group">
-                    <label> Address Line 1:</label>
+                    <label> Address Line 1:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class=""></i>
                         </div>
-                        <input id="Address1" name="Address1" maxlength="500" class="form-control"></input>
+                        <input id="Address1" name="Address1" maxlength="500" class="form-control"/>
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -58,11 +58,11 @@
                         <div class="input-group-addon">
                             <i class=""></i>
                         </div>
-                        <input id="Address2" name="Address2" maxlength="500" class="form-control"></input>
+                        <input id="Address2" name="Address2" maxlength="500" class="form-control"/>
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
-                <div class="form-group">
+                <div class="form-group"><span class="astrisk">*</span>
                     <label> City:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
@@ -73,7 +73,7 @@
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> Zip:</label>
+                    <label> Zip:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class=""></i>
@@ -83,7 +83,7 @@
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> State:</label>
+                    <label> State:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
@@ -93,7 +93,7 @@
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> Country:</label>
+                    <label> Country:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
@@ -172,7 +172,7 @@
 
 
                 <div class="form-group">
-                    <label> User Name:</label>
+                    <label> User Name:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
@@ -182,7 +182,7 @@
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> Password:</label>
+                    <label> Password:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
@@ -219,7 +219,10 @@
 
 <script type="text/javascript">
     function ValidateForm() {
-        RequiredTextbox("Company","Enter the Company Name")
+        RequiredTextbox("Company", "Enter the Company Name")
+        RequiredTextbox("ContactPerson", "Enter the Contact Person")
+        RequiredTextbox("Address1", "Enter the Address")
+        RequiredTextbox("City", "Enter the City")
         return AlertError();
     }
 
