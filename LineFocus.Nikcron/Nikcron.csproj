@@ -719,6 +719,8 @@
     <Content Include="Views\Stockhouse\Maintenance.cshtml" />
     <Content Include="Views\Product\LaptopMaintenance.cshtml" />
     <Content Include="Views\Product\Laptops.cshtml" />
+    <Content Include="Views\Product\Mobilephones.cshtml" />
+    <Content Include="Views\Product\MobilephoneMaintenance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
