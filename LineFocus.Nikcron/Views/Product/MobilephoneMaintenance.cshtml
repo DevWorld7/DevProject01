@@ -1,0 +1,691 @@
+﻿@{
+    ViewBag.Title = "MobilephoneMaintenance";
+}
+@model Nickron.Database.Mobile
+
+@using (Html.BeginForm("MobilephoneMaintenance", "Product", FormMethod.Post, new { @class = "form-horizontal", onsubmit = "return ValidateForm();" }))
+{
+   
+<div class="col-md-6">
+
+    <div class="box box-danger">
+        <div class="box-header">
+            <h3 class="box-title"> General Feature</h3>
+        </div>
+        <div class="box-body">
+            <!-- Date dd/mm/yyyy -->
+            <div class="form-group">
+                <label>Date masks:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask/>
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->
+
+				<div class="form-group">
+                <label>In the Box:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class=""></i>
+                    </div>
+                    <input id="Inthebox" type="text" class="form-control" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->		
+        
+            <div class="form-group">
+                <label>Model Number:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class=""></i> 
+                    </div>
+                    <input id="ModelNumber" name="ModelNumber" type="text" class="form-control" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->
+        
+            <div class="form-group">
+                <label>Model Name:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class=""></i>
+                    </div>
+                    <input id="ModelName" name="ModelName" type="text" class="form-control" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->							
+                                    
+				<div class="form-group">
+                <label>Manufacture:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class=""></i>
+                    </div>
+                    <input id="Manufacture" name="Manufacture" type="text" class="form-control" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->
+									
+				<div class="form-group">
+                <label>Form Factor:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class=""></i>
+                    </div>
+                    <input id="FormFactor" name="FormFactor" type="text" class="form-control" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->
+									
+				<div class="form-group">
+                <label>Call Features:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class=""></i>
+                    </div>
+                    <input id="CallFeatures" name="CallFeatures" type="text" class="form-control" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->
+									
+				<div class="form-group">
+                <label>SIM Size:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class=""></i>
+                    </div>
+                    <input id="SimSize" name="SimSize" type="text" class="form-control" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->		
+
+			<div class="form-group">
+                <label>SIM Type:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class=""></i>
+                    </div>
+                    <input id="SimType" name="SimType" type="text" class="form-control" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->	
+			
+
+			@*<div class="form-group">
+                <label>Business Features:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class=""></i>
+                    </div>
+                    <input id="Inthebox" type="text" class="form-control" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->*@	
+																	
+			@*<div class="form-group">
+                <label>Handset Color:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i class="fa fa-laptop"></i>
+                    </div>
+                    <input id="Handset" type="text" class="form-control" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->*@										
+									
+        </div><!-- /.box-body -->
+    </div><!-- /.box -->
+
+    <div class="box box-info">
+        <div class="box-header">
+            <h3 class="box-title">Camera</h3>
+        </div>
+        <div class="box-body">
+                                   
+			<div class="form-group">
+                <label>Primary Cameray:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="PrimaryCamera" name="PrimaryCamera" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->		
+
+            <div class="form-group">
+                <label>Secondary Camera:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="SecondryCamera" name="SecondryCamera" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->		
+
+            <div class="form-group">
+                <label>Phone Book Memory:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="PhoneMemory" name="PhoneMemory" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->		
+									
+				<div class="form-group">
+                <label>Video Recording:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="VideoRecording" name="VideoRecording" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->	
+									
+		    @*<div class="form-group">
+                <label>HD Recording:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="Processor"/>
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->*@		
+									
+				@*<div class="form-group">
+                <label>Zoom:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input type="text" class="form-control pull-right"/>
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->*@		
+									
+				@*<div class="form-group">
+                <label>Other Camera Features:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <textarea id="OtherCameraFeatures" name="OtherCameraFeatures" class="form-control pull-right"></textarea>
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->*@		
+									
+								  								
+        </div><!-- /.box-body -->
+								
+								 
+        <div class="box-body">
+                                   
+			<div class="box-header">
+            <h3 class="box-title">Dimensions</h3>
+			</div>
+								   
+			<div class="form-group">
+                <label>Size:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="Dimension" name="Dimension" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->		
+
+            <div class="form-group">
+                <label>Weight:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="Weight" name="Weight" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->											
+								  								
+        </div><!-- /.box-body -->
+								
+								
+								
+        <div class="box-body">
+                                   
+			<div class="box-header">
+            <h3 class="box-title">Battery</h3>
+            </div>
+									
+			<div class="form-group">
+                <label>Type:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="BatteryType" name="BatteryType" type="text" class="form-control pull-right" /> 
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->		
+
+            @*<div class="form-group">
+                <label>Talk Time:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="Processor"/>
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->*@		
+
+			<div class="form-group">
+                <label>Standby Time:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="BatteryStandBy" name="BatteryStandBy" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->											
+								  								
+        </div><!-- /.box-body -->
+								
+								 
+        <div class="box-body">
+								
+            <div class="box-header">
+            <h3 class="box-title">MULTIMEDIA</h3>
+            </div>
+								
+			<div class="form-group">
+                <label>Music Player:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="MusicPlayer" name="MusicPlayer" type="text" class="form-control pull-right"/>
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->		
+
+            <div class="form-group">
+                <label>Video Player:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="VideoPlayer" name="VideoPlayer" type="text" class="form-control pull-right"/>
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->		
+
+			<div class="form-group">
+                <label>FM:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="FM" name="FM" type="text" class="form-control pull-right"/>
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->		
+
+			<div class="form-group">
+                <label>Sound Enhancement:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="SoundEnhancement" name="SoundEnhancement" type="text" class="form-control pull-right"/>
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->		
+
+			<div class="form-group">
+                <label>Ringtone:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="RingTone" name="RingTone" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->											
+								  								
+        </div><!-- /.box-body -->								
+								
+        <div class="box-body">
+                                   
+			<div class="box-header">
+                <h3 class="box-title">WARRANTY</h3>
+            </div>
+								
+			<div class="form-group">
+                <label>WarrantySummary:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <textarea id="ProductWarranties" name="ProductWarranties" class="form-control pull-right"></textarea>
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->	
+								  								
+        </div><!-- /.box-body -->
+								
+								
+    </div><!-- /.box -->
+
+</div><!-- /.col (left) -->
+						
+<div class="col-md-6">
+						
+    <div class="box box-primary">
+                               
+        <div class="box-body">
+								
+			<div class="box-header">
+            <h3 class="box-title">Platform</h3>
+        </div>
+                                 
+            <div class="form-group">
+                <label>Operating Freq:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class=""></i>
+                    </div>
+                    <input id="OperatingFrequencies" name="OperatingFrequencies" type="text" class="form-control pull-right"/>
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->
+									
+			<div class="form-group">
+                <label>OS:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class=""></i>
+                    </div>
+                    <input id="OperatingSystem" name="OperatingSystem" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->		
+
+			@*<div class="form-group">
+                <label>User Interface:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i ></i>
+                    </div>
+                    <input type="text" class="form-control pull-right"/>
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->*@		
+
+			<div class="form-group">
+                <label>Processor:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="Processor" name="Processor" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->											
+									                                      
+        </div><!-- /.box-body -->
+    </div><!-- /.box -->
+                            
+    <div class="box box-success">							                              
+								
+        <div class="box-body">								
+            <!-- Minimal style -->
+				<div class="box-header">
+                <h3 class="box-title">Display</h3>
+            </div>
+									
+            <div class="form-group">
+                <label>Type:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="DisplayType" name="DisplayType" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->		
+									
+				<div class="form-group">
+                <label>Size:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="DisplaySize" name="DisplaySize" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->		
+
+			<div class="form-group">
+                <label>Resolution:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="DisplayResolution" name="DisplayResolution" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->		
+									
+				@*<div class="form-group">
+                <label>Color:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="Processor"/>
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->*@		
+									
+				@*<div class="form-group">
+                <label>Other Display Features:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>                                            
+					<textarea id="otherdisplayfeatures" class="form-control pull-right">											
+					</textarea>
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->*@		
+                                  
+        </div><!-- /.box-body -->								
+								
+        <div class="box-body">								
+            <!-- Minimal style -->
+				<div class="box-header">								 
+                <h3 class="box-title"> MEMORY AND STORAGE</h3>
+                </div>
+									
+            <div class="form-group">
+                <label>Internal:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="InternalStorage" name="InternalStorage" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->		
+									
+				<div class="form-group">
+                <label>Expandable Memory:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="ExternalStorage" name="ExternalStorage" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->		
+
+			<div class="form-group">
+                <label>Memory:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="Memory" name="Memory" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->	
+                                  
+        </div><!-- /.box-body -->
+															
+								
+        <div class="box-body">								
+            <!-- Minimal style -->									
+				<div class="box-header">
+				<h3 class="box-title"> INTERNET & CONNECTIVITY</h3>
+			</div>
+								
+            <div class="form-group">
+                <label>Internet Features:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="InternetFeatures" name="InternetFeatures" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->		
+									
+				<div class="form-group">
+                <label>Preinstalled Browser:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="PreinstalledBrowser" name="PreinstalledBrowser" type="text" class="form-control pull-right"/>
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->		
+
+			@*<div class="form-group">
+                <label>GPRS:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="GPRS" name="GPRS" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->*@	
+									
+			@*<div class="form-group">
+                <label>EDGE:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="Processor"/>
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->*@	
+									
+			<div class="form-group">
+                <label>3G:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="HSPA_3G" name="HSPA_3G" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->	
+									
+			<div class="form-group">
+                <label>2G:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="GPRS_2G" name="GPRS_2G" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->	
+									
+			<div class="form-group">
+                <label>Wifi:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="WiFi" name="WiFi" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->	
+									
+			<div class="form-group">
+                <label>Hotspot:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="Hotspot" name="Hotspot" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->	
+									
+			<div class="form-group">
+                <label>USB Connectivity:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="USB" name="USB" type="text" class="form-control pull-right"/>
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->	
+									
+			<div class="form-group">
+                <label>Bluetooth:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="Bluetooth" name="Bluetooth" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->	
+									
+			<div class="form-group">
+                <label>Supported Networks:</label>@Model.
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="SupportedNetworks" name="SupportedNetworks" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->	
+                                  
+        </div><!-- /.box-body -->
+								
+								
+        <div class="box-body">
+                                   
+			<div class="box-header">
+				<h3 class="box-title">OTHER FEATURES</h3>
+			</div>
+								   
+			<div class="form-group">
+                <label>Call Memory:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="CallMemory" name="CallMemory" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->		
+
+            <div class="form-group">
+                <label>SMS Memory:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="SMSMemory" name="SMSMemory" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->		
+
+			<div class="form-group">
+                <label>Phone Book Memory:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <input id="PhoneMemory" name="PhoneMemory" type="text" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->		
+
+			@*<div class="form-group">
+                <label>Additional Features:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                            <i ></i>
+                    </div>
+                    <textarea  class="form-control pull-right"></textarea>
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->*@	
+
+				<div class="box box-success">                              
+					<div class="box-footer">
+						<button type="submit" class="btn btn-primary" style=" width:80px;">Save</button>
+						<button type="submit" class="btn btn-primary" style=" width:80px;">Cancel</button>
+					</div>
+			</div><!-- /.box -->
+								  								
+        </div><!-- /.box-body -->
+                             
+    </div><!-- /.box -->
+</div><!-- /.col (right) -->
+    
+}

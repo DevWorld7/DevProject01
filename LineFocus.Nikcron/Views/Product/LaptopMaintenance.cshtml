@@ -6,6 +6,7 @@
 
 @using (Html.BeginForm("LaptopMaintenance", "Product", FormMethod.Post, new { @class = "form-horizontal", onsubmit = "return ValidateForm();" }))
 {
+    
     <div class="col-md-6">
         <div class="box box-danger">
             <div class="box-header">
@@ -68,7 +69,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Color" name="Color" type="text" class="form-control" />
+                        <input id="ProductColors" name="ProductColors" type="text" class="form-control" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -89,15 +90,7 @@
                         <input id="Processor" name="Processor" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
-                <div class="form-group">
-                    <label>Variant:</label>
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i></i>
-                        </div>
-                        <input id="Variant" name="Variant" type="text" class="form-control pull-right" />
-                    </div><!-- /.input group -->
-                </div><!-- /.form group -->
+               
                 <div class="form-group">
                     <label>Chipset:</label>
                     <div class="input-group">
@@ -114,7 +107,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Clockspeed" name="Clockspeed" type="text" class="form-control pull-right" />
+                        <input id="ClockSpeed" name="ClockSpeed" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -141,7 +134,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="ExpandableMemory" name="ExpandableMemory" type="text" class="form-control pull-right" />
+                        <input id="ExternalStorage" name="ExternalStorage" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
                 <div class="form-group">
