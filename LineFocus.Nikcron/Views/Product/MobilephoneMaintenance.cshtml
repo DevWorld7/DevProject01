@@ -15,12 +15,12 @@
         <div class="box-body">
             <!-- Date dd/mm/yyyy -->
             <div class="form-group">
-                <label>Date masks:</label>
+                <label>Date:</label>
                 <div class="input-group">
                     <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                     </div>
-                    <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask/>
+                    <input type="text" name="DateMask" id="DateMask" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask/>
                 </div><!-- /.input group -->
             </div><!-- /.form group -->
 
@@ -59,9 +59,10 @@
                 <div class="input-group">
                     <div class="input-group-addon">
                         <i class=""></i>
-                    </div>
-                    <input id="Manufacture" name="Manufacture" type="text" class="form-control" />
-                </div><!-- /.input group -->
+                    </div>                    
+                    <select id="Manufacture" name="Manufacture" class="form-control"></select>
+                   
+                    </div><!-- /.input group -->
             </div><!-- /.form group -->
 									
 				<div class="form-group">
@@ -678,6 +679,7 @@
 
 				<div class="box box-success">                              
 					<div class="box-footer">
+                        <input type="hidden" name="Id" id="Id" value="@ViewBag.Id" />
 						<button type="submit" class="btn btn-primary" style=" width:80px;">Save</button>
 						<button type="submit" class="btn btn-primary" style=" width:80px;">Cancel</button>
 					</div>
@@ -687,5 +689,78 @@
                              
     </div><!-- /.box -->
 </div><!-- /.col (right) -->
+    <input type="hidden" name="MobileId" id="MobileId" />
+    <script>
+        function ValidateForm() {
+
+            RequiredTextbox("ModelNumber", "Enter the Model Number")
+            RequiredTextbox("ModelName", "Enter the Model Name")
+            RequiredTextbox("Manufacture", "Select the Manufacture")
+            RequiredTextbox("SimType", "Enter the SimType")
+
+            return AlertError();
+        }
+        function LoadManufactures()
+        {
+            $.getJSON("@Url.Action("GetLookups", "Master", new { LookupType = "Manufacture" })", function (result) {
+                var options = '';
+                $.each(result, function (item) {
+                    options += '<option value="' + result[item].Id + '">' + result[item].Name + '</option>';
+                });
+                $("select#Manufacture").html(options);
+            });
+        }
+
+        $(document).ready(function () {
+            LoadManufactures();
+            $('#DateMask').datepicker();
+            if ("@ViewBag.MobileId" != "0")
+            {
+                $('#MobileId').val('@Model.Id');
+                $('#ModelNumber').val('@Model.ModelNumber');
+                $('#ModelName').val('@Model.ModelName');
+                $('#FormFactor').val('@Model.FormFactor');
+                $('#CallFeatures').val('@Model.CallFeatures');
+                $('#SimSize').val('@Model.SimSize');
+                $('#SimType').val('@Model.SimType');
+                $('#PrimaryCamera').val('@Model.PrimaryCamera');
+                $('#SecondryCamera').val('@Model.SecondryCamera');
+                $('#PhoneMemory').val('@Model.PhoneMemory');
+                $('#VideoRecording').val('@Model.VideoRecording');
+                $('#Dimension').val('@Model.Dimension');
+                $('#Weight').val('@Model.Weight');
+                $('#BatteryType').val('@Model.BatteryType');
+                $('#BatteryStandBy').val('@Model.BatteryStandBy');
+                $('#MusicPlayer').val('@Model.MusicPlayer');
+                $('#VideoPlayer').val('@Model.VideoPlayer');
+                $('#FM').val('@Model.FM');
+                $('#SoundEnhancement').val('@Model.SoundEnhancement');
+                $('#RingTone').val('@Model.RingTone');
+                //$('#ProductWarranties').val('@Model.ProductWarranties');
+                $('#OperatingFrequencies').val('@Model.Connectivity.OperatingFrequencies');
+                $('#OperatingSystem').val('@Model.OperatingSystem');
+                $('#Processor').val('@Model.Processor');
+                $('#DisplayType').val('@Model.DisplayType');
+                $('#DisplaySize').val('@Model.DisplaySize');
+                $('#DisplayResolution').val('@Model.DisplayResolution');
+                $('#InternalStorage').val('@Model.InternalStorage');
+                $('#ExternalStorage').val('@Model.ExternalStorage');
+                $('#Memory').val('@Model.Memory');
+                $('#InternetFeatures').val('@Model.InternetFeatures');
+                $('#PreinstalledBrowser').val('@Model.PreinstalledBrowser');
+                $('#HSPA_3G').val('@Model.Connectivity.HSPA_3G');
+                $('#GPRS_2G').val('@Model.Connectivity.GPRS_2G');
+                $('#WiFi').val('@Model.WiFi');
+                $('#USB').val('@Model.Connectivity.USB');
+                $('#Bluetooth').val('@Model.Connectivity.Bluetooth');
+                $('#SupportedNetworks').val('@Model.Connectivity.SupportedNetworks');
+                $('#CallMemory').val('@Model.CallMemory');
+                $('#SMSMemory').val('@Model.SMSMemory');
+                $('#PhoneMemory').val('@Model.PhoneMemory');
+
+            }
+
+        });
+    </script>
     
 }

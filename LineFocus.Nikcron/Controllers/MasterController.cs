@@ -107,6 +107,9 @@ namespace LineFocus.Nikcron.Controllers
                 case "ReturnType":
                     JsonData.Data = db.ReturnTypes.Select(n => new { n.Id, n.Name }).ToList();
                     break;
+                case "Manufacture":
+                    JsonData.Data = db.Manufactures.Select(n => new { n.Id, n.Name }).ToList();
+                    break;
             }
             JsonData.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
             return JsonData;
