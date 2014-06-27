@@ -721,6 +721,8 @@
     <Content Include="Views\Product\Laptops.cshtml" />
     <Content Include="Views\Product\Mobilephones.cshtml" />
     <Content Include="Views\Product\MobilephoneMaintenance.cshtml" />
+    <Content Include="Views\Product\Tablets.cshtml" />
+    <Content Include="Views\Product\TabletMaintenance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

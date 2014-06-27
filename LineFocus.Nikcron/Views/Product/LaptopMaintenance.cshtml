@@ -6,7 +6,7 @@
 
 @using (Html.BeginForm("LaptopMaintenance", "Product", FormMethod.Post, new { @class = "form-horizontal", onsubmit = "return ValidateForm();" }))
 {
-    
+
     <div class="col-md-6">
         <div class="box box-danger">
             <div class="box-header">
@@ -20,29 +20,41 @@
                         <div class="input-group-addon">
                             <i class=""></i>
                         </div>
-                        <input id="Inthebox" name="Inthebox" type="text" class="form-control"/>
+                        <input id="Inthebox" name="Inthebox" type="text" class="form-control" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label>Brand:</label><span class="astrisk">*</span>
+                    <label>Model Number:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class=""></i>
                         </div>
-                        <input id="Brand" name="Brand" type="text" class="form-control" />
+                        <input id="ModelNumber" name="ModelNumber" type="text" class="form-control" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label>Form Factor:</label>
+                    <label>Model Name:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class=""></i>
                         </div>
-                        <input id="Formfactor" name="Formfactor" type="text" class="form-control" />
+                        <input id="ModelName" name="ModelName" type="text" class="form-control" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label>Manufacture:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class=""></i>
+                        </div>
+                        <select id="Manufacture" name="Manufacture" class="form-control"></select>
+
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
 
                 <div class="form-group">
                     <label>Series:</label><span class="astrisk">*</span>
@@ -53,16 +65,16 @@
                         <input id="Series" name="Series" type="text" class="form-control" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
+                @*<div class="form-group">
+                        <label>Lifestyle:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class=""></i>
+                            </div>
+                            <input id="Lifestyle" name="Lifestyle" type="text" class="form-control" />
+                        </div><!-- /.input group -->
+                    </div><!-- /.form group -->*@
 
-                <div class="form-group">
-                    <label>Lifestyle:</label>
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class=""></i>
-                        </div>
-                        <input id="Lifestyle" name="Lifestyle" type="text" class="form-control" />
-                    </div><!-- /.input group -->
-                </div><!-- /.form group -->
                 <div class="form-group">
                     <label>Color:</label>
                     <div class="input-group">
@@ -90,7 +102,7 @@
                         <input id="Processor" name="Processor" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
-               
+
                 <div class="form-group">
                     <label>Chipset:</label>
                     <div class="input-group">
@@ -138,6 +150,7 @@
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
                 <div class="form-group">
+
                     <label>Memory Slots:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
@@ -146,6 +159,7 @@
                         <input id="Memoryslote" name="Memoryslote" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
+
                 <div class="form-group">
                     <label>System Memory:</label><span class="astrisk">*</span>
                     <div class="input-group">
@@ -169,7 +183,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Hardwareinterface" name="Hardwareinterface" type="text" class="form-control pull-right" />
+                        <input id="HardwareInterface" name="HardwareInterface" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
                 <div class="form-group">
@@ -187,7 +201,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="HDDcapacity" name="HDDcapacity" type="text" class="form-control pull-right" />
+                        <input id="HDDCapacity" name="HDDCapacity" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -204,7 +218,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Opticaldrive" name="Opticaldrive" type="text" class="form-control pull-right" />
+                        <input id="OpticalDrive" name="OpticalDrive" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -237,7 +251,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <textarea id="WarrantySummary" name="WarrantySummary" class="form-control pull-right"></textarea>
+                        <textarea id="ProductWarranties" name="ProductWarranties" class="form-control pull-right"></textarea>
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -258,7 +272,7 @@
                         <div class="input-group-addon">
                             <i class=""></i>
                         </div>
-                        <input id="Operatingsystem" name="Operatingsystem" type="text" class="form-control pull-right" />
+                        <input id="OperatingSystem" name="OperatingSystem" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -268,7 +282,7 @@
                         <div class="input-group-addon">
                             <i class=""></i>
                         </div>
-                        <input id="Systemarchitectre" name="Systemarchitectre" type="text" class="form-control pull-right" />
+                        <input id="SystemArch" name="SystemArch" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -280,22 +294,22 @@
             <div class="box-body">
                 <!-- Date range -->
                 <div class="form-group">
-                    <label>Screen Size:</label>
+                    <label>Display Size:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class=""></i>
                         </div>
-                        <input id="Screensize" name="Screensize" type="text" class="form-control pull-right" />
+                        <input id="DisplaySize" name="DisplaySize" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
-               
+
                 <div class="form-group">
-                    <label>Screen Type:</label>
+                    <label>Display Type:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class=""></i>
                         </div>
-                        <input id="Screentype" name="Screentype" type="text" class="form-control pull-right" />
+                        <input id="DisplayType" name="DisplayType" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -312,19 +326,19 @@
                         <div class="input-group-addon">
                             <i class=""></i>
                         </div>
-                        <input id="Graphicprocess" name="Graphicprocess" type="text" class="form-control pull-right" />
+                        <input id="GraphicProcessor" name="GraphicProcessor" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
+                @*<div class="form-group">
+                        <label>Web Camera:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class=""></i>
+                            </div>
+                            <input id="Webcamera" name="Webcamera" type="text" class="form-control pull-right" />
+                        </div><!-- /.input group -->
+                    </div><!-- /.form group -->*@
 
-                <div class="form-group">
-                    <label>Web Camera:</label>
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class=""></i>
-                        </div>
-                        <input id="Webcamera" name="Webcamera" type="text" class="form-control pull-right" />
-                    </div><!-- /.input group -->
-                </div><!-- /.form group -->
                 <div class="form-group">
                     <label>Keyboard:</label>
                     <div class="input-group">
@@ -414,7 +428,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="USBport" name="USBport" type="text" class="form-control pull-right"/>
+                        <input id="USBport" name="USBport" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -424,7 +438,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="RJ45lan" name="RJ45lan" type="text" class="form-control pull-right" />
+                        <input id="RJ45LAN" name="RJ45LAN" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
                 <div class="form-group">
@@ -433,7 +447,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="HDMIport" name="HDMIport" type="text" class="form-control pull-right" />
+                        <input id="HDMIPort" name="HDMIPort" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -443,7 +457,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="VGAport" name="VGAport" type="text" class="form-control pull-right"/>
+                        <input id="VGAPort" name="VGAPort" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -453,19 +467,18 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Multicardslot" name="Multicardslot" type="text" class="form-control pull-right" />
+                        <input id="MultiCardSlot" name="MultiCardSlot" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
-
-                <div class="form-group">
-                    <label>Fingerprint Sensor:</label>
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i></i>
-                        </div>
-                        <input id="Fingerprintsensor" name="Fingerprintsensor" type="text" class="form-control pull-right" />
-                    </div><!-- /.input group -->
-                </div><!-- /.form group -->
+                @*<div class="form-group">
+                        <label>Fingerprint Sensor:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i></i>
+                            </div>
+                            <input id="Fingerprintsensor" name="Fingerprintsensor" type="text" class="form-control pull-right" />
+                        </div><!-- /.input group -->
+                    </div><!-- /.form group -->*@
 
             </div><!-- /.box-body -->
 
@@ -490,13 +503,14 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Machinecolor" name="Machinecolor" type="text" class="form-control pull-right" />
+                        <input id="ProductColors" name="ProductColors" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
             </div><!-- /.box-body -->
 
         </div><!-- /.box -->
+
         <div class="box box-success">
             <div class="box-footer">
                 <input type="hidden" name="Id" id="Id" value="@ViewBag.Id" />
@@ -505,17 +519,68 @@
             </div>
         </div><!-- /.box -->
     </div><!-- /.col (right) -->
-}
-<script type="text/javascript">
+    
+     <input type="hidden" name="Laptopid" id="Laptopid" />
+    
+      <script>
     function ValidateForm() {
 
-        RequiredTextbox("Inthebox", "Enter the In the box")
-        RequiredTextbox("Processor", "Enter the Processor")
+        RequiredTextbox("ModelNumber", "Enter the Model Number")
+        RequiredTextbox("ModelName", "Enter the Model Name")
         RequiredTextbox("Chipset", "Enter the Chipset")
         RequiredTextbox("ExpandableMemory", "Enter the Expandable Memory")
         RequiredTextbox("Additionalfeatures", "Enter the Additional Features")
         RequiredTextbox("WarrantySummary", "Enter the  WarrantySummary")
-      
+
         return AlertError();
-    }  
-</script>
+    }
+    function LoadManufactures() {
+        $.getJSON("@Url.Action("GetLookups", "Master", new { LookupType = "Manufacture" })", function (result) {
+                var options = '';
+                $.each(result, function (item) {
+                    options += '<option value="' + result[item].Id + '">' + result[item].Name + '</option>';
+                });
+                $("select#Manufacture").html(options);
+            });
+        }
+
+        $(document).ready(function () {
+            LoadManufactures();
+          
+            if ("@ViewBag.Laptopid" != "0") {
+            $('#Laptopid').val('@Model.Id');
+            $('#ModelName').val('@Model.ModelName');
+            $('#ModelNumber').val('@Model.ModelNumber');
+            $('#ProductColors').val('@Model.ProductColors');
+            $('#Processor').val('@Model.Processor');
+            $('#Chipset').val('@Model.Chipset');
+            $('#ClockSpeed').val('@Model.ClockSpeed');
+            $('#Cache').val('@Model.Cache');
+            $('#ExternalStorage').val('@Model.ExternalStorage');
+            $('#HardwareInterface').val('@Model.HardwareInterface');
+            $('#RPM').val('@Model.RPM');
+            $('#HDDCapacity').val('@Model.HDDCapacity');
+            $('#OpticalDrive').val('@Model.OpticalDrive');
+            $('#ProductWarranties').val('@Model.ProductWarranties');
+            $('#OperatingSystem').val('@Model.OperatingSystem');
+            $('#SystemArch').val('@Model.SystemArch');
+            $('#DisplaySize').val('@Model.DisplaySize');
+            $('#DisplayType').val('@Model.DisplayType');
+            $('#Keyboard').val('@Model.Keyboard');
+            $('#Speakers').val('@Model.Speakers');
+            $('#Sound').val('@Model.Sound');
+            $('#USBPort').val('@Model.USBPort');
+            $('#RJ45LAN').val('@Model.RJ45LAN');
+            $('#HDMIPort').val('@Model.HDMIPort');
+            $('#VGAport').val('@Model.VGAPort');
+            $('#MultiCardSlot').val('@Model.MultiCardSlot');
+            $('#Weight').val('@Model.Weight');
+            $('#ProductColors').val('@Model.ProductColors');
+            }
+        });
+    </script>
+    
+    
+    
+    
+}

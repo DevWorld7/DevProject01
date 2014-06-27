@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Laptops List";
+    ViewBag.Title = "Tablet List";
 }
 <div id="treeGrid">
 </div>
@@ -44,7 +44,7 @@
                 commit(true);
             },
             id: 'Id',
-            url: '@Url.Action("GetLaptops")'
+            url: '@Url.Action("GetTablets")'
         };
         var dataAdapter = new $.jqx.dataAdapter(source);
         // create Tree Grid
@@ -99,15 +99,15 @@
 
                 addButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });
                 addButton.find('div:first').addClass(toTheme('jqx-icon-plus'));
-                addButton.jqxTooltip({ position: 'bottom', content: "Add Laptop" });
+                addButton.jqxTooltip({ position: 'bottom', content: "Add Tablet" });
 
                 addButton.click(function (event) {
-                    window.location.href = "@Url.Action("LaptopMaintenance", "Product")";
+                    window.location.href = "@Url.Action("TabletMaintenance", "Product")";
                 });
 
                 editButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });
                 editButton.find('div:first').addClass(toTheme('jqx-icon-edit'));
-                editButton.jqxTooltip({ position: 'bottom', content: "Edit Laptop" });
+                editButton.jqxTooltip({ position: 'bottom', content: "Edit Tablet" });
 
                 editButton.click(function (event) {
                     var getselectedrowindex = $('#treeGrid').jqxGrid('getselectedrowindex');
@@ -115,7 +115,7 @@
                     {
                         var selectedRowData = $('#treeGrid').jqxGrid('getrowdata', getselectedrowindex);
                         selectedRowID = selectedRowData.Id;
-                        window.location.href = "@Url.Action("LaptopMaintenance", "Product")" + "?LaptopID=" + selectedRowID;
+                        window.location.href = "@Url.Action("TabletMaintenance", "Product")" + "?TabletID=" + selectedRowID;
                     }
                 });
 
@@ -123,7 +123,7 @@
                 excelButton.find('div:first').addClass(toTheme('jqx-excel-plus'));
                 excelButton.jqxTooltip({ position: 'bottom', content: "Export As Excel File" });
                 excelButton.click(function (event) {
-                    $("#treeGrid").jqxGrid('exportdata', 'xls', 'Laptops');
+                    $("#treeGrid").jqxGrid('exportdata', 'xls', 'Tablets');
                 });
 
                 printButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });
@@ -149,3 +149,4 @@
     });
     });
 </script>
+
