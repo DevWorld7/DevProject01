@@ -681,7 +681,7 @@
 					<div class="box-footer">
                         <input type="hidden" name="Id" id="Id" value="@ViewBag.Id" />
 						<button type="submit" class="btn btn-primary" style=" width:80px;">Save</button>
-						<button type="submit" class="btn btn-primary" style=" width:80px;">Cancel</button>
+						<button type="submit" class="btn btn-primary" onclick="GoBackListing()" style=" width:80px;">Cancel</button>
 					</div>
 			</div><!-- /.box -->
 								  								
@@ -691,6 +691,9 @@
 </div><!-- /.col (right) -->
     <input type="hidden" name="MobileId" id="MobileId" />
     <script>
+        function GoBackListing() {
+            window.location.replace('@Url.Action("Mobilephones","Product",null)');
+        }
         function ValidateForm() {
 
             RequiredTextbox("ModelNumber", "Enter the Model Number")
@@ -714,7 +717,7 @@
         $(document).ready(function () {
             LoadManufactures();
             $('#DateMask').datepicker();
-            if ("@ViewBag.MobileId" != "0")
+            if ("@ViewBag.Id" != "0")
             {
                 $('#MobileId').val('@Model.Id');
                 $('#ModelNumber').val('@Model.ModelNumber');

@@ -515,7 +515,7 @@
             <div class="box-footer">
                 <input type="hidden" name="Id" id="Id" value="@ViewBag.Id" />
                 <button type="submit" class="btn btn-primary" style=" width:80px;">Save</button>
-                <button type="reset" class="btn btn-primary" style=" width:80px;">Cancel</button>
+                <button type="reset" class="btn btn-primary" onclick="GoBackListing()" style=" width:80px;">Cancel</button>
             </div>
         </div><!-- /.box -->
     </div><!-- /.col (right) -->
@@ -523,6 +523,9 @@
      <input type="hidden" name="Laptopid" id="Laptopid" />
     
       <script>
+          function GoBackListing() {
+              window.location.replace('@Url.Action("Laptops","Product",null)');
+          }
     function ValidateForm() {
 
         RequiredTextbox("ModelNumber", "Enter the Model Number")
@@ -547,11 +550,11 @@
         $(document).ready(function () {
             LoadManufactures();
           
-            if ("@ViewBag.Laptopid" != "0") {
+            if ("@ViewBag.Id" != "0") {
             $('#Laptopid').val('@Model.Id');
             $('#ModelName').val('@Model.ModelName');
             $('#ModelNumber').val('@Model.ModelNumber');
-            $('#ProductColors').val('@Model.ProductColors');
+            //$('#ProductColors').val('@Model.ProductColors');
             $('#Processor').val('@Model.Processor');
             $('#Chipset').val('@Model.Chipset');
             $('#ClockSpeed').val('@Model.ClockSpeed');
@@ -561,7 +564,7 @@
             $('#RPM').val('@Model.RPM');
             $('#HDDCapacity').val('@Model.HDDCapacity');
             $('#OpticalDrive').val('@Model.OpticalDrive');
-            $('#ProductWarranties').val('@Model.ProductWarranties');
+            //$('#ProductWarranties').val('@Model.ProductWarranties');
             $('#OperatingSystem').val('@Model.OperatingSystem');
             $('#SystemArch').val('@Model.SystemArch');
             $('#DisplaySize').val('@Model.DisplaySize');
@@ -575,7 +578,7 @@
             $('#VGAport').val('@Model.VGAPort');
             $('#MultiCardSlot').val('@Model.MultiCardSlot');
             $('#Weight').val('@Model.Weight');
-            $('#ProductColors').val('@Model.ProductColors');
+            //$('#ProductColors').val('@Model.ProductColors');
             }
         });
     </script>

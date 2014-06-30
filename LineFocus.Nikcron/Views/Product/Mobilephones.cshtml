@@ -20,12 +20,12 @@
             dataFields: [
                 { name: 'Id', type: 'number' },
                 { name: 'ModelNumber', type: 'string' },
-                { name: 'Brand', type: 'string' },
-                { name: 'OS', type: 'string' },
-                { name: 'Storage', type: 'string' },
-                { name: 'RAM', type: 'string' },
+                { name: 'Manufacture', type: 'string' },
+                { name: 'OperatingSystem', type: 'string' },
+                { name: 'ExternalStorage', type: 'string' },
+                { name: 'InternalStorage', type: 'string' },
                 { name: 'Processor', type: 'string' },
-                { name: 'Screen', type: 'string' }
+                { name: 'DisplaySize', type: 'string' }
             ],
             addrow: function (rowid, rowdata, position, commit) {
                 // synchronize with the server - send insert command
@@ -64,19 +64,19 @@
             autoshowfiltericon: false,
             selectionmode: 'singlerow',
             editmode: 'dblclick',
-            groups: ['Brand'],
+            groups: ['Manufacture'],
             showToolbar: true,
             ready: function () {
             },
             columns: [
               { text: 'Id', dataField: 'Id', width: 30, editable : false, hidden : true },
-              { text: 'Brand', dataField: 'Brand', width: 150 },
+              { text: 'Brand', dataField: 'Manufacture', width: 150 },
               { text: 'Model #', dataField: 'ModelNumber', width: 130 },
               { text: 'Processor', dataField: 'Processor', width: 130 },
-              { text: 'RAM', dataField: 'RAM', width: 150 },
-              { text: 'Storage', dataField: 'Stroage', width: 150 },
-              { text: 'Screen', dataField: 'Screen', width: 100 },
-              { text: 'Operating System', dataField: 'OS', width: 150 },
+              { text: 'RAM', dataField: 'InternalStorage', width: 150 },
+              { text: 'Storage', dataField: 'ExternalStorage', width: 150 },
+              { text: 'Screen', dataField: 'DisplaySize', width: 100 },
+              { text: 'Operating System', dataField: 'OperatingSystem', width: 150 },
             ],
             renderToolbar: function(toolBar)
             {
@@ -116,7 +116,7 @@
                     {
                         var selectedRowData = $('#treeGrid').jqxGrid('getrowdata', getselectedrowindex);
                         selectedRowID = selectedRowData.Id;
-                        window.location.href = "@Url.Action("MobilephoneMaintenance", "Product")" + "?MobileID=" + selectedRowID;
+                        window.location.href = "@Url.Action("MobilephoneMaintenance", "Product")" + "?Id=" + selectedRowID;
                     }
                 });
 

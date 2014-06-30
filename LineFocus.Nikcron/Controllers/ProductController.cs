@@ -27,13 +27,15 @@ namespace LineFocus.Nikcron.Controllers
             return View();
         }
 
+        #region Laptops
+        [HttpGet]
         public ActionResult Laptops()
         {
             ViewBag.Header = "Laptops";
             ViewBag.Caption = "Listing";
             return View();
         }
-
+        [HttpGet]
         public JsonResult GetLaptops()
         {
             JsonResult Result = new JsonResult();
@@ -41,28 +43,48 @@ namespace LineFocus.Nikcron.Controllers
             Result.Data  = db.ProductModels.OfType<Laptop>().Select(n => new
             {
                 n.Id,
+                Manufacture = n.Manufacture.Name,
+                n.ModelName,
                 n.ModelNumber,
-                Brand = n.Manufacture.Name,
-                OS = n.OperatingSystem,
-                HDD = n.InternalStorage,
-                RAM = n.Memory,
-                Processor = n.Processor,
-                Screen = n.DisplaySize
+                n.ProductColors,
+                n.Processor,
+                n.Chipset,
+                n.ClockSpeed,
+                n.Cache,
+                n.ExternalStorage,
+                n.HardwareInterface,
+                n.RPM,
+                n.InternalStorage,
+                n.HDDCapacity,
+                n.OpticalDrive,
+                n.ProductWarranties,
+                n.OperatingSystem,
+                n.SystemArch,
+                n.DisplaySize,
+                n.DisplayType,
+                n.Keyboard,
+                n.Speakers,
+                n.Sound,
+                n.USBPort,
+                n.RJ45LAN,
+                n.HDMIPort,
+                n.VGAPort,
+                n.MultiCardSlot,
+                n.Weight
             });
             Result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
             return Result;
         }
-
         [HttpGet]
-        public ActionResult LaptopMaintenance(Int32? LaptopId)
+        public ActionResult LaptopMaintenance(Int32? Id)
         {
             ViewBag.Header = "Laptop";
-            if (LaptopId.HasValue)
+            if (Id.HasValue)
             {
-                ViewBag.LaptopId = LaptopId;
+                ViewBag.Id = Id;
                 ViewBag.Caption = "Edit";
                 ApplicationDBContext db = new ApplicationDBContext();
-                Laptop loptop = db.ProductModels.OfType<Laptop>().Where(l => l.Id == LaptopId).FirstOrDefault();
+                Laptop loptop = db.ProductModels.OfType<Laptop>().Where(l => l.Id == Id).FirstOrDefault();
                 return View(loptop);
             }
             else
@@ -72,7 +94,6 @@ namespace LineFocus.Nikcron.Controllers
                 return View(new Laptop());
             }
         }
-
         [HttpPost]
         public ActionResult LaptopMaintenance(FormCollection formCollection)
         {
@@ -121,11 +142,15 @@ namespace LineFocus.Nikcron.Controllers
             db.SaveChanges();
             return View("Laptops");
         }
+        #endregion
 
-        public ActionResult Mobilephones(Int32? MobileId)
+        #region Mobiles
+        [HttpGet]
+        public ActionResult Mobilephones()
         {
             return View();
         }
+        [HttpGet]
         public JsonResult GetMobiles()
         {
             JsonResult Result = new JsonResult();
@@ -133,27 +158,60 @@ namespace LineFocus.Nikcron.Controllers
             Result.Data = db.ProductModels.OfType<Mobile>().Select(n => new
             {
                 n.Id,
+                Manufacture = n.Manufacture.Name,
                 n.ModelNumber,
-                Brand = n.Manufacture.Name,
-                OS = n.OperatingSystem,
-                Storage = n.InternalStorage,
-                RAM = n.Memory,
-                Processor = n.Processor,
-                Screen = n.DisplaySize
+                n.ModelName,
+                n.FormFactor,
+                n.CallFeatures,
+                n.SimSize,
+                n.SimType,
+                n.PrimaryCamera,
+                n.SecondryCamera,
+                n.PhoneMemory,
+                n.VideoRecording,
+                n.Dimension,
+                n.Weight,
+                n.BatteryType,
+                n.BatteryStandBy,
+                n.MusicPlayer,
+                n.VideoPlayer,
+                n.FM,
+                n.SoundEnhancement,
+                n.RingTone,
+                n.ProductWarranties,
+                n.Connectivity.OperatingFrequencies,
+                n.OperatingSystem,
+                n.Processor,
+                n.DisplayType,
+                n.DisplaySize,
+                n.DisplayResolution,
+                n.InternalStorage,
+                n.ExternalStorage,
+                n.Memory,
+                n.InternetFeatures,
+                n.PreinstalledBrowser,
+                n.Connectivity.HSPA_3G,
+                n.Connectivity.GPRS_2G,
+                n.WiFi,
+                n.Connectivity.USB,
+                n.Connectivity.Bluetooth,
+                n.Connectivity.SupportedNetworks,
+                n.CallMemory,
+                n.SMSMemory
             });
             Result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
             return Result;
         }
         [HttpGet]
-        public ActionResult MobilephoneMaintenance(Int32? MobileId)
+        public ActionResult MobilephoneMaintenance(Int32? Id)
         {
             ViewBag.Header = "Mobiles";
-            if (MobileId.HasValue)
+            if (Id.HasValue)
             {
-                ViewBag.MobileId = MobileId;
+                ViewBag.MobileId = Id;
                 ViewBag.Caption = "Edit";
                 ApplicationDBContext db = new ApplicationDBContext();
-                Mobile Mobile = db.ProductModels.OfType<Mobile>().Where(m => m.Id == MobileId).FirstOrDefault();
+                Mobile Mobile = db.ProductModels.OfType<Mobile>().Where(m => m.Id == Id).FirstOrDefault();
                 return View(Mobile);
             }
             else
@@ -224,12 +282,15 @@ namespace LineFocus.Nikcron.Controllers
             db.SaveChanges();
             return View("Mobilephones");
         }
-        
+        #endregion
+
+        #region Tablets
+        [HttpGet]
         public ActionResult Tablets()
         {
             return View();
         }
-
+        [HttpGet]
         public JsonResult GetTablets()
         {
             JsonResult Result = new JsonResult();
@@ -237,28 +298,39 @@ namespace LineFocus.Nikcron.Controllers
             Result.Data = db.ProductModels.OfType<Tablet>().Select(n => new
             {
                 n.Id,
+                Manufacture = n.Manufacture.Name,
                 n.ModelNumber,
-                Brand = n.Manufacture.Name,
-                OS = n.OperatingSystem,
-                HDD = n.InternalStorage,
-                RAM = n.Memory,
-                Processor = n.Processor,
-                Screen = n.DisplaySize
+                n.ModelName,
+                n.Processor,
+                n.ProductColors,
+                n.ExternalStorage,
+                n.InternalStorage,
+                n.Dimension,
+                n.OperatingSystem,
+                n.DisplaySize,
+                n.DisplayType,
+                n.PrimaryCamera,
+                n.SecondryCamera,
+                n.WiFi,
+                n.PreinstalledBrowser,
+                n.Weight,
+                n.VideoFormat,
+                n.VideoRecording,
+                n.AudioFormat
             });
             Result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
             return Result;
         }
-
-       [HttpGet]
-        public ActionResult TabletMaintenance(Int32? TabletId)
+        [HttpGet]
+        public ActionResult TabletMaintenance(Int32? Id)
         {
             ViewBag.Header = "Tablet";
-            if (TabletId.HasValue)
+            if (Id.HasValue)
             {
-                ViewBag.TabletId = TabletId;
+                ViewBag.TabletId = Id;
                 ViewBag.Caption = "Edit";
                 ApplicationDBContext db = new ApplicationDBContext();
-                Tablet Tablet = db.ProductModels.OfType<Tablet>().Where(t => t.Id == TabletId).FirstOrDefault();
+                Tablet Tablet = db.ProductModels.OfType<Tablet>().Where(t => t.Id == Id).FirstOrDefault();
                 return View(Tablet);
             }
             else
@@ -268,10 +340,9 @@ namespace LineFocus.Nikcron.Controllers
                 return View(new Tablet());
             }
         }
-
-       [HttpPost]
-       public ActionResult TabletMaintenance(FormCollection formCollection)
-       {
+        [HttpPost]
+        public ActionResult TabletMaintenance(FormCollection formCollection)
+        {
            ApplicationDBContext db = new ApplicationDBContext();
            Tablet Tablet = new Tablet();
 
@@ -309,7 +380,7 @@ namespace LineFocus.Nikcron.Controllers
                db.ProductModels.AddObject(Tablet);
            db.SaveChanges();
            return View("Tablets");
-       }
-
+        }
+        #endregion
     }
 }

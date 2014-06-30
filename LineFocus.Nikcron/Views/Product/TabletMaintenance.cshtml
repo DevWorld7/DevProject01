@@ -371,7 +371,7 @@
         <div class="box-footer">
             <input type="hidden" name="Id" id="Id" value="@ViewBag.Id" />
             <button type="submit" class="btn btn-primary" style=" width:80px;">Save</button>
-            <button type="reset" class="btn btn-primary" style=" width:80px;">Cancel</button>
+            <button type="reset" class="btn btn-primary" onclick="GoBackListing()" style=" width:80px;">Cancel</button>
         </div>
     </div><!-- /.box -->
 
@@ -380,6 +380,9 @@
     <input type="hidden" name="Tabletid" id="Tabletid" />
     
      <script>
+    function GoBackListing() {
+        window.location.replace('@Url.Action("Tablets","Product",null)');
+    }
     function ValidateForm() {
 
         RequiredTextbox("ModelNumber", "Enter the Model Number")
@@ -404,12 +407,12 @@
     $(document).ready(function () {
         LoadManufactures();
 
-        if ("@ViewBag.Tabletid" != "0") {
+        if ("@ViewBag.Id" != "0") {
             $('#Tabletid').val('@Model.Id');
             $('#ModelName').val('@Model.ModelName');
             $('#ModelNumber').val('@Model.ModelNumber');          
             $('#Processor').val('@Model.Processor');
-            $('#ProductColors').val('@Model.ProductColors');
+            //$('#ProductColors').val('@Model.ProductColors');
             $('#ExternalStorage').val('@Model.ExternalStorage');
             $('#InternalStorage').val('@Model.InternalStorage');
             $('#Dimension').val('@Model.Dimension');
