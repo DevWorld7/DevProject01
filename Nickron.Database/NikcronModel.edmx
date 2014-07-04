@@ -38,7 +38,6 @@
     <EntitySet Name="ProductModels_Mobile" EntityType="NikcronModel.Store.ProductModels_Mobile" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductModels_Tablet" EntityType="NikcronModel.Store.ProductModels_Tablet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductModels_Laptop" EntityType="NikcronModel.Store.ProductModels_Laptop" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ProductModelProductWarranty" EntityType="NikcronModel.Store.ProductModelProductWarranty" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductModelProductColors" EntityType="NikcronModel.Store.ProductModelProductColors" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="ProductModelManufacture" Association="NikcronModel.Store.ProductModelManufacture">
       <End Role="ProductModel" EntitySet="ProductModels" />
@@ -71,14 +70,6 @@
     <AssociationSet Name="ProductItemRetailer" Association="NikcronModel.Store.ProductItemRetailer">
       <End Role="ProductItem" EntitySet="ProductItems" />
       <End Role="Retailer" EntitySet="Offices_Retailer" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ProductModelProductWarranty_ProductModel" Association="NikcronModel.Store.FK_ProductModelProductWarranty_ProductModel">
-      <End Role="ProductModel" EntitySet="ProductModels" />
-      <End Role="ProductModelProductWarranty" EntitySet="ProductModelProductWarranty" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ProductModelProductWarranty_ProductWarranty" Association="NikcronModel.Store.FK_ProductModelProductWarranty_ProductWarranty">
-      <End Role="ProductWarranty" EntitySet="ProductWarranties" />
-      <End Role="ProductModelProductWarranty" EntitySet="ProductModelProductWarranty" />
     </AssociationSet>
     <AssociationSet Name="DealersRetailer" Association="NikcronModel.Store.DealersRetailer">
       <End Role="Dealers" EntitySet="Offices_Dealers" />
@@ -175,6 +166,10 @@
     <AssociationSet Name="CompanyStockhouse" Association="NikcronModel.Store.CompanyStockhouse">
       <End Role="Company" EntitySet="Offices_Company" />
       <End Role="Stockhouse" EntitySet="Offices_Stockhouse" />
+    </AssociationSet>
+    <AssociationSet Name="ProductItemProductWarranty" Association="NikcronModel.Store.ProductItemProductWarranty">
+      <End Role="ProductItem" EntitySet="ProductItems" />
+      <End Role="ProductWarranty" EntitySet="ProductWarranties" />
     </AssociationSet>
     <AssociationSet Name="FK_BusinessOffice_inherits_Office" Association="NikcronModel.Store.FK_BusinessOffice_inherits_Office">
       <End Role="Office" EntitySet="Offices" />
@@ -344,7 +339,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ModelNumber" Type="nvarchar" Nullable="true" MaxLength="100" />
-    <Property Name="ModelName" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="ModelName" Type="nvarchar" Nullable="true" MaxLength="100" />
     <Property Name="ManufactureId" Type="int" Nullable="false" />
     <Property Name="ProductTypeId" Type="int" Nullable="false" />
     <Property Name="Processor" Type="nvarchar" Nullable="true" MaxLength="50" />
@@ -364,6 +359,11 @@
     <Property Name="SecondryCamera" Type="nvarchar" Nullable="true" MaxLength="20" />
     <Property Name="VideoRecording" Type="nvarchar" Nullable="true" MaxLength="20" />
     <Property Name="WiFi" Type="nvarchar" Nullable="true" MaxLength="20" />
+    <Property Name="BatteryCapacity" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="NoteSummary" Type="nvarchar" Nullable="true" MaxLength="1000" />
+    <Property Name="WarrantySummary" Type="nvarchar" Nullable="true" MaxLength="100" />
+    <Property Name="InBox" Type="nvarchar" Nullable="true" MaxLength="1000" />
+    <Property Name="ProductDate" Type="datetime" Nullable="true" />
   </EntityType>
   <EntityType Name="ProductWarranties">
     <Key>
@@ -400,6 +400,7 @@
     <Property Name="IMEI2" Type="nvarchar" Nullable="true" MaxLength="40" />
     <Property Name="PartNumber" Type="nvarchar" Nullable="true" MaxLength="40" />
     <Property Name="ProductColorsId" Type="int" Nullable="false" />
+    <Property Name="ProductWarrantyId" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Roles">
     <Key>
@@ -681,6 +682,7 @@
     <Property Name="Connectivity_Hotspot" Type="nvarchar" Nullable="true" MaxLength="20" />
     <Property Name="Connectivity_SupportedNetworks" Type="nvarchar" Nullable="true" MaxLength="50" />
     <Property Name="Connectivity_OperatingFrequencies" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="Connectivity_EDGE_2G" Type="nvarchar" Nullable="true" MaxLength="60" />
     <Property Name="Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductModels_Tablet">
@@ -701,6 +703,7 @@
     <Property Name="Connectivity_Hotspot" Type="nvarchar" Nullable="true" MaxLength="20" />
     <Property Name="Connectivity_SupportedNetworks" Type="nvarchar" Nullable="true" MaxLength="50" />
     <Property Name="Connectivity_OperatingFrequencies" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="Connectivity_EDGE_2G" Type="nvarchar" Nullable="true" MaxLength="60" />
     <Property Name="Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductModels_Laptop">
@@ -726,14 +729,6 @@
     <Property Name="RJ45LAN" Type="nvarchar" Nullable="true" MaxLength="30" />
     <Property Name="MultiCardSlot" Type="nvarchar" Nullable="true" MaxLength="30" />
     <Property Name="Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="ProductModelProductWarranty">
-    <Key>
-      <PropertyRef Name="ProductModelProductWarranty_ProductWarranty_Id" />
-      <PropertyRef Name="ProductWarranties_Id" />
-    </Key>
-    <Property Name="ProductModelProductWarranty_ProductWarranty_Id" Type="int" Nullable="false" />
-    <Property Name="ProductWarranties_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductModelProductColors">
     <Key>
@@ -1103,27 +1098,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ProductModelProductWarranty_ProductModel">
-    <End Role="ProductModel" Type="NikcronModel.Store.ProductModels" Multiplicity="1" />
-    <End Role="ProductModelProductWarranty" Type="NikcronModel.Store.ProductModelProductWarranty" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ProductModel">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ProductModelProductWarranty">
-        <PropertyRef Name="ProductModelProductWarranty_ProductWarranty_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ProductModelProductWarranty_ProductWarranty">
-    <End Role="ProductModelProductWarranty" Type="NikcronModel.Store.ProductModelProductWarranty" Multiplicity="*" />
-    <End Role="ProductWarranty" Type="NikcronModel.Store.ProductWarranties" Multiplicity="1" />
+  <Association Name="ProductItemProductWarranty">
+    <End Role="ProductItem" Type="NikcronModel.Store.ProductItems" Multiplicity="*" />
+    <End Role="ProductWarranty" Type="NikcronModel.Store.ProductWarranties" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="ProductWarranty">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="ProductModelProductWarranty">
-        <PropertyRef Name="ProductWarranties_Id" />
+      <Dependent Role="ProductItem">
+        <PropertyRef Name="ProductWarrantyId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1364,10 +1347,6 @@
             <End Role="ProductItem" EntitySet="ProductItems" />
             <End Role="Retailer" EntitySet="Offices" />
           </AssociationSet>
-          <AssociationSet Name="ProductModelProductWarranty" Association="NikcronModel.ProductModelProductWarranty">
-            <End Role="ProductModel" EntitySet="ProductModels" />
-            <End Role="ProductWarranty" EntitySet="ProductWarranties" />
-          </AssociationSet>
           <AssociationSet Name="DealersRetailer" Association="NikcronModel.DealersRetailer">
             <End Role="Dealers" EntitySet="Offices" />
             <End Role="Retailer" EntitySet="Offices" />
@@ -1471,6 +1450,10 @@
           <AssociationSet Name="CompanyStockhouse" Association="NikcronModel.CompanyStockhouse">
             <End Role="Company" EntitySet="Offices" />
             <End Role="Stockhouse" EntitySet="Offices" />
+          </AssociationSet>
+          <AssociationSet Name="ProductItemProductWarranty" Association="NikcronModel.ProductItemProductWarranty">
+            <End Role="ProductItem" EntitySet="ProductItems" />
+            <End Role="ProductWarranty" EntitySet="ProductWarranties" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="AuditLog" >
@@ -1613,12 +1596,11 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="ModelNumber" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="ModelName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="ModelName" Nullable="true" MaxLength="100" />
           <NavigationProperty Name="Manufacture" Relationship="NikcronModel.ProductModelManufacture" FromRole="ProductModel" ToRole="Manufacture" />
           <Property Type="Int32" Name="ManufactureId" Nullable="false" />
           <NavigationProperty Name="ProductType" Relationship="NikcronModel.ProductModelProductType" FromRole="ProductModel" ToRole="ProductType" />
           <Property Type="Int32" Name="ProductTypeId" Nullable="false" />
-          <NavigationProperty Name="ProductWarranties" Relationship="NikcronModel.ProductModelProductWarranty" FromRole="ProductModel" ToRole="ProductWarranty" />
           <Property Type="String" Name="Processor" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Memory" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="OperatingSystem" Nullable="true" MaxLength="50" />
@@ -1638,6 +1620,11 @@
           <Property Name="WiFi" Type="String" Nullable="true" MaxLength="20" />
           <NavigationProperty Name="ProductColors" Relationship="NikcronModel.ProductModelProductColors" FromRole="ProductModel" ToRole="ProductColors" />
           <NavigationProperty Name="ProductImages" Relationship="NikcronModel.ProductModelProductImage" FromRole="ProductModel" ToRole="ProductImage" />
+          <Property Name="BatteryCapacity" Type="String" Nullable="true" MaxLength="250" />
+          <Property Name="NoteSummary" Type="String" Nullable="true" MaxLength="1000" />
+          <Property Name="WarrantySummary" Type="String" Nullable="true" MaxLength="100" />
+          <Property Name="InBox" Type="String" Nullable="true" MaxLength="1000" />
+          <Property Name="ProductDate" Type="DateTime" Nullable="true" />
         </EntityType>
         <Association Name="ProductModelManufacture">
           <End Type="NikcronModel.ProductModel" Role="ProductModel" Multiplicity="*" />
@@ -1699,6 +1686,8 @@
           <NavigationProperty Name="Sale" Relationship="NikcronModel.SalesProductItem" FromRole="ProductItem" ToRole="Sales" />
           <NavigationProperty Name="ProductColor" Relationship="NikcronModel.ProductItemProductColors" FromRole="ProductItem" ToRole="ProductColors" />
           <Property Name="ProductColorsId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ProductWarranty" Relationship="NikcronModel.ProductItemProductWarranty" FromRole="ProductItem" ToRole="ProductWarranty" />
+          <Property Name="ProductWarrantyId" Type="Int32" Nullable="true" />
         </EntityType>
         <Association Name="ProductItemProductModel">
           <End Type="NikcronModel.ProductItem" Role="ProductItem" Multiplicity="*" />
@@ -1778,10 +1767,6 @@
           <Property Type="Boolean" Name="IsMoved" Nullable="true" />
           <Property Type="Boolean" Name="IsReturned" Nullable="true" />
         </ComplexType>
-        <Association Name="ProductModelProductWarranty">
-          <End Type="NikcronModel.ProductModel" Role="ProductModel" Multiplicity="*" />
-          <End Type="NikcronModel.ProductWarranty" Role="ProductWarranty" Multiplicity="*" />
-        </Association>
         <Association Name="DealersRetailer">
           <End Type="NikcronModel.Dealers" Role="Dealers" Multiplicity="1" />
           <End Type="NikcronModel.Retailer" Role="Retailer" Multiplicity="*" />
@@ -1937,6 +1922,7 @@
           <Property Type="String" Name="Hotspot" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="SupportedNetworks" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="OperatingFrequencies" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="EDGE_2G" Nullable="true" MaxLength="60" />
         </ComplexType>
         <Association Name="ProductHistoryProductItem">
           <End Type="NikcronModel.ProductHistory" Role="ProductHistory" Multiplicity="*" />
@@ -2231,6 +2217,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="ProductItemProductWarranty">
+          <End Type="NikcronModel.ProductItem" Role="ProductItem" Multiplicity="*" />
+          <End Type="NikcronModel.ProductWarranty" Role="ProductWarranty" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ProductWarranty">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductItem">
+              <PropertyRef Name="ProductWarrantyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2489,6 +2487,11 @@
           <ScalarProperty Name="SecondryCamera" ColumnName="SecondryCamera" />
           <ScalarProperty Name="VideoRecording" ColumnName="VideoRecording" />
           <ScalarProperty Name="WiFi" ColumnName="WiFi" />
+          <ScalarProperty Name="BatteryCapacity" ColumnName="BatteryCapacity" />
+          <ScalarProperty Name="NoteSummary" ColumnName="NoteSummary" />
+          <ScalarProperty Name="WarrantySummary" ColumnName="WarrantySummary" />
+          <ScalarProperty Name="InBox" ColumnName="InBox" />
+          <ScalarProperty Name="ProductDate" ColumnName="ProductDate" />
         </MappingFragment>
       </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Mobile)">
@@ -2517,6 +2520,7 @@
             <ScalarProperty Name="Hotspot" ColumnName="Connectivity_Hotspot" />
             <ScalarProperty Name="SupportedNetworks" ColumnName="Connectivity_SupportedNetworks" />
             <ScalarProperty Name="OperatingFrequencies" ColumnName="Connectivity_OperatingFrequencies" />
+            <ScalarProperty Name="EDGE_2G" ColumnName="Connectivity_EDGE_2G" />
           </ComplexProperty>
         </MappingFragment>
       </EntityTypeMapping>
@@ -2538,6 +2542,7 @@
             <ScalarProperty Name="Hotspot" ColumnName="Connectivity_Hotspot" />
             <ScalarProperty Name="SupportedNetworks" ColumnName="Connectivity_SupportedNetworks" />
             <ScalarProperty Name="OperatingFrequencies" ColumnName="Connectivity_OperatingFrequencies" />
+            <ScalarProperty Name="EDGE_2G" ColumnName="Connectivity_EDGE_2G" />
           </ComplexProperty>
         </MappingFragment>
       </EntityTypeMapping>
@@ -2603,6 +2608,7 @@
           <ScalarProperty Name="IMEI2" ColumnName="IMEI2" />
           <ScalarProperty Name="PartNumber" ColumnName="PartNumber" />
           <ScalarProperty Name="ProductColorsId" ColumnName="ProductColorsId" />
+          <ScalarProperty Name="ProductWarrantyId" ColumnName="ProductWarrantyId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -2812,14 +2818,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="ProductModelProductWarranty" TypeName="NikcronModel.ProductModelProductWarranty" StoreEntitySet="ProductModelProductWarranty">
-      <EndProperty Name="ProductModel">
-        <ScalarProperty Name="Id" ColumnName="ProductModelProductWarranty_ProductWarranty_Id" />
-      </EndProperty>
-      <EndProperty Name="ProductWarranty">
-        <ScalarProperty Name="Id" ColumnName="ProductWarranties_Id" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="SalesProductItem" TypeName="NikcronModel.SalesProductItem" StoreEntitySet="Sales">
       <EndProperty Name="ProductItem">
         <ScalarProperty Name="Id" ColumnName="ProductItem_Id" />
