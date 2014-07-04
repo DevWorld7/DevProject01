@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm("Index", "Stock", FormMethod.Post, new { @class = "form-horizontal" }))
+{  
+
+    <div class="col-xs-12">
+        <div class="box-header">
+            <h3 class="box-title"> STOCK LIST</h3>
+        </div>
+        <div class="box">
+            <div class="box-body table-responsive">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Sno</th>
+                            <th>Manufacture</th>
+                            <th>Model</th>
+                            <th>IMEI 1</th>
+                            <th>IMEI 2</th>
+                            <th>Searial</th>
+                            <th>Status</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Nikcron</td>
+                            <td>Nikcron Smart Phone (NQ 917)</td>
+                            <td>N123456789</td>
+                            <td>N987654321</td>
+                            <td>N001122334455</td>
+                            <th><a href="">Stock</a></th>
+                            <td><a href="">Remove</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>HP</td>
+                            <td>HP (H 001)</td>
+                            <td>N001002</td>
+                            <td>N220122</td>
+                            <td>N1234567890</td>
+                            <th><a href="">Sale</a></th>
+                            <td><a href="">Remove</a></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>ASUS</td>
+                            <td>ASUS (AU 515)</td>
+                            <td>N004585</td>
+                            <td>N245682</td>
+                            <td>N1234567890</td>
+                            <th><a href="">Dealer</a></th>
+                            <td><a href="">Remove</a></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Dell</td>
+                            <td>Dell (DL 1100)</td>
+                            <td>N123456</td>
+                            <td>N654987</td>
+                            <td>N1234567890</td>
+                            <th><a href="">Retailer</a></th>
+                            <td><a href="">Remove</a></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Nikcron</td>
+                            <td>Nikcron (NQ 950)</td>
+                            <td>N123456</td>
+                            <td>N654987</td>
+                            <td>N1234567890</td>
+                            <th><a href="">Stockits</a></th>
+                            <td><a href="">Remove</a></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div>
+
+
+}

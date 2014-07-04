@@ -110,6 +110,9 @@ namespace LineFocus.Nikcron.Controllers
                 case "Manufacture":
                     JsonData.Data = db.Manufactures.Select(n => new { n.Id, n.Name }).ToList();
                     break;
+                case "Stockhouse":
+                    JsonData.Data = db.Offices.OfType<Stockhouse>().Select(n => new { n.Id, n.Name }).ToList();
+                    break;
             }
             JsonData.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
             return JsonData;
@@ -166,5 +169,22 @@ namespace LineFocus.Nikcron.Controllers
             var data = db.Countries.Select(n => new { n.Id, n.Name });
             return Json(data, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult GetStockhouse(Int32 Zoneid)
+        {
+            ApplicationDBContext db = new ApplicationDBContext();
+            JsonResult Result = new JsonResult();
+            var data = from o in db.Offices
+                       join s in db.Offices.OfType<Stockhouse>() on o.Id equals s.Id
+                       where s.ZoneId == Zoneid
+                       select new
+                       {
+                           id = o.Id,
+                           Name = o.Name
+                       };
+            Result.Data = data;
+            return Result;
+        }
+
     }
 }

@@ -145,11 +145,13 @@ namespace LineFocus.Nikcron.Controllers
         #endregion
 
         #region Mobiles
+
         [HttpGet]
         public ActionResult Mobilephones()
         {
             return View();
         }
+
         [HttpGet]
         public JsonResult GetMobiles()
         {

@@ -98,8 +98,15 @@
                 <ul class="sidebar-menu">
                     <li class="active"> <a href="@Url.Action("Index","Home",null)"> <i class="fa fa-dashboard"></i> <span>Dashboard</span> </a> </li>
                     <li> <a href="@Url.Action("Index","Sales")"> <i class="fa fa-calendar"></i> <span>Sales</span> <small class="badge pull-right bg-green">3</small> </a> </li>
-                    <li> <a href="@Url.Action("Index","Service")"> <i class="fa fa-envelope"></i> <span>Services</span> <small class="badge pull-right bg-red">12</small> </a> </li>
-                    <li> <a href="@Url.Action("Index","Quotation")"> <i class="fa fa-edit"></i> <span>Quotes</span> <small class="badge pull-right bg-yellow">20</small> </a> </li>
+                    <li> <a href="@Url.Action("","")"> <i class="fa fa-envelope"></i> <span>Services</span> <small class="badge pull-right bg-red">12</small> </a> </li>
+                    @*<li> <a href="@Url.Action("Index","Quotation")"> <i class="fa fa-edit"></i> <span>Quotes</span> <small class="badge pull-right bg-yellow">20</small> </a> </li>*@
+                    <li class="treeview">
+                        <a href="#"> <i class="fa fa-table"></i> <span>Stock</span> <i class="fa fa-angle-left pull-right"></i> </a>
+                        <ul class="treeview-menu">
+                            <li><a href="@Url.Action("StockMaintenance", "Stock")"><i class="fa fa-angle-double-right"></i> Add Stock</a></li>
+                            <li><a href="@Url.Action("Index","Stock")"><i class="fa fa-angle-double-right"></i> View Stock</a></li>                            
+                        </ul>
+                    </li>
                     <li class="treeview">
                         <a href="#"> <i class="fa fa-table"></i> <span>Company</span> <i class="fa fa-angle-left pull-right"></i> </a>
                         <ul class="treeview-menu">
@@ -133,8 +140,8 @@
                     <li class="treeview">
                         <a href="#"> <i class="fa fa-user"></i> <span>Users</span> <i class="fa fa-angle-left pull-right"></i> </a>
                         <ul class="treeview-menu">
-                            <li><a href="@Url.Action("Index","User")"><i class="fa fa-angle-double-right"></i> Users</a></li>
-                            <li><a href="@Url.Action("Roles","User")"><i class="fa fa-angle-double-right"></i> Roles</a></li>
+                            <li><a href="@Url.Action("Index", "User")"><i class="fa fa-angle-double-right"></i>Nikcron Office Users</a></li>
+                            <li><a href="@Url.Action("Roles", "User")"><i class="fa fa-angle-double-right"></i> Roles</a></li>
                         </ul>
                     </li>
                     <li class="treeview">

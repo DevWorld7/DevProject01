@@ -1,3 +1,57 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "form-horizontal"}))
+{
+    <div class="row">
+
+        <div class="col-lg-2 col-xs-6">
+         <!-- small box -->
+         <div class="small-box bg-purple">
+          <div class="inner"> </div>
+          <div class="icon"> <i class="ion ion-android-storage"></i> </div>
+          <a href="#" class="small-box-footer"> Warehouse<i class="fa fa-arrow-circle-right"></i> </a> </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-2 col-xs-6">
+         <!-- small box -->
+         <div class="small-box bg-navy">
+          <div class="inner"> </div>
+          <div class="icon"> <i class="ion ion-ios7-bookmarks-outline"></i> </div>
+          <a href="#" class="small-box-footer"> Stockist <i class="fa fa-arrow-circle-right"></i> </a> </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-2 col-xs-6">
+         <!-- small box -->
+         <div class="small-box bg-lime">
+          <div class="inner"> </div>
+          <div class="icon"> <i class="ion ion-person-add"></i> </div>
+          <a href="#" class="small-box-footer"> Distributers <i class="fa fa-arrow-circle-right"></i> </a> </div>
+        </div>
+
+        <div class="col-lg-2 col-xs-6">
+         <!-- small box -->
+         <div class="small-box bg-green">
+          <div class="inner"> </div>
+          <div class="icon"> <i class="ion ion-android-share"></i> </div>
+          <a href="#" class="small-box-footer"> Retailer <i class="fa fa-arrow-circle-right"></i> </a> </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-2 col-xs-6">
+         <!-- small box -->
+         <div class="small-box bg-orange">
+          <div class="inner"> </div>
+          <div class="icon"> <i class="ion ion-android-contacts"></i> </div>
+          <a href="#" class="small-box-footer"> Master <i class="fa fa-arrow-circle-right"></i> </a> </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-2 col-xs-6">
+         <!-- small box -->
+         <div class="small-box bg-fuchsia">
+          <div class="inner"> </div>
+          <div class="icon"> <i class="ion ion-android-note"></i> </div>
+          <a href="#" class="small-box-footer"> Reports <i class="fa fa-arrow-circle-right"></i> </a> </div>
+        </div>
+
+    </div>
+}

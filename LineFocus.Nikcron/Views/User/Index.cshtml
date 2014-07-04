@@ -1,6 +1,7 @@
 ﻿@{
-    ViewBag.Title = "Stockhits List";
+    ViewBag.Title = "OfficeUser";
 }
+
 <div id="treeGrid">
 </div>
 
@@ -11,7 +12,12 @@
             var row = {};
             row["Id"] = null;
             row["Name"] = "";
-            row["ContactPerson"] = "";
+            row["Gender"] = "";
+            row["MaritalStatus"] = "";
+            row["DOB"] = "";
+            row["DOJ"] = "";
+            row["Designation"] = "";
+            row["OldEmpCode"] = "";
             row["AddressLine1"] = "";
             row["AddressLine2"] = "";
             row["AddressCity"] = "";
@@ -58,7 +64,7 @@
             updaterow: function (rowid, newdata, commit) {
                 $.ajax({
                     type: "POST",
-                    url: "@Url.Action("CompanyUpdate")",
+                    url: "@Url.Action("OfficeUsers")",
                     dataType: "json",
                     contentType: "application/json; charset=utf-8",
                     data: JSON.stringify(newdata),
@@ -72,7 +78,7 @@
                 commit(true);
             },
             id: 'Id',
-            url: '@Url.Action("GetStockhouses")'
+            url: '@Url.Action("OfficeUsers")'
         };
         var dataAdapter = new $.jqx.dataAdapter(source);
         // create Tree Grid
@@ -108,9 +114,9 @@
               { text: 'Mobile', columnGroup: 'Contact1', dataField: 'Mobile', width: 90 },
               { text: 'Phone', columnGroup: 'Contact1', dataField: 'Phone', width: 90 },
               { text: 'Email', columnGroup: 'Contact1', dataField: 'Email', width: 140 }
-              
+
             ],
-            groups : ['CompanyName'],
+            groups : ['Users'],
             columnGroups: [
               { text: 'Address', name: 'Address' },
               { text: 'Communication', name: 'Contact1' }
@@ -140,7 +146,7 @@
                 addButton.jqxTooltip({ position: 'bottom', content: "Add Stockhit" });
 
                 addButton.click(function (event) {
-                    window.location.href = "@Url.Action("Maintenance", "Stockhouse")";
+                    window.location.href = "@Url.Action("OfficeUserMaintenance", "user")";
                 });
 
                 editButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });

@@ -88,7 +88,8 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <select id="State" name="State" class="form-control"></select>
+                        <select id="State" name="State" class="form-control">                           
+                        </select>
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -98,7 +99,8 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <select id="Country" name="Country" class="form-control"></select>
+                        <select id="Country" name="Country" class="form-control">                         
+                        </select>
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -214,15 +216,53 @@
             </div>
         </div><!-- /.box -->
     </div><!-- /.col (right) -->
+    
+    <input type="hidden" name="CompanyId" id="CompanyId" />
 
 }
 
 <script type="text/javascript">
     function ValidateForm() {
-        RequiredTextbox("Company", "Enter the Company Name")
-        RequiredTextbox("ContactPerson", "Enter the Contact Person")
-        RequiredTextbox("Address1", "Enter the Address")
-        RequiredTextbox("City", "Enter the City")
+
+        if (document.getElementById("Company").value == "") {
+            alert("Company can't be empty!");
+            document.getElementById("Company").focus();
+            return false;
+        }
+        if (document.getElementById("ContactPerson").value == "") {
+            alert("Contact person can't be empty!");
+            document.getElementById("ContactPerson").focus();
+            return false;
+        }
+        if (document.getElementById("Address1").value == "") {
+            alert("Address person can't be empty!");
+            document.getElementById("Address1").focus();
+            return false;
+        }
+        if (document.getElementById("City").value == "") {
+            alert("City can't be empty!");
+            document.getElementById("City").focus();
+            return false;
+        }
+        var selectState = document.getElementById("State").value;
+        if ((selectState == 0)||(selectState=="")) {
+            alert("Please select State"); // prompt user
+            document.getElementById("State").focus(); //set focus back to control
+            return false;
+        }
+        var selectState = document.getElementById("Country").value;
+        if ((selectState == 0) || (selectState == "")) {
+            alert("Please select Country!"); // prompt user
+            document.getElementById("Country").focus(); //set focus back to control
+            return false;
+        }
+       // RequiredTextbox("Company", "Enter the Company Name")
+       // RequiredTextbox("ContactPerson", "Enter the Contact Person")
+       // RequiredTextbox("Address1", "Enter the Address")
+       // RequiredTextbox("City", "Enter the City")
+
+       
+
         return AlertError();
     }
 
@@ -230,6 +270,7 @@
     {
         $.getJSON("@Url.Action("GetCountries", "Master")", function (result) {
             var options = '';
+            options += '<option value="0">---SELECT COUNTRY---</option>';
             $.each(result, function (item) {
                 options += '<option value="' + result[item].Id + '">' + result[item].Name + '</option>';
             });
@@ -242,6 +283,7 @@
     {
         $.getJSON("@Url.Action("GetStates", "Master", new { Country = "India"})", function (result) {
             var options = '';
+            options += '<option value="0">---SELECT STATE---</option>';
             $.each(result, function (item) {
                 options += '<option value="' + result[item].Id + '">' + result[item].Name + '</option>';
             });

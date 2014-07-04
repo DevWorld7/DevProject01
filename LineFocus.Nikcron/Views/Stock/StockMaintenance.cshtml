@@ -1,0 +1,146 @@
+﻿@{
+    ViewBag.Title = "AddStockMaintenance";
+}
+
+@using (Html.BeginForm("AddStockMaintenance", "Stock", FormMethod.Post, new { @class = "form-horizontal"}))
+{
+    <div class="col-md-12">
+
+        <div class="box box-danger">
+            <div class="box-body">
+
+                <div class="box-header">
+                    <h3 class="box-title">ADD PRODUCT</h3>
+                </div>
+
+                <div class="form-group">
+                    <label>Date:</label><span class="astrisk">*</span>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <input name="DOJ" id="DOJ" type="text" data-mask="" data-inputmask="'alias': 'dd/mm/yyyy'" class="form-control">
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->   
+
+                <div class="form-group">
+                    <label> Manufacture:</label><span class="astrisk">*</span>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class=""></i>
+                        </div>
+                        <select id="Manufacture" name="Manufacture" class="form-control">
+                            <option value="0">---Select---</option>
+                            <option value="1">Dell</option>
+                            <option value="2">Asus</option>
+                            <option value="3">HP</option>
+                            <option value="4">Nikcron</option>
+                        </select>
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label> Model:</label><span class="astrisk">*</span>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class=""></i>
+                        </div>
+                        <select id="Model" name="Model" class="form-control">
+                            <option value="0">---Select---</option>
+                            <option value="1">Nikcron Smart Phone (NQ 609)</option>
+                            <option value="2">Nikcron (N 719)</option>
+                            <option value="3">HP (HP 567)</option>
+                        </select>
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->              
+
+                <div class="form-group">
+                    <label> Details:</label><span class="astrisk">*</span>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class=""></i>
+                        </div>
+                        <textarea id="Details" name="Details" class="form-control pull-right"></textarea>
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">                   
+                    <label> IMEI No 1:</label><span class="astrisk">*</span>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class=""></i>
+                        </div>
+                        <input id="IMEIno1" name="IMEIno1" maxlength="50" type="text" class="form-control" />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">                    
+                    <label> IMEI No 2:</label><span class="astrisk">*</span>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class=""></i>
+                        </div>
+                        <input id="IMEIno2" name="IMEIno2" maxlength="50" type="text" class="form-control" />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">                   
+                    <label> Searial No:</label><span class="astrisk">*</span>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class=""></i>
+                        </div>
+                        <input id="Searial" name="Searial" maxlength="50" type="text" class="form-control" />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->    
+
+                <div class="box box-success">
+                    <div class="box-footer">
+                        <input type="hidden" name="UserId" id="Id" />
+                        <button type="submit" class="btn btn-primary" style=" width:80px;">Save</button>
+                        <button type="reset" class="btn btn-primary" style=" width:80px;">Cancel</button>
+                    </div>
+                </div><!-- /.box -->
+
+               
+
+
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col (left) -->
+    
+      <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">PRODUCT LIST</h3>
+            </div>
+            <div class="box-body table-responsive">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Sno</th>
+                            <th>Manufacture</th>
+                            <th>Model</th>
+                            <th>IMEI 1</th>
+                            <th>IMEI 2</th>
+                            <th>Searial</th>                                                
+                            <th>Remove</th>   
+                        </tr>
+                    </thead>
+                    <tbody>                                           
+                        <tr>
+                            <td>1</td>
+                            <td>Nikcron</td>
+                            <td>Nikcron Smart Phone (NQ 917)</td>
+                            <td>N123456789</td>                                                
+                            <td>N987654321</td>                                                
+                            <td>N001122334455</td>                                                
+                            <td><a href="">Remove</a></td>                                                
+                        </tr>							                               
+                    </tbody>
+                                       
+                </table>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div>
+}

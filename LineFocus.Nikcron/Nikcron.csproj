@@ -169,6 +169,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\QuotationController.cs" />
+    <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\DealerController.cs" />
@@ -723,6 +724,11 @@
     <Content Include="Views\Product\MobilephoneMaintenance.cshtml" />
     <Content Include="Views\Product\Tablets.cshtml" />
     <Content Include="Views\Product\TabletMaintenance.cshtml" />
+    <Content Include="Views\User\UserMaintenance.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Stock\StockMaintenance.cshtml" />
+    <Content Include="Views\Stock\Index.cshtml" />
+    <Content Include="Views\User\Roles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

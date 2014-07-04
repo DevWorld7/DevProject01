@@ -16,6 +16,7 @@ namespace LineFocus.Nikcron.Controllers
             ViewBag.Caption = "Listing";
             return View();
         }
+
         [HttpGet]
         public JsonResult GetDistributors()
         {
@@ -47,6 +48,7 @@ namespace LineFocus.Nikcron.Controllers
             result.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
             return result;
         }
+
         [HttpGet]
         public ActionResult Maintenance(Int32? DistributorId)
         {
@@ -63,7 +65,7 @@ namespace LineFocus.Nikcron.Controllers
             {
                 ViewBag.DistributorId = 0;
                 ViewBag.Caption = "New";
-                return View(new Stockhouse());
+                return View(new Distributor());
             }
         }
         [HttpPost]
@@ -79,7 +81,7 @@ namespace LineFocus.Nikcron.Controllers
                 distributor = db.Offices.OfType<Distributor>().Where(s => s.Id == DistributorId).FirstOrDefault();
 
             distributor.StockhouseId = Int32.Parse(formCollection["Stockhouse"]);
-            distributor.Name = formCollection["Stockhouse"];
+            distributor.Name = formCollection["ContactPerson"];
             if (!string.IsNullOrEmpty(formCollection["Joindate"]))
                 distributor.JoiningDate = DateTime.Parse(formCollection["Joindate"]);
             distributor.RecommendationFrom = formCollection["Recommendedby"];
