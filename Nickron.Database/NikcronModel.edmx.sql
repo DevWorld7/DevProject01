@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/19/2014 23:32:01
+-- Date Created: 07/05/2014 01:00:17
 -- Generated from EDMX file: D:\Accomplishments\DevProject01\Nickron.Database\NikcronModel.edmx
 -- --------------------------------------------------
 
@@ -38,12 +38,6 @@ IF OBJECT_ID(N'[dbo].[FK_DealersProductItem]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_ProductItemRetailer]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ProductItems] DROP CONSTRAINT [FK_ProductItemRetailer];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ProductModelProductWarranty_ProductModel]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ProductModelProductWarranty] DROP CONSTRAINT [FK_ProductModelProductWarranty_ProductModel];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ProductModelProductWarranty_ProductWarranty]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ProductModelProductWarranty] DROP CONSTRAINT [FK_ProductModelProductWarranty_ProductWarranty];
 GO
 IF OBJECT_ID(N'[dbo].[FK_DealersRetailer]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Offices_Retailer] DROP CONSTRAINT [FK_DealersRetailer];
@@ -114,6 +108,9 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_StateCity]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Cities] DROP CONSTRAINT [FK_StateCity];
 GO
+IF OBJECT_ID(N'[dbo].[FK_CompanyStockhouse]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Offices_Stockhouse] DROP CONSTRAINT [FK_CompanyStockhouse];
+GO
 IF OBJECT_ID(N'[dbo].[FK_BusinessOffice_inherits_Office]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Offices_BusinessOffice] DROP CONSTRAINT [FK_BusinessOffice_inherits_Office];
 GO
@@ -129,9 +126,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_Retailer_inherits_BusinessOffice]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Offices_Retailer] DROP CONSTRAINT [FK_Retailer_inherits_BusinessOffice];
 GO
-IF OBJECT_ID(N'[dbo].[FK_Company_inherits_Office]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Offices_Company] DROP CONSTRAINT [FK_Company_inherits_Office];
-GO
 IF OBJECT_ID(N'[dbo].[FK_User_inherits_Person]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[People_User] DROP CONSTRAINT [FK_User_inherits_Person];
 GO
@@ -140,6 +134,9 @@ IF OBJECT_ID(N'[dbo].[FK_Customer_inherits_Person]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_ServiceCentre_inherits_Office]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Offices_ServiceCentre] DROP CONSTRAINT [FK_ServiceCentre_inherits_Office];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Company_inherits_Office]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Offices_Company] DROP CONSTRAINT [FK_Company_inherits_Office];
 GO
 IF OBJECT_ID(N'[dbo].[FK_Mobile_inherits_ProductModel]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ProductModels_Mobile] DROP CONSTRAINT [FK_Mobile_inherits_ProductModel];
@@ -230,9 +227,6 @@ GO
 IF OBJECT_ID(N'[dbo].[Offices_Retailer]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Offices_Retailer];
 GO
-IF OBJECT_ID(N'[dbo].[Offices_Company]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Offices_Company];
-GO
 IF OBJECT_ID(N'[dbo].[People_User]', 'U') IS NOT NULL
     DROP TABLE [dbo].[People_User];
 GO
@@ -242,6 +236,9 @@ GO
 IF OBJECT_ID(N'[dbo].[Offices_ServiceCentre]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Offices_ServiceCentre];
 GO
+IF OBJECT_ID(N'[dbo].[Offices_Company]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Offices_Company];
+GO
 IF OBJECT_ID(N'[dbo].[ProductModels_Mobile]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ProductModels_Mobile];
 GO
@@ -250,9 +247,6 @@ IF OBJECT_ID(N'[dbo].[ProductModels_Tablet]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[ProductModels_Laptop]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ProductModels_Laptop];
-GO
-IF OBJECT_ID(N'[dbo].[ProductModelProductWarranty]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[ProductModelProductWarranty];
 GO
 IF OBJECT_ID(N'[dbo].[ProductModelProductColors]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ProductModelProductColors];
@@ -379,7 +373,7 @@ GO
 CREATE TABLE [dbo].[ProductModels] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [ModelNumber] nvarchar(100)  NULL,
-    [ModelName] nvarchar(250)  NULL,
+    [ModelName] nvarchar(100)  NULL,
     [ManufactureId] int  NOT NULL,
     [ProductTypeId] int  NOT NULL,
     [Processor] nvarchar(50)  NULL,
@@ -398,7 +392,12 @@ CREATE TABLE [dbo].[ProductModels] (
     [PrimaryCamera] nvarchar(20)  NULL,
     [SecondryCamera] nvarchar(20)  NULL,
     [VideoRecording] nvarchar(20)  NULL,
-    [WiFi] nvarchar(20)  NULL
+    [WiFi] nvarchar(20)  NULL,
+    [BatteryCapacity] nvarchar(250)  NULL,
+    [NoteSummary] nvarchar(1000)  NULL,
+    [WarrantySummary] nvarchar(100)  NULL,
+    [InBox] nvarchar(1000)  NULL,
+    [ProductDate] datetime  NULL
 );
 GO
 
@@ -434,7 +433,8 @@ CREATE TABLE [dbo].[ProductItems] (
     [IMEI1] nvarchar(40)  NULL,
     [IMEI2] nvarchar(40)  NULL,
     [PartNumber] nvarchar(40)  NULL,
-    [ProductColorsId] int  NOT NULL
+    [ProductColorsId] int  NOT NULL,
+    [ProductWarrantyId] int  NULL
 );
 GO
 
@@ -716,6 +716,7 @@ CREATE TABLE [dbo].[ProductModels_Mobile] (
     [Connectivity_Hotspot] nvarchar(20)  NULL,
     [Connectivity_SupportedNetworks] nvarchar(50)  NULL,
     [Connectivity_OperatingFrequencies] nvarchar(30)  NULL,
+    [Connectivity_EDGE_2G] nvarchar(60)  NULL,
     [Id] int  NOT NULL
 );
 GO
@@ -736,6 +737,7 @@ CREATE TABLE [dbo].[ProductModels_Tablet] (
     [Connectivity_Hotspot] nvarchar(20)  NULL,
     [Connectivity_SupportedNetworks] nvarchar(50)  NULL,
     [Connectivity_OperatingFrequencies] nvarchar(30)  NULL,
+    [Connectivity_EDGE_2G] nvarchar(60)  NULL,
     [Id] int  NOT NULL
 );
 GO
@@ -761,13 +763,6 @@ CREATE TABLE [dbo].[ProductModels_Laptop] (
     [RJ45LAN] nvarchar(30)  NULL,
     [MultiCardSlot] nvarchar(30)  NULL,
     [Id] int  NOT NULL
-);
-GO
-
--- Creating table 'ProductModelProductWarranty'
-CREATE TABLE [dbo].[ProductModelProductWarranty] (
-    [ProductModelProductWarranty_ProductWarranty_Id] int  NOT NULL,
-    [ProductWarranties_Id] int  NOT NULL
 );
 GO
 
@@ -974,12 +969,6 @@ ADD CONSTRAINT [PK_ProductModels_Laptop]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [ProductModelProductWarranty_ProductWarranty_Id], [ProductWarranties_Id] in table 'ProductModelProductWarranty'
-ALTER TABLE [dbo].[ProductModelProductWarranty]
-ADD CONSTRAINT [PK_ProductModelProductWarranty]
-    PRIMARY KEY CLUSTERED ([ProductModelProductWarranty_ProductWarranty_Id], [ProductWarranties_Id] ASC);
-GO
-
 -- Creating primary key on [ProductModelProductColors_ProductColors_Id], [ProductColors_Id] in table 'ProductModelProductColors'
 ALTER TABLE [dbo].[ProductModelProductColors]
 ADD CONSTRAINT [PK_ProductModelProductColors]
@@ -1100,29 +1089,6 @@ ADD CONSTRAINT [FK_ProductItemRetailer]
 CREATE INDEX [IX_FK_ProductItemRetailer]
 ON [dbo].[ProductItems]
     ([RetailerId]);
-GO
-
--- Creating foreign key on [ProductModelProductWarranty_ProductWarranty_Id] in table 'ProductModelProductWarranty'
-ALTER TABLE [dbo].[ProductModelProductWarranty]
-ADD CONSTRAINT [FK_ProductModelProductWarranty_ProductModel]
-    FOREIGN KEY ([ProductModelProductWarranty_ProductWarranty_Id])
-    REFERENCES [dbo].[ProductModels]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating foreign key on [ProductWarranties_Id] in table 'ProductModelProductWarranty'
-ALTER TABLE [dbo].[ProductModelProductWarranty]
-ADD CONSTRAINT [FK_ProductModelProductWarranty_ProductWarranty]
-    FOREIGN KEY ([ProductWarranties_Id])
-    REFERENCES [dbo].[ProductWarranties]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ProductModelProductWarranty_ProductWarranty'
-CREATE INDEX [IX_FK_ProductModelProductWarranty_ProductWarranty]
-ON [dbo].[ProductModelProductWarranty]
-    ([ProductWarranties_Id]);
 GO
 
 -- Creating foreign key on [DealersId] in table 'Offices_Retailer'
@@ -1454,6 +1420,20 @@ ADD CONSTRAINT [FK_CompanyStockhouse]
 CREATE INDEX [IX_FK_CompanyStockhouse]
 ON [dbo].[Offices_Stockhouse]
     ([CompanyId]);
+GO
+
+-- Creating foreign key on [ProductWarrantyId] in table 'ProductItems'
+ALTER TABLE [dbo].[ProductItems]
+ADD CONSTRAINT [FK_ProductItemProductWarranty]
+    FOREIGN KEY ([ProductWarrantyId])
+    REFERENCES [dbo].[ProductWarranties]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ProductItemProductWarranty'
+CREATE INDEX [IX_FK_ProductItemProductWarranty]
+ON [dbo].[ProductItems]
+    ([ProductWarrantyId]);
 GO
 
 -- Creating foreign key on [Id] in table 'Offices_BusinessOffice'

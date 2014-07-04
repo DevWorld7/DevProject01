@@ -27,7 +27,6 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("NikcronModel", "ProductItemDistributor", "ProductItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.ProductItem), "Distributor", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nickron.Database.Distributor), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "DealersProductItem", "ProductItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.ProductItem), "Dealers", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nickron.Database.Dealers), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "ProductItemRetailer", "ProductItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.ProductItem), "Retailer", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nickron.Database.Retailer), true)]
-[assembly: EdmRelationshipAttribute("NikcronModel", "ProductModelProductWarranty", "ProductModel", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.ProductModel), "ProductWarranty", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.ProductWarranty))]
 [assembly: EdmRelationshipAttribute("NikcronModel", "DealersRetailer", "Dealers", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.Dealers), "Retailer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.Retailer), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "StockhouseDistributor", "Stockhouse", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.Stockhouse), "Distributor", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.Distributor), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "DistributorDealers", "Distributor", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.Distributor), "Dealers", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.Dealers), true)]
@@ -51,6 +50,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("NikcronModel", "StateCountry", "State", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.State), "Country", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.Country), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "StateCity", "State", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.State), "City", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.City), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "CompanyStockhouse", "Company", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.Company), "Stockhouse", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.Stockhouse), true)]
+[assembly: EdmRelationshipAttribute("NikcronModel", "ProductItemProductWarranty", "ProductItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.ProductItem), "ProductWarranty", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nickron.Database.ProductWarranty), true)]
 
 #endregion
 
@@ -4379,6 +4379,30 @@ namespace Nickron.Database
         private global::System.Int32 _ProductColorsId;
         partial void OnProductColorsIdChanging(global::System.Int32 value);
         partial void OnProductColorsIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> ProductWarrantyId
+        {
+            get
+            {
+                return _ProductWarrantyId;
+            }
+            set
+            {
+                OnProductWarrantyIdChanging(value);
+                ReportPropertyChanging("ProductWarrantyId");
+                _ProductWarrantyId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ProductWarrantyId");
+                OnProductWarrantyIdChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _ProductWarrantyId;
+        partial void OnProductWarrantyIdChanging(Nullable<global::System.Int32> value);
+        partial void OnProductWarrantyIdChanged();
 
         #endregion
 
@@ -4669,6 +4693,44 @@ namespace Nickron.Database
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ProductColors>("NikcronModel.ProductItemProductColors", "ProductColors", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NikcronModel", "ProductItemProductWarranty", "ProductWarranty")]
+        public ProductWarranty ProductWarranty
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProductWarranty>("NikcronModel.ProductItemProductWarranty", "ProductWarranty").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProductWarranty>("NikcronModel.ProductItemProductWarranty", "ProductWarranty").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<ProductWarranty> ProductWarrantyReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<ProductWarranty>("NikcronModel.ProductItemProductWarranty", "ProductWarranty");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ProductWarranty>("NikcronModel.ProductItemProductWarranty", "ProductWarranty", value);
                 }
             }
         }
@@ -5239,6 +5301,126 @@ namespace Nickron.Database
         private global::System.String _WiFi;
         partial void OnWiFiChanging(global::System.String value);
         partial void OnWiFiChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String BatteryCapacity
+        {
+            get
+            {
+                return _BatteryCapacity;
+            }
+            set
+            {
+                OnBatteryCapacityChanging(value);
+                ReportPropertyChanging("BatteryCapacity");
+                _BatteryCapacity = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("BatteryCapacity");
+                OnBatteryCapacityChanged();
+            }
+        }
+        private global::System.String _BatteryCapacity;
+        partial void OnBatteryCapacityChanging(global::System.String value);
+        partial void OnBatteryCapacityChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String NoteSummary
+        {
+            get
+            {
+                return _NoteSummary;
+            }
+            set
+            {
+                OnNoteSummaryChanging(value);
+                ReportPropertyChanging("NoteSummary");
+                _NoteSummary = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("NoteSummary");
+                OnNoteSummaryChanged();
+            }
+        }
+        private global::System.String _NoteSummary;
+        partial void OnNoteSummaryChanging(global::System.String value);
+        partial void OnNoteSummaryChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String WarrantySummary
+        {
+            get
+            {
+                return _WarrantySummary;
+            }
+            set
+            {
+                OnWarrantySummaryChanging(value);
+                ReportPropertyChanging("WarrantySummary");
+                _WarrantySummary = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("WarrantySummary");
+                OnWarrantySummaryChanged();
+            }
+        }
+        private global::System.String _WarrantySummary;
+        partial void OnWarrantySummaryChanging(global::System.String value);
+        partial void OnWarrantySummaryChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String InBox
+        {
+            get
+            {
+                return _InBox;
+            }
+            set
+            {
+                OnInBoxChanging(value);
+                ReportPropertyChanging("InBox");
+                _InBox = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("InBox");
+                OnInBoxChanged();
+            }
+        }
+        private global::System.String _InBox;
+        partial void OnInBoxChanging(global::System.String value);
+        partial void OnInBoxChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ProductDate
+        {
+            get
+            {
+                return _ProductDate;
+            }
+            set
+            {
+                OnProductDateChanging(value);
+                ReportPropertyChanging("ProductDate");
+                _ProductDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ProductDate");
+                OnProductDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ProductDate;
+        partial void OnProductDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnProductDateChanged();
 
         #endregion
 
@@ -5317,28 +5499,6 @@ namespace Nickron.Database
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<ProductType>("NikcronModel.ProductModelProductType", "ProductType", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("NikcronModel", "ProductModelProductWarranty", "ProductWarranty")]
-        public EntityCollection<ProductWarranty> ProductWarranties
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ProductWarranty>("NikcronModel.ProductModelProductWarranty", "ProductWarranty");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ProductWarranty>("NikcronModel.ProductModelProductWarranty", "ProductWarranty", value);
                 }
             }
         }
@@ -9028,6 +9188,30 @@ namespace Nickron.Database
         private global::System.String _OperatingFrequencies;
         partial void OnOperatingFrequenciesChanging(global::System.String value);
         partial void OnOperatingFrequenciesChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String EDGE_2G
+        {
+            get
+            {
+                return _EDGE_2G;
+            }
+            set
+            {
+                OnEDGE_2GChanging(value);
+                ReportPropertyChanging("EDGE_2G");
+                _EDGE_2G = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("EDGE_2G");
+                OnEDGE_2GChanged();
+            }
+        }
+        private global::System.String _EDGE_2G;
+        partial void OnEDGE_2GChanging(global::System.String value);
+        partial void OnEDGE_2GChanged();
 
         #endregion
 

@@ -61,7 +61,7 @@
     <None Include="App.config" />
     <EntityDeploy Include="NikcronModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>NikcronModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>NikcronModel1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="NikcronModel.edmx.diagram">
       <DependentUpon>NikcronModel.edmx</DependentUpon>
