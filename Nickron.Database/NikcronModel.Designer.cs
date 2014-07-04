@@ -1996,12 +1996,14 @@ namespace Nickron.Database
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="manufactureId">Initial value of the ManufactureId property.</param>
         /// <param name="productTypeId">Initial value of the ProductTypeId property.</param>
-        public static Laptop CreateLaptop(global::System.Int32 id, global::System.Int32 manufactureId, global::System.Int32 productTypeId)
+        /// <param name="memorySlots">Initial value of the MemorySlots property.</param>
+        public static Laptop CreateLaptop(global::System.Int32 id, global::System.Int32 manufactureId, global::System.Int32 productTypeId, global::System.String memorySlots)
         {
             Laptop laptop = new Laptop();
             laptop.Id = id;
             laptop.ManufactureId = manufactureId;
             laptop.ProductTypeId = productTypeId;
+            laptop.MemorySlots = memorySlots;
             return laptop;
         }
 
@@ -2440,6 +2442,30 @@ namespace Nickron.Database
         private global::System.String _MultiCardSlot;
         partial void OnMultiCardSlotChanging(global::System.String value);
         partial void OnMultiCardSlotChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String MemorySlots
+        {
+            get
+            {
+                return _MemorySlots;
+            }
+            set
+            {
+                OnMemorySlotsChanging(value);
+                ReportPropertyChanging("MemorySlots");
+                _MemorySlots = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("MemorySlots");
+                OnMemorySlotsChanged();
+            }
+        }
+        private global::System.String _MemorySlots;
+        partial void OnMemorySlotsChanging(global::System.String value);
+        partial void OnMemorySlotsChanged();
 
         #endregion
 
