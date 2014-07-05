@@ -20,7 +20,7 @@
                     <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                     </div>
-                    <input name="ProductDate" id="ProductDate" type="text" data-mask="" data-inputmask="'alias': 'dd/mm/yyyy'" class="form-control" >
+                    <input name="ProductDate" id="ProductDate" type="text" data-mask="" data-inputmask="'alias': 'dd/mm/yyyy'" class="form-control">
                 </div><!-- /.input group -->
             </div><!-- /.form group -->	
 
@@ -30,7 +30,7 @@
                     <div class="input-group-addon">
                         <i class=""></i>
                     </div>
-                    <input id="Inbox" name="InBox" type="text" maxlength="1000" class="form-control" />
+                    <input id="InBox" name="InBox" type="text" maxlength="1000" class="form-control" />
                 </div><!-- /.input group -->
             </div><!-- /.form group -->
         
@@ -305,7 +305,7 @@
                     <div class="input-group-addon">
                             <i ></i>
                     </div>
-                    <textarea id="ProductWarranties" name="ProductWarranties" maxlength="1000" class="form-control pull-right"></textarea>
+                    <textarea id="WarrantySummary" name="WarrantySummary" maxlength="1000" class="form-control pull-right"></textarea>
                 </div><!-- /.input group -->
             </div><!-- /.form group -->	
 								  								
@@ -332,7 +332,7 @@
                     <div class="input-group-addon">
                         <i class=""></i>
                     </div>
-                    <input id="Connectivity_OperatingFrequencies" name="Connectivity_OperatingFrequencies" type="text" maxlength="60" class="form-control pull-right" />
+                    <input id="OperatingFrequencies" name="OperatingFrequencies" type="text" maxlength="60" class="form-control pull-right" />
                 </div><!-- /.input group -->
             </div><!-- /.form group -->
 									
@@ -500,7 +500,7 @@
                     <div class="input-group-addon">
                             <i ></i>
                     </div>
-                    <input id="GPRS_2G" name="GPRS_2G" type="text" maxlength="60" class="form-control pull-right" />
+                    <input id="EDGE_2G" name="EDGE_2G" type="text" maxlength="60" class="form-control pull-right" />
                 </div><!-- /.input group -->
             </div><!-- /.form group -->	
 									
@@ -569,7 +569,7 @@
                     <div class="input-group-addon">
                             <i ></i>
                     </div>
-                    <textarea id="Notes" name="Notes" maxlength="1000" class="form-control pull-right"></textarea>
+                    <textarea id="NoteSummary" name="NoteSummary" maxlength="1000" class="form-control pull-right"></textarea>
                 </div><!-- /.input group -->
             </div><!-- /.form group -->		
 
@@ -596,47 +596,63 @@
     </div><!-- /.box -->
 </div><!-- /.col (right) -->
     <input type="hidden" name="MobileId" id="MobileId" />
-    <script>
-        function GoBackListing() {
-            window.location.replace('@Url.Action("Mobilephones","Product",null)');
-        }
+    
+    <script>       
         function ValidateForm() {
 
-            //RequiredTextbox("ModelNumber", "Enter the Model Number")
-            //RequiredTextbox("ModelName", "Enter the Model Name")
-            //RequiredTextbox("Manufacture", "Select the Manufacture")
-            //RequiredTextbox("SimType", "Enter the SimType")
+            RequiredTextbox("InBox", "Enter the InTheBox")
+            RequiredTextbox("ModelNumber", "Enter the Model Number")
+            RequiredTextbox("ModelName", "Enter the Model Name")
+            RequiredTextbox("Manufacture", "Select the Manufacture")
+            RequiredTextbox("FormFactor", "Select the FormFactor")
+            RequiredTextbox("SimSize", "Select the SimSize")
+            RequiredTextbox("SimType", "Enter the SimType")
 
-            if (document.getElementById("Company").value == "") {
-                alert("Company can't be empty!");
-                document.getElementById("Company").focus();
-                return false;
-            }
-            if (document.getElementById("ModelNumber").value == "") {
-                alert("Model Number can't be empty!");
-                document.getElementById("ModelNumber").focus();
-                return false;
-            }
-            //if (document.getElementById("Address1").value == "") {
-            //    alert("Address person can't be empty!");
-            //    document.getElementById("Address1").focus();
+            //if (document.getElementById("InBox").value == "") {
+            //    alert("In The Box can't be empty!");
+            //    document.getElementById("InBox").focus();
+            //    return false;
+            //}          
+            //if (document.getElementById("ModelNumber").value == "") {
+            //    alert("Model Number can't be empty!");
+            //    document.getElementById("ModelNumber").focus();
             //    return false;
             //}
-            //if (document.getElementById("City").value == "") {
-            //    alert("City can't be empty!");
-            //    document.getElementById("City").focus();
+            //if (document.getElementById("ModelName").value == "") {
+            //    alert("Model Name can't be empty!");
+            //    document.getElementById("ModelName").focus();
+            //    return false;
+            //}          
+            //var Manufacture = document.getElementById("Manufacture").value;
+            //if ((Manufacture == 0) || (Manufacture == "")) {
+            //    alert("Please select Manufacture"); // prompt user
+            //    document.getElementById("Manufacture").focus(); //set focus back to control
             //    return false;
             //}
-            //var selectState = document.getElementById("State").value;
-            //if ((selectState == 0) || (selectState == "")) {
-            //    alert("Please select State"); // prompt user
-            //    document.getElementById("State").focus(); //set focus back to control
+            //var FormFactor = document.getElementById("FormFactor").value;
+            //if ((FormFactor == 0) || (FormFactor == "")) {
+            //    alert("Please select FormFactor!"); // prompt user
+            //    document.getElementById("FormFactor").focus(); //set focus back to control
             //    return false;
             //}
-            //var selectState = document.getElementById("Country").value;
-            //if ((selectState == 0) || (selectState == "")) {
-            //    alert("Please select Country!"); // prompt user
-            //    document.getElementById("Country").focus(); //set focus back to control
+            //if (document.getElementById("CallFeatures").value == "") {
+            //    alert("Call Features can't be empty!");
+            //    document.getElementById("CallFeatures").focus();
+            //    return false;
+            //}
+            //if (document.getElementById("SimSize").value == "") {
+            //    alert("SimSize can't be empty!");
+            //    document.getElementById("SimSize").focus();
+            //    return false;
+            //}
+            //if (document.getElementById("SimType").value == "") {
+            //    alert("SimType can't be empty!");
+            //    document.getElementById("SimType").focus();
+            //    return false;
+            //}
+            //if (document.getElementById("PrimaryCamera").value == "") {
+            //    alert("Primary Camera can't be empty!");
+            //    document.getElementById("PrimaryCamera").focus();
             //    return false;
             //}
 
@@ -645,12 +661,16 @@
         function LoadManufactures()
         {
             $.getJSON("@Url.Action("GetLookups", "Master", new { LookupType = "Manufacture" })", function (result) {
-                var options = '';
+                var options = '';              
                 $.each(result, function (item) {
                     options += '<option value="' + result[item].Id + '">' + result[item].Name + '</option>';
                 });
                 $("select#Manufacture").html(options);
             });
+        }
+
+        function GoBackListing() {
+            window.location.replace('@Url.Action("Mobilephones","Product",null)');
         }
 
         $(document).ready(function () {
@@ -659,6 +679,8 @@
             if ("@ViewBag.Id" != "0")
             {
                 $('#MobileId').val('@Model.Id');
+                $('#ProductDate').val('@Model.ProductDate');
+                $('#InBox').val('@Model.InBox');
                 $('#ModelNumber').val('@Model.ModelNumber');
                 $('#ModelName').val('@Model.ModelName');
                 $('#FormFactor').val('@Model.FormFactor');
@@ -667,18 +689,20 @@
                 $('#SimType').val('@Model.SimType');
                 $('#PrimaryCamera').val('@Model.PrimaryCamera');
                 $('#SecondryCamera').val('@Model.SecondryCamera');
-                $('#PhoneMemory').val('@Model.PhoneMemory');
+               
                 $('#VideoRecording').val('@Model.VideoRecording');
                 $('#Dimension').val('@Model.Dimension');
                 $('#Weight').val('@Model.Weight');
                 $('#BatteryType').val('@Model.BatteryType');
                 $('#BatteryStandBy').val('@Model.BatteryStandBy');
+                $('#BatteryCapacity').val('@Model.BatteryCapacity');
                 $('#MusicPlayer').val('@Model.MusicPlayer');
                 $('#VideoPlayer').val('@Model.VideoPlayer');
-                $('#FM').val('@Model.FM');
                 $('#SoundEnhancement').val('@Model.SoundEnhancement');
                 $('#RingTone').val('@Model.RingTone');
-                //$('#ProductWarranties').val('@Model.ProductWarranties');
+                $('#FM').val('@Model.FM');              
+               
+                $('#WarrantySummary').val('@Model.WarrantySummary');
                 $('#OperatingFrequencies').val('@Model.Connectivity.OperatingFrequencies');
                 $('#OperatingSystem').val('@Model.OperatingSystem');
                 $('#Processor').val('@Model.Processor');
@@ -687,18 +711,21 @@
                 $('#DisplayResolution').val('@Model.DisplayResolution');
                 $('#InternalStorage').val('@Model.InternalStorage');
                 $('#ExternalStorage').val('@Model.ExternalStorage');
-                $('#Memory').val('@Model.Memory');
+                $('#PhoneMemory').val('@Model.PhoneMemory');
+                //$('#Memory').val('@Model.Memory');
                 $('#InternetFeatures').val('@Model.InternetFeatures');
                 $('#PreinstalledBrowser').val('@Model.PreinstalledBrowser');
                 $('#HSPA_3G').val('@Model.Connectivity.HSPA_3G');
                 $('#GPRS_2G').val('@Model.Connectivity.GPRS_2G');
+                $('#EDGE_2G').val('@Model.Connectivity.EDGE_2G');
                 $('#WiFi').val('@Model.WiFi');
+                $('#Hotspot').val('@Model.Connectivity.Hotspot');
                 $('#USB').val('@Model.Connectivity.USB');
                 $('#Bluetooth').val('@Model.Connectivity.Bluetooth');
                 $('#SupportedNetworks').val('@Model.Connectivity.SupportedNetworks');
-                $('#CallMemory').val('@Model.CallMemory');
-                $('#SMSMemory').val('@Model.SMSMemory');
-                $('#PhoneMemory').val('@Model.PhoneMemory');
+               // $('#CallMemory').val('@Model.CallMemory');
+               // $('#SMSMemory').val('@Model.SMSMemory');
+                $('#NoteSummary').val('@Model.NoteSummary');
 
             }
 

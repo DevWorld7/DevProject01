@@ -15,14 +15,34 @@
 			<div class="box-header">
             <h3 class="box-title"> General Feature</h3>
 			</div>						
-                                    
+                                  
+            <div class="form-group">
+                <label>Product Date:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input name="ProductDate" id="ProductDate" type="text" data-mask="" data-inputmask="'alias': 'dd/mm/yyyy'" class="form-control">
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->
+
+            <div class="form-group">
+                <label>In The Box:</label><span class="astrisk">*</span>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class=""></i>
+                    </div>
+                    <input id="InBox" name="InBox" type="text" maxlength="1000" class="form-control" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->
+          
             <div class="form-group">
                 <label>Model Number:</label>
                 <div class="input-group">
                     <div class="input-group-addon">
                         <i class=""></i>
                     </div>
-                    <input id="ModelNumber" name="ModelNumber" type="text" class="form-control" />
+                    <input id="ModelNumber" name="ModelNumber" maxlength="200" type="text" class="form-control" />
                 </div><!-- /.input group -->
             </div><!-- /.form group -->
 
@@ -32,7 +52,7 @@
                     <div class="input-group-addon">
                         <i class=""></i>
                     </div>
-                    <input id="ModelName" name="ModelName" type="text" class="form-control" />
+                    <input id="ModelName" name="ModelName" type="text" maxlength="500" class="form-control" />
                 </div><!-- /.input group -->
             </div><!-- /.form group -->
 
@@ -63,7 +83,7 @@
                     <div class="input-group-addon">
                         <i class=""></i>
                     </div>
-                    <input id="VoiceCall" name="VoiceCall" type="text" class="form-control" />
+                    <input id="CallFeatures" name="CallFeatures" type="text" maxlength="40" class="form-control" />
                 </div><!-- /.input group -->
             </div><!-- /.form group -->
 									
@@ -73,11 +93,11 @@
                     <div class="input-group-addon"> 
                         <i class=""></i>
                     </div>
-                    <input id="Processor" name="Processor" type="text" class="form-control" />
+                    <input id="Processor" name="Processor" type="text" maxlength="100" class="form-control" />
                 </div><!-- /.input group -->
             </div><!-- /.form group -->		
 
-			<div class="form-group">
+			@*<div class="form-group">
                 <label>Color:</label>
                 <div class="input-group">
                     <div class="input-group-addon">
@@ -85,7 +105,7 @@
                     </div>
                     <input id="ProductColors" name="ProductColors" type="text" class="form-control" />
                 </div><!-- /.input group -->
-            </div><!-- /.form group -->								
+            </div><!-- /.form group -->*@								
 									
         </div><!-- /.box-body -->
     </div><!-- /.box -->
@@ -103,11 +123,11 @@
                     <div class="input-group-addon">
                             <i ></i>
                     </div>
-                    <input id="ExternalStorage" name="ExternalStorage" type="text" class="form-control pull-right" />
+                    <input id="ExternalStorage" name="ExternalStorage" type="text" maxlength="100" class="form-control pull-right" />
                 </div><!-- /.input group -->
             </div><!-- /.form group -->		
 
-            <div class="form-group">
+            @*<div class="form-group">
                 <label>Memory Slots:</label>
                 <div class="input-group">
                     <div class="input-group-addon">
@@ -115,7 +135,7 @@
                     </div>
                     <input type="text" class="form-control pull-right" id="Processor"/>
                 </div><!-- /.input group -->
-            </div><!-- /.form group -->	
+            </div><!-- /.form group -->*@	
 
             <div class="form-group">
                 <label>Internal Storage:</label>
@@ -123,7 +143,7 @@
                     <div class="input-group-addon">
                         <i></i>
                     </div>
-                    <input id="InternalStorage" name="InternalStorage" type="text" class="form-control pull-right" />
+                    <input id="InternalStorage" name="InternalStorage" type="text" maxlength="100" class="form-control pull-right" />
                 </div><!-- /.input group -->
             </div><!-- /.form group -->		
 								  								
@@ -133,27 +153,27 @@
 
             <div class="box-header">
                 <h3 class="box-title">Dimensions</h3>
-            </div>
-                                  
+            </div>                  
+                        
+            <div class="form-group">
+                <label>Dimension:</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i></i>
+                    </div>
+                    <input id="Dimension" name="Dimension" type="text" maxlength="100" class="form-control pull-right" />
+                </div><!-- /.input group -->
+            </div><!-- /.form group -->	
+
 			<div class="form-group">
                 <label>Weight:</label>
                 <div class="input-group">
                     <div class="input-group-addon">
                             <i ></i>
                     </div>
-                    <input id="Weight" name="Weight" type="text" class="form-control pull-right" />
+                    <input id="Weight" name="Weight" type="text" maxlength="100" class="form-control pull-right" />
                 </div><!-- /.input group -->
-            </div><!-- /.form group -->				
-
-			<div class="form-group">
-                <label>Dimension:</label>
-                <div class="input-group">
-                    <div class="input-group-addon">
-                            <i ></i>
-                    </div>
-                    <input id="Dimension" name="Dimension" type="text" class="form-control pull-right" />
-                </div><!-- /.input group -->
-            </div><!-- /.form group -->										
+            </div><!-- /.form group -->			
 								  								
         </div><!-- /.box-body -->
 																
@@ -168,7 +188,7 @@
                     <div class="input-group-addon">
                             <i ></i>
                     </div>
-                    <textarea class="form-control pull-right" id="Processor"></textarea>
+                    <textarea id="NoteSummary" name="NoteSummary" maxlength="1000" class="form-control pull-right"></textarea>
                 </div><!-- /.input group -->
             </div><!-- /.form group -->										
 								  								
@@ -185,7 +205,7 @@
                     <div class="input-group-addon">
                             <i ></i>
                     </div>
-                    <textarea class="form-control pull-right" id="Processor"></textarea>
+                    <textarea id="WarrantySummary" name="WarrantySummary" maxlength="1000" class="form-control pull-right"></textarea>
                 </div><!-- /.input group -->
             </div><!-- /.form group -->	
 								  								
@@ -208,7 +228,7 @@
                     <div class="input-group-addon">
                         <i class=""></i>
                     </div>
-                    <input id="OperatingSystem" name="OperatingSystem" type="text" class="form-control pull-right" />
+                    <input id="OperatingSystem" name="OperatingSystem" maxlength="100" type="text" class="form-control pull-right" />
                 </div><!-- /.input group -->
             </div><!-- /.form group -->
 																	                                 
@@ -225,7 +245,7 @@
                     <div class="input-group-addon">
                         <i class=""></i>
                     </div>
-                    <input id="DisplaySize" name="DisplaySize" type="text" class="form-control pull-right" />
+                    <input id="DisplaySize" name="DisplaySize" type="text" maxlength="100" class="form-control pull-right" />
                 </div><!-- /.input group -->
             </div><!-- /.form group -->
 									
@@ -235,7 +255,7 @@
                     <div class="input-group-addon">
                         <i class=""></i>
                     </div>
-                    <input id="DisplayType" name="DisplayType" type="text" class="form-control pull-right" />
+                    <input id="DisplayType" name="DisplayType" type="text" maxlength="100" class="form-control pull-right" />
                 </div><!-- /.input group -->
             </div><!-- /.form group -->										
 									                                      
@@ -255,7 +275,7 @@
                     <div class="input-group-addon">
                             <i ></i>
                     </div>
-                    <input id="PrimaryCamera" name="PrimaryCamera" type="text" class="form-control pull-right" />
+                    <input id="PrimaryCamera" name="PrimaryCamera" type="text" maxlength="40" class="form-control pull-right" />
                 </div><!-- /.input group -->
             </div><!-- /.form group -->		
 									
@@ -265,7 +285,7 @@
                     <div class="input-group-addon">
                             <i ></i>
                     </div>
-                    <input id="SecondryCamera" name="SecondryCamera" type="text" class="form-control pull-right" />
+                    <input id="SecondryCamera" name="SecondryCamera" type="text" maxlength="40" class="form-control pull-right" />
                 </div><!-- /.input group -->
             </div><!-- /.form group -->		
                                   
@@ -282,7 +302,7 @@
                     <div class="input-group-addon">
                             <i ></i>
                     </div>
-                    <input id="PreinstalledBrowser" name="PreinstalledBrowser" type="text" class="form-control pull-right" />
+                    <input id="PreinstalledBrowser" name="PreinstalledBrowser" type="text" maxlength="100" class="form-control pull-right" />
                 </div><!-- /.input group -->
             </div><!-- /.form group -->		
 									
@@ -292,7 +312,7 @@
                     <div class="input-group-addon">
                             <i ></i>
                     </div>
-                    <input id="WiFi" name="WiFi" type="text" class="form-control pull-right" />
+                    <input id="WiFi" name="WiFi" type="text" maxlength="60" class="form-control pull-right" />
                 </div><!-- /.input group -->
             </div><!-- /.form group -->	
 
@@ -302,7 +322,7 @@
                     <div class="input-group-addon">
                             <i ></i>
                     </div>
-                    <input id="USBPort" name="USBPort" type="text" class="form-control pull-right" />
+                    <input id="USBPort" name="USBPort" type="text" maxlength="60" class="form-control pull-right" />
                 </div><!-- /.input group -->
             </div><!-- /.form group -->		
 
@@ -312,7 +332,7 @@
                     <div class="input-group-addon">
                             <i ></i>
                     </div>
-                    <input id="3G" name="3G" type="text" class="form-control pull-right"/>
+                    <input id="HSPA_3G" name="HSPA_3G" type="text" maxlength="60" class="form-control pull-right" />
                 </div><!-- /.input group -->
             </div><!-- /.form group -->		
 
@@ -322,7 +342,7 @@
                     <div class="input-group-addon">
                             <i ></i>
                     </div>
-                    <input id="2G" name="2G" type="text" class="form-control pull-right"/>
+                    <input id="GPRS_2G" name="GPRS_2G" type="text" maxlength="60" class="form-control pull-right" />
                 </div><!-- /.input group -->
             </div><!-- /.form group -->											
                                   
@@ -334,12 +354,12 @@
         <div class="box-body">								
             <!-- Minimal style -->
             <div class="form-group">
-                <label>Video Format:</label>@Model.AudioFormat
+                <label>Video Format:</label>
                 <div class="input-group">
                     <div class="input-group-addon">
                             <i ></i>
                     </div>
-                    <input id="VideoFormat" name="VideoFormat" type="text" class="form-control pull-right" />
+                    <input id="VideoFormat" name="VideoFormat" type="text" maxlength="60" class="form-control pull-right" />
                 </div><!-- /.input group -->
             </div><!-- /.form group -->		
 									
@@ -349,7 +369,7 @@
                     <div class="input-group-addon">
                             <i ></i>
                     </div>
-                    <input id="VideoRecording" name="VideoRecording" type="text" class="form-control pull-right" />
+                    <input id="VideoRecording" name="VideoRecording" type="text" maxlength="40" class="form-control pull-right" />
                 </div><!-- /.input group -->
             </div><!-- /.form group -->	
 
@@ -359,7 +379,7 @@
                     <div class="input-group-addon">
                             <i ></i>
                     </div>
-                    <input id="AudioFormat" name="AudioFormat" type="text" class="form-control pull-right" />
+                    <input id="AudioFormat" name="AudioFormat" type="text" maxlength="60" class="form-control pull-right" />
                 </div><!-- /.input group -->
             </div><!-- /.form group -->										
                                   
@@ -385,11 +405,12 @@
     }
     function ValidateForm() {
 
+        RequiredTextbox("InBox", "Enter the IntheBox")
         RequiredTextbox("ModelNumber", "Enter the Model Number")
         RequiredTextbox("ModelName", "Enter the Model Name")
-        RequiredTextbox("Chipset", "Enter the Chipset")
-        RequiredTextbox("ExpandableMemory", "Enter the Expandable Memory")
-        RequiredTextbox("Additionalfeatures", "Enter the Additional Features")
+        RequiredTextbox("Manufacture", "Enter the Manufacture")
+        RequiredTextbox("Processor", "Enter the Processor")
+        RequiredTextbox("Systemmemory", "Enter the System memory")
        
 
         return AlertError();
@@ -406,24 +427,32 @@
 
     $(document).ready(function () {
         LoadManufactures();
-
+        $('#ProductDate').datepicker();
         if ("@ViewBag.Id" != "0") {
             $('#Tabletid').val('@Model.Id');
+            $('#ProductDate').val('@Model.ProductDate');
+            $('#InBox').val('@Model.InBox');
             $('#ModelName').val('@Model.ModelName');
             $('#ModelNumber').val('@Model.ModelNumber');          
+            $('#CallFeatures').val('@Model.CallFeatures');
             $('#Processor').val('@Model.Processor');
             //$('#ProductColors').val('@Model.ProductColors');
             $('#ExternalStorage').val('@Model.ExternalStorage');
             $('#InternalStorage').val('@Model.InternalStorage');
             $('#Dimension').val('@Model.Dimension');
+            $('#Weight').val('@Model.Weight');
+            $('#NoteSummary').val('@Model.NoteSummary');
+            $('#WarrantySummary').val('@Model.WarrantySummary');
             $('#OperatingSystem').val('@Model.OperatingSystem');
             $('#DisplaySize').val('@Model.DisplaySize');
             $('#DisplayType').val('@Model.DisplayType');
             $('#PrimaryCamera').val('@Model.PrimaryCamera');
             $('#SecondryCamera').val('@Model.SecondryCamera');
-            $('#WiFi').val('@Model.WiFi');
-            @*$('#USBPort').val('@Model.USBPort');*@
             $('#PreinstalledBrowser').val('@Model.PreinstalledBrowser');
+            $('#WiFi').val('@Model.WiFi');
+            $('#USBPort').val('@Model.Connectivity.USB');
+            $('#HSPA_3G').val('@Model.Connectivity.HSPA_3G');
+            $('#GPRS_2G').val('@Model.Connectivity.GPRS_2G');
             $('#Weight').val('@Model.Weight');
             $('#VideoFormat').val('@Model.VideoFormat');
             $('#VideoRecording').val('@Model.VideoRecording');

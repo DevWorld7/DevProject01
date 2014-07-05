@@ -108,10 +108,13 @@ namespace LineFocus.Nikcron.Controllers
 
             Laptop = db.ProductModels.OfType<Laptop>().Where(l => l.Id == LaptopId).FirstOrDefault();
             Laptop.ProductTypeId = db.ProductTypes.Where(t => t.Name == "Laptop").FirstOrDefault().Id;
-            Laptop.ManufactureId = int.Parse(formCollection["Manufacture"]);            
+            Laptop.ManufactureId = int.Parse(formCollection["Manufacture"]);
+            Laptop.ProductDate = DateTime.Parse(formCollection["ProductDate"]);
+            Laptop.InBox = formCollection["InBox"];
             Laptop.ModelName = formCollection["ModelName"];
             Laptop.ModelNumber = formCollection["ModelNumber"];
-           // Laptop.ProductColors = formCollection["ProductColors"];
+            //Laptop.ProductColors = formCollection["ProductColors"];
+            
             Laptop.Processor = formCollection["Processor"];
             Laptop.Chipset = formCollection["Chipset"];
             Laptop.ClockSpeed = formCollection["ClockSpeed"];
@@ -121,11 +124,13 @@ namespace LineFocus.Nikcron.Controllers
             Laptop.RPM = formCollection["RPM"];
             Laptop.HDDCapacity = formCollection["HDDCapacity"];
             Laptop.OpticalDrive = formCollection["OpticalDrive"];
-            //Laptop.ProductWarranties = formCollection["ProductWarranties"];
+            Laptop.NoteSummary = formCollection["NoteSummary"];
+            Laptop.WarrantySummary = formCollection["WarrantySummary"];
             Laptop.OperatingSystem = formCollection["OperatingSystem"];
             Laptop.SystemArch = formCollection["SystemArch"];
             Laptop.DisplaySize = formCollection["DisplaySize"];
             Laptop.DisplayType = formCollection["DisplayType"];
+            Laptop.GraphicProcessor = formCollection["GraphicProcessor"];
             Laptop.Keyboard = formCollection["Keyboard"];
             Laptop.Speakers = formCollection["Speakers"];
             Laptop.Sound = formCollection["Sound"];
@@ -134,6 +139,7 @@ namespace LineFocus.Nikcron.Controllers
             Laptop.HDMIPort = formCollection["HDMIPort"];
             Laptop.VGAPort = formCollection["VGAport"];
             Laptop.MultiCardSlot = formCollection["MultiCardSlot"];
+            Laptop.Dimension = formCollection["Dimension"];
             Laptop.Weight = formCollection["Weight"];
             
 
@@ -236,8 +242,10 @@ namespace LineFocus.Nikcron.Controllers
             else
                 MobilePhone = db.ProductModels.OfType<Mobile>().Where(m => m.Id == MobileId).FirstOrDefault();
 
-            MobilePhone.ProductTypeId = db.ProductTypes.Where(t => t.Name == "Mobile").FirstOrDefault().Id;
+            MobilePhone.ProductTypeId = db.ProductTypes.Where(t => t.Name == "Mobile").FirstOrDefault().Id;            
             MobilePhone.ManufactureId = int.Parse(formCollection["Manufacture"]);
+            MobilePhone.ProductDate = DateTime.Parse(formCollection["ProductDate"]);
+            MobilePhone.InBox = formCollection["InBox"];
             MobilePhone.ModelNumber = formCollection["ModelNumber"];
             MobilePhone.ModelName = formCollection["ModelName"];
             MobilePhone.FormFactor = formCollection["FormFactor"];
@@ -245,19 +253,20 @@ namespace LineFocus.Nikcron.Controllers
             MobilePhone.SimSize = formCollection["SimSize"];
             MobilePhone.SimType = formCollection["SimType"];
             MobilePhone.PrimaryCamera = formCollection["PrimaryCamera"];
-            MobilePhone.SecondryCamera = formCollection["SecondryCamera"];
-            MobilePhone.PhoneMemory = formCollection["PhoneMemory"];
+            MobilePhone.SecondryCamera = formCollection["SecondryCamera"];           
             MobilePhone.VideoRecording = formCollection["VideoRecording"];
             MobilePhone.Dimension = formCollection["Dimension"];
             MobilePhone.Weight = formCollection["Weight"];
             MobilePhone.BatteryType = formCollection["BatteryType"];
-            //if (!string.IsNullOrEmpty(formCollection["BatteryStandBy"]))
-            //    MobilePhone.BatteryStandBy = formCollection["BatteryStandBy"];
+           // if (!string.IsNullOrEmpty(formCollection["BatteryStandBy"]))
+            //    MobilePhone.ModelNumber = formCollection["BatteryStandBy"];
+            MobilePhone.BatteryCapacity = formCollection["BatteryCapacity"];
             MobilePhone.MusicPlayer = formCollection["MusicPlayer"];
-            MobilePhone.VideoPlayer = formCollection["VideoPlayer"];
-            MobilePhone.FM = formCollection["FM"];
+            MobilePhone.VideoPlayer = formCollection["VideoPlayer"];            
             MobilePhone.SoundEnhancement = formCollection["SoundEnhancement"];
             MobilePhone.RingTone = formCollection["RingTone"];
+            MobilePhone.FM = formCollection["FM"];
+            MobilePhone.WarrantySummary = formCollection["WarrantySummary"];            
             //MobilePhone. = formCollection["ProductWarranties"];
             MobilePhone.Connectivity.OperatingFrequencies = formCollection["OperatingFrequencies"];
             MobilePhone.OperatingSystem = formCollection["OperatingSystem"];
@@ -267,18 +276,21 @@ namespace LineFocus.Nikcron.Controllers
             MobilePhone.DisplayResolution = formCollection["DisplayResolution"];
             MobilePhone.InternalStorage = formCollection["InternalStorage"];
             MobilePhone.ExternalStorage = formCollection["ExternalStorage"];
-            MobilePhone.Memory = formCollection["Memory"];
+            MobilePhone.PhoneMemory = formCollection["PhoneMemory"];
+           // MobilePhone.Memory = formCollection["Memory"];
             MobilePhone.InternetFeatures = formCollection["InternetFeatures"];
             MobilePhone.PreinstalledBrowser = formCollection["PreinstalledBrowser"];
             MobilePhone.Connectivity.HSPA_3G = formCollection["HSPA_3G"];
             MobilePhone.Connectivity.GPRS_2G = formCollection["GPRS_2G"];
+            MobilePhone.Connectivity.EDGE_2G = formCollection["EDGE_2G"];
             MobilePhone.WiFi = formCollection["WiFi"];
+            MobilePhone.Connectivity.Hotspot = formCollection["Hotspot"];
             MobilePhone.Connectivity.USB = formCollection["USB"];
             MobilePhone.Connectivity.Bluetooth = formCollection["Bluetooth"];
             MobilePhone.Connectivity.SupportedNetworks = formCollection["SupportedNetworks"];
-            MobilePhone.CallMemory = formCollection["CallMemory"];
-            MobilePhone.SMSMemory = formCollection["SMSMemory"];
-            MobilePhone.PhoneMemory = formCollection["PhoneMemory"];
+           // MobilePhone.CallMemory = formCollection["CallMemory"];
+           // MobilePhone.SMSMemory = formCollection["SMSMemory"];
+            MobilePhone.NoteSummary = formCollection["NoteSummary"];
             if(MobileId == 0)
                 db.ProductModels.AddObject(MobilePhone);
             db.SaveChanges();
@@ -357,23 +369,30 @@ namespace LineFocus.Nikcron.Controllers
                Tablet = db.ProductModels.OfType<Tablet>().Where(t => t.Id == Tabletid).FirstOrDefault();
            Tablet.ProductTypeId = db.ProductTypes.Where(t => t.Name == "Tablet").FirstOrDefault().Id;
            Tablet.ManufactureId = int.Parse(formCollection["Manufacture"]);
+
+           Tablet.ProductDate = DateTime.Parse(formCollection["ProductDate"]);
+           Tablet.InBox = formCollection["InBox"];
            Tablet.ModelName = formCollection["ModelName"];
            Tablet.ModelNumber = formCollection["ModelNumber"];
-          
+           Tablet.CallFeatures = formCollection["CallFeatures"];
            Tablet.Processor = formCollection["Processor"];
           // Tablet.ProductColors = formCollection["ProductColors"];
            Tablet.ExternalStorage = formCollection["ExternalStorage"];
            Tablet.InternalStorage = formCollection["InternalStorage"];
            Tablet.Dimension = formCollection["Dimension"];
+           Tablet.Weight = formCollection["Weight"];
+           Tablet.NoteSummary = formCollection["NoteSummary"];
+           Tablet.WarrantySummary = formCollection["WarrantySummary"];
            Tablet.OperatingSystem = formCollection["OperatingSystem"];
            Tablet.DisplaySize = formCollection["DisplaySize"];
            Tablet.DisplayType = formCollection["DisplayType"];
            Tablet.PrimaryCamera = formCollection["PrimaryCamera"];
-           Tablet.SecondryCamera = formCollection["SecondryCamera"];
-           Tablet.WiFi = formCollection["WiFi"];
-           //Tablet.USBPort = formCollection["USBPort"];
+           Tablet.SecondryCamera = formCollection["SecondryCamera"];          
            Tablet.PreinstalledBrowser = formCollection["PreinstalledBrowser"];
-           Tablet.Weight = formCollection["Weight"];
+           Tablet.WiFi = formCollection["WiFi"];
+           Tablet.Connectivity.USB = formCollection["USBPort"];
+           Tablet.Connectivity.HSPA_3G = formCollection["HSPA_3G"];
+           Tablet.Connectivity.GPRS_2G = formCollection["GPRS_2G"];         
            Tablet.VideoFormat = formCollection["VideoFormat"];
            Tablet.VideoRecording = formCollection["VideoRecording"];
            Tablet.AudioFormat = formCollection["AudioFormat"];
