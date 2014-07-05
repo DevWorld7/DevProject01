@@ -236,7 +236,7 @@ namespace LineFocus.Nikcron.Controllers
             Mobile MobilePhone = new Mobile();     
 
             Int32 MobileId = 0;
-            Int32.TryParse(formCollection["MobileId"], out MobileId);
+            Int32.TryParse(formCollection["Id"], out MobileId);
             if (MobileId == 0)
                 MobilePhone = new Mobile();
             else

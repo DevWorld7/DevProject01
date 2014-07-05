@@ -16,5 +16,10 @@ namespace LineFocus.Nikcron.Controllers
             return View();
         }
 
+        public ActionResult SalesMaintenance()
+        {
+            return View();
+        }
+
     }
 }

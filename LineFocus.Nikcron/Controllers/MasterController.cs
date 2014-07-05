@@ -186,5 +186,38 @@ namespace LineFocus.Nikcron.Controllers
             return Result;
         }
 
+
+
+        public ActionResult ServiceTypeMaintenance()
+        {
+            return View();
+        }
+        public ActionResult ProductTypeMaintenance()
+        {
+            return View();
+        }
+
+        public ActionResult ManufactureMaintenance()
+        {
+            return View();
+        }
+        public ActionResult ZoneMaintenance()
+        {
+            return View();
+        }
+        public ActionResult CountryMaintenance()
+        {
+            return View();
+        }
+        public ActionResult StateMaintenance()
+        {
+            return View();
+        }
+        public ActionResult CityMaintenance()
+        {
+            return View();
+        }
+
+
     }
 }
