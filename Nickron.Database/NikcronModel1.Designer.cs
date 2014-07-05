@@ -2440,6 +2440,30 @@ namespace Nickron.Database
         private global::System.String _MultiCardSlot;
         partial void OnMultiCardSlotChanging(global::System.String value);
         partial void OnMultiCardSlotChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String MemorySlots
+        {
+            get
+            {
+                return _MemorySlots;
+            }
+            set
+            {
+                OnMemorySlotsChanging(value);
+                ReportPropertyChanging("MemorySlots");
+                _MemorySlots = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("MemorySlots");
+                OnMemorySlotsChanged();
+            }
+        }
+        private global::System.String _MemorySlots;
+        partial void OnMemorySlotsChanging(global::System.String value);
+        partial void OnMemorySlotsChanged();
 
         #endregion
 

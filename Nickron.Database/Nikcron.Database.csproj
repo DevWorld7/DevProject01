@@ -49,7 +49,7 @@
     <Compile Include="ApplicationDBContext.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="NikcronModel.Designer.cs">
+    <Compile Include="NikcronModel1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NikcronModel.edmx</DependentUpon>

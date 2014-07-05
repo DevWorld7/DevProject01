@@ -359,7 +359,7 @@
     <Property Name="SecondryCamera" Type="nvarchar" Nullable="true" MaxLength="20" />
     <Property Name="VideoRecording" Type="nvarchar" Nullable="true" MaxLength="20" />
     <Property Name="WiFi" Type="nvarchar" Nullable="true" MaxLength="20" />
-    <Property Name="BatteryCapacity" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="BatteryCapacity" Type="nvarchar" Nullable="true" MaxLength="100" />
     <Property Name="NoteSummary" Type="nvarchar" Nullable="true" MaxLength="1000" />
     <Property Name="WarrantySummary" Type="nvarchar" Nullable="true" MaxLength="100" />
     <Property Name="InBox" Type="nvarchar" Nullable="true" MaxLength="1000" />
@@ -728,6 +728,7 @@
     <Property Name="HDMIPort" Type="nvarchar" Nullable="true" MaxLength="30" />
     <Property Name="RJ45LAN" Type="nvarchar" Nullable="true" MaxLength="30" />
     <Property Name="MultiCardSlot" Type="nvarchar" Nullable="true" MaxLength="30" />
+    <Property Name="MemorySlots" Type="nvarchar" Nullable="true" MaxLength="40" />
     <Property Name="Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductModelProductColors">
@@ -1620,7 +1621,7 @@
           <Property Name="WiFi" Type="String" Nullable="true" MaxLength="20" />
           <NavigationProperty Name="ProductColors" Relationship="NikcronModel.ProductModelProductColors" FromRole="ProductModel" ToRole="ProductColors" />
           <NavigationProperty Name="ProductImages" Relationship="NikcronModel.ProductModelProductImage" FromRole="ProductModel" ToRole="ProductImage" />
-          <Property Name="BatteryCapacity" Type="String" Nullable="true" MaxLength="250" />
+          <Property Name="BatteryCapacity" Type="String" Nullable="true" MaxLength="100" />
           <Property Name="NoteSummary" Type="String" Nullable="true" MaxLength="1000" />
           <Property Name="WarrantySummary" Type="String" Nullable="true" MaxLength="100" />
           <Property Name="InBox" Type="String" Nullable="true" MaxLength="1000" />
@@ -1895,6 +1896,7 @@
           <Property Name="HDMIPort" Type="String" Nullable="true" MaxLength="30" />
           <Property Name="RJ45LAN" Type="String" Nullable="true" MaxLength="30" />
           <Property Name="MultiCardSlot" Type="String" Nullable="true" MaxLength="30" />
+          <Property Name="MemorySlots" Type="String" Nullable="true" MaxLength="40" />
         </EntityType>
         <EntityType Name="ProductColors">
           <Key>
@@ -2567,6 +2569,7 @@
           <ScalarProperty Name="HDMIPort" ColumnName="HDMIPort" />
           <ScalarProperty Name="RJ45LAN" ColumnName="RJ45LAN" />
           <ScalarProperty Name="MultiCardSlot" ColumnName="MultiCardSlot" />
+          <ScalarProperty Name="MemorySlots" ColumnName="MemorySlots" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
