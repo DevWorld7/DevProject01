@@ -1996,14 +1996,12 @@ namespace Nickron.Database
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="manufactureId">Initial value of the ManufactureId property.</param>
         /// <param name="productTypeId">Initial value of the ProductTypeId property.</param>
-        /// <param name="memorySlots">Initial value of the MemorySlots property.</param>
-        public static Laptop CreateLaptop(global::System.Int32 id, global::System.Int32 manufactureId, global::System.Int32 productTypeId, global::System.String memorySlots)
+        public static Laptop CreateLaptop(global::System.Int32 id, global::System.Int32 manufactureId, global::System.Int32 productTypeId)
         {
             Laptop laptop = new Laptop();
             laptop.Id = id;
             laptop.ManufactureId = manufactureId;
             laptop.ProductTypeId = productTypeId;
-            laptop.MemorySlots = memorySlots;
             return laptop;
         }
 
@@ -2446,7 +2444,7 @@ namespace Nickron.Database
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String MemorySlots
         {
@@ -2458,7 +2456,7 @@ namespace Nickron.Database
             {
                 OnMemorySlotsChanging(value);
                 ReportPropertyChanging("MemorySlots");
-                _MemorySlots = StructuralObject.SetValidValue(value, false);
+                _MemorySlots = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("MemorySlots");
                 OnMemorySlotsChanged();
             }

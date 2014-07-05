@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 07/05/2014 01:00:17
+-- Date Created: 07/05/2014 07:29:41
 -- Generated from EDMX file: D:\Accomplishments\DevProject01\Nickron.Database\NikcronModel.edmx
 -- --------------------------------------------------
 
@@ -110,6 +110,9 @@ IF OBJECT_ID(N'[dbo].[FK_StateCity]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_CompanyStockhouse]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Offices_Stockhouse] DROP CONSTRAINT [FK_CompanyStockhouse];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ProductItemProductWarranty]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProductItems] DROP CONSTRAINT [FK_ProductItemProductWarranty];
 GO
 IF OBJECT_ID(N'[dbo].[FK_BusinessOffice_inherits_Office]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Offices_BusinessOffice] DROP CONSTRAINT [FK_BusinessOffice_inherits_Office];
@@ -393,7 +396,7 @@ CREATE TABLE [dbo].[ProductModels] (
     [SecondryCamera] nvarchar(20)  NULL,
     [VideoRecording] nvarchar(20)  NULL,
     [WiFi] nvarchar(20)  NULL,
-    [BatteryCapacity] nvarchar(250)  NULL,
+    [BatteryCapacity] nvarchar(100)  NULL,
     [NoteSummary] nvarchar(1000)  NULL,
     [WarrantySummary] nvarchar(100)  NULL,
     [InBox] nvarchar(1000)  NULL,
@@ -762,6 +765,7 @@ CREATE TABLE [dbo].[ProductModels_Laptop] (
     [HDMIPort] nvarchar(30)  NULL,
     [RJ45LAN] nvarchar(30)  NULL,
     [MultiCardSlot] nvarchar(30)  NULL,
+    [MemorySlots] nvarchar(40)  NULL,
     [Id] int  NOT NULL
 );
 GO

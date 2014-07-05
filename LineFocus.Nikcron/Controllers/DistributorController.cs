@@ -65,7 +65,9 @@ namespace LineFocus.Nikcron.Controllers
             {
                 ViewBag.DistributorId = 0;
                 ViewBag.Caption = "New";
-                return View(new Distributor());
+                Distributor d = new Distributor();
+                d.Stockhouse = new Stockhouse();
+                return View(d);
             }
         }
         [HttpPost]
