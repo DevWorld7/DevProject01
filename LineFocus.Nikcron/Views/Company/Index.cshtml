@@ -121,10 +121,14 @@
                 var container = $("<div style='margin: 2px;'></div>");
                 var buttonTemplate = "<div style='float: left; padding: 1px;'><div style='margin: 4px; width: 16px; height: 16px;'></div></div>";
                 var addButton = $(buttonTemplate);
+                var editButton = $(buttonTemplate);
+                var deleteButton = $(buttonTemplate);
                 var excelButton = $(buttonTemplate);
                 var printButton = $(buttonTemplate);
 
                 container.append(addButton);
+                container.append(editButton);
+                container.append(deleteButton);
                 container.append(excelButton);
                 container.append(printButton);
                 toolBar.append(container);
@@ -137,15 +141,43 @@
                     window.location.href = "@Url.Action("Maintenance", "Company")";
                 });
 
+                editButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });
+                editButton.find('div:first').addClass(toTheme('jqx-icon-edit'));
+                editButton.jqxTooltip({ position: 'bottom', content: "Edit Company" });
+
+                editButton.click(function (event) {
+                    var getselectedrowindex = $('#treeGrid').jqxGrid('getselectedrowindex');
+                    if (getselectedrowindex != null && getselectedrowindex != undefined)
+                    {
+                        var selectedRowData = $('#treeGrid').jqxGrid('getrowdata', getselectedrowindex);
+                        selectedRowID = selectedRowData.Id;
+                        window.location.href = "@Url.Action("Maintenance", "Company")" + "?Id=" + selectedRowID;
+                    }
+                });
+
+                deleteButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });
+                deleteButton.find('div:first').addClass(toTheme('jqx-icon-delete'));
+                deleteButton.jqxTooltip({ position: 'bottom', content: "Edit Delete" });
+
+                @*deleteButton.click(function (event) {
+                    var getselectedrowindex = $('#treeGrid').jqxGrid('getselectedrowindex');
+                    if (getselectedrowindex != null && getselectedrowindex != undefined)
+                    {
+                        var selectedRowData = $('#treeGrid').jqxGrid('getrowdata', getselectedrowindex);
+                        selectedRowID = selectedRowData.Id;
+                        window.location.href = "@Url.Action("Maintenance", "Company")" + "?Id=" + selectedRowID;
+                    }
+                });*@
+
                 excelButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });
-                excelButton.find('div:first').addClass(toTheme('jqx-excel-plus'));
+                excelButton.find('div:first').addClass(toTheme('jqx-excel-excel'));
                 excelButton.jqxTooltip({ position: 'bottom', content: "Export As Excel File" });
                 excelButton.click(function (event) {
                     $("#treeGrid").jqxGrid('exportdata', 'xls', 'Companies');
                 });
 
                 printButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });
-                printButton.find('div:first').addClass(toTheme('jqx-print-plus'));
+                printButton.find('div:first').addClass(toTheme('jqx-print-print'));
                 printButton.jqxTooltip({ position: 'bottom', content: "Print" });
                 printButton.click(function (event) {
                     var gridContent = $("#treeGrid").jqxGrid('exportdata', 'html');

@@ -23,15 +23,15 @@ namespace LineFocus.Nikcron.Controllers
         }
 
         [HttpGet]
-        public ActionResult Maintenance(Int32? CompanyId)
+        public ActionResult Maintenance(Int32? Id)
         {
             ViewBag.Header = "Company";
-            if (CompanyId.HasValue)
+            if (Id.HasValue)
             {
                 ViewBag.Caption = "Edit";
-                ViewBag.CompanyId = CompanyId;
+                ViewBag.Id = Id;
                 ApplicationDBContext db = new ApplicationDBContext();
-                Company Company = db.Offices.OfType<Company>().Where(c => c.Id == CompanyId).ToList().FirstOrDefault();
+                Company Company = db.Offices.OfType<Company>().Where(c => c.Id == Id).ToList().FirstOrDefault();
                 return View(Company);
             }
             else
@@ -45,30 +45,63 @@ namespace LineFocus.Nikcron.Controllers
         [HttpPost]
         public ActionResult Maintenance(FormCollection formCollection)
         {
+            //ApplicationDBContext db = new ApplicationDBContext();
+            //if (formCollection["Id"] == "0")
+            //{
+            //    Company Company = new Company();
+            //    Company.Name = formCollection["CompanyName"];
+            //    Company.ContactPerson = formCollection["ContactPerson"];
+            //    Company.Address.Address1 = formCollection["Address1"];
+            //    Company.Address.Address2 = formCollection["Address2"];
+            //    Company.Address.City = formCollection["City"];
+            //    Company.Address.Zip = formCollection["Zip"];
+            //    db.Offices.AddObject(Company);
+            //}
+            //else {
+            //    int CompanyId = int.Parse(formCollection["Id"]);
+            //    Company Company = db.Offices.OfType<Company>().Where(c => c.Id == CompanyId).FirstOrDefault();
+            //    Company.Name = formCollection["CompanyName"];
+            //    Company.ContactPerson = formCollection["ContactPerson"];
+            //    Company.Address.Address1 = formCollection["Address1"];
+            //    Company.Address.Address2 = formCollection["Address2"];
+            //    Company.Address.City = formCollection["City"];
+            //    Company.Address.Zip = formCollection["Zip"];
+            //}
+            //db.SaveChanges();
+            //return RedirectToAction("Index");
+
             ApplicationDBContext db = new ApplicationDBContext();
-            if (formCollection["CompanyId"] == "0")
-            {
-                Company Company = new Company();
-                Company.Name = formCollection["CompanyName"];
-                Company.ContactPerson = formCollection["ContactPerson"];
-                Company.Address.Address1 = formCollection["Address1"];
-                Company.Address.Address2 = formCollection["Address2"];
-                Company.Address.City = formCollection["City"];
-                Company.Address.Zip = formCollection["Zip"];
+            Company Company = new Company();
+
+            Int32 CompanyId = 0;
+            Int32.TryParse(formCollection["Id"], out CompanyId);
+            if (CompanyId == 0)
+                Company = new Company();
+            else
+                Company = db.Offices.OfType<Company>().Where(c => c.Id == CompanyId).FirstOrDefault();
+
+            Company.Name = formCollection["Name"];
+            Company.ContactPerson = formCollection["ContactPerson"];
+            Company.Address.Address1 = formCollection["Address1"];
+            Company.Address.Address2 = formCollection["Address2"];
+            Company.Address.City = formCollection["City"];
+            Company.Address.Zip = formCollection["Zip"];
+            Company.Address.State = formCollection["State"];
+            Company.Address.Country = formCollection["Country"];
+            Company.Contact1.Mobile = formCollection["Mobile1"];
+            Company.Contact2.Mobile = formCollection["Mobile2"];
+            Company.Contact1.Phone = formCollection["Phone1"];
+            Company.Contact2.Phone = formCollection["Phone2"];
+            Company.Contact1.Email = formCollection["Email"];
+            Company.Contact1.Website = formCollection["Website"];
+            // Company. = formCollection["Username"];
+            // Company. = formCollection["Password"];
+
+            if (CompanyId == 0)
                 db.Offices.AddObject(Company);
-            }
-            else {
-                int CompanyId = int.Parse(formCollection["CompanyId"]);
-                Company Company = db.Offices.OfType<Company>().Where(c => c.Id == CompanyId).FirstOrDefault();
-                Company.Name = formCollection["CompanyName"];
-                Company.ContactPerson = formCollection["ContactPerson"];
-                Company.Address.Address1 = formCollection["Address1"];
-                Company.Address.Address2 = formCollection["Address2"];
-                Company.Address.City = formCollection["City"];
-                Company.Address.Zip = formCollection["Zip"];
-            }
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return View("Index");
+
         }
 
         public ActionResult Delete(Int32? CompanyId)

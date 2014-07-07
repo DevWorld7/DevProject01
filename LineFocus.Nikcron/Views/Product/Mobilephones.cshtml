@@ -69,7 +69,8 @@
             ready: function () {
             },
             columns: [
-              { text: 'Id', dataField: 'Id', width: 30, editable : false, hidden : true },
+              //{ text: 'Id', dataField: 'Id', width: 30, editable : false, hidden : true },
+               { text: 'Id', dataField: 'Id', width: 30, editable: false},
               { text: 'Brand', dataField: 'Manufacture', width: 150 },
               { text: 'Model #', dataField: 'ModelNumber', width: 130 },
               { text: 'Processor', dataField: 'Processor', width: 130 },
@@ -77,6 +78,7 @@
               { text: 'Storage', dataField: 'ExternalStorage', width: 150 },
               { text: 'Screen', dataField: 'DisplaySize', width: 100 },
               { text: 'Operating System', dataField: 'OperatingSystem', width: 150 },
+              
             ],
             renderToolbar: function(toolBar)
             {
