@@ -587,7 +587,7 @@
 					<div class="box-footer">
                         <input type="hidden" name="Id" id="Id" value="@ViewBag.Id" />
 						<button type="submit" class="btn btn-primary" style=" width:80px;">Save</button>
-						<button type="submit" class="btn btn-primary" onclick="GoBackListing()" style=" width:80px;">Cancel</button>
+						<button type="reset" class="btn btn-primary" onclick="GoBackListing()" style=" width:80px;">Cancel</button>
 					</div>
 			</div><!-- /.box -->
 								  								
@@ -679,6 +679,7 @@
             if ("@ViewBag.Id" != "0")
             {
                 $('#MobileId').val('@Model.Id');
+                $('#Manufacture').val('@Model.ManufactureId');
                 $('#ProductDate').val('@Model.ProductDate');
                 $('#InBox').val('@Model.InBox');
                 $('#ModelNumber').val('@Model.ModelNumber');
@@ -724,7 +725,7 @@
                 $('#Bluetooth').val('@Model.Connectivity.Bluetooth');
                 $('#SupportedNetworks').val('@Model.Connectivity.SupportedNetworks');
                // $('#CallMemory').val('@Model.CallMemory');
-               // $('#SMSMemory').val('@Model.SMSMemory');
+                // $('#SMSMemory').val('@Model.SMSMemory');
                 $('#NoteSummary').val('@Model.NoteSummary');
 
             }
