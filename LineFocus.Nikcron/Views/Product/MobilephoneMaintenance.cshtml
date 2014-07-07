@@ -119,7 +119,7 @@
         <div class="box-body">
                                    
 			<div class="form-group">
-                <label>Primary Cameray:</label><span class="astrisk">*</span>
+                <label>Primary Camera:</label><span class="astrisk">*</span>
                 <div class="input-group">
                     <div class="input-group-addon">
                             <i ></i>
@@ -595,7 +595,7 @@
                              
     </div><!-- /.box -->
 </div><!-- /.col (right) -->
-    <input type="hidden" name="MobileId" id="MobileId" />
+    @*<input type="hidden" name="MobileId" id="MobileId" />*@
     
     <script>       
         function ValidateForm() {
@@ -673,8 +673,10 @@
             window.location.replace('@Url.Action("Mobilephones","Product",null)');
         }
 
-        $(document).ready(function () {
             LoadManufactures();
+
+        $(document).ready(function () {
+          
             $('#ProductDate').datepicker();
             if ("@ViewBag.Id" != "0")
             {
@@ -684,6 +686,7 @@
                 $('#InBox').val('@Model.InBox');
                 $('#ModelNumber').val('@Model.ModelNumber');
                 $('#ModelName').val('@Model.ModelName');
+                $('#Manufactur', SelectList).val('@Model.ManufactureId');
                 $('#FormFactor').val('@Model.FormFactor');
                 $('#CallFeatures').val('@Model.CallFeatures');
                 $('#SimSize').val('@Model.SimSize');
@@ -713,7 +716,7 @@
                 $('#InternalStorage').val('@Model.InternalStorage');
                 $('#ExternalStorage').val('@Model.ExternalStorage');
                 $('#PhoneMemory').val('@Model.PhoneMemory');
-                //$('#Memory').val('@Model.Memory');
+                @*$('#Memory').val('@Model.Memory');*@
                 $('#InternetFeatures').val('@Model.InternetFeatures');
                 $('#PreinstalledBrowser').val('@Model.PreinstalledBrowser');
                 $('#HSPA_3G').val('@Model.Connectivity.HSPA_3G');
@@ -724,8 +727,8 @@
                 $('#USB').val('@Model.Connectivity.USB');
                 $('#Bluetooth').val('@Model.Connectivity.Bluetooth');
                 $('#SupportedNetworks').val('@Model.Connectivity.SupportedNetworks');
-               // $('#CallMemory').val('@Model.CallMemory');
-                // $('#SMSMemory').val('@Model.SMSMemory');
+                @*$('#CallMemory').val('@Model.CallMemory');
+                $('#SMSMemory').val('@Model.SMSMemory');*@
                 $('#NoteSummary').val('@Model.NoteSummary');
 
             }

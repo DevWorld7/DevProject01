@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "OfficeUser";
+    ViewBag.Title = "User";
 }
 
 <div id="treeGrid">
@@ -64,7 +64,7 @@
             updaterow: function (rowid, newdata, commit) {
                 $.ajax({
                     type: "POST",
-                    url: "@Url.Action("OfficeUsers")",
+                    url: "@Url.Action("Users")",
                     dataType: "json",
                     contentType: "application/json; charset=utf-8",
                     data: JSON.stringify(newdata),
@@ -78,7 +78,7 @@
                 commit(true);
             },
             id: 'Id',
-            url: '@Url.Action("OfficeUsers")'
+            url: '@Url.Action("Users")'
         };
         var dataAdapter = new $.jqx.dataAdapter(source);
         // create Tree Grid
@@ -146,7 +146,7 @@
                 addButton.jqxTooltip({ position: 'bottom', content: "Add Stockhit" });
 
                 addButton.click(function (event) {
-                    window.location.href = "@Url.Action("OfficeUserMaintenance", "user")";
+                    window.location.href = "@Url.Action("UserMaintenance", "user")";
                 });
 
                 editButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });

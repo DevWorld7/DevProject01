@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "CityMaintenance";
+}
+
+@using (Html.BeginForm("CityMaintenance", "Master", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <div class="col-md-12">
+
+        <div class="box box-danger">
+            <div class="box-body">
+
+                <div class="box-header">
+                    <h3 class="box-title">Add City</h3>
+                </div>
+
+                <div class="form-group">
+                    <label> Country:</label><span class="astrisk">*</span>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <select id="Country" name="Country" class="form-control">
+                            <option value="0">---Select---</option>
+                        </select>
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label> State:</label><span class="astrisk">*</span>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <select id="State" name="State" class="form-control">
+                            <option value="0">---Select---</option>
+                        </select>
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label> City:</label><span class="astrisk">*</span>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class=""></i>
+                        </div>
+                        <input id="City" name="City" maxlength="50" type="text" class="form-control" />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+
+                <div class="box box-success">
+                    <div class="box-footer">
+                        <input type="hidden" name="Id" id="Id" />
+                        <button type="submit" class="btn btn-primary" style=" width:80px;">Save</button>
+                        <button type="reset" class="btn btn-primary" style=" width:80px;">Cancel</button>
+                    </div>
+                </div><!-- /.box -->
+
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col (left) -->
+
+    <div class="col-xs-12">
+        <div class="box">
+
+            <div class="box-body table-responsive">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Sno</th>
+                            <th>Country</th>
+                            <th>State</th>
+                            <th>City</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>India</td>
+                            <td>Tamil Nadu</td>
+                            <td>Chennai</td>
+                            <td><a href=" ">Edit</a></td>
+                            <td><a href=" ">Delete</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>USA</td>
+                            <td>New Yourk</td>
+                            <td>xxxx</td>
+                            <td><a href=" ">Edit</a></td>
+                            <td><a href=" ">Delete</a></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div>
+}
+

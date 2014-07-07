@@ -17,7 +17,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Company" name="Company" maxlength="250" type="text" class="form-control" />
+                        <input id="Name" name="Name" maxlength="250" type="text" class="form-control" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -48,7 +48,7 @@
                         <div class="input-group-addon">
                             <i class=""></i>
                         </div>
-                        <input id="Address1" name="Address1" maxlength="500" class="form-control"/>
+                        <input id="Address1" name="Address1" maxlength="500" class="form-control" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -58,7 +58,7 @@
                         <div class="input-group-addon">
                             <i class=""></i>
                         </div>
-                        <input id="Address2" name="Address2" maxlength="500" class="form-control"/>
+                        <input id="Address2" name="Address2" maxlength="500" class="form-control" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -118,7 +118,7 @@
                         <div class="input-group-addon">
                             <i class=""></i>
                         </div>
-                        <input id="Mobilenumber1" name="Mobilenumber1" type="text" class="form-control pull-right" />
+                        <input id="Mobile1" name="Mobile1" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -128,7 +128,7 @@
                         <div class="input-group-addon">
                             <i class=""></i>
                         </div>
-                        <input id="Mobilenumber2" name="Mobilenumber2" type="text" class="form-control pull-right" />
+                        <input id="Mobile2" name="Mobile2" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -138,7 +138,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Phonenumber1" name="Phonenumber1" type="text" class="form-control pull-right" />
+                        <input id="Phone1" name="Phone1" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -148,7 +148,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Phonenumber2" name="Phonenumber2" type="text" class="form-control pull-right" />
+                        <input id="Phone2" name="Phone2" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -168,7 +168,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Web" name="Web" maxlength="250" type="text" class="form-control pull-right" />
+                        <input id="Website" name="Website" maxlength="250" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -216,9 +216,6 @@
             </div>
         </div><!-- /.box -->
     </div><!-- /.col (right) -->
-    
-    <input type="hidden" name="CompanyId" id="CompanyId" />
-
 }
 
 <script type="text/javascript">
@@ -336,7 +333,8 @@
 
         if("@ViewBag.Id" != "0")
         {
-            $('#Company').val("@Model.Name");
+            $('#Id').val('@Model.Id');
+            $('#Name').val("@Model.Name");
             $('#ContactPerson').val("@Model.ContactPerson");
             $('#Address1').val("@Model.Address.Address1");
             $('#Address2').val("@Model.Address.Address2");
@@ -344,13 +342,15 @@
             $('#Zip').val("@Model.Address.Zip");
             $('#State').val("@Model.Address.State")
             $('#Country').val("@Model.Address.Country");
-            $('#Mobilenumber1').val("@Model.Contact1.Mobile");
-            $('#Mobilenumber2').val("@Model.Contact2.Mobile")
-            $('#Phonenumber1').val("@Model.Contact1.Phone")
-            $('#Phonenumber2').val("@Model.Contact2.Phone")
+            $('#Mobile1').val("@Model.Contact1.Mobile");
+            $('#Mobile2').val("@Model.Contact2.Mobile")
+            $('#Phone1').val("@Model.Contact1.Phone")
+            $('#Phone2').val("@Model.Contact2.Phone")
             $('#Email').val("@Model.Contact1.Email");
-            $('#Web').val("@Model.Contact1.Website");
+            $('#Website').val("@Model.Contact1.Website");
             @*$('#Username').val("@Model.")*@
+            @*$('#Password').val("@Model.")*@
+                      
         }
     })
 </script>

@@ -120,6 +120,8 @@ namespace LineFocus.Nikcron.Controllers
             Laptop.ClockSpeed = formCollection["ClockSpeed"];
             Laptop.Cache = formCollection["Cache"];
             Laptop.ExternalStorage = formCollection["ExternalStorage"];
+            Laptop.MemorySlots = formCollection["Memoryslote"];
+            Laptop.Memory = formCollection["Systemmemory"];
             Laptop.HardwareInterface = formCollection["HardwareInterface"];
             Laptop.RPM = formCollection["RPM"];
             Laptop.HDDCapacity = formCollection["HDDCapacity"];
@@ -134,7 +136,7 @@ namespace LineFocus.Nikcron.Controllers
             Laptop.Keyboard = formCollection["Keyboard"];
             Laptop.Speakers = formCollection["Speakers"];
             Laptop.Sound = formCollection["Sound"];
-            Laptop.USBPort = formCollection["USBPort"];
+            Laptop.USBPort = formCollection["USBport"];
             Laptop.RJ45LAN = formCollection["RJ45LAN"];
             Laptop.HDMIPort = formCollection["HDMIPort"];
             Laptop.VGAPort = formCollection["VGAport"];
@@ -236,7 +238,7 @@ namespace LineFocus.Nikcron.Controllers
             Mobile MobilePhone = new Mobile();     
 
             Int32 MobileId = 0;
-            Int32.TryParse(formCollection["MobileId"], out MobileId);
+            Int32.TryParse(formCollection["Id"], out MobileId);
             if (MobileId == 0)
                 MobilePhone = new Mobile();
             else
@@ -277,7 +279,7 @@ namespace LineFocus.Nikcron.Controllers
             MobilePhone.InternalStorage = formCollection["InternalStorage"];
             MobilePhone.ExternalStorage = formCollection["ExternalStorage"];
             MobilePhone.PhoneMemory = formCollection["PhoneMemory"];
-           // MobilePhone.Memory = formCollection["Memory"];
+            MobilePhone.Memory = formCollection["Memory"];
             MobilePhone.InternetFeatures = formCollection["InternetFeatures"];
             MobilePhone.PreinstalledBrowser = formCollection["PreinstalledBrowser"];
             MobilePhone.Connectivity.HSPA_3G = formCollection["HSPA_3G"];
