@@ -672,6 +672,12 @@
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\pagevalidator.js" />
+    <Content Include="Views\Distributor\Maintenance.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Retailer\Maintenance.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -715,7 +721,6 @@
     <Content Include="Views\Company\Maintenance.cshtml" />
     <Content Include="Views\Dealer\Index.cshtml" />
     <Content Include="Views\Distributor\Index.cshtml" />
-    <Content Include="Views\Distributor\Maintenance.cshtml" />
     <Content Include="Views\Stockhouse\Index.cshtml" />
     <Content Include="Views\Stockhouse\Maintenance.cshtml" />
     <Content Include="Views\Product\LaptopMaintenance.cshtml" />
@@ -729,6 +734,17 @@
     <Content Include="Views\Stock\StockMaintenance.cshtml" />
     <Content Include="Views\Stock\Index.cshtml" />
     <Content Include="Views\User\Roles.cshtml" />
+    <Content Include="Views\Dealer\Maintenance.cshtml" />
+    <Content Include="Views\Retailer\Index.cshtml" />
+    <Content Include="Views\Master\CityMaintenance.cshtml" />
+    <Content Include="Views\Master\CountryMaintenance.cshtml" />
+    <Content Include="Views\Master\ManufactureMaintenance.cshtml" />
+    <Content Include="Views\Master\ProductTypeMaintenance.cshtml" />
+    <Content Include="Views\Master\ServiceTypeMaintenance.cshtml" />
+    <Content Include="Views\Master\StateMaintenance.cshtml" />
+    <Content Include="Views\Master\ZoneMaintenance.cshtml" />
+    <Content Include="Views\Sales\Index.cshtml" />
+    <Content Include="Views\Sales\SalesMaintenance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
