@@ -1,25 +1,23 @@
 ﻿@{
-    ViewBag.Title = "Stockits Maintenance";
+    ViewBag.Title = "Maintenance";
 }
 
-@model Nickron.Database.Stockhouse
+@model Nickron.Database.Dealers
 
-@using (Html.BeginForm("Maintenance", "Stockhouse", FormMethod.Post, new { @class = "form-horizontal", onsubmit = "return ValidateForm();" }))
+@using (Html.BeginForm("Maintenance", "Dealer", FormMethod.Post, new { @class = "form-horizontal", onsubmit = "return ValidateForm();" }))
 {
     <div class="col-md-6">
 
         <div class="box box-danger">
             <div class="box-body">
-                
+
                 <div class="form-group">
                     <label> State:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <select id="ddl_State" name="ddl_State" class="form-control">
-                            <option value="0">---Select---</option>
-                        </select>
+                        <select id="ddl_State" name="ddl_State" class="form-control"></select>
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -54,12 +52,32 @@
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> Name:</label><span class="astrisk">*</span>
+                    <label> Stockhouse:</label><span class="astrisk">*</span>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <select id="Stockhouse" name="Stockhouse" class="form-control"></select>
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label> Distributor:</label><span class="astrisk">*</span>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <select id="Distributor" name="Distributor" class="form-control"></select>
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label>Name:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class=""></i>
                         </div>
-                        <input id="Stockhouse" name="Stockhouse" maxlength="250" type="text" class="form-control" />
+                        <input id="Name" name="Name" maxlength="250" type="text" class="form-control" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -73,14 +91,13 @@
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
-                <!-- Date dd/mm/yyyy -->
                 <div class="form-group">
-                    <label> Registration Date:</label><span class="astrisk">*</span>
+                    <label> Join Date:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" id="JoinDate" name="JoinDate" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'"/>
+                        <input type="text" id="JoinDate" name="JoinDate" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -93,18 +110,17 @@
                         <input id="NameOfthefirm" name="NameOfthefirm" maxlength="250" type="text" class="form-control" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
-               
                 @*<div class="form-group">
-                        <label> Last Name:</label>
+                        <label> Recommended By:</label>
                         <div class="input-group">
                             <div class="input-group-addon">
                                 <i class=""></i>
                             </div>
-                            <input id="Lastname" name="Lastname" maxlength="250" type="text" class="form-control" />
+                            <input id="RecommendedBy" name="RecommendedBy" maxlength="250" type="text" class="form-control" />
                         </div><!-- /.input group -->
                     </div><!-- /.form group -->*@
 
-                
+
 
                 <div class="form-group">
                     <label> Address Line 1:</label><span class="astrisk">*</span>
@@ -117,7 +133,7 @@
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> Address Line 2:</label><span class="astrisk">*</span>
+                    <label> Address Line 2:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class=""></i>
@@ -126,8 +142,8 @@
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
-                <div class="form-group"><span class="astrisk">*</span>
-                    <label> City:</label>
+                <div class="form-group">
+                    <label> City:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class=""></i>
@@ -137,7 +153,7 @@
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> Zip:</label>
+                    <label> Zip:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class=""></i>
@@ -147,29 +163,26 @@
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> State:</label>
+                    <label> State:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <select id="State" name="State" class="form-control">
-                        </select>
+                        <select id="State" name="State" class="form-control"></select>
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> Country:</label>
+                    <label> Country:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <select id="Country" name="Country" class="form-control">
-                        </select>
+                        <select id="Country" name="Country" class="form-control"></select>
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
-
                 <div class="form-group">
-                    <label> Mobile Number 1:</label>
+                    <label> Mobile Number 1:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class=""></i>
@@ -214,18 +227,18 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Email" name="Email" type="text" maxlength="250" class="form-control pull-right" />
+                        <input id="Email" name="Email" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
             </div><!-- /.box-body -->
         </div><!-- /.box -->
     </div><!-- /.col (left) -->
+
     <div class="col-md-6">
         <div class="box box-primary">
 
-            <div class="box-body">              
-               
+            <div class="box-body">
 
                 <div class="form-group">
                     <label> Website:</label>
@@ -235,7 +248,7 @@
                         </div>
                         <input id="Website" name="Website" type="text" maxlength="40" class="form-control pull-right" />
                     </div><!-- /.input group -->
-                </div><!-- /.form group -->                
+                </div><!-- /.form group -->
 
                 <div class="form-group">
                     <label> Pan No:</label>
@@ -343,29 +356,28 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Location" name="Location" maxlength="500" type="text" class="form-control pull-right"/>
+                        <input id="Location" name="Location" maxlength="500" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
-
-                <div class="form-group">
-                    <label> Man Power:</label>
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i></i>
-                        </div>
-                        <input name="ManPower" id="ManPower" maxlength="3" type="text" class="form-control pull-right" />
-                    </div><!-- /.input group -->
-                </div><!-- /.form group -->
+                @*<div class="form-group">
+                        <label> Man Power:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i></i>
+                            </div>
+                            <input name="ManPower" id="ManPower" maxlength="3" type="text" class="form-control pull-right" />
+                        </div><!-- /.input group -->
+                    </div><!-- /.form group -->*@
 
                 @*<div class="form-group">
-                    <label> Strength Of Field Force:</label>
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i></i>
-                        </div>
-                        <input name="StrengthFF" id="StrengthFF" maxlength="250" type="text" class="form-control pull-right" />
-                    </div><!-- /.input group -->
-                </div><!-- /.form group -->*@
+                        <label> Strength Of Field Force:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i></i>
+                            </div>
+                            <input name="StrengthFF" id="StrengthFF" maxlength="250" type="text" class="form-control pull-right" />
+                        </div><!-- /.input group -->
+                    </div><!-- /.form group -->*@
 
                 <div class="form-group">
                     <label> Peak Sales Period:</label>
@@ -380,7 +392,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        
+
                     </div><!-- /.input group -->
 
                     <div class="input-group">
@@ -427,7 +439,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Comments" name="Comments" maxlength="500" class="form-control pull-right"></input>
+                        <input id="Comments" name="Comments" maxlength="500" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -452,13 +464,36 @@
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    @*<div class="checkbox">
-                            <label>
-                                <input type="checkbox" id="checkStatus" />
-                                Status
-                            </label>
-                        </div>*@
+                    <label> IsApproved:</label><span class="astrisk">*</span>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <input id="IsApproved" name="IsApproved" maxlength="20" type="text" class="form-control pull-right" />
+                    </div><!-- /.input group -->
                 </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label> Approver Name:</label><span class="astrisk">*</span>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <input id="ApproverName" name="ApproverName" maxlength="250" type="text" class="form-control pull-right" />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label> Approver Commands:</label><span class="astrisk">*</span>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <input id="ApproverCommands" name="ApproverCommands" maxlength="250" type="text" class="form-control pull-right" />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+
 
             </div><!-- /.box-body -->
         </div><!-- /.box -->
@@ -475,11 +510,13 @@
 }
 
 <script type="text/javascript">
-    function ValidateForm() {        
-    
-        RequiredTextbox("Zone", "Select the Zone")
-        RequiredTextbox("Stockhouse", "Enter the Name")
-        RequiredTextbox("ContactPerson", "Enter the Contact Person")       
+    function ValidateForm() {
+       
+        RequiredTextbox("Zone", "Select the Zone")       
+        RequiredTextbox("Stockhouse", "Select the Stockhouse")
+        RequiredTextbox("Distributor", "Select the Distributor")
+        RequiredTextbox("Name", "Enter the Name")
+        RequiredTextbox("ContactPerson", "Enter the Contact Person")
         RequiredTextbox("JoinDate", "Select Registration Date")
         RequiredTextbox("NameOfthefirm", "Enter The Name Of the firm")
         RequiredTextbox("Address1", "Enter the Address1")
@@ -489,7 +526,7 @@
         RequiredTextbox("Country", "Enter the Country")
         RequiredTextbox("Username", "Enter the UserName")
         RequiredTextbox("Password", "Enter the Password")
-       
+
         return AlertError();
     }
 
@@ -576,6 +613,7 @@
         });
     }
 
+
     $(document).ready(function () {
 
         LoadCompanies();
@@ -587,33 +625,7 @@
         $('#JoinDate').datepicker();
         $('#date1').datepicker();
         $('#date2').datepicker();
-
-        if("@ViewBag.Id" != "0")
-        {
-            $('#Company').val("@Model.CompanyId");
-            $('#Stockhouse').val("@Model.Name");
-            $('#JoinDate').val('@Model.JoiningDate');
-            $('#RecommendedBy').val('@Model.RecommendationFrom');
-            $('#ContactPerson').val("@Model.ContactPerson");
-            $('#Zone').val("@Model.ZoneId");
-            $('#Address1').val("@Model.Address.Address1");
-            $('#Address2').val("@Model.Address.Address2");
-            $('#City').val("@Model.Address.City");
-            $('#Zip').val("@Model.Address.Zip");
-            $('#State').val("@Model.Address.State")
-            $('#Country').val("@Model.Address.Country");
-            $('#Mobilenumber1').val("@Model.Contact1.Mobile");
-            $('#Mobilenumber2').val("@Model.Contact2.Mobile")
-            $('#Phonenumber1').val("@Model.Contact1.Phone")
-            $('#Phonenumber2').val("@Model.Contact2.Phone")
-            $('#Email').val("@Model.Contact1.Email");
-            $('#Location').val("@Model.Location");
-
-            $('#StrengthFF').val("@Model.StrengthOfFieldForce");
-            $('#Peeksaleperiod').val("@Model.PeakSalesPeriod");
-            $('#Popularfestivals').val("@Model.PopularFestivalFairs");
-            $('#Comments').val("@Model.ApprovalComments");
-            @*$('#Username').val("@Model.")*@
-        }
+       
     })
 </script>
+

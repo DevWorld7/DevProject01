@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Dealer List";
+    ViewBag.Title = "Retailer List";
 }
 
 <div id="treeGrid">
@@ -111,7 +111,7 @@
               { text: 'Email', columnGroup: 'Contact1', dataField: 'Email', width: 140 }
 
             ],
-            groups: ['DistributorName'],
+            groups: ['DealerName'],
             columnGroups: [
               { text: 'Address', name: 'Address' },
               { text: 'Communication', name: 'Contact1' }
@@ -136,10 +136,10 @@
 
                 addButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });
                 addButton.find('div:first').addClass(toTheme('jqx-icon-plus'));
-                addButton.jqxTooltip({ position: 'bottom', content: "Add Dealer" });
+                addButton.jqxTooltip({ position: 'bottom', content: "Add Retailer" });
 
                 addButton.click(function (event) {
-                    window.location.href = "@Url.Action("Maintenance", "Dealer")";
+                    window.location.href = "@Url.Action("Maintenance", "Retailer")";
                 });
 
                 excelButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });

@@ -61,25 +61,10 @@
                             <i class=""></i>
                         </div>
                         <select id="Manufacture" name="Manufacture" class="form-control"></select>
-
                     </div><!-- /.input group -->
-                </div><!-- /.form group -->
+                </div><!-- /.form group -->            
 
-                @*<div class="form-group">
-                    <label>Form Factor:</label><span class="astrisk">*</span>
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class=""></i>
-                        </div>
-                        <select id="FormFactor" name="FormFactor" class="form-control">
-                            <option value="0">---Select---</option>
-                            <option value="1">Bar</option>
-                            <option value="2">Square</option>
-                        </select>
-                    </div><!-- /.input group -->
-                </div><!-- /.form group -->*@
-
-                @*<div class="form-group">
+                <div class="form-group">
                     <label>Series:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
@@ -87,9 +72,9 @@
                         </div>
                         <input id="Series" name="Series" type="text" class="form-control" />
                     </div><!-- /.input group -->
-                </div><!-- /.form group -->*@              
+                </div><!-- /.form group -->              
 
-                @*<div class="form-group">
+                <div class="form-group">
                     <label>Color:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
@@ -97,7 +82,7 @@
                         </div>
                         <input id="ProductColors" name="ProductColors" type="text" class="form-control" />
                     </div><!-- /.input group -->
-                </div><!-- /.form group -->*@
+                </div><!-- /.form group -->
 
             </div><!-- /.box-body -->
         </div><!-- /.box -->
@@ -184,6 +169,26 @@
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
+                <div class="form-group">
+                    <label>RAM Type:</label><span class="astrisk">*</span>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <input id="Ramtype" name="Ramtype" type="text" maxlength="100" class="form-control pull-right" />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label>No Of RAM:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <input id="Noofram" name="Noofram" type="text" maxlength="100" class="form-control pull-right" />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
             </div><!-- /.box-body -->
 
             <div class="box-header">
@@ -200,6 +205,7 @@
                         <input id="HardwareInterface" name="HardwareInterface" type="text" maxlength="60" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
+
                 <div class="form-group">
                     <label>RPM:</label>
                     <div class="input-group">
@@ -209,6 +215,7 @@
                         <input id="RPM" name="RPM" type="text" maxlength="60" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
+
                 <div class="form-group">
                     <label>HDD Capacity:</label>
                     <div class="input-group">
@@ -218,13 +225,6 @@
                         <input id="HDDCapacity" name="HDDCapacity" type="text" maxlength="60" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
-
-            </div><!-- /.box-body -->
-
-            <div class="box-header">
-                <h3 class="box-title">Optical Disk Drive</h3>
-            </div>
-            <div class="box-body">
 
                 <div class="form-group">
                     <label>Optical Drive:</label>
@@ -236,12 +236,6 @@
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
-            </div><!-- /.box-body -->
-
-            <div class="box-header">
-                <h3 class="box-title">OTHER FEATURES</h3>
-            </div>
-            <div class="box-body">
                 <div class="form-group">
                     <label>Additional Features:</label>
                     <div class="input-group">
@@ -251,13 +245,6 @@
                         <textarea id="NoteSummary" name="NoteSummary" maxlength="1000" class="form-control pull-right"></textarea>
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
-
-            </div><!-- /.box-body -->
-
-            <div class="box-header">
-                <h3 class="box-title">WARRANTY</h3>
-            </div>
-            <div class="box-body">
 
                 <div class="form-group">
                     <label>WarrantySummary:</label>
@@ -391,7 +378,7 @@
             </div>
             <div class="box-body">
                 <!-- Minimal style -->
-                @*<div class="form-group">
+                <div class="form-group">
                     <label>Ethernet:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
@@ -399,9 +386,9 @@
                         </div>
                         <input id="Communication" name="Communication" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
-                </div><!-- /.form group -->*@
+                </div><!-- /.form group -->
 
-                @*<div class="form-group">
+                <div class="form-group">
                     <label>Wireless LAN:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
@@ -409,9 +396,9 @@
                         </div>
                         <input id="Wireless" name="Wireless" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
-                </div><!-- /.form group -->*@
+                </div><!-- /.form group -->
 
-                @*<div class="form-group">
+                <div class="form-group">
                     <label>Bluetooth:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
@@ -419,7 +406,7 @@
                         </div>
                         <input id="Bluetooth" name="Bluetooth" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
-                </div><!-- /.form group -->*@
+                </div><!-- /.form group -->
 
             </div><!-- /.box-body -->
 
@@ -510,6 +497,96 @@
                             <i></i>
                         </div>
                         <input id="Weight" name="Weight" type="text" maxlength="100" class="form-control pull-right" />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label>WIDTH/DEPTH/HEIGHT:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <input id="WidthHeight" name="WidthHeight" type="text" maxlength="100" class="form-control pull-right" />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label>Camera:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <input id="Camera" name="Camera" type="text" maxlength="100" class="form-control pull-right" />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label>Antivirus:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <input id="Antivirus" name="Antivirus" type="text" maxlength="100" class="form-control pull-right" />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label>Any Software:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <input id="Anysoftware" name="Anysoftware" type="text" maxlength="100" class="form-control pull-right" />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label>Purpose (HOME/OFFICE):</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <input id="Purpose" name="Purpose" type="text" maxlength="100" class="form-control pull-right" />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label>BUILT MATRIAL:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <input id="BuiltMatrial" name="BuiltMatrial" type="text" maxlength="100" class="form-control pull-right" />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label>BATTERY TYPE/QTY:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <input id="Batterytype" name="Batterytype" type="text" maxlength="100" class="form-control pull-right" />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label>SCREEN TYPE (PAPER screen):</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <input id="ScreenTyoe" name="ScreenTyoe" type="text" maxlength="100" class="form-control pull-right" />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label>POWER ADAPTOR TYPE (OPTIONAL):</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <input id="PowerAdaptor" name="PowerAdaptor" type="text" maxlength="100" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
