@@ -222,6 +222,7 @@ namespace LineFocus.Nikcron.Controllers
                 ViewBag.Caption = "Edit";
                 ApplicationDBContext db = new ApplicationDBContext();
                 Mobile Mobile = db.ProductModels.OfType<Mobile>().Where(m => m.Id == Id).FirstOrDefault();
+                Mobile.NoteSummary = Mobile.NoteSummary.Replace("\r\n","<br/>");
                 return View(Mobile);
             }
             else

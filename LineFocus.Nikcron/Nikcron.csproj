@@ -729,6 +729,15 @@
     <Content Include="Views\Stock\StockMaintenance.cshtml" />
     <Content Include="Views\Stock\Index.cshtml" />
     <Content Include="Views\User\Roles.cshtml" />
+    <Content Include="Views\Master\CountryMaintenance.cshtml" />
+    <Content Include="Views\Master\StateMaintenance.cshtml" />
+    <Content Include="Views\Master\CityMaintenance.cshtml" />
+    <Content Include="Views\Master\ZoneMaintenance.cshtml" />
+    <Content Include="Views\Master\ManufactureMaintenance.cshtml" />
+    <Content Include="Views\Master\ProductTypeMaintenance.cshtml" />
+    <Content Include="Views\Master\ServiceTypeMaintenance.cshtml" />
+    <Content Include="Views\Sales\SalesMaintenance.cshtml" />
+    <Content Include="Views\Sales\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

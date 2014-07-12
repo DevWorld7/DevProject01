@@ -118,6 +118,7 @@
                     {
                         var selectedRowData = $('#treeGrid').jqxGrid('getrowdata', getselectedrowindex);
                         selectedRowID = selectedRowData.Id;
+                        
                         window.location.href = "@Url.Action("MobilephoneMaintenance", "Product")" + "?Id=" + selectedRowID;
                     }
                 });
