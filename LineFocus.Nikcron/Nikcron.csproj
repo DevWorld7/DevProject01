@@ -187,14 +187,19 @@
     <Compile Include="Infrastructure\Enums.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\JsonOffice.cs" />
+    <Compile Include="Models\Lookup.cs" />
     <Compile Include="Models\UserSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AdminLTE.css" />
     <Content Include="Content\bootstrap-colorpicker.css" />
+    <Content Include="Content\bootstrap-datepicker.css" />
+    <Content Include="Content\bootstrap-formhelpers.css" />
+    <Content Include="Content\bootstrap-select.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap3-wysihtml5.css" />
+    <Content Include="Content\dataTables.bootstrap.css" />
     <Content Include="Content\daterangepicker-bs3.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\fonts\footable.svg" />
@@ -203,6 +208,15 @@
     <Content Include="Content\footable.standalone.css" />
     <Content Include="Content\fullcalendar.css" />
     <Content Include="Content\fullcalendar.print.css" />
+    <Content Include="Content\images\bootstrap-formhelpers-countries.flags-LICENSE.txt" />
+    <Content Include="Content\images\bootstrap-formhelpers-countries.flags.png" />
+    <Content Include="Content\images\bootstrap-formhelpers-currencies.flags.png" />
+    <Content Include="Content\images\bootstrap-formhelpers-googlefonts.png" />
+    <Content Include="Content\images\sort_asc.png" />
+    <Content Include="Content\images\sort_asc_disabled.png" />
+    <Content Include="Content\images\sort_both.png" />
+    <Content Include="Content\images\sort_desc.png" />
+    <Content Include="Content\images\sort_desc_disabled.png" />
     <Content Include="Content\ionicons.css" />
     <Content Include="Content\ionslider\ion.rangeSlider.css" />
     <Content Include="Content\ionslider\ion.rangeSlider.skinFlat.css" />
@@ -272,7 +286,13 @@
     <Content Include="Content\fonts\footable.woff" />
     <None Include="Properties\PublishProfiles\Home.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Images\Add.png" />
+    <Content Include="Images\Back.png" />
+    <Content Include="Images\Excel.png" />
+    <Content Include="Images\header_logo.jpg" />
     <Content Include="Images\logo.png" />
+    <Content Include="Images\Pdf.png" />
+    <Content Include="Images\Print.png" />
     <Content Include="Scripts\AdminLTE\app.js" />
     <Content Include="Scripts\AdminLTE\bootstrap-colorpicker.js" />
     <Content Include="Scripts\AdminLTE\bootstrap-slider.js" />
@@ -284,7 +304,11 @@
     <Content Include="Scripts\AdminLTE\fullcalendar.js" />
     <Content Include="Scripts\AdminLTE\icheck.js" />
     <Content Include="Scripts\AdminLTE\morris.js" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
+    <Content Include="Scripts\bootstrap-formhelpers.js" />
+    <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\dataTables.bootstrap.js" />
     <Content Include="Scripts\footable.bookmarkable.js" />
     <Content Include="Scripts\footable.filter.js" />
     <Content Include="Scripts\footable.js" />
@@ -297,6 +321,8 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.dataTables.js" />
+    <Content Include="Scripts\jquery.tmpl.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -754,6 +780,10 @@
     <Content Include="Views\Master\ServiceTypeMaintenance.cshtml" />
     <Content Include="Views\Sales\SalesMaintenance.cshtml" />
     <Content Include="Views\Sales\Index.cshtml" />
+    <Content Include="Views\Company\Lookup.cshtml" />
+    <Content Include="Views\Master\LookupList.cshtml" />
+    <Content Include="Views\Shared\Dropdown.cshtml" />
+    <Content Include="Views\Shared\SelectList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

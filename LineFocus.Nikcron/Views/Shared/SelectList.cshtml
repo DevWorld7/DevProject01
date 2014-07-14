@@ -1,0 +1,7 @@
+﻿@model LineFocus.Nikcron.Models.Lookup
+@{
+    foreach (var item in Model.Items)
+    {
+        <option value="@item.Name">@item.Name</option>
+    }
+}

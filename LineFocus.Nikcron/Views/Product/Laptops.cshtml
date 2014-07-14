@@ -1,151 +1,63 @@
 ﻿@{
-    ViewBag.Title = "Laptops List";
+    ViewBag.Title = "Laptop List";
+    ViewBag.Header = "Laptop";
+    ViewBag.Caption = "Listing";
+    ViewBag.AddNewUrl = Url.Action("LaptopMaintenance", "Product");
+    ViewBag.XlsUrl = Url.Action("Export", "Stockhouse", new { type = "Excel" });
+    ViewBag.PdfUrl = Url.Action("Export", "Stockhouse", new { type = "Pdf" });
+    ViewBag.PrintUrl = Url.Action("Print", "Stockhouse");
 }
-<div id="treeGrid">
+<div id="listing_Laptops">
+    <div class="box">
+        <div class="box-body table-responsive">
+            <table id="dt_Grid" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Model#</th>
+                        <th>Brand</th>
+                        <th>OS & Version</th>
+                        <th>Storage</th>
+                        <th>Memory</th>
+                        <th>Processor</th>
+                        <th>Display</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody id="dt_Rows"></tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
+<script id="dataTable_Grid" type="text/x-jquery-tmpl">
+    <tr>
+        <td>${ModelNumber}</td>
+        <td>${Manufacture}</td>
+        <td>${OperatingSystem}</td>
+        <td>${InternalStorage}</td>
+        <td>${Memory}</td>
+        <td>${Processor}</td>
+        <td>${DisplaySize}</td>
+        <td><a href='@Url.Action("LaptopMaintenance")?Id=${Id}'>Edit</a></td>
+    </tr>
+</script>
 
 <script type="text/javascript">
     $(document).ready(function () {
-        var newRowID = null;
-        var generaterow = function () {
-            var row = {};
-            return row;
-        };
+        $.getJSON('@Url.Action("GetLaptops", "Product")', function (result) {
+            $.tmpl($('#dataTable_Grid'), result).appendTo('#dt_Rows');
 
-        var source =
-        {
-            dataType: "json",
-            dataFields: [
-                { name: 'Id', type: 'number' },
-                { name: 'ModelNumber', type: 'string' },
-                { name: 'Manufacture', type: 'string' },
-                { name: 'OperatingSystem', type: 'string' },
-                { name: 'HDDCapacity', type: 'string' },
-                { name: 'InternalStorage', type: 'string' },
-                { name: 'Processor', type: 'string' },
-                { name: 'DisplaySize', type: 'string' }
-            ],
-            addrow: function (rowid, rowdata, position, commit) {
-                // synchronize with the server - send insert command
-                // call commit with parameter true if the synchronization with the server is successful
-                //and with parameter false if the synchronization failed.
-                // you can pass additional argument to the commit callback which represents the new ID if it is generated from a DB.
-                commit(true);
-                newRowID = rowid;
-            },
-            deleterow: function (rowid, commit) {
-                // synchronize with the server - send delete command
-                // call commit with parameter true if the synchronization with the server is successful
-                //and with parameter false if the synchronization failed.
-                commit(true);
-            },
-            updaterow: function (rowid, newdata, commit) {
-                commit(true);
-            },
-            id: 'Id',
-            url: '@Url.Action("GetLaptops")'
-        };
-        var dataAdapter = new $.jqx.dataAdapter(source);
-        // create Tree Grid
-        $("#treeGrid").jqxGrid(
-        {
-            theme: 'metro',
-            width: '1000px',
-            source: dataAdapter,
-            sortable: true,
-            pageable: true,
-            editable: false,
-            filterable: true,
-            groupable: true,
-            filtermode: 'excel',
-            columnsresize: false,
-            autoshowfiltericon: false,
-            selectionmode: 'singlerow',
-            editmode: 'dblclick',
-            groups: ['Manufacture'],
-            showToolbar: true,
-            ready: function () {
-            },
-            columns: [
-              { text: 'Id', dataField: 'Id', width: 30, editable : false, hidden : true },
-              { text: 'Brand', dataField: 'Manufacture', width: 150 },
-              { text: 'Model #', dataField: 'ModelNumber', width: 130 },
-              { text: 'Processor', dataField: 'Processor', width: 130 },
-              { text: 'RAM', dataField: 'InternalStorage', width: 150 },
-              { text: 'HDD', dataField: 'HDDCapacity', width: 150 },
-              { text: 'Screen', dataField: 'DisplaySize', width: 100 },
-              { text: 'Operating System', dataField: 'OperatingSystem', width: 150 },
-            ],
-            renderToolbar: function(toolBar)
-            {
-                var toTheme = function (className) {
-                    var theme = "metro";
-                    return className + " " + className + "-" + theme;
-                }
-                // appends buttons to the status bar.
-                var container = $("<div style='margin: 2px;'></div>");
-                var buttonTemplate = "<div style='float: left; padding: 1px;'><div style='margin: 4px; width: 16px; height: 16px;'></div></div>";
-                var addButton = $(buttonTemplate);
-                var editButton = $(buttonTemplate);
-                var excelButton = $(buttonTemplate);
-                var printButton = $(buttonTemplate);
+            $('#dt_Grid').dataTable({
+                "bPaginate": true,
+                "bLengthChange": true,
+                "bFilter": true,
+                "bSort": true,
+                "bInfo": true,
+                "bAutoWidth": false
+            });
 
-                container.append(addButton);
-                container.append(editButton);
-                container.append(excelButton);
-                container.append(printButton);
-                toolBar.append(container);
-
-                addButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });
-                addButton.find('div:first').addClass(toTheme('jqx-icon-plus'));
-                addButton.jqxTooltip({ position: 'bottom', content: "Add Laptop" });
-
-                addButton.click(function (event) {
-                    window.location.href = "@Url.Action("LaptopMaintenance", "Product")";
-                });
-
-                editButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });
-                editButton.find('div:first').addClass(toTheme('jqx-icon-edit'));
-                editButton.jqxTooltip({ position: 'bottom', content: "Edit Laptop" });
-
-                editButton.click(function (event) {
-                    var getselectedrowindex = $('#treeGrid').jqxGrid('getselectedrowindex');
-                    if (getselectedrowindex != null && getselectedrowindex != undefined)
-                    {
-                        var selectedRowData = $('#treeGrid').jqxGrid('getrowdata', getselectedrowindex);
-                        selectedRowID = selectedRowData.Id;
-                        window.location.href = "@Url.Action("LaptopMaintenance", "Product")" + "?Id=" + selectedRowID;
-                    }
-                });
-
-                excelButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });
-                excelButton.find('div:first').addClass(toTheme('jqx-excel-plus'));
-                excelButton.jqxTooltip({ position: 'bottom', content: "Export As Excel File" });
-                excelButton.click(function (event) {
-                    $("#treeGrid").jqxGrid('exportdata', 'xls', 'Laptops');
-                });
-
-                printButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });
-                printButton.find('div:first').addClass(toTheme('jqx-print-plus'));
-                printButton.jqxTooltip({ position: 'bottom', content: "Print" });
-                printButton.click(function (event) {
-                    var gridContent = $("#treeGrid").jqxGrid('exportdata', 'html');
-                    var newWindow = window.open('', '', 'width=800, height=500'),
-                    document = newWindow.document.open(),
-                    pageContent =
-                        '<!DOCTYPE html>\n' +
-                        '<html>\n' +
-                        '<head>\n' +
-                        '<meta charset="utf-8" />\n' +
-                        '<title>jQWidgets Grid</title>\n' +
-                        '</head>\n' +
-                        '<body>\n' + gridContent + '\n</body>\n</html>';
-                    document.write(pageContent);
-                    document.close();
-                    newWindow.print();
-                });
-            }
+        });
     });
-    });
+
 </script>
+

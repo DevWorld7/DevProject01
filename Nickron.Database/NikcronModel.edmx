@@ -39,6 +39,7 @@
     <EntitySet Name="ProductModels_Tablet" EntityType="NikcronModel.Store.ProductModels_Tablet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductModels_Laptop" EntityType="NikcronModel.Store.ProductModels_Laptop" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProductModelProductColors" EntityType="NikcronModel.Store.ProductModelProductColors" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StockhouseZone" EntityType="NikcronModel.Store.StockhouseZone" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="ProductModelManufacture" Association="NikcronModel.Store.ProductModelManufacture">
       <End Role="ProductModel" EntitySet="ProductModels" />
       <End Role="Manufacture" EntitySet="Manufactures" />
@@ -50,10 +51,6 @@
     <AssociationSet Name="ProductItemProductModel" Association="NikcronModel.Store.ProductItemProductModel">
       <End Role="ProductItem" EntitySet="ProductItems" />
       <End Role="ProductModel" EntitySet="ProductModels" />
-    </AssociationSet>
-    <AssociationSet Name="StockhouseZone" Association="NikcronModel.Store.StockhouseZone">
-      <End Role="Stockhouse" EntitySet="Offices_Stockhouse" />
-      <End Role="Zone" EntitySet="Zones" />
     </AssociationSet>
     <AssociationSet Name="ProductItemStockhouse" Association="NikcronModel.Store.ProductItemStockhouse">
       <End Role="ProductItem" EntitySet="ProductItems" />
@@ -171,6 +168,14 @@
       <End Role="ProductItem" EntitySet="ProductItems" />
       <End Role="ProductWarranty" EntitySet="ProductWarranties" />
     </AssociationSet>
+    <AssociationSet Name="FK_StockhouseZone_Stockhouse" Association="NikcronModel.Store.FK_StockhouseZone_Stockhouse">
+      <End Role="Stockhouse" EntitySet="Offices_Stockhouse" />
+      <End Role="StockhouseZone" EntitySet="StockhouseZone" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StockhouseZone_Zone" Association="NikcronModel.Store.FK_StockhouseZone_Zone">
+      <End Role="Zone" EntitySet="Zones" />
+      <End Role="StockhouseZone" EntitySet="StockhouseZone" />
+    </AssociationSet>
     <AssociationSet Name="FK_BusinessOffice_inherits_Office" Association="NikcronModel.Store.FK_BusinessOffice_inherits_Office">
       <End Role="Office" EntitySet="Offices" />
       <End Role="BusinessOffice" EntitySet="Offices_BusinessOffice" />
@@ -230,14 +235,14 @@
     <Property Name="Gender" Type="nvarchar" Nullable="true" MaxLength="10" />
     <Property Name="DataOfBirth" Type="nvarchar(max)" Nullable="true" />
     <Property Name="BloodGroup" Type="nvarchar" Nullable="true" MaxLength="10" />
-    <Property Name="PresentAddress_Address1" Type="nvarchar" Nullable="true" MaxLength="250" />
-    <Property Name="PresentAddress_Address2" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="PresentAddress_Address1" Type="nvarchar" Nullable="true" MaxLength="500" />
+    <Property Name="PresentAddress_Address2" Type="nvarchar" Nullable="true" MaxLength="500" />
     <Property Name="PresentAddress_City" Type="nvarchar" Nullable="true" MaxLength="250" />
     <Property Name="PresentAddress_State" Type="nvarchar" Nullable="true" MaxLength="100" />
     <Property Name="PresentAddress_Country" Type="nvarchar" Nullable="true" MaxLength="100" />
     <Property Name="PresentAddress_Zip" Type="nvarchar" Nullable="true" MaxLength="10" />
-    <Property Name="PermanentAddress_Address1" Type="nvarchar" Nullable="true" MaxLength="250" />
-    <Property Name="PermanentAddress_Address2" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="PermanentAddress_Address1" Type="nvarchar" Nullable="true" MaxLength="500" />
+    <Property Name="PermanentAddress_Address2" Type="nvarchar" Nullable="true" MaxLength="500" />
     <Property Name="PermanentAddress_City" Type="nvarchar" Nullable="true" MaxLength="250" />
     <Property Name="PermanentAddress_State" Type="nvarchar" Nullable="true" MaxLength="100" />
     <Property Name="PermanentAddress_Country" Type="nvarchar" Nullable="true" MaxLength="100" />
@@ -262,8 +267,8 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" Nullable="true" MaxLength="250" />
-    <Property Name="Address_Address1" Type="nvarchar" Nullable="true" MaxLength="250" />
-    <Property Name="Address_Address2" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="Address_Address1" Type="nvarchar" Nullable="true" MaxLength="500" />
+    <Property Name="Address_Address2" Type="nvarchar" Nullable="true" MaxLength="500" />
     <Property Name="Address_City" Type="nvarchar" Nullable="true" MaxLength="250" />
     <Property Name="Address_State" Type="nvarchar" Nullable="true" MaxLength="100" />
     <Property Name="Address_Country" Type="nvarchar" Nullable="true" MaxLength="100" />
@@ -599,13 +604,13 @@
     <Property Name="PopularFestivalFairs" Type="nvarchar" Nullable="true" MaxLength="100" />
     <Property Name="Approver" Type="nvarchar" Nullable="true" MaxLength="250" />
     <Property Name="ApprovalComments" Type="nvarchar" Nullable="true" MaxLength="250" />
+    <Property Name="UploadedFile" Type="nvarchar" Nullable="true" MaxLength="500" />
     <Property Name="Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Offices_Stockhouse">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="ZoneId" Type="int" Nullable="false" />
     <Property Name="CompanyId" Type="int" Nullable="false" />
     <Property Name="Id" Type="int" Nullable="false" />
   </EntityType>
@@ -636,6 +641,10 @@
     </Key>
     <Property Name="RoleId" Type="smallint" Nullable="false" />
     <Property Name="OfficeId" Type="int" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="IsNewUser" Type="bit" Nullable="true" />
+    <Property Name="IsResetPassword" Type="bit" Nullable="true" />
     <Property Name="Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="People_Customer">
@@ -739,6 +748,14 @@
     <Property Name="ProductModelProductColors_ProductColors_Id" Type="int" Nullable="false" />
     <Property Name="ProductColors_Id" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="StockhouseZone">
+    <Key>
+      <PropertyRef Name="StockhouseZone_Zone_Id" />
+      <PropertyRef Name="Zones_Id" />
+    </Key>
+    <Property Name="StockhouseZone_Zone_Id" Type="int" Nullable="false" />
+    <Property Name="Zones_Id" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="ProductModelManufacture">
     <End Role="ProductModel" Type="NikcronModel.Store.ProductModels" Multiplicity="*" />
     <End Role="Manufacture" Type="NikcronModel.Store.Manufactures" Multiplicity="1" />
@@ -772,18 +789,6 @@
       </Principal>
       <Dependent Role="ProductItem">
         <PropertyRef Name="ProductModelId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="StockhouseZone">
-    <End Role="Stockhouse" Type="NikcronModel.Store.Offices_Stockhouse" Multiplicity="*" />
-    <End Role="Zone" Type="NikcronModel.Store.Zones" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Zone">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Stockhouse">
-        <PropertyRef Name="ZoneId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1135,6 +1140,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_StockhouseZone_Stockhouse">
+    <End Role="Stockhouse" Type="NikcronModel.Store.Offices_Stockhouse" Multiplicity="1" />
+    <End Role="StockhouseZone" Type="NikcronModel.Store.StockhouseZone" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stockhouse">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StockhouseZone">
+        <PropertyRef Name="StockhouseZone_Zone_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StockhouseZone_Zone">
+    <End Role="StockhouseZone" Type="NikcronModel.Store.StockhouseZone" Multiplicity="*" />
+    <End Role="Zone" Type="NikcronModel.Store.Zones" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Zone">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StockhouseZone">
+        <PropertyRef Name="Zones_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_BusinessOffice_inherits_Office">
     <End Role="Office" Type="NikcronModel.Store.Offices" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -1328,10 +1357,6 @@
             <End Role="ProductItem" EntitySet="ProductItems" />
             <End Role="ProductModel" EntitySet="ProductModels" />
           </AssociationSet>
-          <AssociationSet Name="StockhouseZone" Association="NikcronModel.StockhouseZone">
-            <End Role="Stockhouse" EntitySet="Offices" />
-            <End Role="Zone" EntitySet="Zones" />
-          </AssociationSet>
           <AssociationSet Name="ProductItemStockhouse" Association="NikcronModel.ProductItemStockhouse">
             <End Role="ProductItem" EntitySet="ProductItems" />
             <End Role="Stockhouse" EntitySet="Offices" />
@@ -1456,6 +1481,10 @@
             <End Role="ProductItem" EntitySet="ProductItems" />
             <End Role="ProductWarranty" EntitySet="ProductWarranties" />
           </AssociationSet>
+          <AssociationSet Name="StockhouseZone" Association="NikcronModel.StockhouseZone">
+            <End Role="Stockhouse" EntitySet="Offices" />
+            <End Role="Zone" EntitySet="Zones" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="AuditLog" >
           <Property Type="Int32" Name="CreatedBy" Nullable="false" />
@@ -1486,8 +1515,8 @@
           <Property Name="AuditLog" Type="NikcronModel.AuditLog" Nullable="false" />
         </EntityType>
         <ComplexType Name="Address" >
-          <Property Type="String" Name="Address1" Nullable="true" MaxLength="250" />
-          <Property Type="String" Name="Address2" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Address1" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Address2" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="City" Nullable="true" MaxLength="250" />
           <Property Type="String" Name="State" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Country" Nullable="true" MaxLength="100" />
@@ -1556,13 +1585,13 @@
           <Property Type="String" Name="PopularFestivalFairs" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Approver" Nullable="true" MaxLength="250" />
           <Property Type="String" Name="ApprovalComments" Nullable="true" MaxLength="250" />
+          <Property Name="UploadedFile" Type="String" Nullable="true" MaxLength="500" />
         </EntityType>
         <EntityType Name="Stockhouse" BaseType="NikcronModel.BusinessOffice" >
-          <NavigationProperty Name="Zone" Relationship="NikcronModel.StockhouseZone" FromRole="Stockhouse" ToRole="Zone" />
-          <Property Type="Int32" Name="ZoneId" Nullable="false" />
           <NavigationProperty Name="Distributors" Relationship="NikcronModel.StockhouseDistributor" FromRole="Stockhouse" ToRole="Distributor" />
           <NavigationProperty Name="Company" Relationship="NikcronModel.CompanyStockhouse" FromRole="Stockhouse" ToRole="Company" />
           <Property Name="CompanyId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Zones" Relationship="NikcronModel.StockhouseZone" FromRole="Stockhouse" ToRole="Zone" />
         </EntityType>
         <EntityType Name="Dealers" BaseType="NikcronModel.BusinessOffice" >
           <NavigationProperty Name="Retailers" Relationship="NikcronModel.DealersRetailer" FromRole="Dealers" ToRole="Retailer" />
@@ -1702,18 +1731,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="StockhouseZone">
-          <End Type="NikcronModel.Stockhouse" Role="Stockhouse" Multiplicity="*" />
-          <End Type="NikcronModel.Zone" Role="Zone" Multiplicity="1" />
-          <ReferentialConstraint>
-            <Principal Role="Zone">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Stockhouse">
-              <PropertyRef Name="ZoneId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="ProductItemStockhouse">
           <End Type="NikcronModel.ProductItem" Role="ProductItem" Multiplicity="*" />
           <End Type="NikcronModel.Stockhouse" Role="Stockhouse" Multiplicity="0..1" />
@@ -1820,6 +1837,10 @@
           <Property Type="Int16" Name="RoleId" Nullable="false" />
           <NavigationProperty Name="Office" Relationship="NikcronModel.UserOffice" FromRole="User" ToRole="Office" />
           <Property Type="Int32" Name="OfficeId" Nullable="false" />
+          <Property Name="Username" Type="String" Nullable="true" MaxLength="50" />
+          <Property Name="Password" Type="String" Nullable="true" MaxLength="50" />
+          <Property Name="IsNewUser" Type="Boolean" Nullable="true" />
+          <Property Name="IsResetPassword" Type="Boolean" Nullable="true" />
         </EntityType>
         <Association Name="UserRole">
           <End Type="NikcronModel.User" Role="User" Multiplicity="*" />
@@ -2231,6 +2252,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="StockhouseZone">
+          <End Type="NikcronModel.Stockhouse" Role="Stockhouse" Multiplicity="*" />
+          <End Type="NikcronModel.Zone" Role="Zone" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2288,6 +2313,10 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="RoleId" ColumnName="RoleId" />
           <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="IsNewUser" ColumnName="IsNewUser" />
+          <ScalarProperty Name="IsResetPassword" ColumnName="IsResetPassword" />
         </MappingFragment>
       </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Customer)">
@@ -2366,12 +2395,12 @@
           <ScalarProperty Name="PopularFestivalFairs" ColumnName="PopularFestivalFairs" />
           <ScalarProperty Name="Approver" ColumnName="Approver" />
           <ScalarProperty Name="ApprovalComments" ColumnName="ApprovalComments" />
+          <ScalarProperty Name="UploadedFile" ColumnName="UploadedFile" />
         </MappingFragment>
       </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(NikcronModel.Stockhouse)">
         <MappingFragment StoreEntitySet="Offices_Stockhouse">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
           <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -2851,6 +2880,14 @@
       </EndProperty>
       <EndProperty Name="Sale">
         <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="StockhouseZone" TypeName="NikcronModel.StockhouseZone" StoreEntitySet="StockhouseZone">
+      <EndProperty Name="Stockhouse">
+        <ScalarProperty Name="Id" ColumnName="StockhouseZone_Zone_Id" />
+      </EndProperty>
+      <EndProperty Name="Zone">
+        <ScalarProperty Name="Id" ColumnName="Zones_Id" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>
