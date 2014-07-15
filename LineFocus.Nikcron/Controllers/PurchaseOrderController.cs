@@ -6,17 +6,17 @@ using System.Web.Mvc;
 
 namespace LineFocus.Nikcron.Controllers
 {
-    public class ServiceController : Controller
+    public class PurchaseOrderController : Controller
     {
         //
-        // GET: /Service/
+        // GET: /PurchaseOrder/
 
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult ServiceMaintenance()
+        public ActionResult PurchaseOrderMaintenance()
         {
             return View();
         }

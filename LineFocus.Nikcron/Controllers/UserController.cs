@@ -404,20 +404,20 @@ namespace LineFocus.Nikcron.Controllers
         }
         #endregion
 
-        [HttpGet]
+
         public ActionResult Index()
         {          
             return View();
         }
 
-        [HttpGet]
+
         public ActionResult UserMaintenance()
         {
             return View();
         }
 
 
-        [HttpGet]
+      
         public ActionResult Roles()
         {
             return View();

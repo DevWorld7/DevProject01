@@ -97,9 +97,10 @@
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
                     <li class="active"> <a href="@Url.Action("Index","Home",null)"> <i class="fa fa-dashboard"></i> <span>Dashboard</span> </a> </li>
-                    <li> <a href="@Url.Action("Index","Sales")"> <i class="fa fa-calendar"></i> <span>Sales</span> <small class="badge pull-right bg-green">3</small> </a> </li>
-                    <li> <a href="@Url.Action("","")"> <i class="fa fa-envelope"></i> <span>Services</span> <small class="badge pull-right bg-red">12</small> </a> </li>
+                    <li> <a href="@Url.Action("Index","Sales")"> <i class="fa fa-calendar"></i> <span>Sales</span> </a> </li>
+                    <li> <a href="@Url.Action("Index", "Service")"> <i class="fa fa-envelope"></i> <span>Services</span></a> </li>
                     @*<li> <a href="@Url.Action("Index","Quotation")"> <i class="fa fa-edit"></i> <span>Quotes</span> <small class="badge pull-right bg-yellow">20</small> </a> </li>*@
+                    <li> <a href="@Url.Action("Index", "PurchaseOrder")"> <i class="fa fa-envelope"></i> <span>Purchase Order</span></a> </li>
                     <li class="treeview">
                         <a href="#"> <i class="fa fa-table"></i> <span>Stock</span> <i class="fa fa-angle-left pull-right"></i> </a>
                         <ul class="treeview-menu">
@@ -132,7 +133,7 @@
                             
                             <li><a href="@Url.Action("ProductTypeMaintenance", "Master")"><i class="fa fa-angle-double-right"></i> Product Types</a></li>
                             <li><a href="@Url.Action("ManufactureMaintenance", "Master")"><i class="fa fa-angle-double-right"></i> Manufacturer Names</a></li>
-                            <li><a href="@Url.Action("ZoneMaintenance", "Master")"><i class="fa fa-angle-double-right"></i> Zones</a></li>
+                            <li><a href="@Url.Action("Index", "Master")"><i class="fa fa-angle-double-right"></i> Zones</a></li>
                             <li><a href="@Url.Action("CityMaintenance", "Master")"><i class="fa fa-angle-double-right"></i>City</a></li>
                             <li><a href="@Url.Action("StateMaintenance", "Master")"><i class="fa fa-angle-double-right"></i>State</a></li>
                             <li><a href="@Url.Action("CountryMaintenance", "Master")"><i class="fa fa-angle-double-right"></i>Country</a></li>                          
@@ -145,7 +146,7 @@
                     <li class="treeview">
                         <a href="#"> <i class="fa fa-user"></i> <span>Users</span> <i class="fa fa-angle-left pull-right"></i> </a>
                         <ul class="treeview-menu">
-                            <li><a href="@Url.Action("Index", "User")"><i class="fa fa-angle-double-right"></i>Nikcron Office Users</a></li>
+                            <li><a href="@Url.Action("Index", "User")"><i class="fa fa-angle-double-right"></i>Nikcron Office Users</a></li>                                                      
                             <li><a href="@Url.Action("Roles", "User")"><i class="fa fa-angle-double-right"></i> Roles</a></li>
                         </ul>
                     </li>

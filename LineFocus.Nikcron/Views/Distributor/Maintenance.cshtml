@@ -604,6 +604,27 @@
         });
     }
 
+
+  
+    function LoadStockhouse() {
+      
+        $("#Zone").change(function(){   
+            var Zoneid = $(this).val();
+            alert(ZoneId)
+            $.ajax({
+                cache: false,
+                async: false,
+                type: "POST",
+                url: "@(Url.Action("GetStockhouse", "Master"))",
+                data: { "Zoneid": Zoneid },
+            success: function (data) {
+                $('#Stockhouse').val(data[0].Id);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+            }
+        });
+    });
+    }
    
     $(document).ready(function () {
 
@@ -611,7 +632,8 @@
         LoadZones();
         LoadStates();
         LoadCountries();
-        AutoCompleteCity();       
+        AutoCompleteCity();
+        LoadStockhouse();
 
         $('#JoinDate').datepicker();
         $('#date1').datepicker();

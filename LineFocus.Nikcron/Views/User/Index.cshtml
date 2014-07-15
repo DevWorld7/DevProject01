@@ -1,197 +1,66 @@
 ﻿@{
-    ViewBag.Title = "User";
+    ViewBag.Title = "Index";
 }
 
-<div id="treeGrid">
-</div>
+@model IEnumerable<Nickron.Database.User>
+@{
+      <div class="col-lg-6">
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink("New User", "UserMaintenance", "User", null, new { style = "float: right;" })</li>
+        </ol>
+    </div>
+    
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-body table-responsive">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Sno</th>
+                            <th>Emp Id</th>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>Address</th>
+                            <th>Mobile No</th>
+                            <th>Email Id</th>
+                            <th>Designation</th>
+                            <th>Edit | Delete | View</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        var newRowID = null;
-        var generaterow = function () {
-            var row = {};
-            row["Id"] = null;
-            row["Name"] = "";
-            row["Gender"] = "";
-            row["MaritalStatus"] = "";
-            row["DOB"] = "";
-            row["DOJ"] = "";
-            row["Designation"] = "";
-            row["OldEmpCode"] = "";
-            row["AddressLine1"] = "";
-            row["AddressLine2"] = "";
-            row["AddressCity"] = "";
-            row["AddressState"] = "";
-            row["AddressZip"] = "";
-            row["Mobile"] = "";
-            row["Phone"] = "";
-            row["Email"] = "";
-            return row;
-        };
+                        <tr>
+                            <td>1</td>
+                            <td>NK1001</td>
+                            <td>Jayenthan</td>
+                            <td>Male</td>
+                            <td>Camp Rode</td>
+                            <td>9791520621</td>
+                            <td>jayenthan@nikcron.in</td>
+                            <td>Admin</td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit") |
+                                @Html.ActionLink("Delete", "Delete") |
+                                @Html.ActionLink("View", "View")
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Sno</th>
+                            <th>Emp Id</th>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>Address</th>
+                            <th>Mobile No</th>
+                            <th>Email Id</th>
+                            <th>Designation</th>
+                            <th>Edit | Delete | View</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
 
-        var source =
-        {
-            dataType: "json",
-            dataFields: [
-                { name : 'CompanyId', type: 'number'},
-                { name : 'CompanyName', type: 'string'},
-                { name: 'Id', type: 'number' },
-                { name: 'Name', type: 'string' },
-                { name: 'ContactPerson', type: 'string' },
-                { name: 'AddressLine1', type: 'string' },
-                { name: 'AddressLine2', type: 'string' },
-                { name: 'AddressCity', type: 'string' },
-                { name: 'AddressState', type: 'string' },
-                { name: 'AddressZip', type: 'string' },
-                { name: 'Mobile', type: 'string' },
-                { name: 'Phone', type: 'string' },
-                { name: 'Email', type: 'string' },
-            ],
-            addrow: function (rowid, rowdata, position, commit) {
-                // synchronize with the server - send insert command
-                // call commit with parameter true if the synchronization with the server is successful
-                //and with parameter false if the synchronization failed.
-                // you can pass additional argument to the commit callback which represents the new ID if it is generated from a DB.
-                commit(true);
-                newRowID = rowid;
-            },
-            deleterow: function (rowid, commit) {
-                // synchronize with the server - send delete command
-                // call commit with parameter true if the synchronization with the server is successful
-                //and with parameter false if the synchronization failed.
-                commit(true);
-            },
-            updaterow: function (rowid, newdata, commit) {
-                $.ajax({
-                    type: "POST",
-                    url: "@Url.Action("Users")",
-                    dataType: "json",
-                    contentType: "application/json; charset=utf-8",
-                    data: JSON.stringify(newdata),
-                    success: function (result) {
-
-                    },
-                    error: function (error) {
-
-                    }
-                });
-                commit(true);
-            },
-            id: 'Id',
-            url: '@Url.Action("Users")'
-        };
-        var dataAdapter = new $.jqx.dataAdapter(source);
-        // create Tree Grid
-        $("#treeGrid").jqxGrid(
-        {
-            theme: 'metro',
-            width: '1150px',
-            source: dataAdapter,
-            groupable: true,
-            sortable: true,
-            pageable: true,
-            editable: true,
-            filterable: true,
-            filtermode: 'excel',
-            columnsresize: false,
-            autoshowfiltericon: false,
-            selectionmode: 'singlerow',
-            editmode: 'dblclick',
-            showToolbar: true,
-            ready: function () {
-            },
-            columns: [
-              { text: 'Id', dataField: 'Id', width: 30, editable: false, hidden: true },
-              { text: 'Company', dataField: 'CompanyName', hidden: true },
-              { text: 'Name', dataField: 'Name', width: 150 },
-              { text: 'Contact', dataField: 'ContactPerson', width: 130 },
-              { text: 'Line 1', columnGroup: 'Address', dataField: 'AddressLine1', width: 130 },
-              { text: 'Line 2', columnGroup: 'Address', dataField: 'AddressLine2', width: 130 },
-              { text: 'City', columnGroup: 'Address', dataField: 'AddressCity', width: 100 },
-              { text: 'State', columnGroup: 'Address', dataField: 'AddressState', width: 100 },
-              { text: 'Pincode', columnGroup: 'Address', dataField: 'AddressZip', width: 60 },
-
-              { text: 'Mobile', columnGroup: 'Contact1', dataField: 'Mobile', width: 90 },
-              { text: 'Phone', columnGroup: 'Contact1', dataField: 'Phone', width: 90 },
-              { text: 'Email', columnGroup: 'Contact1', dataField: 'Email', width: 140 }
-
-            ],
-            groups : ['Users'],
-            columnGroups: [
-              { text: 'Address', name: 'Address' },
-              { text: 'Communication', name: 'Contact1' }
-            ],
-            renderToolbar: function(toolBar)
-            {
-                var toTheme = function (className) {
-                    var theme = "metro";
-                    return className + " " + className + "-" + theme;
-                }
-                // appends buttons to the status bar.
-                var container = $("<div style='margin: 2px;'></div>");
-                var buttonTemplate = "<div style='float: left; padding: 1px;'><div style='margin: 4px; width: 16px; height: 16px;'></div></div>";
-                var addButton = $(buttonTemplate);
-                var editButton = $(buttonTemplate);
-                var excelButton = $(buttonTemplate);
-                var printButton = $(buttonTemplate);
-
-                container.append(addButton);
-                container.append(editButton);
-                container.append(excelButton);
-                container.append(printButton);
-                toolBar.append(container);
-
-                addButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });
-                addButton.find('div:first').addClass(toTheme('jqx-icon-plus'));
-                addButton.jqxTooltip({ position: 'bottom', content: "Add Stockhit" });
-
-                addButton.click(function (event) {
-                    window.location.href = "@Url.Action("UserMaintenance", "user")";
-                });
-
-                editButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });
-                editButton.find('div:first').addClass(toTheme('jqx-icon-edit'));
-                editButton.jqxTooltip({ position: 'bottom', content: "Edit Laptop" });
-
-                editButton.click(function (event) {
-                    var getselectedrowindex = $('#treeGrid').jqxGrid('getselectedrowindex');
-                    if (getselectedrowindex != null && getselectedrowindex != undefined)
-                    {
-                        var selectedRowData = $('#treeGrid').jqxGrid('getrowdata', getselectedrowindex);
-                        selectedRowID = selectedRowData.Id;
-                        window.location.href = "@Url.Action("Maintenance", "Stockhouse")" + "?StockhouseId=" + selectedRowID;
-                    }
-                });
-
-                excelButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });
-                excelButton.find('div:first').addClass(toTheme('jqx-excel-plus'));
-                excelButton.jqxTooltip({ position: 'bottom', content: "Export As Excel File" });
-                excelButton.click(function (event) {
-                    $("#treeGrid").jqxGrid('exportdata', 'xls', 'Companies');
-                });
-
-                printButton.jqxButton({ cursor: "pointer", enableDefault: true, disabled: false, height: 25, width: 25 });
-                printButton.find('div:first').addClass(toTheme('jqx-print-plus'));
-                printButton.jqxTooltip({ position: 'bottom', content: "Print" });
-                printButton.click(function (event) {
-                    var gridContent = $("#treeGrid").jqxGrid('exportdata', 'html');
-                    var newWindow = window.open('', '', 'width=800, height=500'),
-                    document = newWindow.document.open(),
-                    pageContent =
-                        '<!DOCTYPE html>\n' +
-                        '<html>\n' +
-                        '<head>\n' +
-                        '<meta charset="utf-8" />\n' +
-                        '<title>jQWidgets Grid</title>\n' +
-                        '</head>\n' +
-                        '<body>\n' + gridContent + '\n</body>\n</html>';
-                    document.write(pageContent);
-                    document.close();
-                    newWindow.print();
-                });
-
-
-            }
-    });
-    });
-</script>
+}

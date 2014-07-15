@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@model IEnumerable<Nickron.Database.Service>
+@{
+
+    <div class="col-lg-6">
+        <ol class="breadcrumb">
+            <li>@Html.ActionLink("New Purchase Order", "PurchaseOrderMaintenance", "PurchaseOrder", null, new { style = "float: right;" })</li>
+
+        </ol>
+    </div>
+
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-body table-responsive">
+                <table id="example1" class="table table-bordered table-striped">
+
+                    <thead>
+                        <tr>
+                            <th>Sno</th>
+                            <th>Invoice No</th>
+                            <th>Stockits</th>
+                            <th>Purchase Date</th>
+                            <th>Qtys</th>
+                            <th>Edit | Delete | View</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>1</td>
+                            <td>10001</td>
+                            <td>Surya.K</td>
+                            <td>01/07/2014</td>
+                            <td>20</td>
+                            <td>
+                                @Html.ActionLink("Edit", "ZoneMaintenance") |
+                                @Html.ActionLink("Delete", "Delete") |
+                                @Html.ActionLink("View", "ZoneMaintenance")
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>10002</td>
+                            <td>Harikumar.M</td>
+                            <td>01/07/2014</td>
+                            <td>50</td>
+                            <td>
+                                @Html.ActionLink("Edit", "ZoneMaintenance") |
+                                @Html.ActionLink("Delete", "Delete") |
+                                @Html.ActionLink("View", "ZoneMaintenance")
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Sno</th>
+                            <th>Invoice No</th>
+                            <th>Stockits</th>
+                            <th>Purchase Date</th>
+                            <th>Qtys</th>
+                            <th>Edit | Delete | View</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+}

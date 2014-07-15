@@ -91,7 +91,7 @@ namespace LineFocus.Nikcron.Controllers
             ApplicationDBContext db = new ApplicationDBContext();
             JsonResult JsonData = new JsonResult();
             switch (LookupType)
-            { 
+            {
                 case "Zone":
                     JsonData.Data = db.Zones.Select(n => new { n.Id, n.Name }).ToList();
                     break;
@@ -111,7 +111,16 @@ namespace LineFocus.Nikcron.Controllers
                     JsonData.Data = db.Manufactures.Select(n => new { n.Id, n.Name }).ToList();
                     break;
                 case "Stockhouse":
-                    JsonData.Data = db.Offices.OfType<Stockhouse>().Select(n => new { n.Id, n.Name }).ToList();
+                    // JsonData.Data = db.Offices.OfType<Stockhouse>().Select(n => new { n.Id, n.Name }).ToList();
+
+                    JsonData.Data = (from o in db.Offices
+                                     join s in db.Offices.OfType<Stockhouse>() on o.Id equals s.Id
+                                     select new
+                                     {
+                                         o.Id,
+                                         o.Name
+                                     }).ToList();
+
                     break;
             }
             JsonData.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
@@ -179,15 +188,13 @@ namespace LineFocus.Nikcron.Controllers
                        where s.ZoneId == Zoneid
                        select new
                        {
-                           id = o.Id,
-                           Name = o.Name
+                           o.Id,
+                           o.Name
                        };
             Result.Data = data;
             return Result;
         }
-
-
-
+        
         public ActionResult ServiceTypeMaintenance()
         {
             return View();
@@ -201,10 +208,86 @@ namespace LineFocus.Nikcron.Controllers
         {
             return View();
         }
-        public ActionResult ZoneMaintenance()
+
+        #region Zone Maintenane
+
+        public ActionResult Index()
         {
-            return View();
+            ApplicationDBContext db = new ApplicationDBContext();
+            Zone Zone = new Zone();
+            return View(db.Zones.OfType<Zone>().ToList().Where(c => c.Status.IsDeleted != true));
         }
+
+        [HttpGet]
+        public ActionResult ZoneMaintenance(Int32? Id)
+        {
+            ViewBag.Header = "Zone";
+            if (Id.HasValue)
+            {
+                
+                ViewBag.Caption = "Edit";
+                ViewBag.Id = Id;
+                ApplicationDBContext db = new ApplicationDBContext();
+                Zone Zone = db.Zones.OfType<Zone>().Where(z => z.Id == Id).ToList().FirstOrDefault();
+                return View(Zone);
+            }
+            else
+            {
+                ViewBag.Caption = "New";
+                ViewBag.Id = "0";
+                return View(new Zone());
+            }
+        }
+
+        public ActionResult Delete(Int32? Id)
+        {
+            ViewBag.Header = "Zone";
+            if (Id.HasValue)
+            {
+                ViewBag.Caption = "Delete";
+                ViewBag.Id = Id;
+                ApplicationDBContext db = new ApplicationDBContext();               
+                Zone Zone = db.Zones.OfType<Zone>().Where(z => z.Id == Id).FirstOrDefault();
+                db.DeleteObject(Zone);
+                db.SaveChanges();
+            }
+
+            TempData["AlertMessage"] = "Data has been deleted succeessfully";         
+            return RedirectToAction("Index");          
+        }
+
+        [HttpPost]
+        public ActionResult ZoneMaintenance(FormCollection formCollection)
+        {
+            ApplicationDBContext db = new ApplicationDBContext();
+            Zone Zone = new Zone();
+
+            Int32 Id = 0;
+            Int32.TryParse(formCollection["Id"], out Id);
+            if (Id == 0)
+                Zone = new Zone();
+            else
+                Zone = db.Zones.OfType<Zone>().Where(z => z.Id == Id).FirstOrDefault();
+
+            Zone.Name = formCollection["Zone"];
+
+            if (Id == 0)
+            {
+                db.Zones.AddObject(Zone);
+
+                TempData["AlertMessage"] = "Data has been Added succeessfully";
+            }
+            else
+            {
+                TempData["AlertMessage"] = "Data has been Updated Successfully"; 
+            }
+            db.SaveChanges();
+
+          
+            return RedirectToAction("Index");
+        }
+
+        #endregion
         public ActionResult CountryMaintenance()
         {
             return View();

@@ -2,6 +2,8 @@
     ViewBag.Title = "ZoneMaintenance";
 }
 
+@model Nickron.Database.Zone
+
 @using (Html.BeginForm("ZoneMaintenance", "Master", FormMethod.Post, new { @class = "form-horizontal" }))
 {
     <div class="col-md-12">
@@ -19,7 +21,7 @@
                         <div class="input-group-addon">
                             <i class=""></i>
                         </div>
-                        <input id="Zone" name="Zone" maxlength="50" type="text" class="form-control" />
+                        <input id="Zone" name="Zone" maxlength="20" type="text" class="form-control" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -36,43 +38,41 @@
         </div><!-- /.box -->
     </div><!-- /.col (left) -->
 
-    <div class="col-xs-12">
-        <div class="box">
-
-            <div class="box-body table-responsive">
-                <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>Sno</th>
-                            <th>Zone</th>                            
-                            <th>Edit</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>South</td>                           
-                            <td><a href=" ">Edit</a></td>
-                            <td><a href=" ">Delete</a></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>North</td>                           
-                            <td><a href=" ">Edit</a></td>
-                            <td><a href=" ">Delete</a></td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Sno</th>
-                            <th>Zone</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div><!-- /.box-body -->
-        </div><!-- /.box -->
-    </div>
 }
+
+@{
+    var message = TempData["AlertMessage"] ?? string.Empty;
+}
+
+<script type="text/javascript">
+    var message = '@message';
+    if(message)
+        alert(message);
+</script>
+
+
+<script type="text/javascript">
+    function ValidateForm() {
+
+        if (document.getElementById("Zone").value == "") {
+            alert("Zone can't be empty!");
+            document.getElementById("Zone").focus();
+            return false;
+        }
+       
+        // RequiredTextbox("Zone", "Enter the Zone Name")
+      
+        return AlertError();
+    }
+
+    $(document).ready(function () {
+    
+        if("@ViewBag.Id" != "0")
+        {
+            $('#Id').val('@Model.Id');
+            $('#Zone').val("@Model.Name");
+        }
+    })
+</script>
+
+
