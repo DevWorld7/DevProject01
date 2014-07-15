@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 07/05/2014 08:22:17
+-- Date Created: 07/14/2014 05:37:05
 -- Generated from EDMX file: D:\Accomplishments\DevProject01\Nickron.Database\NikcronModel.edmx
 -- --------------------------------------------------
 
@@ -23,9 +23,6 @@ IF OBJECT_ID(N'[dbo].[FK_ProductModelProductType]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_ProductItemProductModel]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ProductItems] DROP CONSTRAINT [FK_ProductItemProductModel];
-GO
-IF OBJECT_ID(N'[dbo].[FK_StockhouseZone]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Offices_Stockhouse] DROP CONSTRAINT [FK_StockhouseZone];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ProductItemStockhouse]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ProductItems] DROP CONSTRAINT [FK_ProductItemStockhouse];
@@ -113,6 +110,12 @@ IF OBJECT_ID(N'[dbo].[FK_CompanyStockhouse]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_ProductItemProductWarranty]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ProductItems] DROP CONSTRAINT [FK_ProductItemProductWarranty];
+GO
+IF OBJECT_ID(N'[dbo].[FK_StockhouseZone_Stockhouse]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[StockhouseZone] DROP CONSTRAINT [FK_StockhouseZone_Stockhouse];
+GO
+IF OBJECT_ID(N'[dbo].[FK_StockhouseZone_Zone]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[StockhouseZone] DROP CONSTRAINT [FK_StockhouseZone_Zone];
 GO
 IF OBJECT_ID(N'[dbo].[FK_BusinessOffice_inherits_Office]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Offices_BusinessOffice] DROP CONSTRAINT [FK_BusinessOffice_inherits_Office];
@@ -254,6 +257,9 @@ GO
 IF OBJECT_ID(N'[dbo].[ProductModelProductColors]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ProductModelProductColors];
 GO
+IF OBJECT_ID(N'[dbo].[StockhouseZone]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[StockhouseZone];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -267,14 +273,14 @@ CREATE TABLE [dbo].[People] (
     [Gender] nvarchar(10)  NULL,
     [DataOfBirth] nvarchar(max)  NULL,
     [BloodGroup] nvarchar(10)  NULL,
-    [PresentAddress_Address1] nvarchar(250)  NULL,
-    [PresentAddress_Address2] nvarchar(250)  NULL,
+    [PresentAddress_Address1] nvarchar(500)  NULL,
+    [PresentAddress_Address2] nvarchar(500)  NULL,
     [PresentAddress_City] nvarchar(250)  NULL,
     [PresentAddress_State] nvarchar(100)  NULL,
     [PresentAddress_Country] nvarchar(100)  NULL,
     [PresentAddress_Zip] nvarchar(10)  NULL,
-    [PermanentAddress_Address1] nvarchar(250)  NULL,
-    [PermanentAddress_Address2] nvarchar(250)  NULL,
+    [PermanentAddress_Address1] nvarchar(500)  NULL,
+    [PermanentAddress_Address2] nvarchar(500)  NULL,
     [PermanentAddress_City] nvarchar(250)  NULL,
     [PermanentAddress_State] nvarchar(100)  NULL,
     [PermanentAddress_Country] nvarchar(100)  NULL,
@@ -299,8 +305,8 @@ GO
 CREATE TABLE [dbo].[Offices] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(250)  NULL,
-    [Address_Address1] nvarchar(250)  NULL,
-    [Address_Address2] nvarchar(250)  NULL,
+    [Address_Address1] nvarchar(500)  NULL,
+    [Address_Address2] nvarchar(500)  NULL,
     [Address_City] nvarchar(250)  NULL,
     [Address_State] nvarchar(100)  NULL,
     [Address_Country] nvarchar(100)  NULL,
@@ -636,13 +642,13 @@ CREATE TABLE [dbo].[Offices_BusinessOffice] (
     [PopularFestivalFairs] nvarchar(100)  NULL,
     [Approver] nvarchar(250)  NULL,
     [ApprovalComments] nvarchar(250)  NULL,
+    [UploadedFile] nvarchar(500)  NULL,
     [Id] int  NOT NULL
 );
 GO
 
 -- Creating table 'Offices_Stockhouse'
 CREATE TABLE [dbo].[Offices_Stockhouse] (
-    [ZoneId] int  NOT NULL,
     [CompanyId] int  NOT NULL,
     [Id] int  NOT NULL
 );
@@ -673,6 +679,10 @@ GO
 CREATE TABLE [dbo].[People_User] (
     [RoleId] smallint  NOT NULL,
     [OfficeId] int  NOT NULL,
+    [Username] nvarchar(50)  NULL,
+    [Password] nvarchar(50)  NULL,
+    [IsNewUser] bit  NULL,
+    [IsResetPassword] bit  NULL,
     [Id] int  NOT NULL
 );
 GO
@@ -774,6 +784,13 @@ GO
 CREATE TABLE [dbo].[ProductModelProductColors] (
     [ProductModelProductColors_ProductColors_Id] int  NOT NULL,
     [ProductColors_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'StockhouseZone'
+CREATE TABLE [dbo].[StockhouseZone] (
+    [StockhouseZone_Zone_Id] int  NOT NULL,
+    [Zones_Id] int  NOT NULL
 );
 GO
 
@@ -979,6 +996,12 @@ ADD CONSTRAINT [PK_ProductModelProductColors]
     PRIMARY KEY CLUSTERED ([ProductModelProductColors_ProductColors_Id], [ProductColors_Id] ASC);
 GO
 
+-- Creating primary key on [StockhouseZone_Zone_Id], [Zones_Id] in table 'StockhouseZone'
+ALTER TABLE [dbo].[StockhouseZone]
+ADD CONSTRAINT [PK_StockhouseZone]
+    PRIMARY KEY CLUSTERED ([StockhouseZone_Zone_Id], [Zones_Id] ASC);
+GO
+
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
@@ -1023,20 +1046,6 @@ ADD CONSTRAINT [FK_ProductItemProductModel]
 CREATE INDEX [IX_FK_ProductItemProductModel]
 ON [dbo].[ProductItems]
     ([ProductModelId]);
-GO
-
--- Creating foreign key on [ZoneId] in table 'Offices_Stockhouse'
-ALTER TABLE [dbo].[Offices_Stockhouse]
-ADD CONSTRAINT [FK_StockhouseZone]
-    FOREIGN KEY ([ZoneId])
-    REFERENCES [dbo].[Zones]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_StockhouseZone'
-CREATE INDEX [IX_FK_StockhouseZone]
-ON [dbo].[Offices_Stockhouse]
-    ([ZoneId]);
 GO
 
 -- Creating foreign key on [StockhouseId] in table 'ProductItems'
@@ -1438,6 +1447,29 @@ ADD CONSTRAINT [FK_ProductItemProductWarranty]
 CREATE INDEX [IX_FK_ProductItemProductWarranty]
 ON [dbo].[ProductItems]
     ([ProductWarrantyId]);
+GO
+
+-- Creating foreign key on [StockhouseZone_Zone_Id] in table 'StockhouseZone'
+ALTER TABLE [dbo].[StockhouseZone]
+ADD CONSTRAINT [FK_StockhouseZone_Stockhouse]
+    FOREIGN KEY ([StockhouseZone_Zone_Id])
+    REFERENCES [dbo].[Offices_Stockhouse]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [Zones_Id] in table 'StockhouseZone'
+ALTER TABLE [dbo].[StockhouseZone]
+ADD CONSTRAINT [FK_StockhouseZone_Zone]
+    FOREIGN KEY ([Zones_Id])
+    REFERENCES [dbo].[Zones]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_StockhouseZone_Zone'
+CREATE INDEX [IX_FK_StockhouseZone_Zone]
+ON [dbo].[StockhouseZone]
+    ([Zones_Id]);
 GO
 
 -- Creating foreign key on [Id] in table 'Offices_BusinessOffice'

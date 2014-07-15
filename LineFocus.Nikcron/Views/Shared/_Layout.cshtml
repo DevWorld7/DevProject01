@@ -154,6 +154,7 @@
                         <a href="#"> <i class="fa fa-bar-chart-o"></i> <span>Reports</span> <i class="fa fa-angle-left pull-right"></i> </a>
                         <ul class="treeview-menu"></ul>
                     </li>
+                </ul>
             </section>
             <!-- /.sidebar -->
         </aside>
@@ -162,10 +163,20 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1> @ViewBag.Header <small>@ViewBag.Caption</small> </h1>
-                <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li class="active">Dashboard</li>
-                </ol>
+                <div class="more-options">
+                    @{
+                        if (ViewBag.Caption == "Listing") { 
+                            <a href="@ViewBag.AddNewUrl"><img src='@Url.Content("~/Images/Add.png")' /> New @ViewBag.Header</a>
+                            <a href="@ViewBag.XlsUrl" target="_blank"><img src='@Url.Content("~/Images/Excel.png")' /> Excel Export</a>
+                            <a href="@ViewBag.PdfUrl" target="_blank"><img src='@Url.Content("~/Images/Pdf.png")' /> PDF Export</a>
+                            <a href="@ViewBag.PrintUrl" target="_blank"><img src='@Url.Content("~/Images/Print.png")' /> Print </a>
+                        }
+                        else { 
+                            <a href="@ViewBag.BackUrl">Back <img src='@Url.Content("~/Images/Back.png")' /></a>
+                        }
+                    }
+                    
+                </div>
             </section>
             <!-- Main content -->
             <section class="content">
@@ -179,6 +190,21 @@
         </aside>
         <!-- /.right-side -->
     </div>
-    
+    <div id="dialog-message" title="Validation Errors">
+    </div>    
+    <script>
+        $(function () {
+            $("#dialog-message").dialog({
+                modal: true,
+                autoOpen: false,
+                buttons: {
+                    Ok: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+    </script>
 </body>
+    
 </html>

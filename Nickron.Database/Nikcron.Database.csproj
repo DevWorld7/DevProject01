@@ -49,7 +49,7 @@
     <Compile Include="ApplicationDBContext.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="NikcronModel1.Designer.cs">
+    <Compile Include="NikcronModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NikcronModel.edmx</DependentUpon>
@@ -61,7 +61,7 @@
     <None Include="App.config" />
     <EntityDeploy Include="NikcronModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>NikcronModel1.Designer.cs</LastGenOutput>
+      <LastGenOutput>NikcronModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="NikcronModel.edmx.diagram">
       <DependentUpon>NikcronModel.edmx</DependentUpon>

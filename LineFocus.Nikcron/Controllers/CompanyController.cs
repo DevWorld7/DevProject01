@@ -17,6 +17,7 @@ namespace LineFocus.Nikcron.Controllers
         {
             ViewBag.Header = "Company";
             ViewBag.Caption = "Listing";
+            ViewBag.Module = "Home";
             ApplicationDBContext db = new ApplicationDBContext();
             Company company = new Company();
             return View();
@@ -26,11 +27,23 @@ namespace LineFocus.Nikcron.Controllers
         public ActionResult Maintenance(Int32? Id)
         {
             ViewBag.Header = "Company";
+            Lookup Lookup_States = new Lookup();
+            Lookup Lookup_Countries = new Lookup();
+            ApplicationDBContext db = new ApplicationDBContext();
+            var query1 = from records in db.States
+                         select new LookupItem() { Id = records.Id, Name = records.Name };
+            Lookup_States.Items = query1.ToList();
+
+            var query2 = from records in db.Countries
+                         select new LookupItem() { Id = records.Id, Name = records.Name };
+            Lookup_Countries.Items = query2.ToList();
+            ViewBag.States = Lookup_States;
+            ViewBag.Countries = Lookup_Countries;
             if (Id.HasValue)
             {
                 ViewBag.Caption = "Edit";
                 ViewBag.Id = Id;
-                ApplicationDBContext db = new ApplicationDBContext();
+                
                 Company Company = db.Offices.OfType<Company>().Where(c => c.Id == Id).ToList().FirstOrDefault();
                 return View(Company);
             }
@@ -45,33 +58,9 @@ namespace LineFocus.Nikcron.Controllers
         [HttpPost]
         public ActionResult Maintenance(FormCollection formCollection)
         {
-            //ApplicationDBContext db = new ApplicationDBContext();
-            //if (formCollection["Id"] == "0")
-            //{
-            //    Company Company = new Company();
-            //    Company.Name = formCollection["CompanyName"];
-            //    Company.ContactPerson = formCollection["ContactPerson"];
-            //    Company.Address.Address1 = formCollection["Address1"];
-            //    Company.Address.Address2 = formCollection["Address2"];
-            //    Company.Address.City = formCollection["City"];
-            //    Company.Address.Zip = formCollection["Zip"];
-            //    db.Offices.AddObject(Company);
-            //}
-            //else {
-            //    int CompanyId = int.Parse(formCollection["Id"]);
-            //    Company Company = db.Offices.OfType<Company>().Where(c => c.Id == CompanyId).FirstOrDefault();
-            //    Company.Name = formCollection["CompanyName"];
-            //    Company.ContactPerson = formCollection["ContactPerson"];
-            //    Company.Address.Address1 = formCollection["Address1"];
-            //    Company.Address.Address2 = formCollection["Address2"];
-            //    Company.Address.City = formCollection["City"];
-            //    Company.Address.Zip = formCollection["Zip"];
-            //}
-            //db.SaveChanges();
-            //return RedirectToAction("Index");
-
             ApplicationDBContext db = new ApplicationDBContext();
             Company Company = new Company();
+            User User = new Nickron.Database.User();
 
             Int32 CompanyId = 0;
             Int32.TryParse(formCollection["Id"], out CompanyId);
@@ -91,16 +80,28 @@ namespace LineFocus.Nikcron.Controllers
             Company.Contact1.Mobile = formCollection["Mobile1"];
             Company.Contact2.Mobile = formCollection["Mobile2"];
             Company.Contact1.Phone = formCollection["Phone1"];
-            Company.Contact2.Phone = formCollection["Phone2"];
             Company.Contact1.Email = formCollection["Email"];
             Company.Contact1.Website = formCollection["Website"];
+
             // Company. = formCollection["Username"];
             // Company. = formCollection["Password"];
 
             if (CompanyId == 0)
                 db.Offices.AddObject(Company);
             db.SaveChanges();
-            return View("Index");
+
+            if (CompanyId == 0)
+            {
+                User.Username = formCollection["Username"];
+                User.Password = formCollection["Password"];
+                User.OfficeId = Company.Id;
+                User.RoleId = 1;
+                User.IsNewUser = true;
+                User.IsResetPassword = true;
+                db.People.AddObject(User);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
 
         }
 
@@ -137,9 +138,9 @@ namespace LineFocus.Nikcron.Controllers
                                 AddressState  = c.Address.State,
                                 AddressZip    = c.Address.Zip,
                                 Mobile       = string.Join(" ",c.Contact1.Mobile,c.Contact2.Mobile),
-                                Phone        = string.Join(" ",c.Contact1.Phone,c.Contact2.Mobile),
-                                Email        = string.Join(" ",c.Contact1.Email,c.Contact2.Email),
-                                Web          = string.Join(" ",c.Contact1.Website,c.Contact2.Website)
+                                Phone        = c.Contact1.Phone,
+                                Email        = c.Contact1.Email,
+                                Web          = c.Contact1.Website
                             };
             JsonResult result = new JsonResult();
             result.Data = companies;

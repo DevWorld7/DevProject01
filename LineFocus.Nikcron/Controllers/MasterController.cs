@@ -1,4 +1,5 @@
-﻿using Nickron.Database;
+﻿using LineFocus.Nikcron.Models;
+using Nickron.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -84,6 +85,51 @@ namespace LineFocus.Nikcron.Controllers
             ContentResult Result = new ContentResult();
             Result.Content = "Success";
             return Result;
+        }
+
+        public ActionResult LookupList(String LookupType)
+        {
+            ApplicationDBContext db = new ApplicationDBContext();
+            Lookup Lookup = new Lookup();
+            switch (LookupType)
+            {
+                case "Zone":
+                    var query1 = from records in db.Zones
+                                select new LookupItem() { Id = records.Id, Name = records.Name };
+                    Lookup.Items = query1.ToList();
+                    break;
+                case "Company":
+                    var query2 = from records in db.Offices.OfType<Company>()
+                                select new LookupItem() { Id = records.Id, Name = records.Name };
+                    Lookup.Items = query2.ToList();
+                    break;
+                case "ProductType":
+                    var query3 = from records in db.ProductTypes
+                                select new LookupItem() { Id = records.Id, Name = records.Name };
+                    Lookup.Items = query3.ToList();
+                    break;
+                case "ServiceType":
+                    var query4 = from records in db.ServiceTypes
+                                select new LookupItem() { Id = records.Id, Name = records.Name };
+                    Lookup.Items = query4.ToList();
+                    break;
+                case "ReturnType":
+                    var query5 = from records in db.ReturnTypes
+                                select new LookupItem() { Id = records.Id, Name = records.Name };
+                    Lookup.Items = query5.ToList();
+                    break;
+                case "Manufacture":
+                    var query6 = from records in db.Manufactures
+                                select new LookupItem() { Id = records.Id, Name = records.Name };
+                    Lookup.Items = query6.ToList();
+                    break;
+                case "Stockhouse":
+                    var query7 = from records in db.Offices.OfType<Stockhouse>()
+                                select new LookupItem() { Id = records.Id, Name = records.Name };
+                    Lookup.Items = query7.ToList();
+                    break;
+            }
+            return View(Lookup);
         }
 
         public JsonResult GetLookups(String LookupType)
@@ -185,7 +231,6 @@ namespace LineFocus.Nikcron.Controllers
             JsonResult Result = new JsonResult();
             var data = from o in db.Offices
                        join s in db.Offices.OfType<Stockhouse>() on o.Id equals s.Id
-                       where s.ZoneId == Zoneid
                        select new
                        {
                            o.Id,

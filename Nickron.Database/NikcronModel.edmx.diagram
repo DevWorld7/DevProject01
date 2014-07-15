@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c3846c01fb164b4a8946ec2085f9a002" Name="Diagram1" DisplayType="true" ZoomLevel="63" >
+      <Diagram DiagramId="c3846c01fb164b4a8946ec2085f9a002" Name="Diagram1" DisplayType="true" ZoomLevel="82" >
         <EntityTypeShape EntityType="NikcronModel.Person" Width="2.25" PointX="8.875" PointY="0.5" FillColor="192, 64, 0" />
         <EntityTypeShape EntityType="NikcronModel.Office" Width="1.625" PointX="2.5" PointY="0.5" />
         <EntityTypeShape EntityType="NikcronModel.Company" Width="1.5" PointX="5.125" PointY="0.5" />
@@ -29,7 +29,6 @@
         <EntityTypeShape EntityType="NikcronModel.ProductWarranty" Width="1.875" PointX="0.5" PointY="13.75" FillColor="Green" />
         <EntityTypeShape EntityType="NikcronModel.ProductItem" Width="1.875" PointX="0.5" PointY="16.5" FillColor="Green" />
         <AssociationConnector Association="NikcronModel.ProductItemProductModel" />
-        <AssociationConnector Association="NikcronModel.StockhouseZone" />
         <AssociationConnector Association="NikcronModel.ProductItemStockhouse" />
         <AssociationConnector Association="NikcronModel.ProductItemDistributor" />
         <AssociationConnector Association="NikcronModel.DealersProductItem" />
@@ -84,6 +83,7 @@
         <AssociationConnector Association="NikcronModel.StateCity" />
         <AssociationConnector Association="NikcronModel.CompanyStockhouse" />
         <AssociationConnector Association="NikcronModel.ProductItemProductWarranty" />
+        <AssociationConnector Association="NikcronModel.StockhouseZone" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
