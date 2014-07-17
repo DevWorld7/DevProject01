@@ -1,8 +1,5 @@
 ﻿@{
     ViewBag.Title = "Company Maintenance";
-    ViewBag.BackUrl = Url.Action("Index", "Company");
-    LineFocus.Nikcron.Models.Lookup States = ViewBag.States;
-    LineFocus.Nikcron.Models.Lookup Countries = ViewBag.Countries;
 }
 
 @model Nickron.Database.Company
@@ -20,7 +17,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Name" name="Name" maxlength="250" type="text" class="form-control"  />
+                        <input id="Name" name="Name" maxlength="250" type="text" class="form-control" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -31,9 +28,20 @@
                         <div class="input-group-addon">
                             <i class=""></i>
                         </div>
-                        <input id="ContactPerson" name="ContactPerson" maxlength="250" type="text" class="form-control"  />
+                        <input id="ContactPerson" name="ContactPerson" maxlength="250" type="text" class="form-control" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
+                @*<div class="form-group">
+                        <label> Last Name:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class=""></i>
+                            </div>
+                            <input id="Lastname" name="Lastname" maxlength="250" type="text" class="form-control" />
+                        </div><!-- /.input group -->
+                    </div><!-- /.form group -->*@
+
+
                 <div class="form-group">
                     <label> Address Line 1:</label><span class="astrisk">*</span>
                     <div class="input-group">
@@ -54,8 +62,8 @@
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
-                <div class="form-group">
-                    <label> City/Town/District:</label><span class="astrisk">*</span>
+                <div class="form-group"><span class="astrisk">*</span>
+                    <label> City:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class=""></i>
@@ -80,8 +88,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <select id="State" name="State" class="form-control selectpicker" title="Select the State"> 
-                            @Html.Partial("SelectList", States)                          
+                        <select id="State" name="State" class="form-control">                           
                         </select>
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
@@ -92,8 +99,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <select id="Country" name="Country" class="form-control selectpicker" title="Select the Country">
-                            @Html.Partial("SelectList",Countries)
+                        <select id="Country" name="Country" class="form-control">                         
                         </select>
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
@@ -113,7 +119,7 @@
                         <div class="input-group-addon">
                             <i class=""></i>
                         </div>
-                        <input id="Mobile1" name="Mobile1" type="number" maxlength="10" class="form-control pull-right" />
+                        <input id="Mobile1" name="Mobile1" type="text" maxlength="20" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -123,17 +129,27 @@
                         <div class="input-group-addon">
                             <i class=""></i>
                         </div>
-                        <input id="Mobile2" name="Mobile2" type="number" maxlength="10" class="form-control pull-right" />
+                        <input id="Mobile2" name="Mobile2" type="text" maxlength="20" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> Phone Number:</label>
+                    <label> Phone Number 1:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Phone1" name="Phone1" type="number" maxlength="11" class="form-control pull-right" />
+                        <input id="Phone1" name="Phone1" type="text" maxlength="20" class="form-control pull-right" />
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">
+                    <label> Phone Number 2:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <input id="Phone2" name="Phone2" type="text" maxlength="20" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -143,7 +159,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Email" name="Email" type="email" maxlength="250" class="form-control pull-right" />
+                        <input id="Email" name="Email" type="text" maxlength="250" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -153,7 +169,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Website" name="Website" maxlength="250" type="url" class="form-control pull-right" />
+                        <input id="Website" name="Website" maxlength="250" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -164,7 +180,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Username" name="Username" maxlength="50" type="text" class="form-control pull-right"  />
+                        <input id="Username" name="Username" maxlength="250" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -174,7 +190,7 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Password" name="Password" maxlength="50" type="text" class="form-control pull-right"  />
+                        <input id="Password" name="Password" maxlength="250" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -203,28 +219,73 @@
 
 <script type="text/javascript">
     function ValidateForm() {
-        RequiredTextbox("Name", "Enter the Company Name");
-        RequiredTextbox("ContactPerson", "Enter the Contact Person");
-        RequiredTextbox("Address1", "Enter the Address");
-        RequiredTextbox("City", "Enter the City");
-        RequiredTextbox("Zip", "Enter the Zip");
-        ValidateZip("Zip", "Enter Valid Zip");
-        ValidateMobilenumber("Mobile1", "Mobilenumber 1 - Enter Valid Number");
-        ValidateMobilenumber("Mobile2", "Mobilenumber 2 - Enter Valid Number");
-        ValidatePhonenumber("Phone1", "Enter Valid Phone Number");
-        ValidateEmailaddress("Email", "Enter Valid Email Id");
-        //ValidateWebaddress("Web", "Enter Valid Website address");
 
-        RequiredDropdown("State", -1, "Select a State");
-        RequiredDropdown("Country", -1, "Select a Country");
-        if("@ViewBag.Id" == "")
-        {
-            RequiredTextbox("Username", "Enter the Username");
-            RequiredTextbox("Password", "Enter the Password");
-            ValidMinLength("Username", 6, "Username must be minimum 6 characters");
-            ValidMinLength("Password", 6, "Password must be minimum 6 characters");
+        if (document.getElementById("Company").value == "") {
+            alert("Company can't be empty!");
+            document.getElementById("Company").focus();
+            return false;
         }
+        if (document.getElementById("ContactPerson").value == "") {
+            alert("Contact person can't be empty!");
+            document.getElementById("ContactPerson").focus();
+            return false;
+        }
+        if (document.getElementById("Address1").value == "") {
+            alert("Address person can't be empty!");
+            document.getElementById("Address1").focus();
+            return false;
+        }
+        if (document.getElementById("City").value == "") {
+            alert("City can't be empty!");
+            document.getElementById("City").focus();
+            return false;
+        }
+        var selectState = document.getElementById("State").value;
+        if ((selectState == 0)||(selectState=="")) {
+            alert("Please select State"); // prompt user
+            document.getElementById("State").focus(); //set focus back to control
+            return false;
+        }
+        var selectState = document.getElementById("Country").value;
+        if ((selectState == 0) || (selectState == "")) {
+            alert("Please select Country!"); // prompt user
+            document.getElementById("Country").focus(); //set focus back to control
+            return false;
+        }
+       // RequiredTextbox("Company", "Enter the Company Name")
+       // RequiredTextbox("ContactPerson", "Enter the Contact Person")
+       // RequiredTextbox("Address1", "Enter the Address")
+       // RequiredTextbox("City", "Enter the City")
+
+       
+
         return AlertError();
+    }
+
+    function LoadCountries()
+    {
+        $.getJSON("@Url.Action("GetCountries", "Master")", function (result) {
+            var options = '';
+            options += '<option value="0">---SELECT COUNTRY---</option>';
+            $.each(result, function (item) {
+                options += '<option value="' + result[item].Id + '">' + result[item].Name + '</option>';
+            });
+            $("select#Country").html(options);
+        });
+        $("#Country").prop('selectedIndex', -1);
+    }
+
+    function LoadStates()
+    {
+        $.getJSON("@Url.Action("GetStates", "Master", new { Country = "India"})", function (result) {
+            var options = '';
+            options += '<option value="0">---SELECT STATE---</option>';
+            $.each(result, function (item) {
+                options += '<option value="' + result[item].Id + '">' + result[item].Name + '</option>';
+            });
+            $("select#State").html(options);
+        });
+        $("#State").prop('selectedIndex', -1);
     }
 
     function AutoCompleteCity()
@@ -254,8 +315,8 @@
                 url: "@(Url.Action("GetStateCountry", "Master"))",
                 data: { "CityId": ui.item.Id },
             success: function (data) {
-                $('select#State').selectpicker("val", data[0].StateName);
-                $('select#Country').selectpicker("val",data[0].CountryName);
+                $('select#State').val(data[0].StateId);
+                $('select#Country').val(data[0].CountryId);
             },
             error: function (xhr, ajaxOptions, thrownError) {
             }
@@ -265,9 +326,11 @@
     }
 
     $(document).ready(function () {
-        $(".selectpicker").selectpicker();
+        LoadStates();
+        LoadCountries();
         AutoCompleteCity();
-        if("@ViewBag.Id" != "")
+
+        if("@ViewBag.Id" != "0")
         {
             $('#Id').val('@Model.Id');
             $('#Name').val("@Model.Name");
@@ -276,17 +339,17 @@
             $('#Address2').val("@Model.Address.Address2");
             $('#City').val("@Model.Address.City");
             $('#Zip').val("@Model.Address.Zip");
-            $('#State').selectpicker("val", "@Model.Address.State");
-            $('#Country').selectpicker("val", "@Model.Address.Country");
-            $(".selectpicker").selectpicker("refresh");
+            $('#State').val("@Model.Address.State")
+            $('#Country').val("@Model.Address.Country");
             $('#Mobile1').val("@Model.Contact1.Mobile");
             $('#Mobile2').val("@Model.Contact2.Mobile")
             $('#Phone1').val("@Model.Contact1.Phone")
             $('#Phone2').val("@Model.Contact2.Phone")
             $('#Email').val("@Model.Contact1.Email");
             $('#Website').val("@Model.Contact1.Website");
-            $('.form-group:contains("User Name")').closest("div").hide();
-            $('.form-group:contains("Password")').closest("div").hide();
+            @*$('#Username').val("@Model.")*@
+            @*$('#Password').val("@Model.")*@
+                      
         }
     })
 </script>

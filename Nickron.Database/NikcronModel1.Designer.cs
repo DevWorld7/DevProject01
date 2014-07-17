@@ -22,6 +22,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("NikcronModel", "ProductModelManufacture", "ProductModel", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.ProductModel), "Manufacture", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.Manufacture), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "ProductModelProductType", "ProductModel", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.ProductModel), "ProductType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.ProductType), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "ProductItemProductModel", "ProductItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.ProductItem), "ProductModel", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.ProductModel), true)]
+[assembly: EdmRelationshipAttribute("NikcronModel", "StockhouseZone", "Stockhouse", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.Stockhouse), "Zone", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.Zone), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "ProductItemStockhouse", "ProductItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.ProductItem), "Stockhouse", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nickron.Database.Stockhouse), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "ProductItemDistributor", "ProductItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.ProductItem), "Distributor", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nickron.Database.Distributor), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "DealersProductItem", "ProductItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.ProductItem), "Dealers", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nickron.Database.Dealers), true)]
@@ -50,7 +51,6 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("NikcronModel", "StateCity", "State", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.State), "City", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.City), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "CompanyStockhouse", "Company", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(Nickron.Database.Company), "Stockhouse", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.Stockhouse), true)]
 [assembly: EdmRelationshipAttribute("NikcronModel", "ProductItemProductWarranty", "ProductItem", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.ProductItem), "ProductWarranty", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Nickron.Database.ProductWarranty), true)]
-[assembly: EdmRelationshipAttribute("NikcronModel", "StockhouseZone", "Stockhouse", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.Stockhouse), "Zone", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Nickron.Database.Zone))]
 
 #endregion
 
@@ -1232,30 +1232,6 @@ namespace Nickron.Database
         private global::System.String _ApprovalComments;
         partial void OnApprovalCommentsChanging(global::System.String value);
         partial void OnApprovalCommentsChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String UploadedFile
-        {
-            get
-            {
-                return _UploadedFile;
-            }
-            set
-            {
-                OnUploadedFileChanging(value);
-                ReportPropertyChanging("UploadedFile");
-                _UploadedFile = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("UploadedFile");
-                OnUploadedFileChanged();
-            }
-        }
-        private global::System.String _UploadedFile;
-        partial void OnUploadedFileChanging(global::System.String value);
-        partial void OnUploadedFileChanged();
 
         #endregion
 
@@ -8031,8 +8007,9 @@ namespace Nickron.Database
         /// <param name="contact2">Initial value of the Contact2 property.</param>
         /// <param name="status">Initial value of the Status property.</param>
         /// <param name="auditLog">Initial value of the AuditLog property.</param>
+        /// <param name="zoneId">Initial value of the ZoneId property.</param>
         /// <param name="companyId">Initial value of the CompanyId property.</param>
-        public static Stockhouse CreateStockhouse(global::System.Int32 id, Address address, Contact contact1, Contact contact2, Status status, AuditLog auditLog, global::System.Int32 companyId)
+        public static Stockhouse CreateStockhouse(global::System.Int32 id, Address address, Contact contact1, Contact contact2, Status status, AuditLog auditLog, global::System.Int32 zoneId, global::System.Int32 companyId)
         {
             Stockhouse stockhouse = new Stockhouse();
             stockhouse.Id = id;
@@ -8041,6 +8018,7 @@ namespace Nickron.Database
             stockhouse.Contact2 = StructuralObject.VerifyComplexObjectIsNotNull(contact2, "Contact2");
             stockhouse.Status = StructuralObject.VerifyComplexObjectIsNotNull(status, "Status");
             stockhouse.AuditLog = StructuralObject.VerifyComplexObjectIsNotNull(auditLog, "AuditLog");
+            stockhouse.ZoneId = zoneId;
             stockhouse.CompanyId = companyId;
             return stockhouse;
         }
@@ -8048,6 +8026,30 @@ namespace Nickron.Database
         #endregion
 
         #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ZoneId
+        {
+            get
+            {
+                return _ZoneId;
+            }
+            set
+            {
+                OnZoneIdChanging(value);
+                ReportPropertyChanging("ZoneId");
+                _ZoneId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ZoneId");
+                OnZoneIdChanged();
+            }
+        }
+        private global::System.Int32 _ZoneId;
+        partial void OnZoneIdChanging(global::System.Int32 value);
+        partial void OnZoneIdChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -8077,6 +8079,44 @@ namespace Nickron.Database
 
     
         #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NikcronModel", "StockhouseZone", "Zone")]
+        public Zone Zone
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Zone>("NikcronModel.StockhouseZone", "Zone").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Zone>("NikcronModel.StockhouseZone", "Zone").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Zone> ZoneReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Zone>("NikcronModel.StockhouseZone", "Zone");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Zone>("NikcronModel.StockhouseZone", "Zone", value);
+                }
+            }
+        }
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -8134,28 +8174,6 @@ namespace Nickron.Database
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Company>("NikcronModel.CompanyStockhouse", "Company", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("NikcronModel", "StockhouseZone", "Zone")]
-        public EntityCollection<Zone> Zones
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Zone>("NikcronModel.StockhouseZone", "Zone");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Zone>("NikcronModel.StockhouseZone", "Zone", value);
                 }
             }
         }
@@ -8489,102 +8507,6 @@ namespace Nickron.Database
         private global::System.Int32 _OfficeId;
         partial void OnOfficeIdChanging(global::System.Int32 value);
         partial void OnOfficeIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Username
-        {
-            get
-            {
-                return _Username;
-            }
-            set
-            {
-                OnUsernameChanging(value);
-                ReportPropertyChanging("Username");
-                _Username = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Username");
-                OnUsernameChanged();
-            }
-        }
-        private global::System.String _Username;
-        partial void OnUsernameChanging(global::System.String value);
-        partial void OnUsernameChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Password
-        {
-            get
-            {
-                return _Password;
-            }
-            set
-            {
-                OnPasswordChanging(value);
-                ReportPropertyChanging("Password");
-                _Password = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Password");
-                OnPasswordChanged();
-            }
-        }
-        private global::System.String _Password;
-        partial void OnPasswordChanging(global::System.String value);
-        partial void OnPasswordChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Boolean> IsNewUser
-        {
-            get
-            {
-                return _IsNewUser;
-            }
-            set
-            {
-                OnIsNewUserChanging(value);
-                ReportPropertyChanging("IsNewUser");
-                _IsNewUser = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("IsNewUser");
-                OnIsNewUserChanged();
-            }
-        }
-        private Nullable<global::System.Boolean> _IsNewUser;
-        partial void OnIsNewUserChanging(Nullable<global::System.Boolean> value);
-        partial void OnIsNewUserChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Boolean> IsResetPassword
-        {
-            get
-            {
-                return _IsResetPassword;
-            }
-            set
-            {
-                OnIsResetPasswordChanging(value);
-                ReportPropertyChanging("IsResetPassword");
-                _IsResetPassword = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("IsResetPassword");
-                OnIsResetPasswordChanged();
-            }
-        }
-        private Nullable<global::System.Boolean> _IsResetPassword;
-        partial void OnIsResetPasswordChanging(Nullable<global::System.Boolean> value);
-        partial void OnIsResetPasswordChanged();
 
         #endregion
 

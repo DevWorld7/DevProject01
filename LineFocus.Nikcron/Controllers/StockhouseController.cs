@@ -1,5 +1,4 @@
-﻿using LineFocus.Nikcron.Models;
-using Nickron.Database;
+﻿using Nickron.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,40 +47,12 @@ namespace LineFocus.Nikcron.Controllers
         [HttpGet]
         public ActionResult Maintenance(Int32? StockhouseId)
         {
-            Lookup Lookup_Companies = new Lookup();
-            Lookup Lookup_States = new Lookup();
-            Lookup Lookup_Countries = new Lookup();
-            Lookup Lookup_Zones = new Lookup();
-
-            ApplicationDBContext db = new ApplicationDBContext();
-
-            var query1 = from records in db.States
-                         select new LookupItem() { Id = records.Id, Name = records.Name };
-            Lookup_States.Items = query1.ToList();
-
-            var query2 = from records in db.Countries
-                         select new LookupItem() { Id = records.Id, Name = records.Name };
-            Lookup_Countries.Items = query2.ToList();
-
-            var query3 = from records in db.Offices.OfType<Company>()
-                         select new LookupItem() { Id = records.Id, Name = records.Name };
-            Lookup_Companies.Items = query3.ToList();
-
-            var query4 = from records in db.Zones
-                         select new LookupItem() { Id = records.Id, Name = records.Name};
-            Lookup_Zones.Items = query4.ToList();
-
-            ViewBag.Header = "Stockhouse";
-            ViewBag.Companies = Lookup_Companies;
-            ViewBag.States = Lookup_States;
-            ViewBag.Countries = Lookup_Countries;
-            ViewBag.Zones = Lookup_Zones;
-
+            ViewBag.Header = "Stockhit";
             if (StockhouseId.HasValue)
             {
                 ViewBag.StockhouseId = StockhouseId;
                 ViewBag.Caption = "Edit";
-                
+                ApplicationDBContext db = new ApplicationDBContext();
                 Stockhouse stockhouse = db.Offices.OfType<Stockhouse>().Where(s => s.Id == StockhouseId).FirstOrDefault();
                 return View(stockhouse);
             }
@@ -109,7 +80,7 @@ namespace LineFocus.Nikcron.Controllers
             if (!string.IsNullOrEmpty(formCollection["Joindate"]))
                 stockhouse.JoiningDate = DateTime.Parse(formCollection["Joindate"]);
             stockhouse.RecommendationFrom = formCollection["Recommendedby"];
-            //stockhouse.ZoneId = Int32.Parse(formCollection["Zone"]);
+            stockhouse.ZoneId = Int32.Parse(formCollection["Zone"]);
             stockhouse.ContactPerson = formCollection["ContactPerson"];
             stockhouse.Address.Address1 = formCollection["Address1"];
             stockhouse.Address.Address2 = formCollection["Address2"];

@@ -1,9 +1,5 @@
 ﻿@{
     ViewBag.Title = "Stockits Maintenance";
-    LineFocus.Nikcron.Models.Lookup Companies = ViewBag.Companies;
-    LineFocus.Nikcron.Models.Lookup Zones = ViewBag.Zones;
-    LineFocus.Nikcron.Models.Lookup States = ViewBag.States;
-    LineFocus.Nikcron.Models.Lookup Countries = ViewBag.Countries;
 }
 
 @model Nickron.Database.Stockhouse
@@ -16,13 +12,13 @@
             <div class="box-body">
                 
                 <div class="form-group">
-                    <label> Company:</label><span class="astrisk">*</span>
+                    <label> State:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <select id="Company" name="Company" class="form-control selectpicker" title="Select Company">
-                            @Html.Partial("Dropdown",Companies)
+                        <select id="ddl_State" name="ddl_State" class="form-control">
+                            <option value="0">---Select---</option>
                         </select>
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
@@ -33,26 +29,32 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <select id="Zone" name="Zone" class="form-control selectpicker" multiple title="Select Zones">
-                            @Html.Partial("Dropdown", Zones)
-                        </select>
+                        <select id="Zone" name="Zone" class="form-control"></select>
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> Location/Town:</label><span class="astrisk">*</span>
+                    <label> Town:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Location" name="Location" class="form-control"></input>
+                        <select id="Town" name="Town" class="form-control"></select>
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
-                
+                <div class="form-group">
+                    <label> Company:</label><span class="astrisk">*</span>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <select id="Company" name="Company" class="form-control"></select>
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> Stockhouse Name:</label><span class="astrisk">*</span>
+                    <label> Name:</label><span class="astrisk">*</span>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class=""></i>
@@ -78,7 +80,7 @@
                         <div class="input-group-addon">
                             <i class="fa fa-calendar"></i>
                         </div>
-                        <input type="text" id="JoinDate" name="JoinDate" class="form-control bfh-datepicker" data-inputmask="'alias': 'dd/mm/yyyy'" />
+                        <input type="text" id="JoinDate" name="JoinDate" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'"/>
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -124,8 +126,8 @@
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
-                <div class="form-group">
-                    <label> City:</label><span class="astrisk">*</span>
+                <div class="form-group"><span class="astrisk">*</span>
+                    <label> City:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class=""></i>
@@ -135,7 +137,7 @@
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> Zip:</label><span class="astrisk">*</span>
+                    <label> Zip:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class=""></i>
@@ -145,13 +147,12 @@
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> State:</label><span class="astrisk">*</span>
+                    <label> State:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <select id="State" name="State" class="form-control selectpicker" title="Select State">
-                            @Html.Partial("Dropdown", States)
+                        <select id="State" name="State" class="form-control">
                         </select>
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
@@ -162,19 +163,18 @@
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <select id="Country" name="Country" class="form-control selectpicker" title="Select Country">
-                            @Html.Partial("Dropdown", Countries)
+                        <select id="Country" name="Country" class="form-control">
                         </select>
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> Mobile Number 1:</label><span class="astrisk">*</span>
+                    <label> Mobile Number 1:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i class=""></i>
                         </div>
-                        <input id="Mobilenumber1" name="Mobilenumber1" type="number" maxlength="10" class="form-control pull-right" />
+                        <input id="Mobilenumber1" name="Mobilenumber1" type="text" maxlength="20" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -184,39 +184,48 @@
                         <div class="input-group-addon">
                             <i class=""></i>
                         </div>
-                        <input id="Mobilenumber2" name="Mobilenumber2" type="number" maxlength="10" class="form-control pull-right" />
+                        <input id="Mobilenumber2" name="Mobilenumber2" type="text" maxlength="20" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> Phone Number :</label>
+                    <label> Phone Number 1:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Phonenumber1" name="Phonenumber1" type="number" maxlength="11" class="form-control pull-right" />
+                        <input id="Phonenumber1" name="Phonenumber1" type="text" maxlength="20" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> Email ID1:</label><span class="astrisk">*</span>
+                    <label> Phone Number 2:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Email1" name="Email1" type="text" maxlength="500" class="form-control pull-right" />
+                        <input id="Phonenumber2" name="Phonenumber2" type="text" maxlength="20" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> Email ID2:</label>
+                    <label> Email ID:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input id="Email2" name="Email2" type="text" maxlength="500" class="form-control pull-right" />
+                        <input id="Email" name="Email" type="text" maxlength="250" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
+
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col (left) -->
+    <div class="col-md-6">
+        <div class="box box-primary">
+
+            <div class="box-body">              
+               
 
                 <div class="form-group">
                     <label> Website:</label>
@@ -226,17 +235,10 @@
                         </div>
                         <input id="Website" name="Website" type="text" maxlength="40" class="form-control pull-right" />
                     </div><!-- /.input group -->
-                </div><!-- /.form group -->   
-            </div><!-- /.box-body -->
-        </div><!-- /.box -->
-    </div><!-- /.col (left) -->
-    <div class="col-md-6">
-        <div class="box box-primary">
+                </div><!-- /.form group -->                
 
-            <div class="box-body">              
-               
                 <div class="form-group">
-                    <label> PAN No:</label>
+                    <label> Pan No:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
@@ -246,7 +248,7 @@
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> TIN No:</label>
+                    <label> Tin No:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
@@ -336,12 +338,22 @@
                 </div><!-- /.form group -->
 
                 <div class="form-group">
+                    <label> Location:</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i></i>
+                        </div>
+                        <input id="Location" name="Location" maxlength="500" type="text" class="form-control pull-right"/>
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+
+                <div class="form-group">
                     <label> Man Power:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
                         </div>
-                        <input name="ManPower" id="ManPower" value="10" min="0" max="999" type="text" class="form-control pull-right bfh-number" />
+                        <input name="ManPower" id="ManPower" maxlength="3" type="text" class="form-control pull-right" />
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -390,7 +402,7 @@
                 </div><!-- /.form group -->
 
                 <div class="form-group">
-                    <label> Uplode PDF File:</label>
+                    <label> uplode the 1 PDF File:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
                             <i></i>
@@ -436,10 +448,6 @@
                             <i></i>
                         </div>
                         <input id="Password" name="Password" maxlength="20" type="text" class="form-control pull-right" />
-                    @*<select class="selectpicker">
-                        <option>Test1</option>
-                        <option>Test2</option>
-                    </select>*@
                     </div><!-- /.input group -->
                 </div><!-- /.form group -->
 
@@ -485,6 +493,52 @@
         return AlertError();
     }
 
+    function LoadCompanies()
+    {
+        $.getJSON("@Url.Action("GetLookups", "Master", new { LookupType = "Company" })", function (result) {
+            var options = '';
+            $.each(result, function (item) {
+                options += '<option value="' + result[item].Id + '">' + result[item].Name + '</option>';
+            });
+            $("select#Company").html(options);
+        });
+    }
+
+    function LoadZones()
+    {
+        $.getJSON("@Url.Action("GetLookups", "Master", new { LookupType = "Zone" })", function (result) {
+            var options = '';
+            $.each(result, function (item) {
+                options += '<option value="' + result[item].Id + '">' + result[item].Name + '</option>';
+            });
+            $("select#Zone").html(options);
+        });
+    }
+
+    function LoadCountries()
+    {
+        $.getJSON("@Url.Action("GetCountries", "Master")", function (result) {
+            var options = '';
+            $.each(result, function (item) {
+                options += '<option value="' + result[item].Id + '">' + result[item].Name + '</option>';
+            });
+            $("select#Country").html(options);
+        });
+        $("#Country").prop('selectedIndex', -1);
+    }
+
+    function LoadStates()
+    {
+        $.getJSON("@Url.Action("GetStates", "Master", new { Country = "India"})", function (result) {
+            var options = '';
+            $.each(result, function (item) {
+                options += '<option value="' + result[item].Id + '">' + result[item].Name + '</option>';
+            });
+            $("select#State").html(options);
+        });
+        $("#State").prop('selectedIndex', -1);
+    }
+
     function AutoCompleteCity()
     {
         $("#City").autocomplete({
@@ -524,24 +578,24 @@
 
     $(document).ready(function () {
 
-        $('.selectpicker').selectpicker();
-        
+        LoadCompanies();
+        LoadZones();
+        LoadStates();
+        LoadCountries();
         AutoCompleteCity();
+
         $('#JoinDate').datepicker();
         $('#date1').datepicker();
         $('#date2').datepicker();
 
-        if("@ViewBag.Id" != "")
+        if("@ViewBag.Id" != "0")
         {
-            $('#Company').selectpicker("val", "@Model.CompanyId");
-            $('#State').selectpicker("text", "@Model.Address.State");
-            $('#Country').selectpicker("text", "@Model.Address.Country");
-            //$('#Zone').selectpicker("val","@Model.Zones.")
+            $('#Company').val("@Model.CompanyId");
             $('#Stockhouse').val("@Model.Name");
             $('#JoinDate').val('@Model.JoiningDate');
             $('#RecommendedBy').val('@Model.RecommendationFrom');
             $('#ContactPerson').val("@Model.ContactPerson");
-            
+            $('#Zone').val("@Model.ZoneId");
             $('#Address1').val("@Model.Address.Address1");
             $('#Address2').val("@Model.Address.Address2");
             $('#City').val("@Model.Address.City");

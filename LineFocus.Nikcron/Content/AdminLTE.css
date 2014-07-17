@@ -636,7 +636,7 @@ body > .header .logo .icon {
   -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-  z-index: auto;
+  z-index: 2300;
 }
 .dropdown-menu > li > a > .glyphicon,
 .dropdown-menu > li > a > .fa,
@@ -1276,7 +1276,7 @@ body > .header .logo .icon {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  width: 98%;
+  width: 100%;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
 }
 .box.box-primary {
@@ -3421,28 +3421,4 @@ fieldset[disabled] .btn-vk.active {
 .astrisk{
     color:#ff0000;
    font-weight:bold;
-}
-.txt-validation-error {
-    border-color: red;
-}
-.more-options {
-  float: right;
-  background: transparent;
-  margin-top: 0px;
-  margin-bottom: 0;
-  font-size: 15px;
-  padding: 7px 5px;
-  position: absolute;
-  top: 5px;
-  right: 20px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-}
-.more-options a{
-    padding-left: 10px;
-}
-.right
-{
-    right: 0px;
 }

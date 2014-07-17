@@ -10,16 +10,10 @@ namespace LineFocus.Nikcron
         {
             bundles.Add(new ScriptBundle("~/bundles/page").Include("~/Scripts/pagevalidator.js"));
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/jquery.tmpl.js"));
+                        "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                        "~/Scripts/bootstrap.js",
-                        "~/Scripts/jquery.dataTables.js",
-                        "~/Scripts/dataTables.bootstrap.js",
-                        "~/Scripts/bootstrap-select.js",
-                        "~/Scripts/bootstrap-formhelpers.js",
-                        "~/Scripts/bootstrap-datepicker.js"));
+                        "~/Scripts/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));
@@ -78,11 +72,7 @@ namespace LineFocus.Nikcron
                         "~/Content/ionslider/ion.rangeSlider.skinNice.css",
                         "~/Content/slider.css",
                         "~/Content/bootstrap3-wysihtml5.css",
-                        "~/Content/AdminLTE.css",
-                        "~/Content/dataTables.bootstrap.css",
-                        "~/Content/bootstrap-select.css",
-                        "~/Content/bootstrap-formhelpers.css",
-                        "~/Content/bootstrap-datepicker.css"
+                        "~/Content/AdminLTE.css"
                 ));
 
         }

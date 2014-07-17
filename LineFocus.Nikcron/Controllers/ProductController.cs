@@ -19,9 +19,6 @@ namespace LineFocus.Nikcron.Controllers
 
         public ActionResult Manufacture()
         {
-            ViewBag.Header = "Brands";
-            ViewBag.Caption = "Listing";
-            ViewBag.Module = "Products";
             return View();
         }
 
@@ -36,7 +33,6 @@ namespace LineFocus.Nikcron.Controllers
         {
             ViewBag.Header = "Laptops";
             ViewBag.Caption = "Listing";
-            ViewBag.Module = "Products";
             return View();
         }
         [HttpGet]
@@ -55,7 +51,6 @@ namespace LineFocus.Nikcron.Controllers
                 n.Chipset,
                 n.ClockSpeed,
                 n.Cache,
-                n.Memory,
                 n.ExternalStorage,
                 n.HardwareInterface,
                 n.RPM,
@@ -162,9 +157,6 @@ namespace LineFocus.Nikcron.Controllers
         [HttpGet]
         public ActionResult Mobilephones()
         {
-            ViewBag.Header = "Mobiles";
-            ViewBag.Caption = "Listing";
-            ViewBag.Module = "Products";
             return View();
         }
 
@@ -313,9 +305,6 @@ namespace LineFocus.Nikcron.Controllers
         [HttpGet]
         public ActionResult Tablets()
         {
-            ViewBag.Header = "Tablets";
-            ViewBag.Caption = "Listing";
-            ViewBag.Module = "Products";
             return View();
         }
         [HttpGet]
